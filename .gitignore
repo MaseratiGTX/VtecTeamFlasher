@@ -1,0 +1,13 @@
+
+_ReSharper.*
+bin
+obj
+Debug
+PcmFlasher
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.datasource
+Thumbs.db
+
