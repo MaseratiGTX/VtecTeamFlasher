@@ -50,6 +50,7 @@
             this.cbAdapter.Name = "cbAdapter";
             this.cbAdapter.Size = new System.Drawing.Size(216, 21);
             this.cbAdapter.TabIndex = 1;
+            this.cbAdapter.SelectedIndexChanged += new System.EventHandler(this.cbAdapter_SelectedIndexChanged);
             // 
             // btnExit
             // 

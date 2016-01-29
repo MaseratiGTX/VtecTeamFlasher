@@ -13,8 +13,10 @@ namespace VtecTeamFlasher
         internal const uint BN_CLICKED = 245;
         internal const int IDOK = 1;
 
-        internal const int CB_GETCOUNT = 0x0146;
-        internal const int CB_GETLBTEXT = 0x0148;
+        internal const uint CB_GETCOUNT = 0x0146;
+        internal const uint CB_GETLBTEXT = 0x0148;
+        internal const uint CB_SETCURSEL = 0x014E;
+        internal const uint CB_GETCURSEL = 0x0147;
 
 
         [DllImport("user32.dll")]
@@ -33,6 +35,10 @@ namespace VtecTeamFlasher
         internal static extern int SendMessage(IntPtr hWnd, uint msg, uint wParam, IntPtr lParam);
         [DllImport("user32.dll")]
         internal static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, [MarshalAs(UnmanagedType.LPStr)] string lParam);
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        internal static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, int wParam, StringBuilder lParam);
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError =false)]
+        internal static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, int wParam, string lParam);
        
 
         [DllImport("user32.dll", SetLastError = true)]
