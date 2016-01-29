@@ -3,7 +3,7 @@ _ReSharper.*
 bin
 obj
 Debug
-PcmFlasher/*.exe
+VtecTeamFlasher/PcmFlasher/*.exe
 *.opensdf
 *.sdf
 *.suo
