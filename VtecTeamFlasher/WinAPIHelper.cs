@@ -24,6 +24,9 @@ namespace VtecTeamFlasher
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         internal static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+        
+        [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
+        internal static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
 
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern IntPtr FindWindowEx(IntPtr parentHandle, IntPtr childAfter, string className, string windowTitle);
@@ -39,9 +42,26 @@ namespace VtecTeamFlasher
         internal static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, int wParam, StringBuilder lParam);
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError =false)]
         internal static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, int wParam, string lParam);
+
+
+        [DllImport("user32")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool EnumChildWindows(IntPtr window, EnumWindowProc callback, IntPtr i);
+
+        /// <summary>
+        /// Delegate for the EnumChildWindows method
+        /// </summary>
+        /// <param name="hWnd">Window handle</param>
+        /// <param name="parameter">Caller-defined variable; we use it for a pointer to our list</param>
+        /// <returns>True to continue enumerating, false to bail.</returns>
+        internal delegate bool EnumWindowProc(IntPtr hWnd, IntPtr parameter);
        
 
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool BringWindowToTop(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool SetForegroundWindow(IntPtr hWnd);
     }
 }
