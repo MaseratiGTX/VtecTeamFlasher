@@ -17,8 +17,13 @@ namespace VtecTeamFlasher
     {
         private IntPtr pcmMainWindow;
         private Process pcmProcess;
-        StringBuilder ssb = new StringBuilder(256, 256);
-        private List<IntPtr> pcmChildren; 
+        private List<IntPtr> pcmChildren;
+
+        private IntPtr pcmComboBoxModules;
+        private IntPtr pcmComboBoxAdapters;
+        private IntPtr pcmTextBoxFilePath;
+        private IntPtr pcmButtonExit;
+        private IntPtr pcmButtonSettings;
 
         public VTFlasher()
         {
@@ -28,11 +33,11 @@ namespace VtecTeamFlasher
         private void VTFlasher_Load(object sender, EventArgs e)
         {
             var info = new ProcessStartInfo
-                           {
-                               FileName = AppDomain.CurrentDomain.BaseDirectory + "\\PcmFlasher\\pcmflash.exe",
-                               UseShellExecute = true,
-                              // WindowStyle = ProcessWindowStyle.Hidden
-                           };
+            {
+                FileName = AppDomain.CurrentDomain.BaseDirectory + "\\PcmFlasher\\pcmflash.exe",
+                UseShellExecute = true,
+                // WindowStyle = ProcessWindowStyle.Hidden
+            };
             pcmProcess = Process.Start(info);
             pcmProcess.WaitForInputIdle();
 
@@ -42,34 +47,43 @@ namespace VtecTeamFlasher
 
             pcmChildren = GetChildWindows(pcmMainWindow);
 
-            var cb = WinAPIHelper.FindWindowEx(pcmMainWindow, IntPtr.Zero, "ComboBox", null);
-            var cbAdapters = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[0], null, null);
-            if (cbAdapters != IntPtr.Zero)
+            pcmComboBoxModules = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[6], null, null);
+            pcmComboBoxAdapters = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[0], null, null);
+            pcmTextBoxFilePath = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[14], null, null);
+            pcmButtonExit = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[23], null, null);
+            pcmButtonSettings = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[4], null, null);
+
+            InitializeComboBoxControl(pcmComboBoxAdapters, cbAdapter);
+            InitializeComboBoxControl(pcmComboBoxModules, cbModules);
+
+        }
+
+        private void InitializeComboBoxControl(IntPtr controlHandle, ComboBox comboBox)
+        {
+            var ssb = new StringBuilder(256, 256);
+
+            if (controlHandle != IntPtr.Zero)
             {
-                var count = WinAPIHelper.SendMessage(cbAdapters, WinAPIHelper.CB_GETCOUNT, IntPtr.Zero, IntPtr.Zero);
+                var count = WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETCOUNT, IntPtr.Zero, IntPtr.Zero);
                 for (int i = 0; i < (int)count; i++)
                 {
-                    if (WinAPIHelper.SendMessage(cbAdapters, WinAPIHelper.CB_GETLBTEXT, i, ssb) != (IntPtr)(-1))
+                    if (WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETLBTEXT, i, ssb) != (IntPtr)(-1))
                     {
-                        cbAdapter.Items.Add(ssb.ToString());
+                        comboBox.Items.Add(ssb.ToString());
 
                     }
                 }
-                var pcmSelectedIndex = (int) WinAPIHelper.SendMessage(cbAdapters, WinAPIHelper.CB_GETCURSEL, IntPtr.Zero,IntPtr.Zero);
+                var pcmSelectedIndex = (int)WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETCURSEL, IntPtr.Zero, IntPtr.Zero);
                 if (pcmSelectedIndex != -1)
-                    WinAPIHelper.SendMessage(cbAdapters, WinAPIHelper.CB_GETLBTEXT, pcmSelectedIndex,ssb);
-                cbAdapter.SelectedText = !String.IsNullOrEmpty(ssb.ToString()) ? ssb.ToString(): "";
+                    WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETLBTEXT, pcmSelectedIndex, ssb);
+                comboBox.SelectedText = !String.IsNullOrEmpty(ssb.ToString()) ? ssb.ToString() : "";
             }
-            
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
             if (pcmMainWindow != IntPtr.Zero)
-            {
-                var btnSelectFile = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[4], null, null);
-                WinAPIHelper.SendMessage(btnSelectFile, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
-            }
+                WinAPIHelper.SendMessage(pcmButtonSettings, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
         }
 
         private void VTFlasher_FormClosing(object sender, FormClosingEventArgs e)
@@ -80,26 +94,30 @@ namespace VtecTeamFlasher
         private void btnExit_Click(object sender, EventArgs e)
         {
             if (pcmMainWindow != IntPtr.Zero)
-            {
-                var btnPcmExit = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[23], null, null);
-                WinAPIHelper.SendMessage(btnPcmExit, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
-            }
+                WinAPIHelper.SendMessage(pcmButtonExit, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
             Environment.Exit(0);
         }
 
         private void cbAdapter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var cbAdapters = WinAPIHelper.FindWindowEx(pcmMainWindow, IntPtr.Zero, "ComboBox", null);
-            if (cbAdapters != IntPtr.Zero)
+            if (pcmComboBoxAdapters != IntPtr.Zero)
             {
-                WinAPIHelper.SendMessage(cbAdapters, WinAPIHelper.CB_SETCURSEL,cbAdapter.SelectedIndex ,"");
+                WinAPIHelper.SendMessage(pcmComboBoxAdapters, WinAPIHelper.CB_SETCURSEL, cbAdapter.SelectedIndex, "");
             }
         }
 
 
+        private void cbModules_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (pcmComboBoxModules != IntPtr.Zero)
+            {
+                WinAPIHelper.SendMessage(pcmComboBoxModules, WinAPIHelper.CB_SETCURSEL, cbModules.SelectedIndex, "");
+            }
+        }
+
         private static List<IntPtr> GetChildWindows(IntPtr parent)
         {
-            List<IntPtr> result = new List<IntPtr>();
+            var result = new List<IntPtr>();
             GCHandle listHandle = GCHandle.Alloc(result);
             try
             {
@@ -122,7 +140,7 @@ namespace VtecTeamFlasher
         /// <returns>True to continue the enumeration, false to bail</returns>
         private static bool EnumWindow(IntPtr handle, IntPtr pointer)
         {
-            GCHandle gch = GCHandle.FromIntPtr(pointer);
+            var gch = GCHandle.FromIntPtr(pointer);
             var list = gch.Target as List<IntPtr>;
             if (list == null)
             {
@@ -133,6 +151,21 @@ namespace VtecTeamFlasher
             return true;
         }
 
+
+        //SendMessage(textBox1.Handle, WM_SETTEXT, IntPtr.Zero,
+        //      textBox1.Text + ", " + textBox1.Text);
+
+        private void btnOpenFileDialog_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog { Filter = "Файлы прошивки|*.bin|Все файлы|*.*" };
+
+            if (fileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            txtFilePath.Text = fileDialog.FileName;
+            if (pcmTextBoxFilePath != IntPtr.Zero)
+                WinAPIHelper.SendMessage(pcmTextBoxFilePath, WinAPIHelper.WM_SETTEXT, IntPtr.Zero, fileDialog.FileName);
+        }
 
     }
 }
