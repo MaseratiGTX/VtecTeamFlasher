@@ -25,6 +25,7 @@ namespace VtecTeamFlasher
         private IntPtr pcmTextBoxFilePath;
         private IntPtr pcmButtonExit;
         private IntPtr pcmButtonSettings;
+        private IntPtr pcmKeyNumber;
         private IntPtr pcmTextBoxStatus;
         private IntPtr pcmButtonInitialize;
         private IntPtr pcmButtonIdentify;
@@ -50,6 +51,10 @@ namespace VtecTeamFlasher
             {
                 FileName = AppDomain.CurrentDomain.BaseDirectory + "\\PcmFlasher\\pcmflash.exe",
                 UseShellExecute = true,
+                //CreateNoWindow = true,
+                RedirectStandardInput = false,
+                RedirectStandardOutput = false,
+                RedirectStandardError = false,
                 // WindowStyle = ProcessWindowStyle.Hidden
             };
             pcmProcess = Process.Start(info);
@@ -66,6 +71,7 @@ namespace VtecTeamFlasher
             pcmTextBoxFilePath = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[14], null, null);
             pcmButtonExit = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[22], null, null);
             pcmButtonSettings = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[4], null, null);
+            pcmKeyNumber = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[3], null, null);
             pcmTextBoxStatus = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[20], null, null);
             pcmButtonInitialize = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[10], null, null);
             pcmButtonIdentify = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[7], null, null);
@@ -77,8 +83,17 @@ namespace VtecTeamFlasher
             pcmButtonWrite = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[18], null, null);
             pcmButtonCheckCorrectCS = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[16], null, null);
 
+            var b = new StringBuilder(256,256);
+            var a = "123";
+                    var ssb = new StringBuilder(256, 256);
+                    var d = WinAPIHelper.SendMessage(pcmKeyNumber, WinAPIHelper.WM_GETTEXT, 0, ssb);
+                        a = (ssb.ToString());
+                    WinAPIHelper.GetWindowText(pcmKeyNumber, b, 100);
+
             InitializeComboBoxControl(pcmComboBoxAdapters, cbAdapter);
             InitializeComboBoxControl(pcmComboBoxModules, cbModules);
+            SetButtonStatus();
+
             txtStatusThread = new Thread(() =>
                     {
                         while (true)
@@ -124,12 +139,27 @@ namespace VtecTeamFlasher
             if (pcmComboBoxModules != IntPtr.Zero)
             {
                 WinAPIHelper.SendMessage(pcmComboBoxModules, WinAPIHelper.CB_SETCURSEL, cbModules.SelectedIndex, "");
+                SetButtonStatus();
             }
         }
 
         # endregion
 
         #region Buttons
+        private void SetButtonStatus()
+        {
+            cbControlSum.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonCheckCorrectCS);
+            btnInitialize.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonInitialize);
+            btnIdentify.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonIdentify);
+            btnReadErrors.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonReadErrors);
+            btnRestart.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRestart);
+            btnEraseErrors.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonEraseErrors);
+            btnResetAdaptation.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRestartAdaptation);
+            btnRead.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRead);
+            btnWrite.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonWrite);
+            btnSettings.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonSettings);
+        }
+
         private void btnSettings_Click(object sender, EventArgs e)
         {
             ButtonClick(pcmButtonSettings);
