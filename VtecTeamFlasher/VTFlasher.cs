@@ -8,8 +8,9 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace VtecTeamFlasher
 {
@@ -24,6 +25,19 @@ namespace VtecTeamFlasher
         private IntPtr pcmTextBoxFilePath;
         private IntPtr pcmButtonExit;
         private IntPtr pcmButtonSettings;
+        private IntPtr pcmTextBoxStatus;
+        private IntPtr pcmButtonInitialize;
+        private IntPtr pcmButtonIdentify;
+        private IntPtr pcmButtonReadErrors;
+        private IntPtr pcmButtonRestart;
+        private IntPtr pcmButtonEraseErrors;
+        private IntPtr pcmButtonRestartAdaptation;
+        private IntPtr pcmButtonRead;
+        private IntPtr pcmButtonWrite;
+        private IntPtr pcmButtonCheckCorrectCS;
+
+        private Thread txtStatusThread;
+        private StringBuilder sb = new StringBuilder(1024, 90000);
 
         public VTFlasher()
         {
@@ -50,14 +64,34 @@ namespace VtecTeamFlasher
             pcmComboBoxModules = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[6], null, null);
             pcmComboBoxAdapters = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[0], null, null);
             pcmTextBoxFilePath = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[14], null, null);
-            pcmButtonExit = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[23], null, null);
+            pcmButtonExit = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[22], null, null);
             pcmButtonSettings = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[4], null, null);
+            pcmTextBoxStatus = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[20], null, null);
+            pcmButtonInitialize = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[10], null, null);
+            pcmButtonIdentify = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[7], null, null);
+            pcmButtonReadErrors = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[8], null, null);
+            pcmButtonRestart = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[9], null, null);
+            pcmButtonEraseErrors = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[11], null, null);
+            pcmButtonRestartAdaptation = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[12], null, null);
+            pcmButtonRead = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[17], null, null);
+            pcmButtonWrite = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[18], null, null);
+            pcmButtonCheckCorrectCS = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[16], null, null);
 
             InitializeComboBoxControl(pcmComboBoxAdapters, cbAdapter);
             InitializeComboBoxControl(pcmComboBoxModules, cbModules);
-
+            txtStatusThread = new Thread(() =>
+                    {
+                        while (true)
+                        {
+                            WinAPIHelper.SendMessage(pcmTextBoxStatus, WinAPIHelper.WM_GETTEXT, 10000, sb);
+                            this.Invoke(()=>txtStatus.Text = sb.ToString());
+                            Thread.Sleep(100);
+                        }
+                    });
+            txtStatusThread.Start();
         }
 
+        # region ComboBoxes
         private void InitializeComboBoxControl(IntPtr controlHandle, ComboBox comboBox)
         {
             var ssb = new StringBuilder(256, 256);
@@ -68,34 +102,13 @@ namespace VtecTeamFlasher
                 for (int i = 0; i < (int)count; i++)
                 {
                     if (WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETLBTEXT, i, ssb) != (IntPtr)(-1))
-                    {
                         comboBox.Items.Add(ssb.ToString());
-
-                    }
                 }
                 var pcmSelectedIndex = (int)WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETCURSEL, IntPtr.Zero, IntPtr.Zero);
                 if (pcmSelectedIndex != -1)
                     WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETLBTEXT, pcmSelectedIndex, ssb);
                 comboBox.SelectedText = !String.IsNullOrEmpty(ssb.ToString()) ? ssb.ToString() : "";
             }
-        }
-
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            if (pcmMainWindow != IntPtr.Zero)
-                WinAPIHelper.SendMessage(pcmButtonSettings, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
-        }
-
-        private void VTFlasher_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            pcmProcess.Kill();
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            if (pcmMainWindow != IntPtr.Zero)
-                WinAPIHelper.SendMessage(pcmButtonExit, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
-            Environment.Exit(0);
         }
 
         private void cbAdapter_SelectedIndexChanged(object sender, EventArgs e)
@@ -106,7 +119,6 @@ namespace VtecTeamFlasher
             }
         }
 
-
         private void cbModules_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (pcmComboBoxModules != IntPtr.Zero)
@@ -114,6 +126,80 @@ namespace VtecTeamFlasher
                 WinAPIHelper.SendMessage(pcmComboBoxModules, WinAPIHelper.CB_SETCURSEL, cbModules.SelectedIndex, "");
             }
         }
+
+        # endregion
+
+        #region Buttons
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonSettings);
+        }
+
+        private void btnIdentify_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonIdentify);
+        }
+
+        private void btnReadErrors_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonReadErrors);
+        }
+
+        private void btnRestart_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonRestart);
+        }
+
+        private void btnInitialize_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonInitialize);
+        }
+
+        private void btnEraseErrors_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonEraseErrors);
+        }
+
+        private void btnResetAdaptation_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonRestartAdaptation);
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonRead);
+        }
+
+        private void btnWrite_Click(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonWrite);
+        }
+
+        private void cbControlSum_CheckedChanged(object sender, EventArgs e)
+        {
+            ButtonClick(pcmButtonCheckCorrectCS);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void ButtonClick(IntPtr button)
+        {
+            if (pcmMainWindow != IntPtr.Zero)
+                WinAPIHelper.SendMessage(button, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
+        }
+        #endregion
+
+        private void VTFlasher_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (pcmMainWindow != IntPtr.Zero)
+                WinAPIHelper.SendMessage(pcmButtonExit, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
+            txtStatusThread.Abort();
+        }
+
+       
 
         private static List<IntPtr> GetChildWindows(IntPtr parent)
         {
@@ -151,10 +237,6 @@ namespace VtecTeamFlasher
             return true;
         }
 
-
-        //SendMessage(textBox1.Handle, WM_SETTEXT, IntPtr.Zero,
-        //      textBox1.Text + ", " + textBox1.Text);
-
         private void btnOpenFileDialog_Click(object sender, EventArgs e)
         {
             var fileDialog = new OpenFileDialog { Filter = "Файлы прошивки|*.bin|Все файлы|*.*" };
@@ -166,6 +248,10 @@ namespace VtecTeamFlasher
             if (pcmTextBoxFilePath != IntPtr.Zero)
                 WinAPIHelper.SendMessage(pcmTextBoxFilePath, WinAPIHelper.WM_SETTEXT, IntPtr.Zero, fileDialog.FileName);
         }
+
+
+
+
 
     }
 }

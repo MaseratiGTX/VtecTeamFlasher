@@ -19,6 +19,7 @@ namespace VtecTeamFlasher
         internal const uint CB_GETCURSEL = 0x0147;
 
         internal const uint WM_SETTEXT = 0x000C;
+        internal const int WM_GETTEXT = 0x0D;
 
 
         [DllImport("user32.dll")]
