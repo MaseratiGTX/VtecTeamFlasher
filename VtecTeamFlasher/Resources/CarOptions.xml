@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<cartypes>
+  <cartype name="Honda/Acura">
+    <carmodel name="Accord 7"/>
+    <carmodel name="Accord 8"/>
+  </cartype>
+</cartypes>

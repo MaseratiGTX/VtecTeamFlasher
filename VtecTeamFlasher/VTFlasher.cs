@@ -37,12 +37,17 @@ namespace VtecTeamFlasher
         private IntPtr pcmButtonWrite;
         private IntPtr pcmButtonCheckCorrectCS;
 
+        private List<string> CarManufacture = XMLHelper.GetCARManufacture();
+        private List<string> CarModel = new List<string>();
+
         private Thread txtStatusThread;
         private StringBuilder sb = new StringBuilder(1024, 90000);
 
         public VTFlasher()
         {
             InitializeComponent();
+            this.cbCarManufacture.DataSource = CarManufacture;
+            panelLogin.BringToFront();
         }
 
         private void VTFlasher_Load(object sender, EventArgs e)
@@ -83,16 +88,23 @@ namespace VtecTeamFlasher
             pcmButtonWrite = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[18], null, null);
             pcmButtonCheckCorrectCS = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[16], null, null);
 
-            var b = new StringBuilder(256,256);
-            var a = "123";
-                    var ssb = new StringBuilder(256, 256);
-                    var d = WinAPIHelper.SendMessage(pcmKeyNumber, WinAPIHelper.WM_GETTEXT, 0, ssb);
-                        a = (ssb.ToString());
-                    WinAPIHelper.GetWindowText(pcmKeyNumber, b, 100);
-
             InitializeComboBoxControl(pcmComboBoxAdapters, cbAdapter);
             InitializeComboBoxControl(pcmComboBoxModules, cbModules);
             SetButtonStatus();
+
+            WinAPIHelper.SendMessage(pcmTextBoxStatus, WinAPIHelper.WM_GETTEXT, 10000, sb);
+            if (sb.ToString().Contains("Электронный ключ недоступен"))
+            {
+                pcmProcess.Kill();
+                pcmMainWindow = IntPtr.Zero;
+                panelKeyUnavailible.BringToFront();
+                panelKeyUnavailible.Visible = true;
+                return;
+            }
+            else
+            {
+                panelKeyUnavailible.Visible = false;
+            }
 
             txtStatusThread = new Thread(() =>
                     {
@@ -110,6 +122,7 @@ namespace VtecTeamFlasher
         private void InitializeComboBoxControl(IntPtr controlHandle, ComboBox comboBox)
         {
             var ssb = new StringBuilder(256, 256);
+            comboBox.Items.Clear();
 
             if (controlHandle != IntPtr.Zero)
             {
@@ -225,8 +238,10 @@ namespace VtecTeamFlasher
         private void VTFlasher_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (pcmMainWindow != IntPtr.Zero)
+            {
                 WinAPIHelper.SendMessage(pcmButtonExit, WinAPIHelper.BN_CLICKED, IntPtr.Zero, IntPtr.Zero);
-            txtStatusThread.Abort();
+                txtStatusThread.Abort();
+            }
         }
 
        
@@ -279,9 +294,43 @@ namespace VtecTeamFlasher
                 WinAPIHelper.SendMessage(pcmTextBoxFilePath, WinAPIHelper.WM_SETTEXT, IntPtr.Zero, fileDialog.FileName);
         }
 
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            panelLogin.Dispose();
+        }
 
+        private void btnReloadFlasher_Click(object sender, EventArgs e)
+        {
+            VTFlasher_Load(sender,e);
 
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void cbCarManufacture_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbCarManufacture.Text != string.Empty)
+            {
+                CarModel = XMLHelper.GetCARModel(cbCarManufacture.Text);
+                cbCarModel.DataSource = CarModel;
+                cbCarModel.Enabled = true;
+                cbCarModel.Text = "";
+            }
+            else
+            {
+                cbCarModel.Enabled = false;
+                cbCarModel.DataSource = new List<string>();
+                cbCarModel.Text = "";
+            }
+
+        }
+
+        private void cbCarModel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Choose module in PCM Flash
+        }
     }
 }
