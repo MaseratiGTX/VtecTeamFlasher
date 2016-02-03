@@ -54,7 +54,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Archiving\ZipArchiveCreator.cs" />
     <Compile Include="DataCache\DataCache.cs" />
     <Compile Include="DataCache\EnumerationCache.cs" />
     <Compile Include="DataCache\IDataCache.cs" />
