@@ -1,0 +1,26 @@
+﻿.dxrpControl.dxep .dxrpHeader 
+{
+    border: 1px solid #9F9F9F;
+}
+
+.dxrpControl.dxep .dxrpHeader td 
+{
+    vertical-align: middle;
+}
+
+.dxrpControl.dxep .dxrpHeader td .dxrpHI 
+{
+    margin-right: 6px;
+}
+
+.dxrpControl.dxep .dxrpHeader td .dxrpHIR 
+{
+    margin-left: 6px;
+}
+
+
+.dxrpControl.dxep .dxrpcontent 
+{
+    border: 1px solid #9F9F9F;
+    border-top: none;
+}

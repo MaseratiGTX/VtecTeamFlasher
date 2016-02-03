@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8498B6F8-C44A-4840-BE9E-FFF18A2267F4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Commons</RootNamespace>
+    <AssemblyName>Commons</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\VtecTeamFlasherWeb\Bin\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Json60r3\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\Libs\NLog\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Extended">
+      <HintPath>..\Libs\NLog\NLog.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Archiving\ZipArchiveCreator.cs" />
+    <Compile Include="DataCache\DataCache.cs" />
+    <Compile Include="DataCache\EnumerationCache.cs" />
+    <Compile Include="DataCache\IDataCache.cs" />
+    <Compile Include="DataCache\IEnumerationCache.cs" />
+    <Compile Include="DataCache\IHasDataCache.cs" />
+    <Compile Include="DataCache\IHasDataCacheHelper.cs" />
+    <Compile Include="Exceptions\DownloadFileException.cs" />
+    <Compile Include="Exceptions\ElementNotFoundException.cs" />
+    <Compile Include="Exceptions\ExceptionHelper.cs" />
+    <Compile Include="Exceptions\FormattedException.cs" />
+    <Compile Include="Helpers\ByteArrayExtensions.cs" />
+    <Compile Include="Helpers\Collections\Specialized\OrderedDictionaryExtensions.cs" />
+    <Compile Include="Helpers\CommonObjects\DateTimeExtensions.cs" />
+    <Compile Include="Helpers\CommonObjects\DateTimeFormats.cs" />
+    <Compile Include="Helpers\CommonObjects\StringSplitExtensions.cs" />
+    <Compile Include="Helpers\CommonObjects\TimeSpanExtensions.cs" />
+    <Compile Include="Helpers\CommonObjects\TimeSpanFormats.cs" />
+    <Compile Include="Helpers\Comparasion\BaseEqualityExtensions.cs" />
+    <Compile Include="Helpers\Comparasion\Comparers\AbstractWeightBasedComparer.cs" />
+    <Compile Include="Helpers\Cultures\CultureInfoExtensions.cs" />
+    <Compile Include="Helpers\Cultures\CultureTypesExtensions.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\CDigit.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\CurrencyType.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\DigitKindAndQuantity.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\DigitToStringHelper.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\IChangingByKind.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\IUnit.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\Languages\CDigitKz.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\Languages\CDigitRu.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\Languages\DigitLanguageFactory.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\Languages\LanguageDigit.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\StrategyToUpper.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\StringBuilderExtension.cs" />
+    <Compile Include="Helpers\DigitToStringHelper\Unit.cs" />
+    <Compile Include="Helpers\Enums\DaysOfWeek\DayOfWeekComparer.cs" />
+    <Compile Include="Helpers\Enums\EnumHelper.cs" />
+    <Compile Include="Helpers\EventHandlerExtensions.cs" />
+    <Compile Include="Helpers\Comparasion\IComparableExtensions.cs" />
+    <Compile Include="Helpers\Collections\IEnumerableExtensions.cs" />
+    <Compile Include="Helpers\Collections\IEnumeratorExtension.cs" />
+    <Compile Include="Helpers\Collections\IListExtensions.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\HashExtensions.cs" />
+    <Compile Include="Helpers\IconExtensions.cs" />
+    <Compile Include="Helpers\IQueryableExtensions.cs" />
+    <Compile Include="Helpers\Collections\Generic\ITDictionaryExtensions.cs" />
+    <Compile Include="Helpers\Collections\Generic\ITEnumerableExtensions.cs" />
+    <Compile Include="Helpers\MIME\MIMEAssistant.cs" />
+    <Compile Include="Helpers\Nothing.cs" />
+    <Compile Include="Helpers\Objects\IsEmptyExtensions.cs" />
+    <Compile Include="Helpers\Objects\ObjectArrayExtensions.cs" />
+    <Compile Include="Helpers\Objects\ObjectExtensions.cs" />
+    <Compile Include="Helpers\Objects\ParseExtensions.cs" />
+    <Compile Include="Helpers\Objects\TObjectExtensions.cs" />
+    <Compile Include="Helpers\ReaderWriterLockSlimExtensions.cs" />
+    <Compile Include="Helpers\CommonObjects\StringExtensions.cs" />
+    <Compile Include="Helpers\Collections\Generic\TListExtensions.cs" />
+    <Compile Include="DataRanges\DataRange.cs" />
+    <Compile Include="DataRanges\DataRangesHelper.cs" />
+    <Compile Include="Helpers\ToStringExtensions.cs" />
+    <Compile Include="Helpers\XmlExtensions.cs" />
+    <Compile Include="Localization\Extensions\LanguageDescriptionExtensions.cs" />
+    <Compile Include="Localization\LanguageDescription.cs" />
+    <Compile Include="Localization\Settings\Configuration\AvailableLanguagesConfigurationElementCollection.cs" />
+    <Compile Include="Localization\Settings\Configuration\LanguageConfigurationElement.cs" />
+    <Compile Include="Localization\Settings\Configuration\LocalizationContextConfigurationSection.cs" />
+    <Compile Include="Localization\Extensions\UserLanguagesExtensions.cs" />
+    <Compile Include="Localization\Extensions\LocalizationContextConfigurationSectionExtensions.cs" />
+    <Compile Include="Logging\Log.cs" />
+    <Compile Include="Providers\FileSizeFormatProvider.cs" />
+    <Compile Include="Reflections\ActivationHelper.cs" />
+    <Compile Include="Reflections\Assemblies\AssemblyAttributesExtensions.cs" />
+    <Compile Include="Reflections\Assemblies\AssemblyVersionDescription.cs" />
+    <Compile Include="Reflections\AttachedProperty\AttachedMethodInfo.cs" />
+    <Compile Include="Reflections\PropertyValues\Applying\Manager\Configuration\EntityDescription.cs" />
+    <Compile Include="Reflections\PropertyValues\Applying\PropertyApplyExtensions.cs" />
+    <Compile Include="Reflections\PropertyValues\Applying\Manager\Applier\PropertyValueApplier.cs" />
+    <Compile Include="Reflections\PropertyValues\Applying\Manager\PropertyValueManager.cs" />
+    <Compile Include="Reflections\PropertyValues\Applying\Manager\Configuration\PropertyValueManagerConfiguration.cs" />
+    <Compile Include="Reflections\PropertyValues\Fetching\PropertyFetchExtensions.cs" />
+    <Compile Include="Reflections\PropertyValues\Helpers\PropertyNameHelper.cs" />
+    <Compile Include="Reflections\PropertyValues\Helpers\PropertyNameParts.cs" />
+    <Compile Include="Reflections\AttachedProperty\AttachedPropertyGetter.cs" />
+    <Compile Include="Reflections\AttachedProperty\AttachedPropertySetter.cs" />
+    <Compile Include="Reflections\AttachedProperty\AttachedPropertyInfo.cs" />
+    <Compile Include="Reflections\AttachedProperty\AttachedPropertyHelper.cs" />
+    <Compile Include="Reflections\TypeExtensions.cs" />
+    <Compile Include="Helpers\XmlLinqExtensions.cs" />
+    <Compile Include="Localization\LanguageContextProviders\SimpleLanguageContextProvider.cs" />
+    <Compile Include="Localization\Extensions\LocalizationExtensions.cs" />
+    <Compile Include="Localization\Languages.cs" />
+    <Compile Include="Localization\LocalizationContexts\ApplicationLocalizationContext.cs" />
+    <Compile Include="Localization\LanguageContextProviders\ILanguageContextProvider.cs" />
+    <Compile Include="Localization\LocalizationDataResources\LocalizationDataItem.cs" />
+    <Compile Include="Localization\LocalizationDataResources\Parsers\LocalizationDataResourceParser.cs" />
+    <Compile Include="Localization\LocalizationDataResources\LocalizationDataResource.cs" />
+    <Compile Include="Localization\LocalizationDataResources\Parsers\LocalizationDataResourceParserHelper.cs" />
+    <Compile Include="Localization\LocalizationManager.cs" />
+    <Compile Include="ParameterStrings\ParameterStringBuilder.cs" />
+    <Compile Include="ParameterStrings\ParameterStringParser.cs" />
+    <Compile Include="Reflections\Delegates\ActionTypeHelper.cs" />
+    <Compile Include="Reflections\Delegates\FuncTypeHelper.cs" />
+    <Compile Include="Reflections\Delegates\MethodDelegateExtensions.cs" />
+    <Compile Include="Reflections\PropertyManagers\PropertyManager.cs" />
+    <Compile Include="Reflections\PropertyManagers\PropertyReader.cs" />
+    <Compile Include="Reflections\PropertyManagers\ReflectionHelper.cs" />
+    <Compile Include="Reflections\SimpleReflectionExtensions.cs" />
+    <Compile Include="Reflections\Assemblies\AssemblyHelper.cs" />
+    <Compile Include="RequestResultCodes.cs" />
+    <Compile Include="Serialization\Base64\Base64Extensions.cs" />
+    <Compile Include="Serialization\Interfaces\ISerializationHelper.cs" />
+    <Compile Include="Serialization\Interfaces\ITSerializationHelper.cs" />
+    <Compile Include="Serialization\Binary\BinarySerializationHelper.cs" />
+    <Compile Include="Serialization\JSON\JSONSerializationHelper.cs" />
+    <Compile Include="Serialization\SerializationExtensions.cs" />
+    <Compile Include="Serialization\XML\XmlSerializationHelper.cs" />
+    <Compile Include="Validation\Assertions\AssertionHelper.cs" />
+    <Compile Include="Validation\Assertions\Assertors\BaseAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\CommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsBetweenExcludeBordersAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsBetweenIncludeBordersAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsEqualToCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsGreaterOrEqualThanAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsGreaterThanAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsInCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsLowerOrEqualThanAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsLowerThanAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsNotEqualToCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsNotGreaterOrEqualThanAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsNotGreaterThanAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsNotInCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsNotLowerOrEqualThanAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\IsNotLowerThanAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IComparable\MatchAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IsEmptyCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IsNotEmptyCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IsNotNullCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IsNullCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Common\IsNumericCommonAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Queryable\HasAnyQueryableAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Queryable\HasNoneQueryableAssertor.cs" />
+    <Compile Include="Validation\Assertions\Assertors\Queryable\QueryableAssertor.cs" />
+    <Compile Include="Validation\Assertions\Managers\CommonAssertionManager.cs" />
+    <Compile Include="Validation\Assertions\Managers\IComparableAssertionManager.cs" />
+    <Compile Include="Validation\Assertions\Managers\QueryableAssertionManager.cs" />
+    <Compile Include="Validation\Exceptions\BaseValidationException.cs" />
+    <Compile Include="Validation\Exceptions\CommonValidationException.cs" />
+    <Compile Include="Validation\Exceptions\ValidationException.cs" />
+    <Compile Include="Validation\HasValidationResults.cs" />
+    <Compile Include="Validation\ValidationCodesRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

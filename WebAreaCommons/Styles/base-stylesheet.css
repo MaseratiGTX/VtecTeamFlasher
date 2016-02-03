@@ -1,0 +1,1115 @@
+﻿/*----------------------------------------------------------
+                        DEFAULTS
+----------------------------------------------------------*/
+
+html, body   
+{
+    margin: 0px; 
+    padding: 0px;
+
+    min-width: 995px;
+    
+    background: #b6b7bc;
+
+    font-family: SegoeUIRegular;
+    font-size: 14px;
+    color: #696969;
+}
+
+a:link, a:visited
+{
+    color: #034af3;
+}
+
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active
+{
+    color: #034af3;
+}
+
+
+.clear 
+{
+    clear: both;    
+}
+
+
+.table 
+{
+    display: table !important;    
+}
+
+.table-row
+{
+    display: table-row !important;    
+}
+
+.table-cell
+{
+    display: table-cell !important;    
+}
+
+
+.margin-auto
+{
+    margin: 0px auto !important;
+}
+
+
+.hidden 
+{
+    display: none;    
+}
+
+
+*:focus  
+{
+    outline: none;  
+}
+
+
+/*----------------------------------------------------------
+                    DX REDEFINITIONS
+----------------------------------------------------------*/
+
+.dxeBase 
+{
+    font: inherit !important;  
+}
+
+a.dxeHyperlink 
+{
+    color: inherit !important;
+    font: inherit !important;
+}
+
+.dxKBSW 
+{
+    height: 0px;
+    width: 0px;
+}
+
+.dxeNullText .dxeEditArea.dxeDisabled {
+    color: #acacac;
+}
+
+/*----------------------------------------------------------
+                        HEADINGS
+----------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    margin: 0px;
+    padding: 0px;
+    
+    color: #666666;
+    font-family: SegoeUIRegular;
+    font-variant: small-caps;
+    font-weight: 200;
+    text-transform: none;
+}
+
+h1
+{
+    font-size: 20px;
+}
+
+h2
+{
+    font-size: 19px;
+}
+
+h3
+{
+    font-size: 18px;
+}
+
+h4
+{
+    font-size: 17px;
+}
+
+h5
+{
+    font-size: 16px;
+}
+
+h6
+{
+    font-size: 15px;
+}
+
+
+/*----------------------------------------------------------
+                ASSERTION ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.assertions-container div {
+    margin: 0px;
+    padding: 10px;
+
+    background-color: #FFFFFF;
+    
+    color: #666666;
+    font-family: SegoeUIRegular;
+    font-variant: small-caps;
+    font-size: 16px;
+}
+
+.nocookie {
+    display: none;
+}
+
+
+/*----------------------------------------------------------
+                PRIMARY ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.page
+{
+    margin: 15px;
+    margin-bottom: 3px;
+    padding: 0px;
+}
+
+
+/*----------------------------------------------------------
+            MAIN LOADING PANEL ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+
+.page .MainLoadingPanel-Panel 
+{
+    border: 1px solid #9F9F9F;
+    background-color: #FFFFFF;
+    
+    color: #696969;
+    font-family: SegoeUIRegular;
+    font-size: 13px;
+    line-height: 14px;
+    
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.page .MainLoadingPanel-Div 
+{
+    background-color: #b6b7bc;
+    opacity: 0.7;
+}
+
+
+/*----------------------------------------------------------
+                PAGE BLANK PART LAYOUT
+----------------------------------------------------------*/
+
+.page .blank 
+{
+    margin: 0px;
+    padding: 0px;
+    
+    background-color: #FFFFFF;
+    border: 1px solid #496077;
+}
+
+/*----------------------------------------------------------
+                PAGEHEADER ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.page-header 
+{
+    margin: 0px;
+    padding: 0px;
+
+    width: 100%;
+    height: 98px;
+    
+    font-family: RobotoRegular;
+    font-size: 13px;
+}
+
+.page-header,
+.page-header a:link, 
+.page-header a:visited, 
+.page-header a:hover
+{
+    color: #606060;
+}
+
+/*------------------- LOGO SECTION ----------------------*/
+
+.page-header > .headerLogo, 
+.page-header > .headerImage
+{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.page-header > .NeoFiscal
+{
+    padding-left: 10px;
+    padding-right: 10px;
+
+    width: 156px;
+}
+
+.page-header > .SeparatorImage
+{
+    width: 1px;
+}
+
+.page-header > .AreaSpecific 
+{
+    padding-left: 10px;
+    padding-right: 10px;
+
+    width: 57px;
+}
+
+/*------------------- TITLE SECTION ----------------------*/
+
+.headerTitle-container 
+{
+    text-align: left;
+    vertical-align: middle;
+} 
+
+.headerTitle 
+{
+    font-family: RobotoRegular;
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.headerTitle.blue 
+{
+    color: #4B6C9E;    
+}
+
+.headerTitle.black 
+{
+    color: #434242;    
+}
+
+/*-------------------- USER BLOCK -----------------------*/
+
+.headerUserBlock 
+{
+    padding-left: 10px;
+    padding-right: 10px;
+
+    width: 1%;
+
+    vertical-align: middle;
+    text-align: right;
+
+    font-family: RobotoRegular;
+}
+
+.headerUserBlock tr.first-child 
+{
+    vertical-align: bottom;
+}
+
+.headerUserBlock tr
+{
+    vertical-align: middle;
+}
+
+.headerUserBlock tr.last-child 
+{
+    vertical-align: top;
+}
+
+.headerUserBlock tr.horizontal.separator 
+{
+    height: 5px;
+}
+
+.headerUserBlock .Caption 
+{
+    padding-right: 5px;
+
+    text-align: right;
+
+    font-size: 11px;
+    
+    white-space: nowrap;
+}
+
+.headerUserBlock .Value 
+{
+    padding-left: 5px;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+
+/*----------------------------------------------------------
+                MAINMENU ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.page-menu
+{
+    margin: 0px;
+    padding: 0px;
+
+    width: 100%;
+    height: 34px;
+    
+    background-color: #6A85AF;
+}
+
+/*------------------- MENU CONTROL ----------------------*/
+
+.page-menu-container .dxmLite .dxm-main
+{
+    padding: 4px 3px;
+    background-color: #6A85AF;
+    border: none;
+}
+
+.page-menu-container .dxmLite .dxm-main .dxm-separator b {
+    background-color: #90a5c3;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.page-menu-container .dxmLite .dxm-main .dxm-gutter .dxm-item
+{
+    background-color: #7F96BA;
+    border: 1px solid #90a5c3;
+}
+
+.page-menu-container .dxmLite .dxm-main .dxm-gutter .dxm-item.dxm-hovered
+{
+    background-color: #BFCBD6;
+}
+
+.page-menu-container .dxmLite .dxm-main .dxm-gutter .dxm-item .dxm-content 
+{
+    padding-left: 20px;
+    padding-right: 20px;
+
+    color: #FFFFFF;
+    font-family: SegoeUIRegular;
+    font-size: 13px;
+}
+
+.page-menu-container .dxmLite .dxm-main .dxm-gutter .dxm-item.dxm-hovered .dxm-content 
+{
+    color: #7F96BA;
+}
+
+.page-menu-container .dxmLite .dxm-main .dxm-gutter .dxm-item.dxm-disabled .dxm-content
+{
+    color: #b1c6d5;
+}
+
+
+.page-menu-container .dxmLite .dxm-popup 
+{
+    background-color: #7F96BA;
+    border: 1px solid #90a5c3;
+}
+
+.page-menu-container .dxmLite .dxm-popup .dxm-separator b {
+    background-color: #90a5c3;
+}
+
+.page-menu-container .dxmLite .dxm-popup .dxm-item.dxm-hovered
+{
+    background-color: #BFCBD6;
+    border: 1px solid #90a5c3;
+}
+
+.page-menu-container .dxmLite .dxm-popup .dxm-item .dxm-content 
+{
+    padding-left: 20px;
+    padding-right: 20px;
+
+    color: #FFFFFF;
+    font-family: SegoeUIRegular;
+    font-size: 13px;
+}
+
+.page-menu-container .dxmLite .dxm-popup .dxm-item.dxm-hovered .dxm-content 
+{
+    color: #7F96BA;
+}
+
+.page-menu-container .dxmLite .dxm-popup .dxm-item.dxm-disabled .dxm-content
+{
+    color: #b1c6d5;
+}
+
+/*----------------- LANGUAGE CONTROL --------------------*/
+
+.page-menu-language 
+{
+    width: 110px;
+    
+    vertical-align: middle;
+
+    padding-right: 3px;  
+}
+
+
+.page-menu-language > table
+{
+    background-color: #7F96BA;
+    border: 1px solid #90A5C3;
+} 
+
+.page-menu-language > table .dxic input 
+{
+    text-align: center;
+
+    background-color: #7F96BA;
+
+    color: #FFFFFF;
+    font-family: SegoeUIRegular;
+    font-size: 13px;
+
+    height: 100%;
+}
+
+.page-menu-language > table.dxeNullText .dxic input 
+{
+    color: #97a8c5;
+}
+
+.page-menu-language > table.dxeDisabled .dxic input 
+{
+    color: #97a8c5;
+}
+
+.page-menu-language > table .dxeButtonEditButton
+{
+    background-color: #7F96BA;
+    border: 1px solid #90A5C3;
+
+    background-image: none;
+}
+
+.page-menu-language > table .dxeButtonEditButton.dxeButtonEditButtonHover
+{
+    background-color: #BFCBD6;
+}
+
+
+.page-menu-language .dxeListBox 
+{
+    background-color: #7F96BA;
+    border: 1px solid #90A5C3;
+}
+
+.page-menu-language .dxeListBox .dxeListBoxItem
+{
+    color: #FFFFFF;
+    font-family: SegoeUIRegular;
+    font-size: 13px;
+
+    border-left: 1px solid #90A5C3;
+    border-right: 1px solid #90A5C3;
+    
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.page-menu-language .dxeListBox .dxeListBoxItem.dxeListBoxItemSelected {
+    background-color: #97A8C5;
+    color: #FFFFFF;
+}
+
+.page-menu-language .dxeListBox .dxeListBoxItem.dxeListBoxItemHover {
+    background-color: #BFCBD6;
+    color: #7F96BA;
+}
+
+
+/*----------------------------------------------------------
+                PAGECONTENT ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.page-content 
+{
+    margin: 0px;
+    padding: 10px;
+}
+
+.page-content-container 
+{
+	overflow-x: visible;
+	
+	height: auto;
+
+    padding: 10px;
+}
+
+.page-content-container br 
+{
+    line-height: 10px;
+}
+
+
+/*----------------------------------------------------------
+                    DBLSCROLL LAYOUT
+----------------------------------------------------------*/
+
+.dblScroll
+{
+    overflow-x: hidden !important;
+
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+    border: none !important;
+}
+
+
+/*----------------------------------------------------------
+             CommonASPxExpandablePanel LAYOUT
+----------------------------------------------------------*/
+
+.CommonASPxExpandablePanel 
+{
+	margin: 0 auto;
+}
+
+
+/*----------------------------------------------------------
+               CommonASPxSearchPanel LAYOUT
+----------------------------------------------------------*/
+
+.CommonASPxSearchPanel 
+{
+	margin: 0 auto;
+}
+
+/*-------------------------------------------------------*/
+/*--------------- CONTENT PANEL LAYOUTS -----------------*/
+
+.CommonASPxSearchPanel .dxrpcontent table.controls-container > tbody > tr > td
+{
+    vertical-align: middle;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.CommonASPxSearchPanel .dxrpcontent table.controls-container > tbody > tr.one-child > td
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.CommonASPxSearchPanel .dxrpcontent table.controls-container > tbody > tr.first-child > td
+{
+    padding-top: 0;
+    padding-bottom: 3px;
+}
+
+.CommonASPxSearchPanel .dxrpcontent table.controls-container > tbody > tr.last-child > td
+{
+    padding-top: 3px;
+    padding-bottom: 0;
+}
+
+.CommonASPxSearchPanel .dxrpcontent table.controls-container > tbody > tr > td.caption
+{
+    text-align: right;
+    padding-left: 0;
+    padding-right: 5px;
+
+    white-space: nowrap;
+}
+
+.CommonASPxSearchPanel .dxrpcontent table.controls-container > tbody > tr > td.control
+{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+.CommonASPxSearchPanel .dxrpcontent table.controls-container > tbody > tr > td.separator 
+{
+    width: 10px;
+}
+
+
+/*----------------------------------------------------------
+                CommonASPxGridView LAYOUT
+----------------------------------------------------------*/
+
+.CommonASPxGridView 
+{
+	margin: 0 auto;
+}
+
+.CommonASPxGridView.AlignLeft {
+    margin: 0 auto 0 0;
+}
+
+.CommonASPxGridView.AlignRight {
+    margin: 0 0 0 auto;
+}
+
+/*-------------------------------------------------------*/
+/*----------------- EDIT FORM LAYOUTS -------------------*/
+
+.CommonASPxGridView table.dxgvEditFormTable td.Column.Separator 
+{
+    height: 0px;
+    padding: 0px;
+}
+        
+.CommonASPxGridView table.dxgvEditFormTable td.Column.Separator label
+{
+    display: block;
+    width: 100%;
+    height: 0px;
+    border-bottom: 1px solid #818181;
+    padding: 0px;
+}
+
+.CommonASPxGridView .dxgvEditFormCaption
+{
+    font-size: 11px;
+    padding: 4px;    
+}
+
+.CommonASPxGridView .EditForm.PageControl {
+    padding: 8px 8px 5px 8px;    
+}
+
+.CommonASPxGridView .EditForm.CommandButtonsContainer {
+    text-align: right;
+    padding: 0px 8px 8px;
+}
+
+.CommonASPxGridView .dxpcModalBackLite {
+    background-color: #b6b7bc;
+    opacity: 0.7;
+}
+
+
+/*-------------------------------------------------------*/
+/*--------------- LOADING PANEL LAYOUTS -----------------*/
+
+.CommonASPxGridView table.dxgvLoadingPanel {
+	border: 1px solid #9F9F9F;
+    background-color: #FFFFFF;
+}
+
+.CommonASPxGridView table.dxgvLoadingPanel td {
+    color: #696969;
+    font-family: SegoeUIRegular;
+    font-size: 13px;
+    line-height: 14px;
+    
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+
+.CommonASPxGridView .caption
+{
+    text-align:Right;
+}
+
+.CommonASPxGridView .control 
+{
+    font-family: SegoeUIRegular;
+    font-size: 13px;
+    line-height: 14px;
+}
+
+
+.CommonASPxGridView .DataCell.DataItemContainer
+{
+    padding-top: 2px;    
+}
+
+
+/*----------------------------------------------------------
+                 CommonASPxDataView LAYOUT
+----------------------------------------------------------*/
+
+.CommonASPxDataView 
+{
+	margin: 0 auto;
+}
+
+.CommonASPxDataView.AlignLeft {
+    margin: 0 auto 0 0;
+}
+
+.CommonASPxDataView.AlignRight {
+    margin: 0 0 0 auto;
+}
+
+
+/*----------------------------------------------------------
+                 SimpleASPxDataView LAYOUT
+----------------------------------------------------------*/
+
+.SimpleASPxDataView 
+{
+	margin: 0;
+    margin-right: auto;
+}
+
+
+/*----------------------------------------------------------
+                 CommonASPxDataViewItem LAYOUT
+----------------------------------------------------------*/
+
+.CommonASPxDataViewItem 
+{
+}
+
+
+/*----------------------------------------------------------
+                CommonASPxFormLayout LAYOUT
+----------------------------------------------------------*/
+
+.CommonASPxFormLayout .dxflGroup
+{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.CommonASPxFormLayout .dxflGroupBox 
+{
+    margin: 0;
+    padding-bottom: 0;
+    border-color: #6C85AE;
+}
+
+.CommonASPxFormLayout .dxflGroupBox.dxflHeadingLineGroupBoxSys.dxflWithCaptionSys
+{
+    margin-top: 33px !important;
+}
+
+.CommonASPxFormLayout .dxflGroupBox > .dxflGroup 
+{
+    margin-top: -19px;  
+}
+
+.CommonASPxFormLayout 
+{
+    margin-top: -10px;
+}
+
+.CommonASPxFormLayout .dxflGroupBoxCaption
+{
+    color: #6C85AE;
+}
+
+.CommonASPxFormLayout .GroupWithoutCaption > .dxflItem 
+{
+    padding-top: 0;   
+    padding-bottom: 0;
+}
+
+.CommonASPxFormLayout .dxflHARSys > .dxflItem 
+{
+    margin-top: 15px;
+}
+
+.CommonASPxFormLayout .dxflHARSys:last-child .dxbButton
+{
+    margin-right: 16px;
+}
+
+
+.CommonASPxFormLayout .dxflCaptionCell, 
+.CommonASPxFormLayout .dxeButtonEdit,
+.CommonASPxFormLayout .dxeBase
+{
+    color: #000000;
+}
+
+
+.CommonASPxFormLayout .dxeBase.Small 
+{
+    font-size: 10px !important;
+    line-height: 13px !important;
+}
+
+.CommonASPxFormLayout .dxeBase.Small.Bold 
+{
+    font-size: 11px !important;
+    font-weight: bold !important;
+}
+
+
+.CommonASPxFormLayout .Message 
+{
+    padding: 7px;
+    margin-top: 15px;
+    border-width: 1px;
+    border-style: solid;
+    word-wrap: break-word;
+}
+
+.CommonASPxFormLayout .Message ul 
+{
+    margin: 3px; 
+    padding-left: 20px;
+}
+
+.CommonASPxFormLayout .Message.Error
+{
+	color: #FF0000;
+    border-color: #FF0000;
+    background-color: #FFC8C8;
+}
+
+.CommonASPxFormLayout .Message.Success 
+{
+    color: #006400;
+    border-color: #006400;
+    background-color: #C6F4CD;
+}
+
+.CommonASPxFormLayout .Message.Error.Simple
+{
+    margin-top: 10px;
+}
+
+
+/*----------------------------------------------------------
+                PAGEFOOTER ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.page-footer 
+{
+    margin: 0px;
+    padding: 0px;
+
+    vertical-align: top;
+    text-align: center;
+
+    width: 100%;
+}
+
+.page-footer .app-version-description-container 
+{
+    width: 1%;
+    
+    text-align: right;
+    padding-right: 10px;
+
+    color: #696969;
+    font-family: RobotoRegular;
+    font-size: 11px;
+    
+    line-height: 12px;
+        
+    white-space: nowrap;
+}
+
+
+/*----------------------------------------------------------
+                        OTHERS LAYOUT
+----------------------------------------------------------*/
+
+.DataCell.DataItemContainer .CommonASPxDataViewItem
+{
+    color: #4B6C9E;
+}
+
+.DataCell.DataItemContainer .CommonASPxDataViewItem.dxeDisabled
+{
+    color: #B7C4D8;
+}
+
+
+.watermark 
+{
+    position:absolute;
+    opacity: 0.15;
+    background-color: #4988E8; 
+    color: white;
+    font-size: 2em;
+    letter-spacing:1px;
+    max-width: 270px;
+    max-height: 2.5em;
+    overflow: hidden;
+    text-align: center;
+    
+    margin-top: 70px; 
+    margin-left: 60px; 
+    padding-left:5px; 
+    padding-right: 5px; 
+    
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -sand-transform: rotate(30deg);
+}
+
+
+/*----------------------------------------------------------
+                LOGIN PAGE ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.ASPxCustomPopUp {
+    z-index: 40000 !important;
+}
+
+.ASPxCustomPopUp .ASPxPopUpMessage {}
+
+.ASPxCustomPopUp .ASPxPopUpMessage .Value 
+{
+    color: #6A85AF; 
+    padding: 10px; 
+    font-weight: bold;
+    width: 450px;
+    word-wrap: break-word;
+}
+
+.ASPxCustomPopUp .ASPxPopUpActions 
+{
+    text-align: right; 
+    margin: 10px 0 0; 
+    padding-top: 10px;
+    padding-bottom: 4px;
+    border-top: 2px solid #DCDCDC; 
+}
+
+.ASPxCustomPopUp .ASPxPopUpMessage label.dxeBase {
+    margin-right: 6px;
+}
+
+.ASPxCustomPopUp .ASPxPopUpActions .dxbButton 
+{
+    margin-left: 10px;
+}
+
+
+.ASPxCustomPopUp .dxpc-content, .dxdpLite .dxpc-content 
+{
+    padding: 0;
+}
+
+
+.LoginFormHeader 
+{
+    margin: 10px auto 15px;
+    text-align: center;
+}
+
+.LoginFormContent 
+{
+    margin: 0 auto 30px; 
+    width: 400px; 
+}
+
+.AppletContainer 
+{
+    position: absolute;
+    left: -10px;
+}
+
+
+/*----------------------------------------------------------
+                EDOCUMENT VERIFY PAGE ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.CommonASPxFormLayout .IndentLayoutItem
+{
+    padding-top: 10px !important;
+}
+
+
+.CommonASPxGridView ul.VerificationResultMessage 
+{
+    margin: 0;
+    padding: 3px 0 0 0;
+    list-style-position: inside;
+}
+
+
+
+.DownloadContainer {}
+        
+.DownloadContainer .IconContainer
+{
+    float: left;
+    margin-right: 5px;
+    height: 26px;
+    display: table;
+}
+
+.DownloadContainer .IconContainer .Icon {
+    display: table-cell;
+    vertical-align: middle;
+    cursor: pointer;
+}
+        
+.DownloadContainer .IconContainer .Icon img 
+{
+    width: 17px;
+    height: 17px;
+}
+        
+.DownloadContainer .DataContainer {
+    float: left;
+}
+        
+.DownloadContainer .DataContainer .FileName {}
+        
+.DownloadContainer .DataContainer .FileSize
+{
+    font-size: 10px !important;
+    line-height: 13px !important;
+}
+
+
+.EDocumentSignatureVerificationResultMessage {
+    padding-left: 5px;
+}
+
+
+/*----------------------------------------------------------
+                WARNING CONTAINER ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.warning-container 
+{
+    margin: -8px -8px 8px; 
+    padding: 12px; 
+    
+    font-family: tahoma; 
+    font-size: 9pt; 
+    
+    color: #6a85af; 
+    background-color: white;
+}
+
+.warning-container .leftSide 
+{
+    width:100%; 
+    padding: 5px 10px; 
+    line-height: 12pt;
+} 
+
+.warning-container .rightSide 
+{
+    padding-top: 5px;
+    padding-right: 5px;
+}

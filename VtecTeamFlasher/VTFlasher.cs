@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -11,6 +12,10 @@ using System.Threading;
 
 using System.Windows.Forms;
 using System.Windows.Threading;
+using ClientAndServerCommons;
+using Commons.Helpers;
+using Commons.Serialization.Binary;
+using VtecTeamFlasher.Helpers;
 
 namespace VtecTeamFlasher
 {
@@ -43,6 +48,9 @@ namespace VtecTeamFlasher
         private Thread txtStatusThread;
         private StringBuilder sb = new StringBuilder(1024, 90000);
 
+        private BinarySerializationHelper serializationHelper = new BinarySerializationHelper();
+        private string savedPassword;
+
         public VTFlasher()
         {
             InitializeComponent();
@@ -52,6 +60,14 @@ namespace VtecTeamFlasher
 
         private void VTFlasher_Load(object sender, EventArgs e)
         {
+
+            savedPassword = FileHelper.ReadText(Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
+            if (!string.IsNullOrEmpty(savedPassword))
+            {
+                txtPassword.Text = (string)serializationHelper.DeserializeObject(savedPassword);
+                checkBoxSavePassword.Checked = true;
+            }
+            
             var info = new ProcessStartInfo
             {
                 FileName = AppDomain.CurrentDomain.BaseDirectory + "\\PcmFlasher\\pcmflash.exe",
@@ -68,7 +84,7 @@ namespace VtecTeamFlasher
             pcmMainWindow = WinAPIHelper.FindWindowByCaption(IntPtr.Zero, "PCMflash");
 
             WinAPIHelper.SetParent(pcmProcess.MainWindowHandle, this.Handle);
-
+            
             pcmChildren = GetChildWindows(pcmMainWindow);
 
             pcmComboBoxModules = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[6], null, null);
@@ -91,6 +107,7 @@ namespace VtecTeamFlasher
             InitializeComboBoxControl(pcmComboBoxAdapters, cbAdapter);
             InitializeComboBoxControl(pcmComboBoxModules, cbModules);
             SetButtonStatus();
+
 
             WinAPIHelper.SendMessage(pcmTextBoxStatus, WinAPIHelper.WM_GETTEXT, 10000, sb);
             if (sb.ToString().Contains("Электронный ключ недоступен"))
@@ -116,6 +133,9 @@ namespace VtecTeamFlasher
                         }
                     });
             txtStatusThread.Start();
+
+
+
         }
 
         # region ComboBoxes
@@ -296,7 +316,28 @@ namespace VtecTeamFlasher
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            panelLogin.Dispose();
+            lblErrLogin.Text = "";
+
+            if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
+            {
+                lblErrLogin.Text = "Необходимо ввести логин и пароль.";
+                return;
+            }
+
+            var service = WCFServiceFactory.CreateVtecTeamService();
+            var result = service.Authenticate(txtUsername.Text, txtPassword.Text.ComputeSHA256Hash());
+
+            if (result.Code == (int) AuthenticationCode.Success)
+            {
+                if (checkBoxSavePassword.Checked && string.IsNullOrEmpty(savedPassword))
+                    FileHelper.SaveText(serializationHelper.SerializeObject(txtPassword.Text),Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
+                panelLogin.Dispose();
+            }
+            else
+            {
+                txtPassword.Text = "";
+                lblErrLogin.Text = result.Message;
+            }
         }
 
         private void btnReloadFlasher_Click(object sender, EventArgs e)

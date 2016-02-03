@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/VtecTeamFlasherWeb/VtecTeamWebService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" />
+  <xs:complexType name="AuthInfoResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="User" nillable="true" type="q1:User" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthInfoResult" nillable="true" type="tns:AuthInfoResult" />
+  <xs:complexType name="AbstractDataObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AbstractDataObject" nillable="true" type="tns:AbstractDataObject" />
+</xs:schema>

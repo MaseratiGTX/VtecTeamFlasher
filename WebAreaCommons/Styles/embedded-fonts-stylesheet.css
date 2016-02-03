@@ -1,0 +1,96 @@
+﻿/* ROBOTO: Bold, Light, Medium, Regular
+----------------------------------------------------------*/
+
+@font-face {
+    font-family: "RobotoBold";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoBold.RobotoBold.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoBold.RobotoBold.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoBold.RobotoBold.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoBold.RobotoBold.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "RobotoLight";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoLight.RobotoLight.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoLight.RobotoLight.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoLight.RobotoLight.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoLight.RobotoLight.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "RobotoMedium";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoMedium.RobotoMedium.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoMedium.RobotoMedium.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoMedium.RobotoMedium.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoMedium.RobotoMedium.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "RobotoRegular";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoRegular.RobotoRegular.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoRegular.RobotoRegular.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoRegular.RobotoRegular.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.Roboto.RobotoRegular.RobotoRegular.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+
+/* Segoe UI: Bold, Italic, Light, Regular, SemiBold
+----------------------------------------------------------*/
+
+@font-face {
+    font-family: "SegoeUIBold";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIBold.SegoeUIBold.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIBold.SegoeUIBold.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIBold.SegoeUIBold.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIBold.SegoeUIBold.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "SegoeUIItalic";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIItalic.SegoeUIItalic.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIItalic.SegoeUIItalic.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIItalic.SegoeUIItalic.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIItalic.SegoeUIItalic.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "SegoeUILight";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUILight.SegoeUILight.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUILight.SegoeUILight.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUILight.SegoeUILight.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUILight.SegoeUILight.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "SegoeUIRegular";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIRegular.SegoeUIRegular.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIRegular.SegoeUIRegular.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIRegular.SegoeUIRegular.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUIRegular.SegoeUIRegular.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "SegoeUISemiBold";
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUISemiBold.SegoeUISemiBold.eot")%>');
+    src: url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUISemiBold.SegoeUISemiBold.eot")%>?#iefix')format("embedded-opentype"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUISemiBold.SegoeUISemiBold.woff")%>') format("woff"),
+         url('<%=WebResource("WebAreaCommons.Fonts.SegoeUI.SegoeUISemiBold.SegoeUISemiBold.ttf")%>') format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}

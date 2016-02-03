@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{401C91B8-AEEF-4F21-A874-ADEAD14CA54D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebAreaCommons</RootNamespace>
+    <AssemblyName>WebAreaCommons</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v13.2">
+      <HintPath>..\Libs\DXperience\v13.2\DevExpress.Data.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v13.2">
+      <HintPath>..\Libs\DXperience\v13.2\DevExpress.Web.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Json60r3\Net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\NHibernate\NHibernate-4.0.3.GA-bin\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Controls\ASPx\xDataView\CommonASPxDataView.cs" />
+    <Compile Include="Classes\Controls\ASPx\xDataView\xDataViewItems\xSimple\CommonASPxDataViewItem.cs" />
+    <Compile Include="Classes\Controls\ASPx\xExpandablePanel\CommonASPxExpandablePanel.cs" />
+    <Compile Include="Classes\Controls\ASPx\xGridView\CommonASPxGridView.cs" />
+    <Compile Include="Classes\Controls\ASPx\xMenu\ASPxMenuExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSearchPanel\CommonASPxSearchPanel.cs" />
+    <Compile Include="Classes\DataProviders\ADO\ClientKKMDataProvider.cs" />
+    <Compile Include="Classes\DataProviders\ADO\ClientEntityDataProvider.cs" />
+    <Compile Include="Classes\DataProviders\ADO\ADODataProvider.cs" />
+    <Compile Include="Classes\Helpers\HttpContextHelper.cs" />
+    <Compile Include="Classes\Helpers\HttpRequestExtensions.cs" />
+    <Compile Include="Classes\Helpers\ReportHelper.cs" />
+    <Compile Include="Classes\Items\EdocumentSignatureCheckingItem.cs" />
+    <Compile Include="Classes\Providers\Configurations\WarnLicenseExpirationDaysLeftProvider.cs" />
+    <Compile Include="Classes\Providers\Configurations\EDocumentUploadParametersProvider.cs" />
+    <Compile Include="Classes\Providers\Configurations\EDocumentViewerDownloadPathProvider.cs" />
+    <Compile Include="Classes\Providers\Configurations\PermissibleWorkSessionOrDaysRangeProvider.cs" />
+    <Compile Include="Classes\Providers\Configurations\ReportStoreDirectoryProvider.cs" />
+    <Compile Include="Classes\Providers\Configurations\ReportTemplateProvider.cs" />
+    <Compile Include="Classes\Providers\Configurations\SessionStateConfigurationProvider.cs" />
+    <Compile Include="Classes\Providers\Configurations\UseCSPAuthorizationProvider.cs" />
+    <Compile Include="Classes\Helpers\FileTypeHelper.cs" />
+    <Compile Include="Classes\Security\Authentication\Configuration\CustomAuthenticationConfigContext.cs" />
+    <Compile Include="Classes\Security\Authentication\Configuration\CustomAuthenticationSection.cs" />
+    <Compile Include="Classes\Security\Authentication\Configuration\CustomFormsAuthenticationElement.cs" />
+    <Compile Include="Classes\Security\Authentication\CustomFormsAuthentication.cs" />
+    <Compile Include="Classes\Security\Authentication\CustomFormsAuthenticationModule.cs" />
+    <Compile Include="Classes\Security\Authorization\ApplicationAuthorizationContext.cs" />
+    <Compile Include="Classes\Security\Authorization\AuthorizationRuleManager.cs" />
+    <Compile Include="Classes\Security\Authorization\Configuration\BaseRule.cs" />
+    <Compile Include="Classes\Security\Authorization\Configuration\CustomAuthorizationRuleAction.cs" />
+    <Compile Include="Classes\Security\Authorization\Configuration\ICustomRule.cs" />
+    <Compile Include="Classes\Security\Authorization\Configuration\Location.cs" />
+    <Compile Include="Classes\Security\Authorization\Configuration\RoleRule.cs" />
+    <Compile Include="Classes\Security\Authorization\Configuration\UserRule.cs" />
+    <Compile Include="Classes\Security\Authorization\CustomRules\AccessRuleAuthorizationRule.cs" />
+    <Compile Include="Classes\Security\Authorization\CustomRules\UserActivityAuthorizationRule.cs" />
+    <Compile Include="Classes\Security\Authorization\CustomUrlAuthorizationModule.cs" />
+    <Compile Include="Classes\Security\Authorization\CustomRules\BaseCustomRule.cs" />
+    <Compile Include="Pages\Areas\AbstractAreaPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Areas\AdminAreaPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classes\ItemRepositories\Helpers\ItemsExtensions.cs" />
+    <Compile Include="Classes\ItemRepositories\SessionBasedItemsRepository.cs" />
+    <Compile Include="Classes\ItemRepositories\Validators\BaseItemValidator.cs" />
+    <Compile Include="Classes\ItemRepositories\Validators\EmptyItemValidator.cs" />
+    <Compile Include="Classes\ItemRepositories\Validators\IPersistValidator.cs" />
+    <Compile Include="Classes\ItemRepositories\Validators\IValidator.cs" />
+    <Compile Include="Classes\ItemRepositories\Validators\PasswordValidator.cs" />
+    <Compile Include="ExpressionBuilders\WebAreaCommonResourceExpressionBuilder.cs" />
+    <Compile Include="Pages\ADOPersisterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ADOReaderPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Helpers\AccessRuleTemplates\DaysOfWeekDataSourceHelper.cs" />
+    <Compile Include="Pages\Helpers\Users\UsersPageNewValuesHelper.cs" />
+    <Compile Include="ResourceRepositories\WebAreaCommonResources.cs" />
+    <EmbeddedResource Include="Scripts\Executables\attach-doublescroll.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\ItemRepositories\Items\" />
+    <Folder Include="Classes\License\" />
+    <Folder Include="Pages\Helpers\Printers\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Styles\base-stylesheet.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\base-localizationdata.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Styles\embedded-fonts-stylesheet.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\Roboto\RobotoBold\RobotoBold.eot" />
+    <EmbeddedResource Include="Fonts\Roboto\RobotoBold\RobotoBold.ttf" />
+    <EmbeddedResource Include="Fonts\Roboto\RobotoBold\RobotoBold.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\Roboto\RobotoLight\RobotoLight.eot" />
+    <EmbeddedResource Include="Fonts\Roboto\RobotoLight\RobotoLight.ttf" />
+    <EmbeddedResource Include="Fonts\Roboto\RobotoLight\RobotoLight.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\Roboto\RobotoMedium\RobotoMedium.eot" />
+    <EmbeddedResource Include="Fonts\Roboto\RobotoMedium\RobotoMedium.ttf" />
+    <EmbeddedResource Include="Fonts\Roboto\RobotoMedium\RobotoMedium.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\Roboto\RobotoRegular\RobotoRegular.eot" />
+    <EmbeddedResource Include="Fonts\Roboto\RobotoRegular\RobotoRegular.ttf" />
+    <EmbeddedResource Include="Fonts\Roboto\RobotoRegular\RobotoRegular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Executables\nocookie-handling.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIBold\SegoeUIBold.eot" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIBold\SegoeUIBold.ttf" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIBold\SegoeUIBold.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIItalic\SegoeUIItalic.eot" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIItalic\SegoeUIItalic.ttf" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIItalic\SegoeUIItalic.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUILight\SegoeUILight.eot" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUILight\SegoeUILight.ttf" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUILight\SegoeUILight.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIRegular\SegoeUIRegular.eot" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIRegular\SegoeUIRegular.ttf" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUIRegular\SegoeUIRegular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUISemiBold\SegoeUISemiBold.eot" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUISemiBold\SegoeUISemiBold.ttf" />
+    <EmbeddedResource Include="Fonts\SegoeUI\SegoeUISemiBold\SegoeUISemiBold.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Executables\page-minheight.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Styles\IE8\base-stylesheet.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Executables\window-scroll-blinking-fix.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Controls\ASPx\CommonASPxGridView.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\CryptoCore\FSCAppletHelper.js" />
+    <EmbeddedResource Include="Scripts\CryptoCore\deployJava.js" />
+    <EmbeddedResource Include="Scripts\CryptoCore\webtoolkit.base64.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Executables\page-functions.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClientAndServerCommons\ClientAndServerCommons.csproj">
+      <Project>{52460E9C-8DAD-4CA4-81CF-7C4CCCA974B9}</Project>
+      <Name>ClientAndServerCommons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commons\Commons.csproj">
+      <Project>{8498B6F8-C44A-4840-BE9E-FFF18A2267F4}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NHibernateContext\NHibernateContext.csproj">
+      <Project>{773C7966-E125-4D86-848A-BA3EDA967460}</Project>
+      <Name>NHibernateContext</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAppCommons\WebAppCommons.csproj">
+      <Project>{9933ccea-9b90-40b9-a058-0300a4a6795d}</Project>
+      <Name>WebAppCommons</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

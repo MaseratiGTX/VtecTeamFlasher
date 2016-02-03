@@ -1,0 +1,18 @@
+﻿/* MAINMENU ELEMENTS LAYOUT
+----------------------------------------------------------*/
+
+.page-menu-container .dxmLite .dxm-popup .dxm-item .dxm-popOut 
+{
+    margin-top: 0px !important;
+}
+
+.page-menu-language .dxeListBox 
+{
+    border-top: none; 
+}
+
+.watermark 
+{
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=15) progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.866025404, M12=-0.5, M21=0.5, M22=0.866025404)";
+    margin-top: 20px;
+}

@@ -1,0 +1,50 @@
+﻿.dxsgv .dxgvHeader 
+{
+    border-top-width: 0px;
+}
+
+.dxsgv .dxgvGroupPanel .dxgvHeader 
+{
+    border-top-width: 1px;
+}
+
+.dxsgv .dxgvFooter td.dxgv 
+{
+    border-bottom-width: 0px;
+}
+
+.dxsgv .dxgvPagerTopPanel
+{
+    border-bottom: 1px solid #9f9f9f;
+}
+
+.dxsgv .dxgvPagerBottomPanel 
+{
+    border-top: 1px solid #9f9f9f;
+}
+
+td.dxsbstc 
+{
+    padding-left: 5px;    
+    padding-right: 5px;    
+}
+
+td.dxsbsic 
+{
+    padding-left: 6px;    
+    padding-right: 6px;    
+}
+
+tr.dxgvEditingErrorRow > td.dxgvIndentCell 
+{
+    display: none !important;    
+}
+
+.dxsgv.dxsrsc ul
+{
+    margin-top: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+    padding-left: 30px;
+}

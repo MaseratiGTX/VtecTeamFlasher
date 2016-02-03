@@ -1,0 +1,20 @@
+﻿.dxdvControl.dxsdv td.dxdvCtrl
+{
+	padding: 0px;
+}
+
+.dxdvControl.dxsdv .dxdvItem, .dxdvControl.dxsdv .dxdvFlowItem
+{
+	padding: 0px;
+	border-width: 0px;
+    background-color: inherit;
+    height: inherit;
+}
+
+.dxdvControl.dxsdv .dxdvEmptyItem
+{
+	text-align: left;
+	vertical-align: top;
+	padding: 0px 0px 0px 2px;
+	height: inherit;
+}

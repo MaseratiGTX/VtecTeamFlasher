@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{773C7966-E125-4D86-848A-BA3EDA967460}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NHibernateContext</RootNamespace>
+    <AssemblyName>NHibernateContext</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\NHibernate\FluentNHibernate-2.0.1.0\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\NHibernate\NHibernate-4.0.3.GA-bin\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\NHibernate\NHibernate-4.0.3.GA-bin\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADOPersister\ADOPersister.cs" />
+    <Compile Include="ADOPersister\ADOPersisterFactory.cs" />
+    <Compile Include="ADOPersister\IADOPersister.cs" />
+    <Compile Include="ADORepository\ADORepository.cs" />
+    <Compile Include="ADORepository\ADORepositoryFactory.cs" />
+    <Compile Include="ADORepository\IADORepository.cs" />
+    <Compile Include="Core\NHibernateContextManager.cs" />
+    <Compile Include="CustomQuery\Helpers\ExpressionExtensions.cs" />
+    <Compile Include="CustomQuery\Helpers\ExpressionValue.cs" />
+    <Compile Include="CustomQuery\Helpers\IQueryExtensions.cs" />
+    <Compile Include="CustomQuery\Helpers\ISessionExtensions.cs" />
+    <Compile Include="CustomQuery\Helpers\NamedParameterCollectionExtensions.cs" />
+    <Compile Include="CustomQuery\Select\InConditionMethodContainer.cs" />
+    <Compile Include="CustomQuery\Select\LockingModes\LockingHints.cs" />
+    <Compile Include="CustomQuery\Select\NamedParameter.cs" />
+    <Compile Include="CustomQuery\Select\NHibernateQueryBuilder.cs" />
+    <Compile Include="CustomQuery\Select\OrderExpressionContainer.cs" />
+    <Compile Include="CustomQuery\Select\SelectQuery.cs" />
+    <Compile Include="Helpers\Criterion\ProjectionExtensions.cs" />
+    <Compile Include="CustomDrivers\MSSQL2008CustomDriver.cs" />
+    <Compile Include="CustomCriterions\CustomRestrictions.cs" />
+    <Compile Include="CustomCriterions\SimpleByteExpression.cs" />
+    <Compile Include="Helpers\Criterion\TypedValueExtensions.cs" />
+    <Compile Include="CustomDialects\Functions\CONCAT_SMARTFunction.cs" />
+    <Compile Include="CustomDialects\Functions\DAY_OF_WEEK_TO_INT_SMARTFunction.cs" />
+    <Compile Include="Helpers\NHConfigurationExtensions.cs" />
+    <Compile Include="Helpers\NHibernateExtensions.cs" />
+    <Compile Include="Helpers\NHSessionFactoryStateValidationExtensions.cs" />
+    <Compile Include="Helpers\PropertyPartExtensions.cs" />
+    <Compile Include="HttpModules\NHibernateHttpModule.cs" />
+    <Compile Include="CustomDialects\MSSQL2008CustomDialect.cs" />
+    <Compile Include="ConnectionData\NHibernateConnectionData.cs" />
+    <Compile Include="ConnectionData\NHibernateConnectionDataParser.cs" />
+    <Compile Include="Core\Providers\NHibernateSessionFactoryProvider.cs" />
+    <Compile Include="Core\Managers\NHibernateSessionManager.cs" />
+    <Compile Include="Core\Providers\NHibernateSessionProvider.cs" />
+    <Compile Include="ConnectionData\SQLConnectionStringBuilder.cs" />
+    <Compile Include="Interceptors\CommonSessionLocalInterceptor.cs" />
+    <Compile Include="NHSessionContainers\Common\SimpleNHSessionContainer.cs" />
+    <Compile Include="NHSessionContainers\INHSessionContainer.cs" />
+    <Compile Include="PersistenceValidation\ValidatorsBase\InitializationStrategies\AbstractStrategy.cs" />
+    <Compile Include="PersistenceValidation\ValidatorsBase\InitializationStrategies\CacheableStrategy.cs" />
+    <Compile Include="PersistenceValidation\ValidatorsBase\InitializationStrategies\IInitializationStrategy.cs" />
+    <Compile Include="PersistenceValidation\ValidatorsBase\BasePersistenceValdator.cs" />
+    <Compile Include="PersistenceValidation\IPersistenceValidationContext.cs" />
+    <Compile Include="PersistenceValidation\ValidatorsBase\InitializationStrategies\CommonStrategy.cs" />
+    <Compile Include="PersistenceValidation\ValidatorsBase\IPersistenceValidator.cs" />
+    <Compile Include="PersistenceValidation\PersistenceValidationContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commons\Commons.csproj">
+      <Project>{8498B6F8-C44A-4840-BE9E-FFF18A2267F4}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

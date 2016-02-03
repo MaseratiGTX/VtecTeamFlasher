@@ -67,6 +67,7 @@ namespace VtecTeamFlasher
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.lblErrLogin = new System.Windows.Forms.Label();
             this.gbModule.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
@@ -401,13 +402,14 @@ namespace VtecTeamFlasher
             // 
             // panelLogin
             // 
+            this.panelLogin.Controls.Add(this.lblErrLogin);
             this.panelLogin.Controls.Add(this.checkBoxSavePassword);
             this.panelLogin.Controls.Add(this.labelPassword);
             this.panelLogin.Controls.Add(this.labelLogin);
             this.panelLogin.Controls.Add(this.btnLogin);
             this.panelLogin.Controls.Add(this.txtPassword);
             this.panelLogin.Controls.Add(this.txtUsername);
-            this.panelLogin.Location = new System.Drawing.Point(3, 3);
+            this.panelLogin.Location = new System.Drawing.Point(12, 12);
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(647, 802);
             this.panelLogin.TabIndex = 8;
@@ -465,11 +467,22 @@ namespace VtecTeamFlasher
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
             this.txtUsername.TabIndex = 0;
             // 
+            // lblErrLogin
+            // 
+            this.lblErrLogin.AutoSize = true;
+            this.lblErrLogin.BackColor = System.Drawing.SystemColors.Control;
+            this.lblErrLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblErrLogin.ForeColor = System.Drawing.Color.Red;
+            this.lblErrLogin.Location = new System.Drawing.Point(165, 112);
+            this.lblErrLogin.Name = "lblErrLogin";
+            this.lblErrLogin.Size = new System.Drawing.Size(0, 17);
+            this.lblErrLogin.TabIndex = 6;
+            // 
             // VTFlasher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 616);
+            this.ClientSize = new System.Drawing.Size(654, 803);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.groupBox1);
@@ -536,6 +549,7 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Panel panelKeyUnavailible;
         private System.Windows.Forms.Label labelKeyUnavailible;
         private System.Windows.Forms.Button btnReloadFlasher;
+        private System.Windows.Forms.Label lblErrLogin;
     }
 }
 

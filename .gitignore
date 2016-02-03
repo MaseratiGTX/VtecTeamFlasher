@@ -10,4 +10,5 @@ VtecTeamFlasher/PcmFlasher/*.exe
 *.user
 *.datasource
 Thumbs.db
+*.svn
 

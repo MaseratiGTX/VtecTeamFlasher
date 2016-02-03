@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9933CCEA-9B90-40B9-A058-0300A4A6795D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebAppCommons</RootNamespace>
+    <AssemblyName>WebAppCommons</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cassette">
+      <HintPath>..\Libs\Cassette\Cassette.2.4.2\Cassette.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.2">
+      <HintPath>..\Libs\DXperience\v13.2\DevExpress.Data.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxTreeList.v13.2">
+      <HintPath>..\Libs\DXperience\v13.2\DevExpress.Web.ASPxTreeList.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v13.2">
+      <HintPath>..\Libs\DXperience\v13.2\DevExpress.Web.v13.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\Libs\FriendlyUrls\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Libs\NHibernate\NHibernate-4.0.3.GA-bin\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Controls\ASPx\ASPxButtonEditBaseHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\ASPxEditBaseHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\ASPxEditHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\ASPxLabelHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\ASPxSmartStaticDataViewControl.cs" />
+    <Compile Include="Classes\Controls\ASPx\xFormLayout\ASPxFormLayoutExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xListBox\ListEditItems\ListEditItemHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Args\ASPxSmartGridViewColumnDisplayTextEventArgs.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Args\ASPxSmartGridViewEditorEventArgs.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Args\ICustomColumnText.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartPageControl\ASPxSmartPageControl.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartPageControl\SmartContentControlLite.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartPageControl\SmartPageControlLite.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartDataView\xDataViewItems\xSimple\ASPxSimpleDataViewItem.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartDataView\xDataViewItems\xSimple\SimpleDataViewItemControl.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartDataView\xDataViewItems\xSimple\SimpleDataViewItemProperties.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Columns\DataCheckColumn\SmartCheckBoxProperties.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Columns\SmartGridViewDataLabelColumn.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartPopupControl\ASPxSmartPopupControl.cs" />
+    <Compile Include="Classes\Controls\ASPx\xTreeList\ASPxSmartTreeList.cs" />
+    <Compile Include="Classes\Controls\ASPx\xTreeList\ASPxTreeListExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xTreeList\DataSources\Helpers\ASPxTreeListDataSourceHelper.cs" />
+    <Compile Include="Classes\Controls\DataItemContainerExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xControlState\ASPxControlState.cs" />
+    <Compile Include="Classes\Controls\ASPx\xExpandablePanel\ASPxExpandablePanel.cs" />
+    <Compile Include="Classes\Controls\ASPx\xExpandablePanel\Classes\ASPxExpandablePanelClientSideEvents.cs" />
+    <Compile Include="Classes\Controls\ASPx\xExpandablePanel\Internal\RPExpandablePanelControl.cs" />
+    <Compile Include="Classes\Controls\ASPx\xListBox\ListEditItems\ListEditItemExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xListBox\ListEditItems\ListEditItemMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSearchPanel\Classes\HeaderTextValue.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartDataView\ASPxSmartDataView.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartDataView\SmartDataViewStyles.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartDataView\SmartDataViewTableLayoutSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Columns\IAutosizeable.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Columns\SmartGridViewCommandColumn.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Columns\DataCheckColumn\SmartGridViewDataCheckColumn.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Columns\SmartGridViewDataListBoxColumn.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Args\ASPxCancelSearchingEventArgs.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Args\ASPxGridViewCommandButtonCallbackEventArgs.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Args\ASPxGridViewTableDataRowEventArgs.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Args\ASPxPerformSearchingEventArgs.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Handlers\ASPxCancelSearchingEventHandler.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Handlers\ASPxHtmlDataRowPreparedEventHandler.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Events\Handlers\ASPxPerformSearchingEventHandler.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\ASPxGridViewBaseSettings\ASPxGridViewBaseSettingsExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\ASPxGridViewBaseSettings\ASPxGridViewBaseSettingsMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\ASPxPerformSearchingEventArgsExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\ClientScriptHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\EditorValues\SmartEditorValueInfo.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\EditorValues\SmartGridViewCallBackEditorValuesReader.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewBaseTemplateContainers\GridViewBaseTemplateContainerExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewBaseTemplateContainers\GridViewBaseTemplateContainerMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewCommandColumnButtonControls\GridViewCommandColumnButtonControlExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewCommandColumnButtonControls\GridViewCommandColumnButtonControlMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewCommandColumnButtons\GridViewCommandColumnButtonExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewCommandColumnButtons\GridViewCommandColumnButtonMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\ASPxGridViewCommandButtonCallbacksRegistrationExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewCommandColumnCustomButtons\GridViewCommandColumnCustomButtonExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewCommandColumnCustomButtons\GridViewCommandColumnCustomButtonMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewDataColumns\GridViewDataColumnExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewDataColumns\GridViewDataColumnMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewPagerBarTemplateContainers\GridViewPagerBarTemplateContainerExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewPagerBarTemplateContainers\GridViewPagerBarTemplateContainerMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewTableCells\GridViewTableCellExExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\GridViewTableCells\GridViewTableCellExMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\ASPxGridViewItemValuesTemplate.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewBottomBorderRemovalHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewCommandColumnHeaderCell.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewECAllButtonsBlockContent.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewGroupPanel.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewHtmlHeaderContent.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewHtmlParentRowsWindow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewHtmlScrollableControl.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewHtmlStyleTable.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewHtmlTable.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableCommandCell.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableDetailRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableEmptyDataRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableFilterRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableFooterRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableGroupFooterRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableGroupRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableHeaderCell.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableHeaderRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewHtmlEditFormPopup.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTableParentGroupRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewTablePreviewRow.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ControlsContainers\IControlsContainer.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ControlsContainers\SimpleControlsContainer.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ControlsContainers\OneRowTableControlsContainer.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewBehaviorSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewCommandButtonSeparatorSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewCommandButtonSeparatorType.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewECCommandButtonSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewEditFormTextSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewExpandCollapseAllButtonsSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewHtmlEditFormPopupClientSideEvents.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewPagerSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\ASPxSmartGridView.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewClientSideEvents.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Helpers\ASPxGridViewEditingSettingsExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Internal\ASPxSmartGridViewEndlessPagingHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewContainerControl.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewHtmlStatusBar.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewHtmlTitle.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Rendering\ASPxSmartGridViewRenderHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xListBox\ASPxListBoxExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSearchPanel\ASPxSearchPanel.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSearchPanel\Classes\ASPxSeacrhPanelClientSideEvents.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSearchPanel\Internal\RPSearchPanelControl.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewTextSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Settings\ASPxSmartGridViewCommandButtonSettings.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\TemplateReplacements\ASPxSmartGridViewTemplateReplacement.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Validation\ASPxSmartGridViewErrorHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Validation\ErrorObjects\BaseErrorObject.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Validation\ErrorObjects\SourceElementNotFoundErrorObject.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Validation\ErrorObjects\SourceElementValidationErrorObject.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Validation\Exceptions\SourceElementValidationException.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartListBox\ASPxSmartListBox.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartListBox\SmartListBoxProperties.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSpinEdit\ASPxSpinEditExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\ASPxComboBoxExtension.cs" />
+    <Compile Include="Classes\Controls\ASPx\xCriteriaOperator\CriteriaOperatorExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xCriteriaOperator\CriteriaOperatorPropertyValueFetcher.cs" />
+    <Compile Include="Classes\Controls\ASPx\xCriteriaOperator\FilterExpresssionExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\ASPxComboBoxDataSource.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\DataItems\DataSourceDataItem.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\FilterKeyProviders\IFilterKeyProvider.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\FilterKeyProviders\SimpleFilterKeyProvider.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\FilterKeyProviders\SmartFilterKeyProvider.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\Helpers\ASPxComboBoxDataSourceHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\Helpers\DataSourceDataItemExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\IASPxComboBoxDataSource.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\InitialDataProviders\IDataSourceInitialDataProvider.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\InitialDataProviders\SimpleDataSourceInitialDataProvider.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\Sorters\CommonDataSourceSorter.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\Sorters\IDataSourceSorter.cs" />
+    <Compile Include="Classes\Controls\ASPx\xComboBox\DataSources\Sorters\SimpleDataSourceSorter.cs" />
+    <Compile Include="Classes\Controls\ASPx\xCriteriaOperator\Filtration\FilterHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xCriteriaOperator\Filtration\FilterPattern.cs" />
+    <Compile Include="Classes\Controls\ASPx\xGridView\Callbacks\AsPxGridViewCustomButtonCallbacksRegistrationExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xGridView\ASPxGridViewExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xGridView\GridViewColumnExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Validation\Helpers\Items\ItemAssertionExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xGridView\Validation\OrderedDictionaries\OrderedDictionaryValidationExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xGridView\Validation\OrderedDictionaries\OrderedDictionaryValidator.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSmartGridView\Validation\Exceptions\SourceElementNotFoundException.cs" />
+    <Compile Include="Classes\Controls\ASPx\xSpinEdit\ASPxSpinEditSceme.cs" />
+    <Compile Include="Classes\Controls\ASPx\xTextEdit\ASPxTextEditExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xTextEdit\ASPxTextEditMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xTextEdit\TextEditProperties\TextEditPropertiesExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xTextEdit\TextEditProperties\TextEditPropertiesMembersRepository.cs" />
+    <Compile Include="Classes\Controls\ASPx\xWebControlBase\ASPxWebControlBaseExtensions.cs" />
+    <Compile Include="Classes\Controls\ASPx\xWebControlBase\ASPxWebControlBaseCollectionHelper.cs" />
+    <Compile Include="Classes\Controls\ASPx\xWebControlBase\ASPxWebControlBaseMembersRepository.cs" />
+    <Compile Include="Classes\Controls\CallbackRegistration\BaseCallbackRegistrator.cs" />
+    <Compile Include="Classes\Controls\CallbackRegistration\CallbackInfo.cs" />
+    <Compile Include="Classes\Controls\CallbackRegistration\CommonCallbackRegistrator.cs" />
+    <Compile Include="Classes\Controls\CallbackRegistration\CallbackRepository.cs" />
+    <Compile Include="Classes\Controls\CallbackRegistration\ControlCallbackRegistrator.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Configuration\SmartDataSourceConfigurationException.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\CriteriaOperators\FirstNbytesOperandOperator.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Helpers\PropertyDescriptors\PropertyDescriptorHelper.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Helpers\PropertyDescriptors\SmartPropertyDescriptor.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Helpers\PropertyDescriptors\SimplePropertyDescriptor.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\ISmartDataSourse.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Configuration\SmartDataSourceConfiguration.cs" />
+    <Compile Include="Classes\Controls\WebControlExtensions.cs" />
+    <Compile Include="Classes\Helpers\DownloadableFile.cs" />
+    <Compile Include="Classes\Helpers\HttpApplicationStateExtensions\HttpApplicationStateExtensions.cs" />
+    <Compile Include="Classes\Helpers\HttpResponseExtensions.cs" />
+    <Compile Include="Classes\Helpers\HttpSessionStateExtensions.cs" />
+    <Compile Include="Classes\Helpers\PageExtensions.cs" />
+    <Compile Include="Classes\Localization\ApplicationLocalizationConfiguration.cs" />
+    <Compile Include="Classes\Localization\HttpModules\LanguageContextHttpModule.cs" />
+    <Compile Include="Classes\Localization\LocalizationConstants.cs" />
+    <Compile Include="Classes\Resources\Cassette\BundleExtensions.cs" />
+    <Compile Include="Classes\Resources\Cassette\ResourcePriority.cs" />
+    <Compile Include="Classes\CodeExpressions\CodeExpressionHelper.cs" />
+    <Compile Include="Classes\CodeExpressions\EvaluableExpressionBuilder.cs" />
+    <Compile Include="Classes\Configuration\ASPNetConfiguration.cs" />
+    <Compile Include="Classes\Routes\ASPxPageRoute\ASPxPagesRouteHelper.cs" />
+    <Compile Include="ExpressionBuilders\WebAppCommonResourceExpressionBuilder.cs" />
+    <Compile Include="Classes\Helpers\PageTitleExtensions.cs" />
+    <Compile Include="Classes\Helpers\VirtualPathExtensions.cs" />
+    <Compile Include="ExpressionBuilders\LocalizationExpressionBuilder.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\Base\BaseDataProvider.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\Base\IDataProvider.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\GroupDataItems\GroupDataItem.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\GroupDataItems\GroupDataItemFactory.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\DataQueryProviders\NHibernateDataQuery.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\DataQueryProviders\NHibernateDataQueryProvider.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\NHibernateDataProviderBase.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\NHibernateDataProviderSimple.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\CriteriaOperators\ConcatOperandOperator.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\CriteriaOperators\Criterias\HQLSubQueryCriteria.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\CriteriaOperators\Criterias\Parsers\HQLSubQueryCriteriaParser.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\CriteriaOperators\Helpers\CriteriaHelper.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\CriteriaOperators\HQLInCriteriaOperator.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\InterpritationResults\BaseInterpritationResult.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\InterpritationResults\FilterInterpritationResult.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\InterpritationResults\PropertiesCollectionProcessingResult.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\InterpritationResults\SortInfoInterpritationResult.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\InterpritationResults\SummaryInterpritationResult.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\JoinContext.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\NHibernateFilterCriteriaProcessor.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\NHibernateJoinProcessor.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\NHibernatePropertiesCollectionProcessor.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\NHibernateSortInfoProcessor.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Processors\NHibernateSummaryProcessor.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\QueryInfo\GROUPQueryInfo.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\QueryInfo\TOTALQueryInfo.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\NHibernate\Templates\Placeholders.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\Aggregators\SummaryRepositoryAggregator.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\Aggregators\SummaryRepositoryItemAggregator.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\Aggregators\SummaryRepositoryItemsContext.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\Factories\SummaryRepositoryItemFactory.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\Items\AVGSummaryRepositoryItem.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\Items\BaseSummaryRepositoryItem.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\Items\ISummaryRepositoryItem.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\Items\SimpleSummaryRepositoryItem.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\DataProviders\SummaryRepositories\SummaryRepository.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\GroupInfoRepositories\GroupInfoManagers\GroupInfoManager.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\GroupInfoRepositories\GroupInfoRepository.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\GroupInfoRepositories\ListSourceGroupInfos\SimpleListSourceGroupInfo.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Helpers\SmartDataSourceExtensions.cs" />
+    <Compile Include="Classes\Controls\ControlExtensions.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Helpers\GroupDataItemExtensions.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Helpers\ServerModeSummaryDescriptorEqualityComparer.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Helpers\ServerModeSummaryDescriptorExtensions.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\Helpers\SummariesHelper.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\RowsRepositories\RowsRepository.cs" />
+    <Compile Include="Classes\Controls\IListServer\Implementation\SmartDataSource.cs" />
+    <Compile Include="Classes\Localization\LanguageContextProviders\CommonLanguageContextProvider.cs" />
+    <Compile Include="Classes\Localization\LocalizationManagerExtensions.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\Helpers\IPersistedStateContainerExtensions.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateContainers\Base\AbstractPersistedStateContainer.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateContainers\Base\BasePersistedStateContainer.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateContainers\Base\IPersistedStateContainer.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateContainers\HiddenFieldStateContainer.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateContainers\SessionStateContainer.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateManagers\ASPxEditStateManager.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateManagers\Base\BaseControlStateManager.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateManagers\Base\ControlsStateManager.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateManagers\Base\IControlStateManager.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateObjects\AbstractControlStateObject.cs" />
+    <Compile Include="Classes\Controls\PersistedStates\StateObjects\ASPxEditState.cs" />
+    <Compile Include="Classes\Resources\ResourceHelpers\ResourceNameExtensions.cs" />
+    <Compile Include="Classes\Resources\ResourceHelpers\ResourceHelper.cs" />
+    <Compile Include="Classes\Resources\ResourceHelpers\AssemblyResourceLoaderExtensions.cs" />
+    <Compile Include="Classes\Resources\ResourceHelpers\AssemblyResourceLoaderMethodsRepository.cs" />
+    <Compile Include="Classes\Routes\ASPxPageRoute\ASPxPageCustomRouteHandler.cs" />
+    <Compile Include="Classes\Routes\ASPxPageRoute\ASPxPageRouteExtensions.cs" />
+    <Compile Include="Classes\Routes\Extensions\RoutingExtensions.cs" />
+    <Compile Include="Classes\Routes\RouteKeys.cs" />
+    <Compile Include="Classes\Routes\Extensions\RouteValueDictionaryExtension.cs" />
+    <Compile Include="ResourceRepositories\WebAppCommonResources.cs" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxSmartListBox.js" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxClientUtils.js" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxSmartKbdHelper.js" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxControlsInfrastructure.js" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxFunctionsInfrastructure.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\aspx-extensions.js" />
+    <EmbeddedResource Include="Scripts\Externals\jquery-1.10.2.js" />
+    <EmbeddedResource Include="Scripts\Externals\jquery.doublescroll.js" />
+    <EmbeddedResource Include="Scripts\Externals\jquery.nicescroll.js" />
+    <EmbeddedResource Include="Scripts\Externals\jquery-extensions.js" />
+    <EmbeddedResource Include="Scripts\webapp-commons.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commons\Commons.csproj">
+      <Project>{8498b6f8-c44a-4840-be9e-fff18a2267f4}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NHibernateContext\NHibernateContext.csproj">
+      <Project>{773C7966-E125-4D86-848A-BA3EDA967460}</Project>
+      <Name>NHibernateContext</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Externals\jquery.mb.browser.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxExpandablePanel.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Styles\Controls\ASPx\ASPxExpandablePanel.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxSearchPanel.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Styles\Controls\ASPx\ASPxSearchPanel.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Styles\Controls\ASPx\ASPxSmartGridView.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxSmartGridView.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxSmartPopupEditForm.js" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxCollectionsInfrastructure.js" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxWindowHelper.js" />
+    <EmbeddedResource Include="Styles\Controls\ASPx\ASPxSmartDataView.css" />
+    <EmbeddedResource Include="Styles\Controls\ASPx\ASPxSimpleDataViewItem.css" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxSmartPageControl.js" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxSmartStaticDataViewControl.js" />
+    <EmbeddedResource Include="Styles\Controls\ASPx\ASPxSmartStaticDataViewControl.css" />
+    <EmbeddedResource Include="Scripts\Externals\jquery.xmlformat.js" />
+    <EmbeddedResource Include="Scripts\Controls\ASPx\ASPxSmartPopupControl.js" />
+    <Content Include="Styles\DIR_TO_REMOVE\ASPxCSS.css" />
+    <Content Include="Scripts\DIR_TO_REMOVE\ASPxJS.js" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
