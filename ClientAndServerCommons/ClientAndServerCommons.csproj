@@ -107,6 +107,9 @@
     <Compile Include="BaseFetchingHelper.cs" />
     <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="DataClasses\AbstractUser.cs" />
+    <Compile Include="DataClasses\ReflashHistory.cs" />
+    <Compile Include="DataClasses\ReflashRequest.cs" />
+    <Compile Include="DataClasses\Review.cs" />
     <Compile Include="EntityContext.cs" />
     <Compile Include="Helpers\ADOPropertyApplyExtensions.cs" />
     <Compile Include="Helpers\EntityContextHelper.cs" />
@@ -117,6 +120,9 @@
     <Compile Include="Interfaces\IHasEntityContext.cs" />
     <Compile Include="MapClasses\EntityContextMap.cs" />
     <Compile Include="DataClasses\User.cs" />
+    <Compile Include="MapClasses\ReflashHistoryMap.cs" />
+    <Compile Include="MapClasses\ReflashRequestMap.cs" />
+    <Compile Include="MapClasses\ReviewMap.cs" />
     <Compile Include="MapClasses\UsersMap.cs" />
     <Compile Include="Helpers\VtecTeamDBManager.cs" />
     <Compile Include="ICommand.cs" />

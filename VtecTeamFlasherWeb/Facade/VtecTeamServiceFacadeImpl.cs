@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using ClientAndServerCommons;
+using ClientAndServerCommons.DataClasses;
 using ClientAndServerCommons.Helpers;
 using Commons.Logging;
 using WebAreaCommons.Classes.Security.Authentication;
@@ -51,6 +52,37 @@ namespace VtecTeamFlasherWeb.Facade
         public void SignOut()
         {
             CustomFormsAuthentication.SignOut();
+        }
+
+        public string GetSoftvareVersion()
+        {
+            return "1.0";
+        }
+
+        public byte[] GetReflashFile(ReflashRequest relashRequest)
+        {
+            //Here I'll implement downloaing file from azure blob
+            throw new NotImplementedException();
+        }
+
+        public bool SendRequest(ReflashRequest relashRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ReflashHistory> GetReflashHistory(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ReflashHistory> GetAdminReflashHistory(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateReflashHistory(int historyId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using ClientAndServerCommons;
@@ -25,6 +26,36 @@ namespace VtecTeamFlasherWeb
         public void SignOut()
         {
             vtServiceFacade.SignOut();
+        }
+
+        public string GetSoftvareVersion()
+        {
+            throw new NotImplementedException();
+        }
+
+        public byte[] GetReflashFile(ReflashRequest relashRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SendRequest(ReflashRequest relashRequest)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ReflashHistory> GetReflashHistory(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ReflashHistory> GetAdminReflashHistory(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateReflashHistory(int historyId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
