@@ -49,7 +49,7 @@ namespace VtecTeamFlasher
         private StringBuilder sb = new StringBuilder(1024, 90000);
 
         private BinarySerializationHelper serializationHelper = new BinarySerializationHelper();
-        private string savedPassword;
+        private string savedPassword = "";
 
         public VTFlasher()
         {
@@ -61,12 +61,16 @@ namespace VtecTeamFlasher
         private void VTFlasher_Load(object sender, EventArgs e)
         {
 
-            savedPassword = FileHelper.ReadText(Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
-            if (!string.IsNullOrEmpty(savedPassword))
+            if (File.Exists(Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath)))
             {
-                txtPassword.Text = (string)serializationHelper.DeserializeObject(savedPassword);
-                checkBoxSavePassword.Checked = true;
+                savedPassword = FileHelper.ReadText(Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
+                if (!string.IsNullOrEmpty(savedPassword))
+                {
+                    txtPassword.Text = (string)serializationHelper.DeserializeObject(savedPassword);
+                    checkBoxSavePassword.Checked = true;
+                }
             }
+           
             
             var info = new ProcessStartInfo
             {
