@@ -13,6 +13,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using ClientAndServerCommons;
+using ClientAndServerCommons.DataClasses;
 using Commons.Helpers;
 using Commons.Serialization.Binary;
 using VtecTeamFlasher.Helpers;
@@ -376,6 +377,22 @@ namespace VtecTeamFlasher
         private void cbCarModel_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Choose module in PCM Flash
+        }
+
+        private void btnSendRequest_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEcuNumber.Text))
+                MessageBox.Show("Поле Номер ECU обязательно для заполнения");
+            var request = new ReflashRequest
+                              {
+                                  AdditionalMessage = txtAdditionalInfo.Text,
+                                  EcuCode = txtEcuNumber.Text,
+                                  UserId = 1,
+                                  RequestDateTime = DateTime.Now,
+                                  RequestStatus = 1,
+                              };
+            var service = WCFServiceFactory.CreateVtecTeamService();
+            service.SendRequest(request);
         }
     }
 }

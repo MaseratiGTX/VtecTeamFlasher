@@ -28,6 +28,10 @@ namespace ClientAndServerCommons.MapClasses
                 .Column("StockFile")
                 .Nullable();
 
+            Map(x => x.AdditionalMessage)
+                .Column("AdditionalMessage")
+                .Nullable();
+
             Map(x => x.EcuCode)
                 .Column("EcuCode")
                 .Length(255)

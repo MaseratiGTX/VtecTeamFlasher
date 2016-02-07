@@ -32,7 +32,7 @@ namespace ClientAndServerCommons.MapClasses
             Map(x => x.Vin)
                 .Column("Vin")
                 .Length(255)
-                .Nullable();
+                .Not.Nullable();
 
             Map(x => x.Cvn)
                 .Column("Cvn")

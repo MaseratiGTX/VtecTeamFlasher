@@ -61,18 +61,27 @@ namespace VtecTeamFlasher
             this.tabHistory = new System.Windows.Forms.TabPage();
             this.tabPerson = new System.Windows.Forms.TabPage();
             this.panelLogin = new System.Windows.Forms.Panel();
+            this.lblErrLogin = new System.Windows.Forms.Label();
             this.checkBoxSavePassword = new System.Windows.Forms.CheckBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblErrLogin = new System.Windows.Forms.Label();
+            this.lblEcuNumber = new System.Windows.Forms.Label();
+            this.lblAdditionalInfo = new System.Windows.Forms.Label();
+            this.lblStockFile = new System.Windows.Forms.Label();
+            this.txtEcuNumber = new System.Windows.Forms.TextBox();
+            this.txtAdditionalInfo = new System.Windows.Forms.TextBox();
+            this.txtStockFilePath = new System.Windows.Forms.TextBox();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.btnSendRequest = new System.Windows.Forms.Button();
             this.gbModule.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabReflash.SuspendLayout();
             this.panelKeyUnavailible.SuspendLayout();
+            this.tabRequest.SuspendLayout();
             this.panelLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -277,7 +286,7 @@ namespace VtecTeamFlasher
             this.tabControlMain.Controls.Add(this.tabRequest);
             this.tabControlMain.Controls.Add(this.tabHistory);
             this.tabControlMain.Controls.Add(this.tabPerson);
-            this.tabControlMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabControlMain.ItemSize = new System.Drawing.Size(90, 25);
             this.tabControlMain.Location = new System.Drawing.Point(12, 12);
             this.tabControlMain.Name = "tabControlMain";
@@ -374,6 +383,14 @@ namespace VtecTeamFlasher
             // 
             // tabRequest
             // 
+            this.tabRequest.Controls.Add(this.btnSendRequest);
+            this.tabRequest.Controls.Add(this.btnOpenFile);
+            this.tabRequest.Controls.Add(this.txtStockFilePath);
+            this.tabRequest.Controls.Add(this.txtAdditionalInfo);
+            this.tabRequest.Controls.Add(this.txtEcuNumber);
+            this.tabRequest.Controls.Add(this.lblStockFile);
+            this.tabRequest.Controls.Add(this.lblAdditionalInfo);
+            this.tabRequest.Controls.Add(this.lblEcuNumber);
             this.tabRequest.Location = new System.Drawing.Point(4, 29);
             this.tabRequest.Name = "tabRequest";
             this.tabRequest.Padding = new System.Windows.Forms.Padding(3);
@@ -413,6 +430,17 @@ namespace VtecTeamFlasher
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(647, 802);
             this.panelLogin.TabIndex = 8;
+            // 
+            // lblErrLogin
+            // 
+            this.lblErrLogin.AutoSize = true;
+            this.lblErrLogin.BackColor = System.Drawing.SystemColors.Control;
+            this.lblErrLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblErrLogin.ForeColor = System.Drawing.Color.Red;
+            this.lblErrLogin.Location = new System.Drawing.Point(165, 112);
+            this.lblErrLogin.Name = "lblErrLogin";
+            this.lblErrLogin.Size = new System.Drawing.Size(0, 17);
+            this.lblErrLogin.TabIndex = 6;
             // 
             // checkBoxSavePassword
             // 
@@ -467,16 +495,74 @@ namespace VtecTeamFlasher
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
             this.txtUsername.TabIndex = 0;
             // 
-            // lblErrLogin
+            // lblEcuNumber
             // 
-            this.lblErrLogin.AutoSize = true;
-            this.lblErrLogin.BackColor = System.Drawing.SystemColors.Control;
-            this.lblErrLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblErrLogin.ForeColor = System.Drawing.Color.Red;
-            this.lblErrLogin.Location = new System.Drawing.Point(165, 112);
-            this.lblErrLogin.Name = "lblErrLogin";
-            this.lblErrLogin.Size = new System.Drawing.Size(0, 17);
-            this.lblErrLogin.TabIndex = 6;
+            this.lblEcuNumber.AutoSize = true;
+            this.lblEcuNumber.Location = new System.Drawing.Point(60, 24);
+            this.lblEcuNumber.Name = "lblEcuNumber";
+            this.lblEcuNumber.Size = new System.Drawing.Size(82, 16);
+            this.lblEcuNumber.TabIndex = 0;
+            this.lblEcuNumber.Text = "Номер ECU";
+            // 
+            // lblAdditionalInfo
+            // 
+            this.lblAdditionalInfo.AutoSize = true;
+            this.lblAdditionalInfo.Location = new System.Drawing.Point(31, 55);
+            this.lblAdditionalInfo.Name = "lblAdditionalInfo";
+            this.lblAdditionalInfo.Size = new System.Drawing.Size(111, 16);
+            this.lblAdditionalInfo.TabIndex = 0;
+            this.lblAdditionalInfo.Text = "Дополнительно";
+            // 
+            // lblStockFile
+            // 
+            this.lblStockFile.AutoSize = true;
+            this.lblStockFile.Location = new System.Drawing.Point(31, 200);
+            this.lblStockFile.Name = "lblStockFile";
+            this.lblStockFile.Size = new System.Drawing.Size(110, 16);
+            this.lblStockFile.TabIndex = 0;
+            this.lblStockFile.Text = "Стоковый файл";
+            // 
+            // txtEcuNumber
+            // 
+            this.txtEcuNumber.Location = new System.Drawing.Point(148, 24);
+            this.txtEcuNumber.Name = "txtEcuNumber";
+            this.txtEcuNumber.Size = new System.Drawing.Size(177, 22);
+            this.txtEcuNumber.TabIndex = 1;
+            // 
+            // txtAdditionalInfo
+            // 
+            this.txtAdditionalInfo.Location = new System.Drawing.Point(148, 57);
+            this.txtAdditionalInfo.Multiline = true;
+            this.txtAdditionalInfo.Name = "txtAdditionalInfo";
+            this.txtAdditionalInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAdditionalInfo.Size = new System.Drawing.Size(444, 131);
+            this.txtAdditionalInfo.TabIndex = 1;
+            // 
+            // txtStockFilePath
+            // 
+            this.txtStockFilePath.Location = new System.Drawing.Point(148, 200);
+            this.txtStockFilePath.Name = "txtStockFilePath";
+            this.txtStockFilePath.Size = new System.Drawing.Size(357, 22);
+            this.txtStockFilePath.TabIndex = 1;
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(511, 200);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(81, 25);
+            this.btnOpenFile.TabIndex = 2;
+            this.btnOpenFile.Text = "Открыть";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            // 
+            // btnSendRequest
+            // 
+            this.btnSendRequest.Location = new System.Drawing.Point(388, 457);
+            this.btnSendRequest.Name = "btnSendRequest";
+            this.btnSendRequest.Size = new System.Drawing.Size(204, 29);
+            this.btnSendRequest.TabIndex = 3;
+            this.btnSendRequest.Text = "Отправить запрос";
+            this.btnSendRequest.UseVisualStyleBackColor = true;
+            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
             // 
             // VTFlasher
             // 
@@ -502,6 +588,8 @@ namespace VtecTeamFlasher
             this.tabReflash.PerformLayout();
             this.panelKeyUnavailible.ResumeLayout(false);
             this.panelKeyUnavailible.PerformLayout();
+            this.tabRequest.ResumeLayout(false);
+            this.tabRequest.PerformLayout();
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             this.ResumeLayout(false);
@@ -550,6 +638,14 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Label labelKeyUnavailible;
         private System.Windows.Forms.Button btnReloadFlasher;
         private System.Windows.Forms.Label lblErrLogin;
+        private System.Windows.Forms.Label lblEcuNumber;
+        private System.Windows.Forms.Label lblStockFile;
+        private System.Windows.Forms.Label lblAdditionalInfo;
+        private System.Windows.Forms.TextBox txtStockFilePath;
+        private System.Windows.Forms.TextBox txtAdditionalInfo;
+        private System.Windows.Forms.TextBox txtEcuNumber;
+        private System.Windows.Forms.Button btnOpenFile;
+        private System.Windows.Forms.Button btnSendRequest;
     }
 }
 

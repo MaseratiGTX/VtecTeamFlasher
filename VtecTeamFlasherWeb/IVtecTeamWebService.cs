@@ -21,7 +21,7 @@ namespace VtecTeamFlasherWeb
         [OperationContract]
         string GetSoftvareVersion();
         [OperationContract]
-        byte[] GetReflashFile(ReflashRequest relashRequest);
+        byte[] GetReflashFile(ReflashRequest reflashRequest);
         [OperationContract]
         bool SendRequest(ReflashRequest relashRequest);
         [OperationContract]

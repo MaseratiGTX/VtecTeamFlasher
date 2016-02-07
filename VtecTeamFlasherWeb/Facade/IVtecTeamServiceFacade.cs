@@ -12,8 +12,8 @@ namespace VtecTeamFlasherWeb.Facade
         AuthInfoResult Authenticate(string login, string passwordHash);
         void SignOut();
         string GetSoftvareVersion();
-        byte[] GetReflashFile(ReflashRequest relashRequest);
-        bool SendRequest(ReflashRequest relashRequest);
+        byte[] GetReflashFile(ReflashRequest reflashRequest);
+        bool SendRequest(ReflashRequest reflashRequest);
         List<ReflashHistory> GetReflashHistory(int userId);
         List<ReflashHistory> GetAdminReflashHistory(int userId);
         void UpdateReflashHistory(int historyId);

@@ -33,14 +33,14 @@ namespace VtecTeamFlasherWeb
             throw new NotImplementedException();
         }
 
-        public byte[] GetReflashFile(ReflashRequest relashRequest)
+        public byte[] GetReflashFile(ReflashRequest reflashRequest)
         {
             throw new NotImplementedException();
         }
 
-        public bool SendRequest(ReflashRequest relashRequest)
+        public bool SendRequest(ReflashRequest reflashRequest)
         {
-            throw new NotImplementedException();
+            return vtServiceFacade.SendRequest(reflashRequest);
         }
 
         public List<ReflashHistory> GetReflashHistory(int userId)

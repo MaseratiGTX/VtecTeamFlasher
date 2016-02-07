@@ -59,15 +59,15 @@ namespace VtecTeamFlasherWeb.Facade
             return "1.0";
         }
 
-        public byte[] GetReflashFile(ReflashRequest relashRequest)
+        public byte[] GetReflashFile(ReflashRequest reflashRequest)
         {
             //Here I'll implement downloaing file from azure blob
             throw new NotImplementedException();
         }
 
-        public bool SendRequest(ReflashRequest relashRequest)
+        public bool SendRequest(ReflashRequest reflashRequest)
         {
-            throw new NotImplementedException();
+            return new VtecTeamDBManager().SaveRequest(reflashRequest);
         }
 
         public List<ReflashHistory> GetReflashHistory(int userId)

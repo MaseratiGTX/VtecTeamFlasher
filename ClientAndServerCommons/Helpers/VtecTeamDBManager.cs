@@ -26,6 +26,14 @@ namespace ClientAndServerCommons.Helpers
                     .FirstOrDefault();
             return user;
         }
+
+        public bool SaveRequest(ReflashRequest request)
+        {
+            adoPersister.Save(request);
+            
+            
+            return true;
+        }
        
     }
 }

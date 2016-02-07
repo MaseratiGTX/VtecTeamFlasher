@@ -18,5 +18,7 @@ namespace ClientAndServerCommons.DataClasses
         public virtual int UserId { get; set; }
         [DataMember]
         public virtual DateTime RequestDateTime { get; set; }
+        [DataMember]
+        public virtual string AdditionalMessage { get; set; }
     }
 }

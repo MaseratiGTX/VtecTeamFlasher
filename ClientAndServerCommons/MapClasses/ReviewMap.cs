@@ -27,7 +27,7 @@ namespace ClientAndServerCommons.MapClasses
             Map(x => x.UserName)
                 .Column("UserName")
                 .Length(255)
-                .Not.Nullable();
+                .Nullable();
 
             Map(x => x.SourceUrl)
                 .Column("SourceUrl")
