@@ -29,6 +29,7 @@ namespace VtecTeamFlasher
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSettings = new System.Windows.Forms.Button();
             this.cbAdapter = new System.Windows.Forms.ComboBox();
             this.btnExit = new System.Windows.Forms.Button();
@@ -58,6 +59,14 @@ namespace VtecTeamFlasher
             this.labelKeyUnavailible = new System.Windows.Forms.Label();
             this.btnReloadFlasher = new System.Windows.Forms.Button();
             this.tabRequest = new System.Windows.Forms.TabPage();
+            this.btnSendRequest = new System.Windows.Forms.Button();
+            this.btnOpenFile = new System.Windows.Forms.Button();
+            this.txtStockFilePath = new System.Windows.Forms.TextBox();
+            this.txtAdditionalInfo = new System.Windows.Forms.TextBox();
+            this.txtEcuNumber = new System.Windows.Forms.TextBox();
+            this.lblStockFile = new System.Windows.Forms.Label();
+            this.lblAdditionalInfo = new System.Windows.Forms.Label();
+            this.lblEcuNumber = new System.Windows.Forms.Label();
             this.tabHistory = new System.Windows.Forms.TabPage();
             this.tabPerson = new System.Windows.Forms.TabPage();
             this.panelLogin = new System.Windows.Forms.Panel();
@@ -68,21 +77,35 @@ namespace VtecTeamFlasher
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblEcuNumber = new System.Windows.Forms.Label();
-            this.lblAdditionalInfo = new System.Windows.Forms.Label();
-            this.lblStockFile = new System.Windows.Forms.Label();
-            this.txtEcuNumber = new System.Windows.Forms.TextBox();
-            this.txtAdditionalInfo = new System.Windows.Forms.TextBox();
-            this.txtStockFilePath = new System.Windows.Forms.TextBox();
-            this.btnOpenFile = new System.Windows.Forms.Button();
-            this.btnSendRequest = new System.Windows.Forms.Button();
+            this.dgRequests = new System.Windows.Forms.DataGridView();
+            this.btnRefreshRequests = new System.Windows.Forms.Button();
+            this.EcuCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgReflashHistory = new System.Windows.Forms.DataGridView();
+            this.btnRefreshHistory = new System.Windows.Forms.Button();
+            this.requestStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.additionalMessageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashRequestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cvnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reslashFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gbModule.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabReflash.SuspendLayout();
             this.panelKeyUnavailible.SuspendLayout();
             this.tabRequest.SuspendLayout();
+            this.tabHistory.SuspendLayout();
             this.panelLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRequests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgReflashHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reflashRequestBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reflashHistoryBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSettings
@@ -383,6 +406,8 @@ namespace VtecTeamFlasher
             // 
             // tabRequest
             // 
+            this.tabRequest.Controls.Add(this.btnRefreshRequests);
+            this.tabRequest.Controls.Add(this.dgRequests);
             this.tabRequest.Controls.Add(this.btnSendRequest);
             this.tabRequest.Controls.Add(this.btnOpenFile);
             this.tabRequest.Controls.Add(this.txtStockFilePath);
@@ -399,14 +424,87 @@ namespace VtecTeamFlasher
             this.tabRequest.Text = "Запросы";
             this.tabRequest.UseVisualStyleBackColor = true;
             // 
+            // btnSendRequest
+            // 
+            this.btnSendRequest.Location = new System.Drawing.Point(388, 252);
+            this.btnSendRequest.Name = "btnSendRequest";
+            this.btnSendRequest.Size = new System.Drawing.Size(204, 29);
+            this.btnSendRequest.TabIndex = 3;
+            this.btnSendRequest.Text = "Отправить запрос";
+            this.btnSendRequest.UseVisualStyleBackColor = true;
+            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.Location = new System.Drawing.Point(511, 200);
+            this.btnOpenFile.Name = "btnOpenFile";
+            this.btnOpenFile.Size = new System.Drawing.Size(81, 25);
+            this.btnOpenFile.TabIndex = 2;
+            this.btnOpenFile.Text = "Открыть";
+            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
+            // 
+            // txtStockFilePath
+            // 
+            this.txtStockFilePath.Location = new System.Drawing.Point(148, 200);
+            this.txtStockFilePath.Name = "txtStockFilePath";
+            this.txtStockFilePath.Size = new System.Drawing.Size(357, 22);
+            this.txtStockFilePath.TabIndex = 1;
+            // 
+            // txtAdditionalInfo
+            // 
+            this.txtAdditionalInfo.Location = new System.Drawing.Point(148, 57);
+            this.txtAdditionalInfo.Multiline = true;
+            this.txtAdditionalInfo.Name = "txtAdditionalInfo";
+            this.txtAdditionalInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAdditionalInfo.Size = new System.Drawing.Size(444, 131);
+            this.txtAdditionalInfo.TabIndex = 1;
+            // 
+            // txtEcuNumber
+            // 
+            this.txtEcuNumber.Location = new System.Drawing.Point(148, 24);
+            this.txtEcuNumber.Name = "txtEcuNumber";
+            this.txtEcuNumber.Size = new System.Drawing.Size(177, 22);
+            this.txtEcuNumber.TabIndex = 1;
+            // 
+            // lblStockFile
+            // 
+            this.lblStockFile.AutoSize = true;
+            this.lblStockFile.Location = new System.Drawing.Point(31, 200);
+            this.lblStockFile.Name = "lblStockFile";
+            this.lblStockFile.Size = new System.Drawing.Size(110, 16);
+            this.lblStockFile.TabIndex = 0;
+            this.lblStockFile.Text = "Стоковый файл";
+            // 
+            // lblAdditionalInfo
+            // 
+            this.lblAdditionalInfo.AutoSize = true;
+            this.lblAdditionalInfo.Location = new System.Drawing.Point(31, 55);
+            this.lblAdditionalInfo.Name = "lblAdditionalInfo";
+            this.lblAdditionalInfo.Size = new System.Drawing.Size(111, 16);
+            this.lblAdditionalInfo.TabIndex = 0;
+            this.lblAdditionalInfo.Text = "Дополнительно";
+            // 
+            // lblEcuNumber
+            // 
+            this.lblEcuNumber.AutoSize = true;
+            this.lblEcuNumber.Location = new System.Drawing.Point(60, 24);
+            this.lblEcuNumber.Name = "lblEcuNumber";
+            this.lblEcuNumber.Size = new System.Drawing.Size(82, 16);
+            this.lblEcuNumber.TabIndex = 0;
+            this.lblEcuNumber.Text = "Номер ECU";
+            // 
             // tabHistory
             // 
+            this.tabHistory.Controls.Add(this.btnRefreshHistory);
+            this.tabHistory.Controls.Add(this.dgReflashHistory);
             this.tabHistory.Location = new System.Drawing.Point(4, 29);
             this.tabHistory.Name = "tabHistory";
             this.tabHistory.Size = new System.Drawing.Size(607, 504);
             this.tabHistory.TabIndex = 2;
             this.tabHistory.Text = "История";
             this.tabHistory.UseVisualStyleBackColor = true;
+            this.tabHistory.Click += new System.EventHandler(this.tabHistory_Click);
             // 
             // tabPerson
             // 
@@ -495,74 +593,132 @@ namespace VtecTeamFlasher
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
             this.txtUsername.TabIndex = 0;
             // 
-            // lblEcuNumber
+            // dgRequests
             // 
-            this.lblEcuNumber.AutoSize = true;
-            this.lblEcuNumber.Location = new System.Drawing.Point(60, 24);
-            this.lblEcuNumber.Name = "lblEcuNumber";
-            this.lblEcuNumber.Size = new System.Drawing.Size(82, 16);
-            this.lblEcuNumber.TabIndex = 0;
-            this.lblEcuNumber.Text = "Номер ECU";
+            this.dgRequests.AutoGenerateColumns = false;
+            this.dgRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRequests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EcuCode,
+            this.requestStatusDataGridViewTextBoxColumn,
+            this.requestDateTimeDataGridViewTextBoxColumn,
+            this.additionalMessageDataGridViewTextBoxColumn,
+            this.stockFileNameDataGridViewTextBoxColumn});
+            this.dgRequests.DataSource = this.reflashRequestBindingSource;
+            this.dgRequests.Location = new System.Drawing.Point(6, 287);
+            this.dgRequests.Name = "dgRequests";
+            this.dgRequests.Size = new System.Drawing.Size(595, 181);
+            this.dgRequests.TabIndex = 4;
             // 
-            // lblAdditionalInfo
+            // btnRefreshRequests
             // 
-            this.lblAdditionalInfo.AutoSize = true;
-            this.lblAdditionalInfo.Location = new System.Drawing.Point(31, 55);
-            this.lblAdditionalInfo.Name = "lblAdditionalInfo";
-            this.lblAdditionalInfo.Size = new System.Drawing.Size(111, 16);
-            this.lblAdditionalInfo.TabIndex = 0;
-            this.lblAdditionalInfo.Text = "Дополнительно";
+            this.btnRefreshRequests.Location = new System.Drawing.Point(357, 475);
+            this.btnRefreshRequests.Name = "btnRefreshRequests";
+            this.btnRefreshRequests.Size = new System.Drawing.Size(235, 23);
+            this.btnRefreshRequests.TabIndex = 5;
+            this.btnRefreshRequests.Text = "Получить\\Обновить данные";
+            this.btnRefreshRequests.UseVisualStyleBackColor = true;
+            this.btnRefreshRequests.Click += new System.EventHandler(this.btnRefreshRequests_Click);
             // 
-            // lblStockFile
+            // EcuCode
             // 
-            this.lblStockFile.AutoSize = true;
-            this.lblStockFile.Location = new System.Drawing.Point(31, 200);
-            this.lblStockFile.Name = "lblStockFile";
-            this.lblStockFile.Size = new System.Drawing.Size(110, 16);
-            this.lblStockFile.TabIndex = 0;
-            this.lblStockFile.Text = "Стоковый файл";
+            this.EcuCode.DataPropertyName = "EcuCode";
+            this.EcuCode.HeaderText = "Номер компьютера";
+            this.EcuCode.Name = "EcuCode";
             // 
-            // txtEcuNumber
+            // dgReflashHistory
             // 
-            this.txtEcuNumber.Location = new System.Drawing.Point(148, 24);
-            this.txtEcuNumber.Name = "txtEcuNumber";
-            this.txtEcuNumber.Size = new System.Drawing.Size(177, 22);
-            this.txtEcuNumber.TabIndex = 1;
+            this.dgReflashHistory.AutoGenerateColumns = false;
+            this.dgReflashHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgReflashHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cvnDataGridViewTextBoxColumn,
+            this.reslashFileNameDataGridViewTextBoxColumn,
+            this.vinDataGridViewTextBoxColumn,
+            this.reflashDateTimeDataGridViewTextBoxColumn,
+            this.reflashStatusDataGridViewTextBoxColumn,
+            this.paymentStatusDataGridViewTextBoxColumn});
+            this.dgReflashHistory.DataSource = this.reflashHistoryBindingSource;
+            this.dgReflashHistory.Location = new System.Drawing.Point(3, 20);
+            this.dgReflashHistory.Name = "dgReflashHistory";
+            this.dgReflashHistory.Size = new System.Drawing.Size(601, 447);
+            this.dgReflashHistory.TabIndex = 0;
             // 
-            // txtAdditionalInfo
+            // btnRefreshHistory
             // 
-            this.txtAdditionalInfo.Location = new System.Drawing.Point(148, 57);
-            this.txtAdditionalInfo.Multiline = true;
-            this.txtAdditionalInfo.Name = "txtAdditionalInfo";
-            this.txtAdditionalInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAdditionalInfo.Size = new System.Drawing.Size(444, 131);
-            this.txtAdditionalInfo.TabIndex = 1;
+            this.btnRefreshHistory.Location = new System.Drawing.Point(406, 473);
+            this.btnRefreshHistory.Name = "btnRefreshHistory";
+            this.btnRefreshHistory.Size = new System.Drawing.Size(198, 28);
+            this.btnRefreshHistory.TabIndex = 1;
+            this.btnRefreshHistory.Text = "Обновить";
+            this.btnRefreshHistory.UseVisualStyleBackColor = true;
+            this.btnRefreshHistory.Click += new System.EventHandler(this.btnRefreshHistory_Click);
             // 
-            // txtStockFilePath
+            // requestStatusDataGridViewTextBoxColumn
             // 
-            this.txtStockFilePath.Location = new System.Drawing.Point(148, 200);
-            this.txtStockFilePath.Name = "txtStockFilePath";
-            this.txtStockFilePath.Size = new System.Drawing.Size(357, 22);
-            this.txtStockFilePath.TabIndex = 1;
+            this.requestStatusDataGridViewTextBoxColumn.DataPropertyName = "RequestStatus";
+            this.requestStatusDataGridViewTextBoxColumn.HeaderText = "Статус запроса";
+            this.requestStatusDataGridViewTextBoxColumn.Name = "requestStatusDataGridViewTextBoxColumn";
             // 
-            // btnOpenFile
+            // requestDateTimeDataGridViewTextBoxColumn
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(511, 200);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(81, 25);
-            this.btnOpenFile.TabIndex = 2;
-            this.btnOpenFile.Text = "Открыть";
-            this.btnOpenFile.UseVisualStyleBackColor = true;
+            this.requestDateTimeDataGridViewTextBoxColumn.DataPropertyName = "RequestDateTime";
+            this.requestDateTimeDataGridViewTextBoxColumn.HeaderText = "Дата запроса";
+            this.requestDateTimeDataGridViewTextBoxColumn.Name = "requestDateTimeDataGridViewTextBoxColumn";
             // 
-            // btnSendRequest
+            // additionalMessageDataGridViewTextBoxColumn
             // 
-            this.btnSendRequest.Location = new System.Drawing.Point(388, 457);
-            this.btnSendRequest.Name = "btnSendRequest";
-            this.btnSendRequest.Size = new System.Drawing.Size(204, 29);
-            this.btnSendRequest.TabIndex = 3;
-            this.btnSendRequest.Text = "Отправить запрос";
-            this.btnSendRequest.UseVisualStyleBackColor = true;
-            this.btnSendRequest.Click += new System.EventHandler(this.btnSendRequest_Click);
+            this.additionalMessageDataGridViewTextBoxColumn.DataPropertyName = "AdditionalMessage";
+            this.additionalMessageDataGridViewTextBoxColumn.HeaderText = "Дополнительно";
+            this.additionalMessageDataGridViewTextBoxColumn.Name = "additionalMessageDataGridViewTextBoxColumn";
+            // 
+            // stockFileNameDataGridViewTextBoxColumn
+            // 
+            this.stockFileNameDataGridViewTextBoxColumn.DataPropertyName = "StockFileName";
+            this.stockFileNameDataGridViewTextBoxColumn.HeaderText = "Имя сток файла";
+            this.stockFileNameDataGridViewTextBoxColumn.Name = "stockFileNameDataGridViewTextBoxColumn";
+            // 
+            // reflashRequestBindingSource
+            // 
+            this.reflashRequestBindingSource.DataSource = typeof(ClientAndServerCommons.DataClasses.ReflashRequest);
+            // 
+            // cvnDataGridViewTextBoxColumn
+            // 
+            this.cvnDataGridViewTextBoxColumn.DataPropertyName = "Cvn";
+            this.cvnDataGridViewTextBoxColumn.HeaderText = "Cvn";
+            this.cvnDataGridViewTextBoxColumn.Name = "cvnDataGridViewTextBoxColumn";
+            // 
+            // reslashFileNameDataGridViewTextBoxColumn
+            // 
+            this.reslashFileNameDataGridViewTextBoxColumn.DataPropertyName = "ReslashFileName";
+            this.reslashFileNameDataGridViewTextBoxColumn.HeaderText = "Имя рефлеш файла";
+            this.reslashFileNameDataGridViewTextBoxColumn.Name = "reslashFileNameDataGridViewTextBoxColumn";
+            // 
+            // vinDataGridViewTextBoxColumn
+            // 
+            this.vinDataGridViewTextBoxColumn.DataPropertyName = "Vin";
+            this.vinDataGridViewTextBoxColumn.HeaderText = "Vin";
+            this.vinDataGridViewTextBoxColumn.Name = "vinDataGridViewTextBoxColumn";
+            // 
+            // reflashDateTimeDataGridViewTextBoxColumn
+            // 
+            this.reflashDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ReflashDateTime";
+            this.reflashDateTimeDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.reflashDateTimeDataGridViewTextBoxColumn.Name = "reflashDateTimeDataGridViewTextBoxColumn";
+            // 
+            // reflashStatusDataGridViewTextBoxColumn
+            // 
+            this.reflashStatusDataGridViewTextBoxColumn.DataPropertyName = "ReflashStatus";
+            this.reflashStatusDataGridViewTextBoxColumn.HeaderText = "Статус прошивки";
+            this.reflashStatusDataGridViewTextBoxColumn.Name = "reflashStatusDataGridViewTextBoxColumn";
+            // 
+            // paymentStatusDataGridViewTextBoxColumn
+            // 
+            this.paymentStatusDataGridViewTextBoxColumn.DataPropertyName = "PaymentStatus";
+            this.paymentStatusDataGridViewTextBoxColumn.HeaderText = "Статус платежа";
+            this.paymentStatusDataGridViewTextBoxColumn.Name = "paymentStatusDataGridViewTextBoxColumn";
+            // 
+            // reflashHistoryBindingSource
+            // 
+            this.reflashHistoryBindingSource.DataSource = typeof(ClientAndServerCommons.DataClasses.ReflashHistory);
             // 
             // VTFlasher
             // 
@@ -590,8 +746,13 @@ namespace VtecTeamFlasher
             this.panelKeyUnavailible.PerformLayout();
             this.tabRequest.ResumeLayout(false);
             this.tabRequest.PerformLayout();
+            this.tabHistory.ResumeLayout(false);
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRequests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgReflashHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reflashRequestBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reflashHistoryBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,6 +807,23 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.TextBox txtEcuNumber;
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.Button btnSendRequest;
+        private System.Windows.Forms.DataGridView dgRequests;
+        private System.Windows.Forms.Button btnRefreshRequests;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EcuCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn requestStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn requestDateTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn additionalMessageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockFileNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource reflashRequestBindingSource;
+        private System.Windows.Forms.Button btnRefreshHistory;
+        private System.Windows.Forms.DataGridView dgReflashHistory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cvnDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reslashFileNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vinDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reflashDateTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reflashStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource reflashHistoryBindingSource;
     }
 }
 

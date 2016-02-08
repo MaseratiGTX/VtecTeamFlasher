@@ -72,7 +72,7 @@ namespace VtecTeamFlasherWeb.Facade
 
         public List<ReflashHistory> GetReflashHistory(int userId)
         {
-            throw new NotImplementedException();
+            return new VtecTeamDBManager().GetReflashHistory(userId);
         }
 
         public List<ReflashHistory> GetAdminReflashHistory(int userId)
@@ -83,6 +83,11 @@ namespace VtecTeamFlasherWeb.Facade
         public void UpdateReflashHistory(int historyId)
         {
             throw new NotImplementedException();
+        }
+
+        public List<ReflashRequest> GetReflashRequests(int userId)
+        {
+            return new VtecTeamDBManager().GetReflashRequests(userId);
         }
     }
 }

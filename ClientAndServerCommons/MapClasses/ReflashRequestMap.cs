@@ -26,10 +26,15 @@ namespace ClientAndServerCommons.MapClasses
 
             Map(x => x.StockFile)
                 .Column("StockFile")
+                .MapVarbinaryMax()
                 .Nullable();
 
             Map(x => x.AdditionalMessage)
                 .Column("AdditionalMessage")
+                .Nullable();
+            
+            Map(x => x.StockFileName)
+                .Column("StockFileName")
                 .Nullable();
 
             Map(x => x.EcuCode)

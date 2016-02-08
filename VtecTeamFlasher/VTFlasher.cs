@@ -336,6 +336,8 @@ namespace VtecTeamFlasher
             {
                 if (checkBoxSavePassword.Checked && string.IsNullOrEmpty(savedPassword))
                     FileHelper.SaveText(serializationHelper.SerializeObject(txtPassword.Text),Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
+
+                Session.CurrentUser = result.User;
                 panelLogin.Dispose();
             }
             else
@@ -387,12 +389,43 @@ namespace VtecTeamFlasher
                               {
                                   AdditionalMessage = txtAdditionalInfo.Text,
                                   EcuCode = txtEcuNumber.Text,
-                                  UserId = 1,
+                                  UserId = Session.CurrentUser.Id,
                                   RequestDateTime = DateTime.Now,
-                                  RequestStatus = 1,
+                                  RequestStatus = (int)RequestStatuses.New,
                               };
+
+            if (!string.IsNullOrEmpty(txtStockFilePath.Text))
+            {
+                request.StockFile = File.ReadAllBytes(txtStockFilePath.Text);
+                request.StockFileName = Path.GetFileName(txtStockFilePath.Text);
+            }
+
             var service = WCFServiceFactory.CreateVtecTeamService();
-            service.SendRequest(request);
+            MessageBox.Show(service.SendRequest(request) ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
+        }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog { Filter = "Файлы прошивки|*.bin|Все файлы|*.*" };
+
+            if (fileDialog.ShowDialog() != DialogResult.OK)
+                return;
+            txtStockFilePath.Text = fileDialog.FileName;
+        }
+
+        private void btnRefreshRequests_Click(object sender, EventArgs e)
+        {
+            dgRequests.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
+        }
+
+        private void btnRefreshHistory_Click(object sender, EventArgs e)
+        {
+            dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
+        }
+
+        private void tabHistory_Click(object sender, EventArgs e)
+        {
+            dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
         }
     }
 }

@@ -1,12 +1,7 @@
-/****** Object:  Table [dbo].[Users]    Script Date: 02/03/2016 13:21:48 ******/
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Users]') AND type in (N'U'))
 DROP TABLE [dbo].[Users]
 GO
 
-USE [VtecTeamFlasher]
-GO
-
-/****** Object:  Table [dbo].[Users]    Script Date: 02/03/2016 13:21:48 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -117,6 +112,7 @@ CREATE TABLE [dbo].[Requests](
 	[UserId] [int] NOT NULL,
 	[RequestDateTime] [datetime] NOT NULL,
 	[AdditionalMessage] [nvarchar](255) NULL,
+	[StockFileName] [nvarchar](255) NULL,
  CONSTRAINT [PK_Requests] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

@@ -131,9 +131,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RequestStatuses.cs" />
     <Compile Include="ThreadFactory.cs" />
     <Compile Include="Validators\AuthorizationUserValidator.cs" />
+    <Compile Include="Validators\ReflashHistoryValidator.cs" />
+    <Compile Include="Validators\ReflashRequestValidator.cs" />
+    <Compile Include="Validators\ReviewValidator.cs" />
     <Compile Include="Validators\Users\UserValidator.cs" />
+    <Compile Include="Validators\UserValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

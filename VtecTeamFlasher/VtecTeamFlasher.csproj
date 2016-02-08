@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ControlExtension.cs" />
     <Compile Include="Helpers\FilePathProvider.cs" />
+    <Compile Include="Helpers\Session.cs" />
     <Compile Include="Helpers\WCFServiceFactory.cs" />
     <Compile Include="Service References\VtecTeamService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -78,6 +79,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\DataSources\ClientAndServerCommons.AuthInfoResult.datasource" />
+    <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.ReflashHistory.datasource" />
+    <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.ReflashRequest.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

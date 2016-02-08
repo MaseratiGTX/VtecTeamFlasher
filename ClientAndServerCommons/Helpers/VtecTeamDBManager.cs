@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using ClientAndServerCommons.DataClasses;
 using Commons.Logging;
@@ -29,10 +30,27 @@ namespace ClientAndServerCommons.Helpers
 
         public bool SaveRequest(ReflashRequest request)
         {
-            adoPersister.Save(request);
-            
-            
-            return true;
+            try
+            {
+                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(request)));
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("При сохранении сущности ReflashRequest произошла ошибка {0}",ex);
+                return false;
+            }
+        }
+
+        public List<ReflashRequest> GetReflashRequests(int userId)
+        {
+           return adoRepository.Entities<ReflashRequest>().ThatHas(x => x.UserId == userId).ToList();
+        }
+
+        public List<ReflashHistory> GetReflashHistory(int userId)
+        {
+            return adoRepository.Entities<ReflashHistory>().ThatHas(x => x.UserId == userId).ToList();
         }
        
     }

@@ -30,6 +30,8 @@ namespace VtecTeamFlasherWeb
         List<ReflashHistory> GetAdminReflashHistory(int userId);
         [OperationContract]
         void UpdateReflashHistory(int historyId);
+        [OperationContract]
+        List<ReflashRequest> GetReflashRequests(int userId);
 
     }
 }
