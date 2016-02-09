@@ -17,6 +17,7 @@ namespace NHibernateContext.ConnectionData
                 .AddMemberMapping("Password", x => x.Password)
                 .AddMemberMapping("Type System Version", x => x.TypeSystemVersion)
                 .AddMemberMapping("Connection Timeout", x => x.ConnectionTimeout)
+                .AddMemberMapping("Connect Timeout", x => x.ConnectTimeout)
                 .AddMemberMapping("Command Timeout", x => x.CommandTimeout)
                 .AddMemberMapping("Application Name", x => x.ApplicationName)
                 .AddMemberMapping("ApplicationIntent", x => x.ApplicationIntent)

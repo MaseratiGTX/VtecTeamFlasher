@@ -7,6 +7,7 @@
 
         //NATIVE PARAMETERS
         public string ConnectionTimeout { get; set; }
+        public string ConnectTimeout { get; set; }
         public string DataSource { get; set; }
         public string InitialCatalog { get; set; }
         public string Password { get; set; }
