@@ -32,6 +32,20 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <PublishDatabases>true</PublishDatabases>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="NewConnection1-Deployment" Order="1">
+          <Destination Path="Data Source=tcp:sqlvtec.database.windows.net,1433%3bInitial Catalog=VtecTeamFlasher%3bUser ID=vtecteam%40sqlvtec%3bPassword=1234!%40QW%3bConnect Timeout=30%3bEncrypt=True%3bTrustServerCertificate=False" />
+          <Object Type="DbFullSql" Enabled="False">
+            <PreSource Path="Data Source=.%3bInitial Catalog=VtecTeamFlasher%3bUser ID=sa%3bPassword=Njhyflj0027" ScriptSchema="False" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\NewConnection1-Deployment_DataOnly.sql" Transacted="True" />
+          </Object>
+          <Object Type="DbFullSql" xmlns="">
+            <Source Path="..\SQL Scripts\CreateAndFillTables.sql" Transacted="False" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -144,6 +158,7 @@
     <Content Include="Scripts\area-specific-functions.js" />
     <Content Include="Scripts\crypto-core.js" />
     <Content Include="Site.Master" />
+    <None Include="Properties\PublishProfiles\vtecteam - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

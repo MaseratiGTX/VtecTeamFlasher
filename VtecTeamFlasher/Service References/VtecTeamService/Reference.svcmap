@@ -19,15 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/VtecTeamFlasherWeb/VtecTeamWebService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="VtecTeamWebService.xsd" MetadataType="Schema" ID="4122a7e2-8df9-49bc-b2e8-24451f7bbf52" SourceId="1" SourceUrl="http://localhost/VtecTeamFlasherWeb/VtecTeamWebService.svc?xsd=xsd3" />
-    <MetadataFile FileName="VtecTeamWebService.disco" MetadataType="Disco" ID="810f9fdc-5c77-454c-ad90-89210db69f96" SourceId="1" SourceUrl="http://localhost/VtecTeamFlasherWeb/VtecTeamWebService.svc?disco" />
-    <MetadataFile FileName="VtecTeamWebService1.xsd" MetadataType="Schema" ID="e6e7d658-00f3-4ae1-89c1-961325a0afc4" SourceId="1" SourceUrl="http://localhost/VtecTeamFlasherWeb/VtecTeamWebService.svc?xsd=xsd0" />
-    <MetadataFile FileName="VtecTeamWebService2.xsd" MetadataType="Schema" ID="fd7ee971-f349-4dad-9e2f-20b7b193a109" SourceId="1" SourceUrl="http://localhost/VtecTeamFlasherWeb/VtecTeamWebService.svc?xsd=xsd1" />
-    <MetadataFile FileName="VtecTeamWebService.wsdl" MetadataType="Wsdl" ID="e7350ee3-fc4d-4af0-8eae-d4b50f197d5d" SourceId="1" SourceUrl="http://localhost/VtecTeamFlasherWeb/VtecTeamWebService.svc?wsdl" />
-    <MetadataFile FileName="VtecTeamWebService3.xsd" MetadataType="Schema" ID="c77e5c2a-7122-423c-99d4-88f557285ffb" SourceId="1" SourceUrl="http://localhost/VtecTeamFlasherWeb/VtecTeamWebService.svc?xsd=xsd2" />
+    <MetadataFile FileName="VtecTeamWebService1.wsdl" MetadataType="Wsdl" ID="6a2b0c78-98a1-42bb-a064-ab6f153dfc6f" SourceId="1" SourceUrl="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?wsdl" />
+    <MetadataFile FileName="VtecTeamWebService4.xsd" MetadataType="Schema" ID="55614853-8d16-41f1-b1c1-e90bd30b0d71" SourceId="1" SourceUrl="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?xsd=xsd1" />
+    <MetadataFile FileName="VtecTeamWebService41.xsd" MetadataType="Schema" ID="b8e4acbc-2f82-450a-88f3-9202978d6a8f" SourceId="1" SourceUrl="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?xsd=xsd0" />
+    <MetadataFile FileName="VtecTeamWebService1.disco" MetadataType="Disco" ID="d9c6cc30-7ca1-4435-96f6-ce6884d75958" SourceId="1" SourceUrl="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?disco" />
+    <MetadataFile FileName="VtecTeamWebService42.xsd" MetadataType="Schema" ID="d948a94f-228f-4fbb-8cbd-08ac1378584f" SourceId="1" SourceUrl="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?xsd=xsd2" />
+    <MetadataFile FileName="VtecTeamWebService43.xsd" MetadataType="Schema" ID="d710f05c-a339-4f0a-a967-fe8a25cb3e3e" SourceId="1" SourceUrl="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?xsd=xsd3" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

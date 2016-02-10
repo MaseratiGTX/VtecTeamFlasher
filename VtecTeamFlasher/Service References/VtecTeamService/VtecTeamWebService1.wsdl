@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="VtecTeamWebService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" />
+      <xsd:import schemaLocation="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IVtecTeamWebService_Authenticate_InputMessage">
+    <wsdl:part name="parameters" element="tns:Authenticate" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_Authenticate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_SignOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:SignOut" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_SignOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SignOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetSoftvareVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSoftvareVersion" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetSoftvareVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSoftvareVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetReflashFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReflashFile" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetReflashFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReflashFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_SendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_SendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetReflashHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReflashHistory" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetReflashHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReflashHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetAdminReflashHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminReflashHistory" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetAdminReflashHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminReflashHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_UpdateReflashHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReflashHistory" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_UpdateReflashHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReflashHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetReflashRequests_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReflashRequests" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetReflashRequests_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReflashRequestsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVtecTeamWebService">
+    <wsdl:operation name="Authenticate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/Authenticate" message="tns:IVtecTeamWebService_Authenticate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/AuthenticateResponse" message="tns:IVtecTeamWebService_Authenticate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SignOut">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/SignOut" message="tns:IVtecTeamWebService_SignOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/SignOutResponse" message="tns:IVtecTeamWebService_SignOut_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSoftvareVersion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetSoftvareVersion" message="tns:IVtecTeamWebService_GetSoftvareVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetSoftvareVersionResponse" message="tns:IVtecTeamWebService_GetSoftvareVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReflashFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetReflashFile" message="tns:IVtecTeamWebService_GetReflashFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetReflashFileResponse" message="tns:IVtecTeamWebService_GetReflashFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/SendRequest" message="tns:IVtecTeamWebService_SendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/SendRequestResponse" message="tns:IVtecTeamWebService_SendRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReflashHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetReflashHistory" message="tns:IVtecTeamWebService_GetReflashHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetReflashHistoryResponse" message="tns:IVtecTeamWebService_GetReflashHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminReflashHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetAdminReflashHistory" message="tns:IVtecTeamWebService_GetAdminReflashHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetAdminReflashHistoryResponse" message="tns:IVtecTeamWebService_GetAdminReflashHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReflashHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/UpdateReflashHistory" message="tns:IVtecTeamWebService_UpdateReflashHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/UpdateReflashHistoryResponse" message="tns:IVtecTeamWebService_UpdateReflashHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReflashRequests">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetReflashRequests" message="tns:IVtecTeamWebService_GetReflashRequests_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetReflashRequestsResponse" message="tns:IVtecTeamWebService_GetReflashRequests_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IVtecTeamWebService" type="tns:IVtecTeamWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Authenticate">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/Authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignOut">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/SignOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoftvareVersion">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetSoftvareVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReflashFile">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetReflashFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendRequest">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/SendRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReflashHistory">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetReflashHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminReflashHistory">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetAdminReflashHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReflashHistory">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/UpdateReflashHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReflashRequests">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetReflashRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VtecTeamWebService">
+    <wsdl:port name="BasicHttpBinding_IVtecTeamWebService" binding="tns:BasicHttpBinding_IVtecTeamWebService">
+      <soap:address location="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

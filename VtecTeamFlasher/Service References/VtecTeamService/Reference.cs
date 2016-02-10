@@ -26,6 +26,48 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SignOut", ReplyAction="http://tempuri.org/IVtecTeamWebService/SignOutResponse")]
         System.Threading.Tasks.Task SignOutAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetSoftvareVersion", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetSoftvareVersionResponse")]
+        string GetSoftvareVersion();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetSoftvareVersion", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetSoftvareVersionResponse")]
+        System.Threading.Tasks.Task<string> GetSoftvareVersionAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashFile", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashFileResponse")]
+        byte[] GetReflashFile(ClientAndServerCommons.DataClasses.ReflashRequest reflashRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashFile", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashFileResponse")]
+        System.Threading.Tasks.Task<byte[]> GetReflashFileAsync(ClientAndServerCommons.DataClasses.ReflashRequest reflashRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendRequest", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendRequestResponse")]
+        bool SendRequest(ClientAndServerCommons.DataClasses.ReflashRequest relashRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendRequest", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendRequestResponse")]
+        System.Threading.Tasks.Task<bool> SendRequestAsync(ClientAndServerCommons.DataClasses.ReflashRequest relashRequest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashHistory", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashHistoryResponse")]
+        ClientAndServerCommons.DataClasses.ReflashHistory[] GetReflashHistory(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashHistory", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashHistoryResponse")]
+        System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashHistory[]> GetReflashHistoryAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetAdminReflashHistory", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetAdminReflashHistoryResponse")]
+        ClientAndServerCommons.DataClasses.ReflashHistory[] GetAdminReflashHistory(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetAdminReflashHistory", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetAdminReflashHistoryResponse")]
+        System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashHistory[]> GetAdminReflashHistoryAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/UpdateReflashHistory", ReplyAction="http://tempuri.org/IVtecTeamWebService/UpdateReflashHistoryResponse")]
+        void UpdateReflashHistory(int historyId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/UpdateReflashHistory", ReplyAction="http://tempuri.org/IVtecTeamWebService/UpdateReflashHistoryResponse")]
+        System.Threading.Tasks.Task UpdateReflashHistoryAsync(int historyId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashRequests", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashRequestsResponse")]
+        ClientAndServerCommons.DataClasses.ReflashRequest[] GetReflashRequests(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashRequests", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashRequestsResponse")]
+        System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashRequest[]> GetReflashRequestsAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -69,6 +111,62 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         public System.Threading.Tasks.Task SignOutAsync() {
             return base.Channel.SignOutAsync();
+        }
+        
+        public string GetSoftvareVersion() {
+            return base.Channel.GetSoftvareVersion();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetSoftvareVersionAsync() {
+            return base.Channel.GetSoftvareVersionAsync();
+        }
+        
+        public byte[] GetReflashFile(ClientAndServerCommons.DataClasses.ReflashRequest reflashRequest) {
+            return base.Channel.GetReflashFile(reflashRequest);
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> GetReflashFileAsync(ClientAndServerCommons.DataClasses.ReflashRequest reflashRequest) {
+            return base.Channel.GetReflashFileAsync(reflashRequest);
+        }
+        
+        public bool SendRequest(ClientAndServerCommons.DataClasses.ReflashRequest relashRequest) {
+            return base.Channel.SendRequest(relashRequest);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SendRequestAsync(ClientAndServerCommons.DataClasses.ReflashRequest relashRequest) {
+            return base.Channel.SendRequestAsync(relashRequest);
+        }
+        
+        public ClientAndServerCommons.DataClasses.ReflashHistory[] GetReflashHistory(int userId) {
+            return base.Channel.GetReflashHistory(userId);
+        }
+        
+        public System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashHistory[]> GetReflashHistoryAsync(int userId) {
+            return base.Channel.GetReflashHistoryAsync(userId);
+        }
+        
+        public ClientAndServerCommons.DataClasses.ReflashHistory[] GetAdminReflashHistory(int userId) {
+            return base.Channel.GetAdminReflashHistory(userId);
+        }
+        
+        public System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashHistory[]> GetAdminReflashHistoryAsync(int userId) {
+            return base.Channel.GetAdminReflashHistoryAsync(userId);
+        }
+        
+        public void UpdateReflashHistory(int historyId) {
+            base.Channel.UpdateReflashHistory(historyId);
+        }
+        
+        public System.Threading.Tasks.Task UpdateReflashHistoryAsync(int historyId) {
+            return base.Channel.UpdateReflashHistoryAsync(historyId);
+        }
+        
+        public ClientAndServerCommons.DataClasses.ReflashRequest[] GetReflashRequests(int userId) {
+            return base.Channel.GetReflashRequests(userId);
+        }
+        
+        public System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashRequest[]> GetReflashRequestsAsync(int userId) {
+            return base.Channel.GetReflashRequestsAsync(userId);
         }
     }
 }
