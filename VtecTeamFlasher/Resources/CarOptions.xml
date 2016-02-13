@@ -3,5 +3,26 @@
   <cartype name="Honda/Acura">
     <carmodel name="Accord 7"/>
     <carmodel name="Accord 8"/>
+    <carmodel name="Accord 9"/>
+    <carmodel name="Civic 8"/>
+    <carmodel name="Civic 9"/>
+    <carmodel name="CR-V 2"/>
+    <carmodel name="CR-V 3"/>
+    <carmodel name="CR-V 4"/>
+    <carmodel name="Crosstour"/>
+    <carmodel name="CR-Z"/>
+    <carmodel name="Element"/>
+    <carmodel name="Fit Gen1"/>
+    <carmodel name="Fit Gen2"/>
+    <carmodel name="FR-V"/>
+    <carmodel name="Inspire"/>
+    <carmodel name="Legend"/>
+    <carmodel name="MDX"/>
+    <carmodel name="Odyssey"/>
+    <carmodel name="Pilot"/>
+    <carmodel name="RDX"/>
+    <carmodel name="Ridgeline"/>
+    <carmodel name="TL"/>
+    <carmodel name="TLX"/>
   </cartype>
 </cartypes>
