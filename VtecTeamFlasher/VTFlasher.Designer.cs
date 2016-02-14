@@ -797,7 +797,6 @@ namespace VtecTeamFlasher
             this.tbUserSkype.Name = "tbUserSkype";
             this.tbUserSkype.Size = new System.Drawing.Size(464, 22);
             this.tbUserSkype.TabIndex = 3;
-            this.tbUserSkype.TextChanged += new System.EventHandler(this.tbUserSkype_TextChanged);
             // 
             // tbUserPhone
             // 

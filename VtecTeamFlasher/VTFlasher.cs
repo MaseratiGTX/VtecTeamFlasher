@@ -9,7 +9,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-
 using System.Windows.Forms;
 using System.Windows.Threading;
 using ClientAndServerCommons;
@@ -329,6 +328,7 @@ namespace VtecTeamFlasher
                 return;
             }
 
+            panelLogin.Enabled = false;
             var service = WCFServiceFactory.CreateVtecTeamService();
             var result = service.Authenticate(txtUsername.Text, txtPassword.Text.ComputeSHA256Hash());
 
@@ -345,6 +345,7 @@ namespace VtecTeamFlasher
                 txtPassword.Text = "";
                 lblErrLogin.Text = result.Message;
             }
+            panelLogin.Enabled = true;
         }
 
         private void btnReloadFlasher_Click(object sender, EventArgs e)
