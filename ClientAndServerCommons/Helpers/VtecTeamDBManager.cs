@@ -52,6 +52,21 @@ namespace ClientAndServerCommons.Helpers
         {
             return adoRepository.Entities<ReflashHistory>().ThatHas(x => x.UserId == userId).ToList();
         }
+
+        public bool UpdateUserPersonalData(User user)
+        {
+            try
+            {
+                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(user)));
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("При сохранении сущности User произошла ошибка {0}", ex);
+                return false;
+            }
+        }
        
     }
 }

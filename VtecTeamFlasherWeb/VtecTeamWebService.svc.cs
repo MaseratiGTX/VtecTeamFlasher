@@ -62,5 +62,10 @@ namespace VtecTeamFlasherWeb
         {
             return vtServiceFacade.GetReflashRequests(userId);
         }
+
+        public bool UpdateUserPersonalData(User user)
+        {
+            return vtServiceFacade.UpdateUserPersonalData(user);
+        }
     }
 }

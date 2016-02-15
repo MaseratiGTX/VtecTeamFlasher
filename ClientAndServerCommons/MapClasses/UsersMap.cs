@@ -66,6 +66,34 @@ namespace ClientAndServerCommons.MapClasses
                 .BatchSize(20)
                 .Cascade.None();
 
+            Map(x => x.City)
+                .Column("City")
+                .Length(255)
+                .Nullable();
+
+            Map(x => x.Phone)
+                .Column("Phone")
+                .Length(50)
+                .Nullable();
+
+            Map(x => x.Skype)
+                .Column("Skype")
+                .Length(100)
+                .Nullable();
+
+            Map(x => x.VK)
+                .Column("VK")
+                .Length(255)
+                .Nullable();
+
+            Map(x => x.Viber)
+                .Column("Viber")
+                .Nullable();
+
+            Map(x => x.WhatsApp)
+                .Column("WhatsApp")
+                .Nullable();
+
         }
     }
 }

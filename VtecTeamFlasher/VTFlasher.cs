@@ -458,5 +458,37 @@ namespace VtecTeamFlasher
         {
             notificationFormManager.CreateForm(message).For(action).SetParent(this).ExecuteWrapedCodeWithNotification();
         }
+
+        private void tabControlMain_Click(object sender, EventArgs e)
+        {
+            tbUserName.Text = Session.CurrentUser.FirstName;
+            tbUserSecondName.Text = Session.CurrentUser.LastName;
+            tbUserCity.Text = Session.CurrentUser.City;
+            tbUserPhone.Text = Session.CurrentUser.Phone;
+            tbUserSkype.Text = Session.CurrentUser.Skype;
+            tbUserVK.Text = Session.CurrentUser.VK;
+            cbUserViber.Checked = Session.CurrentUser.Viber;
+            cbUserWhatsapp.Checked = Session.CurrentUser.WhatsApp;
+        }
+
+        private void btnUpdateUserDetails_Click(object sender, EventArgs e)
+        {
+            Session.CurrentUser.FirstName = tbUserName.Text;
+            Session.CurrentUser.LastName = tbUserSecondName.Text;
+            Session.CurrentUser.City = tbUserCity.Text;
+            Session.CurrentUser.Phone = tbUserPhone.Text;
+            Session.CurrentUser.Skype = tbUserSkype.Text;
+            Session.CurrentUser.VK = tbUserVK.Text;
+            Session.CurrentUser.Viber = cbUserViber.Checked;
+            Session.CurrentUser.WhatsApp = cbUserWhatsapp.Checked;
+
+            var result = false;
+            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
+            {
+                result = WCFServiceFactory.CreateVtecTeamService().UpdateUserPersonalData(Session.CurrentUser);
+            });
+
+            MessageBox.Show(result ? "Данные успешно обновлены" : "Не удалось обновить данные.");
+        }
     }
 }

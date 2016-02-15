@@ -33,5 +33,8 @@ namespace VtecTeamFlasherWeb
         [OperationContract]
         List<ReflashRequest> GetReflashRequests(int userId);
 
+        [OperationContract]
+        bool UpdateUserPersonalData(User user);
+
     }
 }

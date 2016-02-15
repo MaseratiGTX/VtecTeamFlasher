@@ -18,6 +18,7 @@ namespace VtecTeamFlasherWeb.Facade
         List<ReflashHistory> GetAdminReflashHistory(int userId);
         void UpdateReflashHistory(int historyId);
         List<ReflashRequest> GetReflashRequests(int userId);
+        bool UpdateUserPersonalData(User user);
     }
 
 }

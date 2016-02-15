@@ -68,6 +68,12 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashRequests", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashRequestsResponse")]
         System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashRequest[]> GetReflashRequestsAsync(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalData", ReplyAction="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalDataResponse")]
+        bool UpdateUserPersonalData(ClientAndServerCommons.DataClasses.User user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalData", ReplyAction="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalDataResponse")]
+        System.Threading.Tasks.Task<bool> UpdateUserPersonalDataAsync(ClientAndServerCommons.DataClasses.User user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -167,6 +173,14 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         public System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashRequest[]> GetReflashRequestsAsync(int userId) {
             return base.Channel.GetReflashRequestsAsync(userId);
+        }
+        
+        public bool UpdateUserPersonalData(ClientAndServerCommons.DataClasses.User user) {
+            return base.Channel.UpdateUserPersonalData(user);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateUserPersonalDataAsync(ClientAndServerCommons.DataClasses.User user) {
+            return base.Channel.UpdateUserPersonalDataAsync(user);
         }
     }
 }

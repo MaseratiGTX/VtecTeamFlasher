@@ -62,6 +62,12 @@
   <wsdl:message name="IVtecTeamWebService_GetReflashRequests_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetReflashRequestsResponse" />
   </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_UpdateUserPersonalData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserPersonalData" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_UpdateUserPersonalData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateUserPersonalDataResponse" />
+  </wsdl:message>
   <wsdl:portType name="IVtecTeamWebService">
     <wsdl:operation name="Authenticate">
       <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/Authenticate" message="tns:IVtecTeamWebService_Authenticate_InputMessage" />
@@ -98,6 +104,10 @@
     <wsdl:operation name="GetReflashRequests">
       <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetReflashRequests" message="tns:IVtecTeamWebService_GetReflashRequests_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetReflashRequestsResponse" message="tns:IVtecTeamWebService_GetReflashRequests_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserPersonalData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalData" message="tns:IVtecTeamWebService_UpdateUserPersonalData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalDataResponse" message="tns:IVtecTeamWebService_UpdateUserPersonalData_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IVtecTeamWebService" type="tns:IVtecTeamWebService">
@@ -176,6 +186,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetReflashRequests">
       <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetReflashRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserPersonalData">
+      <soap:operation soapAction="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalData" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

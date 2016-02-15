@@ -89,5 +89,10 @@ namespace VtecTeamFlasherWeb.Facade
         {
             return new VtecTeamDBManager().GetReflashRequests(userId);
         }
+
+        public bool UpdateUserPersonalData(User user)
+        {
+            return new VtecTeamDBManager().UpdateUserPersonalData(user);
+        }
     }
 }

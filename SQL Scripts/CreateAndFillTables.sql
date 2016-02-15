@@ -17,6 +17,12 @@ CREATE TABLE [dbo].[Users](
 	[UserType] [nvarchar](100) NOT NULL,
 	[PasswordHash] [nvarchar](255) NULL,
 	[Login] [nvarchar](255) NOT NULL,
+	[City] [nvarchar](255) NULL,
+	[Phone] [nvarchar](50) NULL,
+	[Skype] [nvarchar](100) NULL,
+	[VK] [nvarchar](255) NULL,
+	[Viber] [bit] NULL,
+	[WhatsApp] [bit] NULL,
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

@@ -7,7 +7,18 @@ namespace ClientAndServerCommons.DataClasses
 {
     public class User:AbstractUser
     {
-        
+        [DataMember]
+        public virtual string City { get; set; }
+        [DataMember]
+        public virtual string Phone { get; set; }
+        [DataMember]
+        public virtual string Skype { get; set; }
+        [DataMember]
+        public virtual string VK { get; set; }
+        [DataMember]
+        public virtual bool Viber { get; set; }
+        [DataMember]
+        public virtual bool WhatsApp { get; set; }
          
     }
 }
