@@ -16,6 +16,7 @@ using ClientAndServerCommons.DataClasses;
 using Commons.Helpers;
 using Commons.Serialization.Binary;
 using VtecTeamFlasher.Helpers;
+using VtecTeamFlasher.NotificationForm;
 
 namespace VtecTeamFlasher
 {
@@ -51,10 +52,14 @@ namespace VtecTeamFlasher
         private BinarySerializationHelper serializationHelper = new BinarySerializationHelper();
         private string savedPassword = "";
 
+        private NotificationFormManager<ClientNotificationForm> notificationFormManager; 
+
         public VTFlasher()
         {
             InitializeComponent();
             this.cbCarManufacture.DataSource = CarManufacture;
+            var notificationConfiguration = new ClientNotificationFormConfiguration {MainForm = this};
+            notificationFormManager = new NotificationFormManager<ClientNotificationForm>(notificationConfiguration);
             panelLogin.BringToFront();
         }
 
@@ -328,25 +333,29 @@ namespace VtecTeamFlasher
                 return;
             }
 
-            panelLogin.Enabled = false;
-            var service = WCFServiceFactory.CreateVtecTeamService();
-            var result = service.Authenticate(txtUsername.Text, txtPassword.Text.ComputeSHA256Hash());
-
-            if (result.Code == (int) AuthenticationCode.Success)
+            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
             {
-                if (checkBoxSavePassword.Checked && string.IsNullOrEmpty(savedPassword))
-                    FileHelper.SaveText(serializationHelper.SerializeObject(txtPassword.Text),Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
 
-                Session.CurrentUser = result.User;
-                panelLogin.Dispose();
-            }
-            else
-            {
-                txtPassword.Text = "";
-                lblErrLogin.Text = result.Message;
-            }
-            panelLogin.Enabled = true;
+                var service = WCFServiceFactory.CreateVtecTeamService();
+                var result = service.Authenticate(txtUsername.Text, txtPassword.Text.ComputeSHA256Hash());
+
+                if (result.Code == (int)AuthenticationCode.Success)
+                {
+                    if (checkBoxSavePassword.Checked && string.IsNullOrEmpty(savedPassword))
+                        FileHelper.SaveText(serializationHelper.SerializeObject(txtPassword.Text), Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
+
+                    Session.CurrentUser = result.User;
+                    panelLogin.Dispose();
+                }
+                else
+                {
+                    txtPassword.Text = "";
+                    lblErrLogin.Text = result.Message;
+                }
+            });
         }
+
+        
 
         private void btnReloadFlasher_Click(object sender, EventArgs e)
         {
@@ -386,23 +395,30 @@ namespace VtecTeamFlasher
         {
             if (string.IsNullOrEmpty(txtEcuNumber.Text))
                 MessageBox.Show("Поле Номер ECU обязательно для заполнения");
-            var request = new ReflashRequest
-                              {
-                                  AdditionalMessage = txtAdditionalInfo.Text,
-                                  EcuCode = txtEcuNumber.Text,
-                                  UserId = Session.CurrentUser.Id,
-                                  RequestDateTime = DateTime.Now,
-                                  RequestStatus = (int)RequestStatuses.New,
-                              };
 
-            if (!string.IsNullOrEmpty(txtStockFilePath.Text))
+            var result = false;
+
+            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
             {
-                request.StockFile = File.ReadAllBytes(txtStockFilePath.Text);
-                request.StockFileName = Path.GetFileName(txtStockFilePath.Text);
-            }
+                var request = new ReflashRequest
+                {
+                    AdditionalMessage = txtAdditionalInfo.Text,
+                    EcuCode = txtEcuNumber.Text,
+                    UserId = Session.CurrentUser.Id,
+                    RequestDateTime = DateTime.Now,
+                    RequestStatus = (int) RequestStatuses.New,
+                };
 
-            var service = WCFServiceFactory.CreateVtecTeamService();
-            MessageBox.Show(service.SendRequest(request) ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
+                if (!string.IsNullOrEmpty(txtStockFilePath.Text))
+                {
+                    request.StockFile = File.ReadAllBytes(txtStockFilePath.Text);
+                    request.StockFileName = Path.GetFileName(txtStockFilePath.Text);
+                }
+
+                result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
+
+            });
+            MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
         }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -416,17 +432,31 @@ namespace VtecTeamFlasher
 
         private void btnRefreshRequests_Click(object sender, EventArgs e)
         {
-            dgRequests.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
+            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
+            {
+                dgRequests.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
+            });
         }
 
         private void btnRefreshHistory_Click(object sender, EventArgs e)
         {
-            dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
+            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
+            {
+                dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
+            });
         }
 
         private void tabHistory_Click(object sender, EventArgs e)
         {
-            dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
+            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
+            {
+                dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
+            });
+        }
+
+        private void SetNotification(string message, WrapedCodeDelegate action)
+        {
+            notificationFormManager.CreateForm(message).For(action).SetParent(this).ExecuteWrapedCodeWithNotification();
         }
     }
 }
