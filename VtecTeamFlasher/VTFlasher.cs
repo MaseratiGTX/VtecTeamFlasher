@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Threading;
 using ClientAndServerCommons;
@@ -16,7 +17,6 @@ using ClientAndServerCommons.DataClasses;
 using Commons.Helpers;
 using Commons.Serialization.Binary;
 using VtecTeamFlasher.Helpers;
-using VtecTeamFlasher.NotificationForm;
 
 namespace VtecTeamFlasher
 {
@@ -52,14 +52,10 @@ namespace VtecTeamFlasher
         private BinarySerializationHelper serializationHelper = new BinarySerializationHelper();
         private string savedPassword = "";
 
-        private NotificationFormManager<ClientNotificationForm> notificationFormManager; 
-
         public VTFlasher()
         {
             InitializeComponent();
             this.cbCarManufacture.DataSource = CarManufacture;
-            var notificationConfiguration = new ClientNotificationFormConfiguration {MainForm = this};
-            notificationFormManager = new NotificationFormManager<ClientNotificationForm>(notificationConfiguration);
             panelLogin.BringToFront();
         }
 
@@ -323,19 +319,21 @@ namespace VtecTeamFlasher
                 WinAPIHelper.SendMessage(pcmTextBoxFilePath, WinAPIHelper.WM_SETTEXT, IntPtr.Zero, fileDialog.FileName);
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             lblErrLogin.Text = "";
+            pbLogin.Image = Properties.Resources.Animation;
+
 
             if (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text))
             {
                 lblErrLogin.Text = "Необходимо ввести логин и пароль.";
                 return;
             }
+            pbLogin.Visible = true;
 
-            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
+            await Task.Run(() =>
             {
-
                 var service = WCFServiceFactory.CreateVtecTeamService();
                 var result = service.Authenticate(txtUsername.Text, txtPassword.Text.ComputeSHA256Hash());
 
@@ -345,26 +343,23 @@ namespace VtecTeamFlasher
                         FileHelper.SaveText(serializationHelper.SerializeObject(txtPassword.Text), Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
 
                     Session.CurrentUser = result.User;
-                    panelLogin.Dispose();
+                    this.Invoke(()=>panelLogin.Dispose());
                 }
                 else
                 {
-                    txtPassword.Text = "";
-                    lblErrLogin.Text = result.Message;
+                    this.Invoke(()=> txtPassword.Text = "");
+                    this.Invoke(()=>lblErrLogin.Text = result.Message);
+                    this.Invoke(()=>pbLogin.Image = Properties.Resources.Error);
                 }
+                    
             });
+            
+            
         }
-
-        
 
         private void btnReloadFlasher_Click(object sender, EventArgs e)
         {
             VTFlasher_Load(sender,e);
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -391,14 +386,17 @@ namespace VtecTeamFlasher
             // Choose module in PCM Flash
         }
 
-        private void btnSendRequest_Click(object sender, EventArgs e)
+        private async void btnSendRequest_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtEcuNumber.Text))
+            {
                 MessageBox.Show("Поле Номер ECU обязательно для заполнения");
-
-            var result = false;
-
-            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
+                return;
+            }
+            
+            pbRequest.Visible = true;
+            pbRequest.Image = Properties.Resources.Animation;
+            await Task.Run(() =>
             {
                 var request = new ReflashRequest
                 {
@@ -407,6 +405,7 @@ namespace VtecTeamFlasher
                     UserId = Session.CurrentUser.Id,
                     RequestDateTime = DateTime.Now,
                     RequestStatus = (int) RequestStatuses.New,
+                    //User = Session.CurrentUser,
                 };
 
                 if (!string.IsNullOrEmpty(txtStockFilePath.Text))
@@ -415,10 +414,13 @@ namespace VtecTeamFlasher
                     request.StockFileName = Path.GetFileName(txtStockFilePath.Text);
                 }
 
-                result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
+                var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
 
+                this.Invoke(()=>pbRequest.Image = !result ? Properties.Resources.Error : null);
+                MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
             });
-            MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
+
+
         }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -430,33 +432,32 @@ namespace VtecTeamFlasher
             txtStockFilePath.Text = fileDialog.FileName;
         }
 
-        private void btnRefreshRequests_Click(object sender, EventArgs e)
+        private async void btnRefreshRequests_Click(object sender, EventArgs e)
         {
-            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
+            pbRequestHistory.Visible = true;
+            await Task.Run(() =>
             {
-                dgRequests.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
+                var result = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
+                this.Invoke(() => dgRequests.DataSource = result);
             });
+            pbRequestHistory.Visible = false;
+
         }
 
-        private void btnRefreshHistory_Click(object sender, EventArgs e)
+        private async void btnRefreshHistory_Click(object sender, EventArgs e)
         {
-            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
+            pbReflashHistory.Visible = true; 
+            await Task.Run(() =>
             {
-                dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
+                var result = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
+                this.Invoke(() => dgReflashHistory.DataSource = result);
             });
+            pbReflashHistory.Visible = false; 
         }
 
         private void tabHistory_Click(object sender, EventArgs e)
         {
-            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
-            {
-                dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
-            });
-        }
-
-        private void SetNotification(string message, WrapedCodeDelegate action)
-        {
-            notificationFormManager.CreateForm(message).For(action).SetParent(this).ExecuteWrapedCodeWithNotification();
+            dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
         }
 
         private void tabControlMain_Click(object sender, EventArgs e)
@@ -471,24 +472,27 @@ namespace VtecTeamFlasher
             cbUserWhatsapp.Checked = Session.CurrentUser.WhatsApp;
         }
 
-        private void btnUpdateUserDetails_Click(object sender, EventArgs e)
+        private async void btnUpdateUserDetails_Click(object sender, EventArgs e)
         {
-            Session.CurrentUser.FirstName = tbUserName.Text;
-            Session.CurrentUser.LastName = tbUserSecondName.Text;
-            Session.CurrentUser.City = tbUserCity.Text;
-            Session.CurrentUser.Phone = tbUserPhone.Text;
-            Session.CurrentUser.Skype = tbUserSkype.Text;
-            Session.CurrentUser.VK = tbUserVK.Text;
-            Session.CurrentUser.Viber = cbUserViber.Checked;
-            Session.CurrentUser.WhatsApp = cbUserWhatsapp.Checked;
+            pbPersonalInfo.Visible = true;
+            pbPersonalInfo.Image = Properties.Resources.Animation;
+            await Task.Run(() =>
+             {
+                Session.CurrentUser.FirstName = tbUserName.Text;
+                Session.CurrentUser.LastName = tbUserSecondName.Text;
+                Session.CurrentUser.City = tbUserCity.Text;
+                Session.CurrentUser.Phone = tbUserPhone.Text;
+                Session.CurrentUser.Skype = tbUserSkype.Text;
+                Session.CurrentUser.VK = tbUserVK.Text;
+                Session.CurrentUser.Viber = cbUserViber.Checked;
+                Session.CurrentUser.WhatsApp = cbUserWhatsapp.Checked;
 
-            var result = false;
-            SetNotification("Пожалуйста подождите, \r\nидет получение данных с сервера...", () =>
-            {
-                result = WCFServiceFactory.CreateVtecTeamService().UpdateUserPersonalData(Session.CurrentUser);
-            });
+                var result = WCFServiceFactory.CreateVtecTeamService().UpdateUserPersonalData(Session.CurrentUser);
 
-            MessageBox.Show(result ? "Данные успешно обновлены" : "Не удалось обновить данные.");
+                 this.Invoke(() => pbPersonalInfo.Image = !result ? Properties.Resources.Error : null);
+             });
+
+            
         }
     }
 }

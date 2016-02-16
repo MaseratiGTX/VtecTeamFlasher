@@ -52,19 +52,19 @@ namespace ClientAndServerCommons.MapClasses
                 .Column("UserType")
                 .Not.Nullable();
 
-            HasMany(x => x.ReflashHistory)
-                .Table("ReflashHistory")
-                .KeyColumn("UserId")
-                .LazyLoad()
-                .BatchSize(20)
-                .Cascade.None();
+            //HasMany(x => x.ReflashHistory)
+            //    .Table("ReflashHistory")
+            //    .KeyColumn("UserId")
+            //    .LazyLoad()
+            //    .BatchSize(20)
+            //    .Cascade.None();
 
-            HasMany(x => x.Requests)
-                .Table("Requests")
-                .KeyColumn("UserId")
-                .LazyLoad()
-                .BatchSize(20)
-                .Cascade.None();
+            //HasMany(x => x.Requests)
+            //    .Table("Requests")
+            //    .KeyColumn("UserId")
+            //    .LazyLoad()
+            //    .BatchSize(20)
+            //    .Cascade.None();
 
             Map(x => x.City)
                 .Column("City")

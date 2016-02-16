@@ -50,6 +50,12 @@ namespace ClientAndServerCommons.MapClasses
                 .Column("RequestDateTime")
                 .MapDateTime()
                 .Not.Nullable();
+
+            //References(x => x.User)
+            //    .Column("UserId")
+            //    .Not.Nullable()
+            //    .LazyLoad()
+            //    .Cascade.None();
             
         }
     }

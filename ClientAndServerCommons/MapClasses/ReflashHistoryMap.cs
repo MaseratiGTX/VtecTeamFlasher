@@ -59,6 +59,12 @@ namespace ClientAndServerCommons.MapClasses
                 .BatchSize(20)
                 .Cascade.None();
 
+            //References(x => x.User)
+            //    .Column("UserId")
+            //    .Not.Nullable()
+            //    .LazyLoad()
+            //    .Cascade.None();
+
             //References(x => x.Review)
             //   .Column("Review")
             //   .Nullable()

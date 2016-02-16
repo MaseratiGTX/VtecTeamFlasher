@@ -24,5 +24,7 @@ namespace ClientAndServerCommons.DataClasses
         public virtual int PaymentStatus { get; set; }
         [DataMember]
         public virtual IList<Review> Review { get; set; }
+        //[DataMember]
+        //public virtual User User { get; set; }
     }
 }

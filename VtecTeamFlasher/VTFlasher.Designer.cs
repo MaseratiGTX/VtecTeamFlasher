@@ -99,6 +99,7 @@ namespace VtecTeamFlasher
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.pbLogin = new System.Windows.Forms.PictureBox();
             this.requestStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.requestDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.additionalMessageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,6 +112,10 @@ namespace VtecTeamFlasher
             this.reflashStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.reflashHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pbRequest = new System.Windows.Forms.PictureBox();
+            this.pbRequestHistory = new System.Windows.Forms.PictureBox();
+            this.pbReflashHistory = new System.Windows.Forms.PictureBox();
+            this.pbPersonalInfo = new System.Windows.Forms.PictureBox();
             this.gbModule.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
@@ -122,8 +127,13 @@ namespace VtecTeamFlasher
             ((System.ComponentModel.ISupportInitialize)(this.dgReflashHistory)).BeginInit();
             this.tabPerson.SuspendLayout();
             this.panelLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflashRequestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflashHistoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRequest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRequestHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReflashHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonalInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSettings
@@ -425,6 +435,8 @@ namespace VtecTeamFlasher
             // 
             // tabRequest
             // 
+            this.tabRequest.Controls.Add(this.pbRequestHistory);
+            this.tabRequest.Controls.Add(this.pbRequest);
             this.tabRequest.Controls.Add(this.btnRefreshRequests);
             this.tabRequest.Controls.Add(this.dgRequests);
             this.tabRequest.Controls.Add(this.btnSendRequest);
@@ -547,6 +559,7 @@ namespace VtecTeamFlasher
             // 
             // tabHistory
             // 
+            this.tabHistory.Controls.Add(this.pbReflashHistory);
             this.tabHistory.Controls.Add(this.btnRefreshHistory);
             this.tabHistory.Controls.Add(this.dgReflashHistory);
             this.tabHistory.Location = new System.Drawing.Point(4, 29);
@@ -586,6 +599,7 @@ namespace VtecTeamFlasher
             // 
             // tabPerson
             // 
+            this.tabPerson.Controls.Add(this.pbPersonalInfo);
             this.tabPerson.Controls.Add(this.tbUserKey);
             this.tabPerson.Controls.Add(this.label7);
             this.tabPerson.Controls.Add(this.btnUpdateUserDetails);
@@ -755,6 +769,7 @@ namespace VtecTeamFlasher
             // 
             // panelLogin
             // 
+            this.panelLogin.Controls.Add(this.pbLogin);
             this.panelLogin.Controls.Add(this.lblErrLogin);
             this.panelLogin.Controls.Add(this.checkBoxSavePassword);
             this.panelLogin.Controls.Add(this.labelPassword);
@@ -762,9 +777,9 @@ namespace VtecTeamFlasher
             this.panelLogin.Controls.Add(this.btnLogin);
             this.panelLogin.Controls.Add(this.txtPassword);
             this.panelLogin.Controls.Add(this.txtUsername);
-            this.panelLogin.Location = new System.Drawing.Point(0, 0);
+            this.panelLogin.Location = new System.Drawing.Point(12, 12);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(647, 802);
+            this.panelLogin.Size = new System.Drawing.Size(637, 802);
             this.panelLogin.TabIndex = 8;
             // 
             // lblErrLogin
@@ -773,7 +788,7 @@ namespace VtecTeamFlasher
             this.lblErrLogin.BackColor = System.Drawing.SystemColors.Control;
             this.lblErrLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblErrLogin.ForeColor = System.Drawing.Color.Red;
-            this.lblErrLogin.Location = new System.Drawing.Point(165, 112);
+            this.lblErrLogin.Location = new System.Drawing.Point(169, 119);
             this.lblErrLogin.Name = "lblErrLogin";
             this.lblErrLogin.Size = new System.Drawing.Size(0, 17);
             this.lblErrLogin.TabIndex = 6;
@@ -830,6 +845,18 @@ namespace VtecTeamFlasher
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
             this.txtUsername.TabIndex = 0;
+            // 
+            // pbLogin
+            // 
+            this.pbLogin.ErrorImage = global::VtecTeamFlasher.Properties.Resources.Error;
+            this.pbLogin.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbLogin.Location = new System.Drawing.Point(135, 112);
+            this.pbLogin.Name = "pbLogin";
+            this.pbLogin.Size = new System.Drawing.Size(30, 29);
+            this.pbLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogin.TabIndex = 7;
+            this.pbLogin.TabStop = false;
+            this.pbLogin.Visible = false;
             // 
             // requestStatusDataGridViewTextBoxColumn
             // 
@@ -899,14 +926,58 @@ namespace VtecTeamFlasher
             // 
             this.reflashHistoryBindingSource.DataSource = typeof(ClientAndServerCommons.DataClasses.ReflashHistory);
             // 
+            // pbRequest
+            // 
+            this.pbRequest.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbRequest.Location = new System.Drawing.Point(354, 252);
+            this.pbRequest.Name = "pbRequest";
+            this.pbRequest.Size = new System.Drawing.Size(28, 29);
+            this.pbRequest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRequest.TabIndex = 6;
+            this.pbRequest.TabStop = false;
+            this.pbRequest.Visible = false;
+            // 
+            // pbRequestHistory
+            // 
+            this.pbRequestHistory.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbRequestHistory.Location = new System.Drawing.Point(323, 472);
+            this.pbRequestHistory.Name = "pbRequestHistory";
+            this.pbRequestHistory.Size = new System.Drawing.Size(28, 29);
+            this.pbRequestHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRequestHistory.TabIndex = 6;
+            this.pbRequestHistory.TabStop = false;
+            this.pbRequestHistory.Visible = false;
+            // 
+            // pbReflashHistory
+            // 
+            this.pbReflashHistory.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbReflashHistory.Location = new System.Drawing.Point(371, 473);
+            this.pbReflashHistory.Name = "pbReflashHistory";
+            this.pbReflashHistory.Size = new System.Drawing.Size(29, 28);
+            this.pbReflashHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbReflashHistory.TabIndex = 2;
+            this.pbReflashHistory.TabStop = false;
+            this.pbReflashHistory.Visible = false;
+            // 
+            // pbPersonalInfo
+            // 
+            this.pbPersonalInfo.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbPersonalInfo.Location = new System.Drawing.Point(340, 235);
+            this.pbPersonalInfo.Name = "pbPersonalInfo";
+            this.pbPersonalInfo.Size = new System.Drawing.Size(39, 35);
+            this.pbPersonalInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPersonalInfo.TabIndex = 17;
+            this.pbPersonalInfo.TabStop = false;
+            this.pbPersonalInfo.Visible = false;
+            // 
             // VTFlasher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 803);
+            this.ClientSize = new System.Drawing.Size(630, 803);
             this.Controls.Add(this.tabControlMain);
-            this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.panelLogin);
+            this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbModule);
             this.Controls.Add(this.btnExit);
@@ -932,8 +1003,13 @@ namespace VtecTeamFlasher
             this.tabPerson.PerformLayout();
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflashRequestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflashHistoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRequest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRequestHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReflashHistory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonalInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1022,6 +1098,11 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbUserCity;
         private System.Windows.Forms.CheckBox cbUserWhatsapp;
+        private System.Windows.Forms.PictureBox pbLogin;
+        private System.Windows.Forms.PictureBox pbRequest;
+        private System.Windows.Forms.PictureBox pbRequestHistory;
+        private System.Windows.Forms.PictureBox pbReflashHistory;
+        private System.Windows.Forms.PictureBox pbPersonalInfo;
     }
 }
 

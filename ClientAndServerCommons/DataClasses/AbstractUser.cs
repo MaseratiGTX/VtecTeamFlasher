@@ -23,10 +23,10 @@ namespace ClientAndServerCommons.DataClasses
         public virtual bool Enabled { get; set; }
         [DataMember]
         public virtual string UserType { get; set; }
-        [DataMember]
-        public virtual IList<ReflashHistory> ReflashHistory { get; set; }
-        [DataMember]
-        public virtual IList<ReflashRequest> Requests { get; set; }
+        //[DataMember]
+        //public virtual IList<ReflashHistory> ReflashHistory { get; set; }
+        //[DataMember]
+        //public virtual IList<ReflashRequest> Requests { get; set; }
 
     }
 }

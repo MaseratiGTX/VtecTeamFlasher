@@ -26,14 +26,28 @@
           <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PasswordHash" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ReflashHistory" nillable="true" type="tns:ArrayOfReflashHistory" />
-          <xs:element minOccurs="0" name="Requests" nillable="true" type="tns:ArrayOfReflashRequest" />
           <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="AbstractUser" nillable="true" type="tns:AbstractUser" />
+  <xs:complexType name="ReflashRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q2:AbstractDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdditionalMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EcuCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RequestDateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RequestStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="StockFile" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="StockFileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ReflashRequest" nillable="true" type="tns:ReflashRequest" />
   <xs:complexType name="ArrayOfReflashHistory">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="ReflashHistory" nillable="true" type="tns:ReflashHistory" />
@@ -42,7 +56,7 @@
   <xs:element name="ArrayOfReflashHistory" nillable="true" type="tns:ArrayOfReflashHistory" />
   <xs:complexType name="ReflashHistory">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q2:AbstractDataObject">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q3:AbstractDataObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="Cvn" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PaymentStatus" type="xs:int" />
@@ -65,7 +79,7 @@
   <xs:element name="ArrayOfReview" nillable="true" type="tns:ArrayOfReview" />
   <xs:complexType name="Review">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q3:AbstractDataObject">
+      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q4:AbstractDataObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="ReflashHistoryId" type="xs:int" />
           <xs:element minOccurs="0" name="ReviewDateTime" type="xs:dateTime" />
@@ -83,20 +97,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfReflashRequest" nillable="true" type="tns:ArrayOfReflashRequest" />
-  <xs:complexType name="ReflashRequest">
-    <xs:complexContent mixed="false">
-      <xs:extension xmlns:q4="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q4:AbstractDataObject">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="AdditionalMessage" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="EcuCode" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="RequestDateTime" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="RequestStatus" type="xs:int" />
-          <xs:element minOccurs="0" name="StockFile" nillable="true" type="xs:base64Binary" />
-          <xs:element minOccurs="0" name="StockFileName" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="UserId" type="xs:int" />
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ReflashRequest" nillable="true" type="tns:ReflashRequest" />
 </xs:schema>
