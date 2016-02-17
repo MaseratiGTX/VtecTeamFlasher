@@ -395,6 +395,7 @@ namespace VtecTeamFlasher
             }
             
             pbRequest.Visible = true;
+            pnlSendRequest.Enabled = false;
             pbRequest.Image = Properties.Resources.Animation;
             await Task.Run(() =>
             {
@@ -419,6 +420,7 @@ namespace VtecTeamFlasher
                 this.Invoke(()=>pbRequest.Image = !result ? Properties.Resources.Error : null);
                 MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
             });
+            pnlSendRequest.Enabled = true;
 
 
         }
@@ -435,24 +437,30 @@ namespace VtecTeamFlasher
         private async void btnRefreshRequests_Click(object sender, EventArgs e)
         {
             pbRequestHistory.Visible = true;
+            pnlRequestsHistory.Enabled = false;
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
                 this.Invoke(() => dgRequests.DataSource = result);
             });
             pbRequestHistory.Visible = false;
+            pnlRequestsHistory.Enabled = true;
+
 
         }
 
         private async void btnRefreshHistory_Click(object sender, EventArgs e)
         {
-            pbReflashHistory.Visible = true; 
+            pbReflashHistory.Visible = true;
+            tabHistory.Enabled = false;
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
                 this.Invoke(() => dgReflashHistory.DataSource = result);
             });
-            pbReflashHistory.Visible = false; 
+            pbReflashHistory.Visible = false;
+            tabHistory.Enabled = true;
+ 
         }
 
         private void tabHistory_Click(object sender, EventArgs e)
@@ -475,6 +483,7 @@ namespace VtecTeamFlasher
         private async void btnUpdateUserDetails_Click(object sender, EventArgs e)
         {
             pbPersonalInfo.Visible = true;
+            tabPerson.Enabled = false;
             pbPersonalInfo.Image = Properties.Resources.Animation;
             await Task.Run(() =>
              {
@@ -492,7 +501,8 @@ namespace VtecTeamFlasher
                  this.Invoke(() => pbPersonalInfo.Image = !result ? Properties.Resources.Error : null);
              });
 
-            
+            tabPerson.Enabled = true;
+
         }
     }
 }
