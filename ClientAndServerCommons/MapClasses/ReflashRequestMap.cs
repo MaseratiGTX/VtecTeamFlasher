@@ -40,6 +40,16 @@ namespace ClientAndServerCommons.MapClasses
             Map(x => x.EcuCode)
                 .Column("EcuCode")
                 .Length(255)
+                .Not.Nullable(); 
+            
+            Map(x => x.Car)
+                .Column("Car")
+                .Length(50)
+                .Not.Nullable();
+            
+            Map(x => x.Vin)
+                .Column("Vin")
+                .Length(100)
                 .Not.Nullable();
 
             Map(x => x.RequestStatus)

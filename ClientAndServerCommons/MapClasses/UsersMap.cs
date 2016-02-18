@@ -94,6 +94,11 @@ namespace ClientAndServerCommons.MapClasses
                 .Column("WhatsApp")
                 .Nullable();
 
+            Map(x => x.OpenModules)
+               .Column("OpenModules")
+               .MapNVarcharMax()
+               .Nullable();
+
         }
     }
 }

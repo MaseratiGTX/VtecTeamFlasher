@@ -23,6 +23,7 @@ CREATE TABLE [dbo].[Users](
 	[VK] [nvarchar](255) NULL,
 	[Viber] [bit] NULL,
 	[WhatsApp] [bit] NULL,
+	[OpenModules] [nvarchar](max) NULL,
  CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -76,6 +77,8 @@ CREATE TABLE [dbo].[ReflashHistory](
 	[ReflashStatus] [int] NOT NULL,
 	[PaymentStatus] [int] NOT NULL,
 	[ReflashDateTime] [datetime] NOT NULL,
+	[Severity] [int] NULL,
+	[Price] [nvarchar](100) NULL,
  CONSTRAINT [PK_ReflashHistory] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -119,6 +122,8 @@ CREATE TABLE [dbo].[Requests](
 	[RequestDateTime] [datetime] NOT NULL,
 	[AdditionalMessage] [nvarchar](255) NULL,
 	[StockFileName] [nvarchar](255) NULL,
+	[Car] [nvarchar](50) NULL,
+	[Vin] [nvarchar](100) NULL,
  CONSTRAINT [PK_Requests] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

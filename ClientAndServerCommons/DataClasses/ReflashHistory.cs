@@ -15,6 +15,8 @@ namespace ClientAndServerCommons.DataClasses
         [DataMember]
         public virtual string Vin { get; set; }
         [DataMember]
+        public virtual string Price { get; set; }
+        [DataMember]
         public virtual int UserId { get; set; }
         [DataMember]
         public virtual DateTime ReflashDateTime { get; set; }
@@ -22,6 +24,8 @@ namespace ClientAndServerCommons.DataClasses
         public virtual int ReflashStatus { get; set; }
         [DataMember]
         public virtual int PaymentStatus { get; set; }
+        [DataMember]
+        public virtual int Severity { get; set; }
         [DataMember]
         public virtual IList<Review> Review { get; set; }
         //[DataMember]

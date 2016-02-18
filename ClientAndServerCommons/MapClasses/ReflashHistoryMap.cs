@@ -33,6 +33,15 @@ namespace ClientAndServerCommons.MapClasses
                 .Column("Vin")
                 .Length(255)
                 .Not.Nullable();
+            
+            Map(x => x.Price)
+                .Column("Price")
+                .Length(100)
+                .Not.Nullable();
+            
+            Map(x => x.Severity)
+                .Column("Severity")
+                .Nullable();
 
             Map(x => x.Cvn)
                 .Column("Cvn")

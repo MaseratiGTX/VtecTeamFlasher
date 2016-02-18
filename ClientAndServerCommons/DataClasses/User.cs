@@ -19,6 +19,8 @@ namespace ClientAndServerCommons.DataClasses
         public virtual bool Viber { get; set; }
         [DataMember]
         public virtual bool WhatsApp { get; set; }
+        [DataMember]
+        public virtual string OpenModules { get; set; }
          
     }
 }

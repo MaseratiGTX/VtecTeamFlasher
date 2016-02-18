@@ -22,6 +22,10 @@ namespace ClientAndServerCommons.DataClasses
         public virtual string AdditionalMessage { get; set; }
         [DataMember]
         public virtual string StockFileName { get; set; }
+        [DataMember]
+        public virtual string Car { get; set; }
+        [DataMember]
+        public virtual string Vin { get; set; }
         //[DataMember]
         //public virtual User User { get; set; }
     }
