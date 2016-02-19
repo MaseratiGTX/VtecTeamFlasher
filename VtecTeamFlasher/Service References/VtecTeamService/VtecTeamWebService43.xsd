@@ -6,6 +6,7 @@
       <xs:extension base="tns:AbstractUser">
         <xs:sequence>
           <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OpenModules" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Skype" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="VK" nillable="true" type="xs:string" />
@@ -37,12 +38,14 @@
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q2:AbstractDataObject">
         <xs:sequence>
           <xs:element minOccurs="0" name="AdditionalMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Car" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="EcuCode" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="RequestDateTime" type="xs:dateTime" />
           <xs:element minOccurs="0" name="RequestStatus" type="xs:int" />
           <xs:element minOccurs="0" name="StockFile" nillable="true" type="xs:base64Binary" />
           <xs:element minOccurs="0" name="StockFileName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserId" type="xs:int" />
+          <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -60,10 +63,12 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="Cvn" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="PaymentStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ReflashDateTime" type="xs:dateTime" />
           <xs:element minOccurs="0" name="ReflashStatus" type="xs:int" />
           <xs:element minOccurs="0" name="ReslashFileName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Review" nillable="true" type="tns:ArrayOfReview" />
+          <xs:element minOccurs="0" name="Severity" type="xs:int" />
           <xs:element minOccurs="0" name="UserId" type="xs:int" />
           <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
         </xs:sequence>
