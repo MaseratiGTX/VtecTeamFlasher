@@ -504,5 +504,16 @@ namespace VtecTeamFlasher
             tabPerson.Enabled = true;
 
         }
+
+        private void dgReflashHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                var sendReviewForm = new ReviewForm((int)senderGrid.Rows[e.RowIndex].Cells["Id"].Value);
+                sendReviewForm.ShowDialog();
+            }
+        }
     }
 }

@@ -67,5 +67,10 @@ namespace VtecTeamFlasherWeb
         {
             return vtServiceFacade.UpdateUserPersonalData(user);
         }
+
+        public bool SendReview(Review review)
+        {
+            return vtServiceFacade.SendReview(review);
+        }
     }
 }

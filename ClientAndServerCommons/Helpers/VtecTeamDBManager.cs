@@ -67,6 +67,21 @@ namespace ClientAndServerCommons.Helpers
                 return false;
             }
         }
+
+        public bool SendReview(Review review)
+        {
+            try
+            {
+                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(review)));
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("При сохранении сущности Review произошла ошибка {0}", ex);
+                return false;
+            }
+        }
        
     }
 }

@@ -76,6 +76,12 @@
   <wsdl:message name="IVtecTeamWebService_UpdateUserPersonalData_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserPersonalDataResponse" />
   </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_SendReview_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendReview" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_SendReview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendReviewResponse" />
+  </wsdl:message>
   <wsdl:portType name="IVtecTeamWebService">
     <wsdl:operation name="Authenticate">
       <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/Authenticate" message="tns:IVtecTeamWebService_Authenticate_InputMessage" />
@@ -116,6 +122,10 @@
     <wsdl:operation name="UpdateUserPersonalData">
       <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalData" message="tns:IVtecTeamWebService_UpdateUserPersonalData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalDataResponse" message="tns:IVtecTeamWebService_UpdateUserPersonalData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendReview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/SendReview" message="tns:IVtecTeamWebService_SendReview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/SendReviewResponse" message="tns:IVtecTeamWebService_SendReview_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CustomBinding_IVtecTeamWebService" type="tns:IVtecTeamWebService">
@@ -204,6 +214,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUserPersonalData">
       <soap12:operation soapAction="http://tempuri.org/IVtecTeamWebService/UpdateUserPersonalData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendReview">
+      <soap12:operation soapAction="http://tempuri.org/IVtecTeamWebService/SendReview" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

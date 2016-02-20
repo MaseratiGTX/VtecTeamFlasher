@@ -32,9 +32,11 @@ namespace VtecTeamFlasherWeb
         void UpdateReflashHistory(int historyId);
         [OperationContract]
         List<ReflashRequest> GetReflashRequests(int userId);
-
         [OperationContract]
         bool UpdateUserPersonalData(User user);
+        [OperationContract]
+        bool SendReview(Review review);
+
 
     }
 }

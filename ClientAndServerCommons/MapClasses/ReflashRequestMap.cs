@@ -45,12 +45,12 @@ namespace ClientAndServerCommons.MapClasses
             Map(x => x.Car)
                 .Column("Car")
                 .Length(50)
-                .Not.Nullable();
+                .Nullable();
             
             Map(x => x.Vin)
                 .Column("Vin")
                 .Length(100)
-                .Not.Nullable();
+                .Nullable();
 
             Map(x => x.RequestStatus)
                 .Column("RequestStatus")
