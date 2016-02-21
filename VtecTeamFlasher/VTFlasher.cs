@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Windows.Threading;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
+using ClientAndServerCommons.Statuses;
 using Commons.Helpers;
 using Commons.Serialization.Binary;
 using VtecTeamFlasher.Helpers;
@@ -397,9 +398,6 @@ namespace VtecTeamFlasher
                 return;
             }
             
-            //pbRequest.Visible = true;
-            //pnlSendRequest.Enabled = false;
-            //pbRequest.Image = Properties.Resources.Animation;
             var currentStatus = PanelRefresh.StartRefresh(pnlSendRequest, pbRequest);
             await Task.Run(() =>
             {
@@ -426,7 +424,6 @@ namespace VtecTeamFlasher
             });
 
             PanelRefresh.StopRefresh(currentStatus);
-            //pnlSendRequest.Enabled = true;
         }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -441,23 +438,18 @@ namespace VtecTeamFlasher
         private async void btnRefreshRequests_Click(object sender, EventArgs e)
         {
             var currentStatus = PanelRefresh.StartRefresh(pnlRequestsHistory, pbRequestHistory);
-            //pbRequestHistory.Visible = true;
-            //pnlRequestsHistory.Enabled = false;
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
                 this.Invoke(() => dgRequests.DataSource = result);
             });
-            //pbRequestHistory.Visible = false;
-            //pnlRequestsHistory.Enabled = true;
+            pbRequestHistory.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
 
         }
 
         private async void btnRefreshHistory_Click(object sender, EventArgs e)
         {
-            //pbReflashHistory.Visible = true;
-            //tabHistory.Enabled = false;
             var currentStatus = PanelRefresh.StartRefresh(tabHistory, pbReflashHistory);
             await Task.Run(() =>
             {
