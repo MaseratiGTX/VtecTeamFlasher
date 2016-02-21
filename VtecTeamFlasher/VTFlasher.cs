@@ -330,7 +330,8 @@ namespace VtecTeamFlasher
                 lblErrLogin.Text = "Необходимо ввести логин и пароль.";
                 return;
             }
-            pbLogin.Visible = true;
+
+            var currentStatus = PanelRefresh.StartRefresh(panelLogin, pbLogin);
 
             await Task.Run(() =>
             {
@@ -353,6 +354,8 @@ namespace VtecTeamFlasher
                 }
                     
             });
+
+            PanelRefresh.StopRefresh(currentStatus);
             
             
         }
@@ -394,9 +397,10 @@ namespace VtecTeamFlasher
                 return;
             }
             
-            pbRequest.Visible = true;
-            pnlSendRequest.Enabled = false;
-            pbRequest.Image = Properties.Resources.Animation;
+            //pbRequest.Visible = true;
+            //pnlSendRequest.Enabled = false;
+            //pbRequest.Image = Properties.Resources.Animation;
+            var currentStatus = PanelRefresh.StartRefresh(pnlSendRequest, pbRequest);
             await Task.Run(() =>
             {
                 var request = new ReflashRequest
@@ -420,9 +424,9 @@ namespace VtecTeamFlasher
                 this.Invoke(()=>pbRequest.Image = !result ? Properties.Resources.Error : null);
                 MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
             });
-            pnlSendRequest.Enabled = true;
 
-
+            PanelRefresh.StopRefresh(currentStatus);
+            //pnlSendRequest.Enabled = true;
         }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -436,31 +440,32 @@ namespace VtecTeamFlasher
 
         private async void btnRefreshRequests_Click(object sender, EventArgs e)
         {
-            pbRequestHistory.Visible = true;
-            pnlRequestsHistory.Enabled = false;
+            var currentStatus = PanelRefresh.StartRefresh(pnlRequestsHistory, pbRequestHistory);
+            //pbRequestHistory.Visible = true;
+            //pnlRequestsHistory.Enabled = false;
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
                 this.Invoke(() => dgRequests.DataSource = result);
             });
-            pbRequestHistory.Visible = false;
-            pnlRequestsHistory.Enabled = true;
-
+            //pbRequestHistory.Visible = false;
+            //pnlRequestsHistory.Enabled = true;
+            PanelRefresh.StopRefresh(currentStatus);
 
         }
 
         private async void btnRefreshHistory_Click(object sender, EventArgs e)
         {
-            pbReflashHistory.Visible = true;
-            tabHistory.Enabled = false;
+            //pbReflashHistory.Visible = true;
+            //tabHistory.Enabled = false;
+            var currentStatus = PanelRefresh.StartRefresh(tabHistory, pbReflashHistory);
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
                 this.Invoke(() => dgReflashHistory.DataSource = result);
             });
             pbReflashHistory.Visible = false;
-            tabHistory.Enabled = true;
- 
+            PanelRefresh.StopRefresh(currentStatus);
         }
 
         private void tabHistory_Click(object sender, EventArgs e)
@@ -482,9 +487,8 @@ namespace VtecTeamFlasher
 
         private async void btnUpdateUserDetails_Click(object sender, EventArgs e)
         {
-            pbPersonalInfo.Visible = true;
-            tabPerson.Enabled = false;
-            pbPersonalInfo.Image = Properties.Resources.Animation;
+            var currentStatus = PanelRefresh.StartRefresh(tabPerson, pbPersonalInfo);
+
             await Task.Run(() =>
              {
                 Session.CurrentUser.FirstName = tbUserName.Text;
@@ -501,7 +505,7 @@ namespace VtecTeamFlasher
                  this.Invoke(() => pbPersonalInfo.Image = !result ? Properties.Resources.Error : null);
              });
 
-            tabPerson.Enabled = true;
+            PanelRefresh.StopRefresh(currentStatus);
 
         }
 
