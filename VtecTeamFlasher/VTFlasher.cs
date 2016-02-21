@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Windows.Threading;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
+using ClientAndServerCommons.Statuses;
 using Commons.Helpers;
 using Commons.Serialization.Binary;
 using VtecTeamFlasher.Helpers;
@@ -55,7 +56,7 @@ namespace VtecTeamFlasher
         public VTFlasher()
         {
             InitializeComponent();
-            //TODO this.cbCarManufacture.DataSource = CarManufacture;
+            this.cbCarManufacture.DataSource = CarManufacture;
             panelLogin.BringToFront();
         }
 
@@ -193,7 +194,7 @@ namespace VtecTeamFlasher
             btnRestart.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRestart);
             btnEraseErrors.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonEraseErrors);
             btnResetAdaptation.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRestartAdaptation);
-            btnReadFromECU.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRead);
+            btnRead.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRead);
             btnWrite.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonWrite);
             btnSettings.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonSettings);
         }
@@ -366,6 +367,24 @@ namespace VtecTeamFlasher
 
         }
 
+        private void cbCarManufacture_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbCarManufacture.Text != string.Empty)
+            {
+                CarModel = XMLHelper.GetCARModel(cbCarManufacture.Text);
+                cbCarModel.DataSource = CarModel;
+                cbCarModel.Enabled = true;
+                cbCarModel.Text = "";
+            }
+            else
+            {
+                cbCarModel.Enabled = false;
+                cbCarModel.DataSource = new List<string>();
+                cbCarModel.Text = "";
+            }
+
+        }
+
         private void cbCarModel_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Choose module in PCM Flash
@@ -379,9 +398,6 @@ namespace VtecTeamFlasher
                 return;
             }
             
-            //pbRequest.Visible = true;
-            //pnlSendRequest.Enabled = false;
-            //pbRequest.Image = Properties.Resources.Animation;
             var currentStatus = PanelRefresh.StartRefresh(pnlSendRequest, pbRequest);
             await Task.Run(() =>
             {
@@ -395,10 +411,10 @@ namespace VtecTeamFlasher
                     //User = Session.CurrentUser,
                 };
 
-                if (!string.IsNullOrEmpty(txtStockFileStatus.Text))
+                if (!string.IsNullOrEmpty(txtStockFilePath.Text))
                 {
-                    request.StockFile = File.ReadAllBytes(txtStockFileStatus.Text);
-                    request.StockFileName = Path.GetFileName(txtStockFileStatus.Text);
+                    request.StockFile = File.ReadAllBytes(txtStockFilePath.Text);
+                    request.StockFileName = Path.GetFileName(txtStockFilePath.Text);
                 }
 
                 var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
@@ -408,7 +424,6 @@ namespace VtecTeamFlasher
             });
 
             PanelRefresh.StopRefresh(currentStatus);
-            //pnlSendRequest.Enabled = true;
         }
 
         private void btnOpenFile_Click(object sender, EventArgs e)
@@ -417,14 +432,12 @@ namespace VtecTeamFlasher
 
             if (fileDialog.ShowDialog() != DialogResult.OK)
                 return;
-            txtStockFileStatus.Text = fileDialog.FileName;
+            txtStockFilePath.Text = fileDialog.FileName;
         }
 
         private async void btnRefreshRequests_Click(object sender, EventArgs e)
         {
             var currentStatus = PanelRefresh.StartRefresh(pnlRequestsHistory, pbRequestHistory);
-            //pbRequestHistory.Visible = true;
-            //pnlRequestsHistory.Enabled = false;
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
@@ -437,7 +450,7 @@ namespace VtecTeamFlasher
 
         private async void btnRefreshHistory_Click(object sender, EventArgs e)
         {
-            var currentStatus = PanelRefresh.StartRefresh(panelRequestHistory, pbReflashHistory);
+            var currentStatus = PanelRefresh.StartRefresh(tabHistory, pbReflashHistory);
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
@@ -497,44 +510,6 @@ namespace VtecTeamFlasher
                 var sendReviewForm = new ReviewForm((int)senderGrid.Rows[e.RowIndex].Cells["Id"].Value);
                 sendReviewForm.ShowDialog();
             }
-        }
-
-        private void lbModule_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void btnUploadBinary_Click(object sender, EventArgs e)
-        {
-            panelLoadBinary.BringToFront();
-            pbReflash.BringToFront();
-            panelLoadBinary.Visible = true;
-
-            var currentStatus = PanelRefresh.StartRefresh(panelLoadBinary, pbReflash);
-
-            //// TODO Load binary descriptions
-            Thread.Sleep(5000);
-
-            pbReflash.Visible = false;
-            PanelRefresh.StopRefresh(currentStatus);
-        }
-
-        private void CleanBinaryDescriptionData()
-        {
-            cbBinaryToLoad.Items.Clear();
-            txtBinaryDescription.Text = "";
-            cbBinaryDescriptionCS.Checked = false;
-            cbBinaryDescriptionEGROff.Checked = false;
-            cbBinaryDescriptionEuro2.Checked = false;
-            cbBinaryDescriptionImmoOff.Checked = false;
-            btnBinaryDescriptionOK.Enabled = false;
-        }
-
-        private void btnBinaryDescriptionCancel_Click(object sender, EventArgs e)
-        {
-            CleanBinaryDescriptionData();
-            panelLoadBinary.Visible = false;
-
         }
     }
 }

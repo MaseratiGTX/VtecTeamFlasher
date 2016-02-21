@@ -131,7 +131,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RequestStatuses.cs" />
+    <Compile Include="Statuses\PaymentStatuses.cs" />
+    <Compile Include="Statuses\RequestStatuses.cs" />
     <Compile Include="ThreadFactory.cs" />
     <Compile Include="Validators\AuthorizationUserValidator.cs" />
     <Compile Include="Validators\ReflashHistoryValidator.cs" />
