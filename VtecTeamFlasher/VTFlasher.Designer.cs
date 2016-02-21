@@ -35,7 +35,6 @@ namespace VtecTeamFlasher
             this.btnExit = new System.Windows.Forms.Button();
             this.cbModules = new System.Windows.Forms.ComboBox();
             this.lbAdapter = new System.Windows.Forms.Label();
-            this.gbModule = new System.Windows.Forms.GroupBox();
             this.btnResetAdaptation = new System.Windows.Forms.Button();
             this.btnInitialize = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
@@ -44,38 +43,84 @@ namespace VtecTeamFlasher
             this.btnIdentify = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbControlSum = new System.Windows.Forms.CheckBox();
-            this.btnRead = new System.Windows.Forms.Button();
             this.btnWrite = new System.Windows.Forms.Button();
             this.btnOpenFileDialog = new System.Windows.Forms.Button();
             this.txtFilePath = new System.Windows.Forms.TextBox();
+            this.btnReadFromECU = new System.Windows.Forms.Button();
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabReflash = new System.Windows.Forms.TabPage();
+            this.panelReflash = new System.Windows.Forms.Panel();
+            this.pbReflash = new System.Windows.Forms.PictureBox();
+            this.btnCreateNewRequest = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tbErrors = new System.Windows.Forms.TextBox();
-            this.cbCarModel = new System.Windows.Forms.ComboBox();
-            this.cbCarManufacture = new System.Windows.Forms.ComboBox();
-            this.panelKeyUnavailible = new System.Windows.Forms.Panel();
-            this.labelKeyUnavailible = new System.Windows.Forms.Label();
-            this.btnReloadFlasher = new System.Windows.Forms.Button();
+            this.lblBinaryLoadingStatus = new System.Windows.Forms.Label();
+            this.btnUploadToECU = new System.Windows.Forms.Button();
+            this.btnUploadBinary = new System.Windows.Forms.Button();
+            this.lbModule = new System.Windows.Forms.Label();
+            this.tbReflashText = new System.Windows.Forms.TextBox();
+            this.tbECUVin = new System.Windows.Forms.TextBox();
+            this.lbVIN = new System.Windows.Forms.Label();
+            this.tbBinaryNumber = new System.Windows.Forms.TextBox();
+            this.lbECUBinaryNumber = new System.Windows.Forms.Label();
+            this.panelLoadBinary = new System.Windows.Forms.Panel();
+            this.btnBinaryDescriptionOK = new System.Windows.Forms.Button();
+            this.btnBinaryDescriptionCancel = new System.Windows.Forms.Button();
+            this.gbBinaryDescription = new System.Windows.Forms.GroupBox();
+            this.cbBinaryDescriptionImmoOff = new System.Windows.Forms.CheckBox();
+            this.cbBinaryDescriptionEGROff = new System.Windows.Forms.CheckBox();
+            this.cbBinaryDescriptionEuro2 = new System.Windows.Forms.CheckBox();
+            this.txtBinaryDescription = new System.Windows.Forms.TextBox();
+            this.cbBinaryDescriptionCS = new System.Windows.Forms.CheckBox();
+            this.lblChooseBinary = new System.Windows.Forms.Label();
+            this.cbBinaryToLoad = new System.Windows.Forms.ComboBox();
             this.tabRequest = new System.Windows.Forms.TabPage();
-            this.pnlRequestsHistory = new System.Windows.Forms.Panel();
-            this.dgRequests = new System.Windows.Forms.DataGridView();
-            this.EcuCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRefreshRequests = new System.Windows.Forms.Button();
             this.pnlSendRequest = new System.Windows.Forms.Panel();
-            this.txtEcuNumber = new System.Windows.Forms.TextBox();
+            this.btnRequestUploadEcuPhoto = new System.Windows.Forms.Button();
+            this.txtCarDescription = new System.Windows.Forms.Label();
+            this.txtRequestCarDescription = new System.Windows.Forms.TextBox();
+            this.txtEcuPhotoStatus = new System.Windows.Forms.TextBox();
+            this.txtEcuBinatyNumber = new System.Windows.Forms.TextBox();
+            this.lblEcuPhoto = new System.Windows.Forms.Label();
+            this.lblBinaryNumber = new System.Windows.Forms.Label();
             this.lblEcuNumber = new System.Windows.Forms.Label();
+            this.txtEcuNumber = new System.Windows.Forms.TextBox();
+            this.pbRequest = new System.Windows.Forms.PictureBox();
             this.lblAdditionalInfo = new System.Windows.Forms.Label();
             this.txtAdditionalInfo = new System.Windows.Forms.TextBox();
-            this.txtStockFilePath = new System.Windows.Forms.TextBox();
+            this.txtStockFileStatus = new System.Windows.Forms.TextBox();
             this.btnSendRequest = new System.Windows.Forms.Button();
             this.lblStockFile = new System.Windows.Forms.Label();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.tabHistory = new System.Windows.Forms.TabPage();
+            this.tabControlHistory = new System.Windows.Forms.TabControl();
+            this.tabReflashHistory = new System.Windows.Forms.TabPage();
+            this.panelRequestHistory = new System.Windows.Forms.Panel();
+            this.pbReflashHistory = new System.Windows.Forms.PictureBox();
             this.btnRefreshHistory = new System.Windows.Forms.Button();
             this.dgReflashHistory = new System.Windows.Forms.DataGridView();
+            this.cvnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reslashFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSendReview = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.reflashHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabRequestHistory = new System.Windows.Forms.TabPage();
+            this.pnlRequestsHistory = new System.Windows.Forms.Panel();
+            this.dgRequests = new System.Windows.Forms.DataGridView();
+            this.EcuCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.additionalMessageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashRequestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnRefreshRequests = new System.Windows.Forms.Button();
+            this.pbRequestHistory = new System.Windows.Forms.PictureBox();
             this.tabPerson = new System.Windows.Forms.TabPage();
+            this.pbPersonalInfo = new System.Windows.Forms.PictureBox();
             this.tbUserKey = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnUpdateUserDetails = new System.Windows.Forms.Button();
@@ -93,7 +138,11 @@ namespace VtecTeamFlasher
             this.tbUserPhone = new System.Windows.Forms.TextBox();
             this.tbUserSecondName = new System.Windows.Forms.TextBox();
             this.tbUserName = new System.Windows.Forms.TextBox();
+            this.panelKeyUnavailible = new System.Windows.Forms.Panel();
+            this.labelKeyUnavailible = new System.Windows.Forms.Label();
+            this.btnReloadFlasher = new System.Windows.Forms.Button();
             this.panelLogin = new System.Windows.Forms.Panel();
+            this.pbLogin = new System.Windows.Forms.PictureBox();
             this.lblErrLogin = new System.Windows.Forms.Label();
             this.checkBoxSavePassword = new System.Windows.Forms.CheckBox();
             this.labelPassword = new System.Windows.Forms.Label();
@@ -101,50 +150,40 @@ namespace VtecTeamFlasher
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.requestStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requestDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.additionalMessageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reflashRequestBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pbRequestHistory = new System.Windows.Forms.PictureBox();
-            this.pbRequest = new System.Windows.Forms.PictureBox();
-            this.pbReflashHistory = new System.Windows.Forms.PictureBox();
-            this.reflashHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pbPersonalInfo = new System.Windows.Forms.PictureBox();
-            this.pbLogin = new System.Windows.Forms.PictureBox();
-            this.cvnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reslashFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reflashDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reflashStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSendReview = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.gbModule.SuspendLayout();
+            this.lblChooseBinarytoUpload = new System.Windows.Forms.Label();
+            this.lblCreateRequest = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabReflash.SuspendLayout();
-            this.panelKeyUnavailible.SuspendLayout();
+            this.panelReflash.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReflash)).BeginInit();
+            this.panelLoadBinary.SuspendLayout();
+            this.gbBinaryDescription.SuspendLayout();
             this.tabRequest.SuspendLayout();
+            this.pnlSendRequest.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRequest)).BeginInit();
+            this.tabHistory.SuspendLayout();
+            this.tabControlHistory.SuspendLayout();
+            this.tabReflashHistory.SuspendLayout();
+            this.panelRequestHistory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReflashHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgReflashHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reflashHistoryBindingSource)).BeginInit();
+            this.tabRequestHistory.SuspendLayout();
             this.pnlRequestsHistory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRequests)).BeginInit();
-            this.pnlSendRequest.SuspendLayout();
-            this.tabHistory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgReflashHistory)).BeginInit();
-            this.tabPerson.SuspendLayout();
-            this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reflashRequestBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRequestHistory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRequest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbReflashHistory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reflashHistoryBindingSource)).BeginInit();
+            this.tabPerson.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalInfo)).BeginInit();
+            this.panelKeyUnavailible.SuspendLayout();
+            this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(1062, 50);
+            this.btnSettings.Location = new System.Drawing.Point(883, 29);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(75, 23);
             this.btnSettings.TabIndex = 0;
@@ -155,9 +194,9 @@ namespace VtecTeamFlasher
             // cbAdapter
             // 
             this.cbAdapter.FormattingEnabled = true;
-            this.cbAdapter.Location = new System.Drawing.Point(117, 16);
+            this.cbAdapter.Location = new System.Drawing.Point(79, 19);
             this.cbAdapter.Name = "cbAdapter";
-            this.cbAdapter.Size = new System.Drawing.Size(361, 21);
+            this.cbAdapter.Size = new System.Drawing.Size(491, 21);
             this.cbAdapter.TabIndex = 1;
             this.cbAdapter.SelectedIndexChanged += new System.EventHandler(this.cbAdapter_SelectedIndexChanged);
             // 
@@ -174,39 +213,26 @@ namespace VtecTeamFlasher
             // cbModules
             // 
             this.cbModules.FormattingEnabled = true;
-            this.cbModules.Location = new System.Drawing.Point(6, 19);
+            this.cbModules.Location = new System.Drawing.Point(79, 51);
             this.cbModules.Name = "cbModules";
-            this.cbModules.Size = new System.Drawing.Size(406, 21);
+            this.cbModules.Size = new System.Drawing.Size(491, 21);
             this.cbModules.TabIndex = 1;
             this.cbModules.SelectedIndexChanged += new System.EventHandler(this.cbModules_SelectedIndexChanged);
             // 
             // lbAdapter
             // 
             this.lbAdapter.AutoSize = true;
-            this.lbAdapter.Location = new System.Drawing.Point(26, 19);
+            this.lbAdapter.Location = new System.Drawing.Point(13, 22);
             this.lbAdapter.Name = "lbAdapter";
             this.lbAdapter.Size = new System.Drawing.Size(49, 13);
             this.lbAdapter.TabIndex = 3;
             this.lbAdapter.Text = "Адаптер";
             // 
-            // gbModule
-            // 
-            this.gbModule.Controls.Add(this.btnResetAdaptation);
-            this.gbModule.Controls.Add(this.cbModules);
-            this.gbModule.Controls.Add(this.btnInitialize);
-            this.gbModule.Controls.Add(this.btnRestart);
-            this.gbModule.Location = new System.Drawing.Point(719, 92);
-            this.gbModule.Name = "gbModule";
-            this.gbModule.Size = new System.Drawing.Size(418, 122);
-            this.gbModule.TabIndex = 4;
-            this.gbModule.TabStop = false;
-            this.gbModule.Text = "Модуль";
-            // 
             // btnResetAdaptation
             // 
-            this.btnResetAdaptation.Location = new System.Drawing.Point(291, 67);
+            this.btnResetAdaptation.Location = new System.Drawing.Point(435, 117);
             this.btnResetAdaptation.Name = "btnResetAdaptation";
-            this.btnResetAdaptation.Size = new System.Drawing.Size(121, 29);
+            this.btnResetAdaptation.Size = new System.Drawing.Size(135, 29);
             this.btnResetAdaptation.TabIndex = 2;
             this.btnResetAdaptation.Text = "Сброс адаптации";
             this.btnResetAdaptation.UseVisualStyleBackColor = true;
@@ -214,9 +240,9 @@ namespace VtecTeamFlasher
             // 
             // btnInitialize
             // 
-            this.btnInitialize.Location = new System.Drawing.Point(17, 67);
+            this.btnInitialize.Location = new System.Drawing.Point(79, 117);
             this.btnInitialize.Name = "btnInitialize";
-            this.btnInitialize.Size = new System.Drawing.Size(121, 29);
+            this.btnInitialize.Size = new System.Drawing.Size(135, 29);
             this.btnInitialize.TabIndex = 2;
             this.btnInitialize.Text = "Инициализация";
             this.btnInitialize.UseVisualStyleBackColor = true;
@@ -224,9 +250,9 @@ namespace VtecTeamFlasher
             // 
             // btnRestart
             // 
-            this.btnRestart.Location = new System.Drawing.Point(154, 67);
+            this.btnRestart.Location = new System.Drawing.Point(435, 82);
             this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(121, 29);
+            this.btnRestart.Size = new System.Drawing.Size(135, 29);
             this.btnRestart.TabIndex = 2;
             this.btnRestart.Text = "Перезагрузка";
             this.btnRestart.UseVisualStyleBackColor = true;
@@ -234,9 +260,9 @@ namespace VtecTeamFlasher
             // 
             // btnEraseErrors
             // 
-            this.btnEraseErrors.Location = new System.Drawing.Point(29, 198);
+            this.btnEraseErrors.Location = new System.Drawing.Point(260, 117);
             this.btnEraseErrors.Name = "btnEraseErrors";
-            this.btnEraseErrors.Size = new System.Drawing.Size(119, 29);
+            this.btnEraseErrors.Size = new System.Drawing.Size(135, 29);
             this.btnEraseErrors.TabIndex = 2;
             this.btnEraseErrors.Text = "Стереть ошибки";
             this.btnEraseErrors.UseVisualStyleBackColor = true;
@@ -244,9 +270,9 @@ namespace VtecTeamFlasher
             // 
             // btnReadErrors
             // 
-            this.btnReadErrors.Location = new System.Drawing.Point(29, 154);
+            this.btnReadErrors.Location = new System.Drawing.Point(260, 82);
             this.btnReadErrors.Name = "btnReadErrors";
-            this.btnReadErrors.Size = new System.Drawing.Size(121, 29);
+            this.btnReadErrors.Size = new System.Drawing.Size(135, 29);
             this.btnReadErrors.TabIndex = 2;
             this.btnReadErrors.Text = "Прочитать ошибки";
             this.btnReadErrors.UseVisualStyleBackColor = true;
@@ -255,9 +281,9 @@ namespace VtecTeamFlasher
             // btnIdentify
             // 
             this.btnIdentify.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIdentify.Location = new System.Drawing.Point(29, 109);
+            this.btnIdentify.Location = new System.Drawing.Point(79, 82);
             this.btnIdentify.Name = "btnIdentify";
-            this.btnIdentify.Size = new System.Drawing.Size(121, 29);
+            this.btnIdentify.Size = new System.Drawing.Size(135, 29);
             this.btnIdentify.TabIndex = 2;
             this.btnIdentify.Text = "Идентификация";
             this.btnIdentify.UseVisualStyleBackColor = true;
@@ -266,7 +292,6 @@ namespace VtecTeamFlasher
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cbControlSum);
-            this.groupBox1.Controls.Add(this.btnRead);
             this.groupBox1.Controls.Add(this.btnWrite);
             this.groupBox1.Controls.Add(this.btnOpenFileDialog);
             this.groupBox1.Controls.Add(this.txtFilePath);
@@ -289,16 +314,6 @@ namespace VtecTeamFlasher
             this.cbControlSum.Text = "Проверка/Корректировка КС";
             this.cbControlSum.UseVisualStyleBackColor = true;
             this.cbControlSum.CheckedChanged += new System.EventHandler(this.cbControlSum_CheckedChanged);
-            // 
-            // btnRead
-            // 
-            this.btnRead.Location = new System.Drawing.Point(256, 45);
-            this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(75, 27);
-            this.btnRead.TabIndex = 2;
-            this.btnRead.Text = "Чтение";
-            this.btnRead.UseVisualStyleBackColor = true;
-            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // btnWrite
             // 
@@ -327,6 +342,17 @@ namespace VtecTeamFlasher
             this.txtFilePath.Size = new System.Drawing.Size(362, 20);
             this.txtFilePath.TabIndex = 0;
             // 
+            // btnReadFromECU
+            // 
+            this.btnReadFromECU.Enabled = false;
+            this.btnReadFromECU.Location = new System.Drawing.Point(391, 467);
+            this.btnReadFromECU.Name = "btnReadFromECU";
+            this.btnReadFromECU.Size = new System.Drawing.Size(135, 27);
+            this.btnReadFromECU.TabIndex = 2;
+            this.btnReadFromECU.Text = "Чтение из ЭБУ";
+            this.btnReadFromECU.UseVisualStyleBackColor = true;
+            this.btnReadFromECU.Click += new System.EventHandler(this.btnRead_Click);
+            // 
             // txtStatus
             // 
             this.txtStatus.Location = new System.Drawing.Point(719, 329);
@@ -354,16 +380,7 @@ namespace VtecTeamFlasher
             // 
             // tabReflash
             // 
-            this.tabReflash.Controls.Add(this.textBox1);
-            this.tabReflash.Controls.Add(this.tbErrors);
-            this.tabReflash.Controls.Add(this.cbCarModel);
-            this.tabReflash.Controls.Add(this.btnEraseErrors);
-            this.tabReflash.Controls.Add(this.cbCarManufacture);
-            this.tabReflash.Controls.Add(this.lbAdapter);
-            this.tabReflash.Controls.Add(this.cbAdapter);
-            this.tabReflash.Controls.Add(this.btnReadErrors);
-            this.tabReflash.Controls.Add(this.btnIdentify);
-            this.tabReflash.Controls.Add(this.panelKeyUnavailible);
+            this.tabReflash.Controls.Add(this.panelReflash);
             this.tabReflash.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabReflash.Location = new System.Drawing.Point(4, 29);
             this.tabReflash.Name = "tabReflash";
@@ -373,75 +390,264 @@ namespace VtecTeamFlasher
             this.tabReflash.Text = "Прошивка";
             this.tabReflash.UseVisualStyleBackColor = true;
             // 
+            // panelReflash
+            // 
+            this.panelReflash.Controls.Add(this.lbAdapter);
+            this.panelReflash.Controls.Add(this.btnCreateNewRequest);
+            this.panelReflash.Controls.Add(this.textBox1);
+            this.panelReflash.Controls.Add(this.cbModules);
+            this.panelReflash.Controls.Add(this.lblBinaryLoadingStatus);
+            this.panelReflash.Controls.Add(this.btnInitialize);
+            this.panelReflash.Controls.Add(this.btnUploadToECU);
+            this.panelReflash.Controls.Add(this.btnIdentify);
+            this.panelReflash.Controls.Add(this.btnUploadBinary);
+            this.panelReflash.Controls.Add(this.lbModule);
+            this.panelReflash.Controls.Add(this.tbReflashText);
+            this.panelReflash.Controls.Add(this.btnReadErrors);
+            this.panelReflash.Controls.Add(this.btnReadFromECU);
+            this.panelReflash.Controls.Add(this.btnRestart);
+            this.panelReflash.Controls.Add(this.tbECUVin);
+            this.panelReflash.Controls.Add(this.cbAdapter);
+            this.panelReflash.Controls.Add(this.lbVIN);
+            this.panelReflash.Controls.Add(this.btnEraseErrors);
+            this.panelReflash.Controls.Add(this.tbBinaryNumber);
+            this.panelReflash.Controls.Add(this.btnResetAdaptation);
+            this.panelReflash.Controls.Add(this.lbECUBinaryNumber);
+            this.panelReflash.Controls.Add(this.panelLoadBinary);
+            this.panelReflash.Controls.Add(this.panelKeyUnavailible);
+            this.panelReflash.Location = new System.Drawing.Point(0, 0);
+            this.panelReflash.Name = "panelReflash";
+            this.panelReflash.Size = new System.Drawing.Size(611, 508);
+            this.panelReflash.TabIndex = 9;
+            // 
+            // pbReflash
+            // 
+            this.pbReflash.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbReflash.Location = new System.Drawing.Point(200, 99);
+            this.pbReflash.Name = "pbReflash";
+            this.pbReflash.Size = new System.Drawing.Size(96, 90);
+            this.pbReflash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbReflash.TabIndex = 18;
+            this.pbReflash.TabStop = false;
+            this.pbReflash.Visible = false;
+            // 
+            // btnCreateNewRequest
+            // 
+            this.btnCreateNewRequest.Enabled = false;
+            this.btnCreateNewRequest.Location = new System.Drawing.Point(60, 467);
+            this.btnCreateNewRequest.Name = "btnCreateNewRequest";
+            this.btnCreateNewRequest.Size = new System.Drawing.Size(135, 27);
+            this.btnCreateNewRequest.TabIndex = 19;
+            this.btnCreateNewRequest.Text = "Создать запрос";
+            this.btnCreateNewRequest.UseVisualStyleBackColor = true;
+            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(168, 109);
-            this.textBox1.Multiline = true;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(144, 420);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(310, 29);
-            this.textBox1.TabIndex = 7;
+            this.textBox1.Size = new System.Drawing.Size(278, 20);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.Text = "Не загружено";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // tbErrors
+            // lblBinaryLoadingStatus
             // 
-            this.tbErrors.Location = new System.Drawing.Point(168, 154);
-            this.tbErrors.Multiline = true;
-            this.tbErrors.Name = "tbErrors";
-            this.tbErrors.Size = new System.Drawing.Size(310, 73);
-            this.tbErrors.TabIndex = 6;
+            this.lblBinaryLoadingStatus.AutoSize = true;
+            this.lblBinaryLoadingStatus.Location = new System.Drawing.Point(17, 423);
+            this.lblBinaryLoadingStatus.Name = "lblBinaryLoadingStatus";
+            this.lblBinaryLoadingStatus.Size = new System.Drawing.Size(127, 13);
+            this.lblBinaryLoadingStatus.TabIndex = 17;
+            this.lblBinaryLoadingStatus.Text = "Загруженная прошивка";
             // 
-            // cbCarModel
+            // btnUploadToECU
             // 
-            this.cbCarModel.FormattingEnabled = true;
-            this.cbCarModel.Location = new System.Drawing.Point(117, 70);
-            this.cbCarModel.Name = "cbCarModel";
-            this.cbCarModel.Size = new System.Drawing.Size(361, 21);
-            this.cbCarModel.TabIndex = 5;
-            this.cbCarModel.SelectedIndexChanged += new System.EventHandler(this.cbCarModel_SelectedIndexChanged);
+            this.btnUploadToECU.Enabled = false;
+            this.btnUploadToECU.Location = new System.Drawing.Point(226, 467);
+            this.btnUploadToECU.Name = "btnUploadToECU";
+            this.btnUploadToECU.Size = new System.Drawing.Size(135, 27);
+            this.btnUploadToECU.TabIndex = 16;
+            this.btnUploadToECU.Text = "Запись в ЭБУ";
+            this.btnUploadToECU.UseVisualStyleBackColor = true;
             // 
-            // cbCarManufacture
+            // btnUploadBinary
             // 
-            this.cbCarManufacture.FormattingEnabled = true;
-            this.cbCarManufacture.Location = new System.Drawing.Point(117, 52);
-            this.cbCarManufacture.Name = "cbCarManufacture";
-            this.cbCarManufacture.Size = new System.Drawing.Size(361, 21);
-            this.cbCarManufacture.TabIndex = 4;
-            this.cbCarManufacture.SelectedIndexChanged += new System.EventHandler(this.cbCarManufacture_SelectedIndexChanged);
+            this.btnUploadBinary.Location = new System.Drawing.Point(435, 416);
+            this.btnUploadBinary.Name = "btnUploadBinary";
+            this.btnUploadBinary.Size = new System.Drawing.Size(135, 27);
+            this.btnUploadBinary.TabIndex = 15;
+            this.btnUploadBinary.Text = "Загрузка с сервера";
+            this.btnUploadBinary.UseVisualStyleBackColor = true;
+            this.btnUploadBinary.Click += new System.EventHandler(this.btnUploadBinary_Click);
             // 
-            // panelKeyUnavailible
+            // lbModule
             // 
-            this.panelKeyUnavailible.Controls.Add(this.labelKeyUnavailible);
-            this.panelKeyUnavailible.Controls.Add(this.btnReloadFlasher);
-            this.panelKeyUnavailible.Location = new System.Drawing.Point(6, 6);
-            this.panelKeyUnavailible.Name = "panelKeyUnavailible";
-            this.panelKeyUnavailible.Size = new System.Drawing.Size(595, 492);
-            this.panelKeyUnavailible.TabIndex = 8;
-            this.panelKeyUnavailible.Visible = false;
+            this.lbModule.AutoSize = true;
+            this.lbModule.Location = new System.Drawing.Point(13, 54);
+            this.lbModule.Name = "lbModule";
+            this.lbModule.Size = new System.Drawing.Size(45, 13);
+            this.lbModule.TabIndex = 9;
+            this.lbModule.Text = "Модуль";
+            this.lbModule.Click += new System.EventHandler(this.lbModule_Click);
             // 
-            // labelKeyUnavailible
+            // tbReflashText
             // 
-            this.labelKeyUnavailible.AutoSize = true;
-            this.labelKeyUnavailible.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKeyUnavailible.Location = new System.Drawing.Point(35, 217);
-            this.labelKeyUnavailible.Name = "labelKeyUnavailible";
-            this.labelKeyUnavailible.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelKeyUnavailible.Size = new System.Drawing.Size(519, 48);
-            this.labelKeyUnavailible.TabIndex = 1;
-            this.labelKeyUnavailible.Text = "Система не может найти ключ безопасности.\r\nВставьте ключ безопасности в USB порт " +
-    "и нажмите ОК.";
+            this.tbReflashText.Location = new System.Drawing.Point(17, 228);
+            this.tbReflashText.Multiline = true;
+            this.tbReflashText.Name = "tbReflashText";
+            this.tbReflashText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbReflashText.Size = new System.Drawing.Size(553, 172);
+            this.tbReflashText.TabIndex = 14;
             // 
-            // btnReloadFlasher
+            // tbECUVin
             // 
-            this.btnReloadFlasher.Location = new System.Drawing.Point(190, 291);
-            this.btnReloadFlasher.Name = "btnReloadFlasher";
-            this.btnReloadFlasher.Size = new System.Drawing.Size(229, 23);
-            this.btnReloadFlasher.TabIndex = 0;
-            this.btnReloadFlasher.Text = "OK";
-            this.btnReloadFlasher.UseVisualStyleBackColor = true;
-            this.btnReloadFlasher.Click += new System.EventHandler(this.btnReloadFlasher_Click);
+            this.tbECUVin.Location = new System.Drawing.Point(135, 189);
+            this.tbECUVin.Name = "tbECUVin";
+            this.tbECUVin.Size = new System.Drawing.Size(435, 20);
+            this.tbECUVin.TabIndex = 13;
+            // 
+            // lbVIN
+            // 
+            this.lbVIN.AutoSize = true;
+            this.lbVIN.Location = new System.Drawing.Point(17, 196);
+            this.lbVIN.Name = "lbVIN";
+            this.lbVIN.Size = new System.Drawing.Size(60, 13);
+            this.lbVIN.TabIndex = 12;
+            this.lbVIN.Text = "VIN номер";
+            // 
+            // tbBinaryNumber
+            // 
+            this.tbBinaryNumber.Location = new System.Drawing.Point(135, 156);
+            this.tbBinaryNumber.Name = "tbBinaryNumber";
+            this.tbBinaryNumber.Size = new System.Drawing.Size(435, 20);
+            this.tbBinaryNumber.TabIndex = 11;
+            // 
+            // lbECUBinaryNumber
+            // 
+            this.lbECUBinaryNumber.AutoSize = true;
+            this.lbECUBinaryNumber.Location = new System.Drawing.Point(17, 163);
+            this.lbECUBinaryNumber.Name = "lbECUBinaryNumber";
+            this.lbECUBinaryNumber.Size = new System.Drawing.Size(94, 13);
+            this.lbECUBinaryNumber.TabIndex = 10;
+            this.lbECUBinaryNumber.Text = "Номер прошивки";
+            // 
+            // panelLoadBinary
+            // 
+            this.panelLoadBinary.Controls.Add(this.lblChooseBinarytoUpload);
+            this.panelLoadBinary.Controls.Add(this.btnBinaryDescriptionOK);
+            this.panelLoadBinary.Controls.Add(this.btnBinaryDescriptionCancel);
+            this.panelLoadBinary.Controls.Add(this.gbBinaryDescription);
+            this.panelLoadBinary.Controls.Add(this.lblChooseBinary);
+            this.panelLoadBinary.Controls.Add(this.cbBinaryToLoad);
+            this.panelLoadBinary.Location = new System.Drawing.Point(16, 6);
+            this.panelLoadBinary.Name = "panelLoadBinary";
+            this.panelLoadBinary.Size = new System.Drawing.Size(574, 492);
+            this.panelLoadBinary.TabIndex = 9;
+            this.panelLoadBinary.Visible = false;
+            // 
+            // btnBinaryDescriptionOK
+            // 
+            this.btnBinaryDescriptionOK.Enabled = false;
+            this.btnBinaryDescriptionOK.Location = new System.Drawing.Point(99, 446);
+            this.btnBinaryDescriptionOK.Name = "btnBinaryDescriptionOK";
+            this.btnBinaryDescriptionOK.Size = new System.Drawing.Size(135, 27);
+            this.btnBinaryDescriptionOK.TabIndex = 22;
+            this.btnBinaryDescriptionOK.Text = "Выбрать";
+            this.btnBinaryDescriptionOK.UseVisualStyleBackColor = true;
+            // 
+            // btnBinaryDescriptionCancel
+            // 
+            this.btnBinaryDescriptionCancel.Location = new System.Drawing.Point(328, 446);
+            this.btnBinaryDescriptionCancel.Name = "btnBinaryDescriptionCancel";
+            this.btnBinaryDescriptionCancel.Size = new System.Drawing.Size(135, 27);
+            this.btnBinaryDescriptionCancel.TabIndex = 19;
+            this.btnBinaryDescriptionCancel.Text = "Отказаться";
+            this.btnBinaryDescriptionCancel.UseVisualStyleBackColor = true;
+            this.btnBinaryDescriptionCancel.Click += new System.EventHandler(this.btnBinaryDescriptionCancel_Click);
+            // 
+            // gbBinaryDescription
+            // 
+            this.gbBinaryDescription.Controls.Add(this.pbReflash);
+            this.gbBinaryDescription.Controls.Add(this.cbBinaryDescriptionImmoOff);
+            this.gbBinaryDescription.Controls.Add(this.cbBinaryDescriptionEGROff);
+            this.gbBinaryDescription.Controls.Add(this.cbBinaryDescriptionEuro2);
+            this.gbBinaryDescription.Controls.Add(this.txtBinaryDescription);
+            this.gbBinaryDescription.Controls.Add(this.cbBinaryDescriptionCS);
+            this.gbBinaryDescription.Enabled = false;
+            this.gbBinaryDescription.Location = new System.Drawing.Point(43, 83);
+            this.gbBinaryDescription.Name = "gbBinaryDescription";
+            this.gbBinaryDescription.Size = new System.Drawing.Size(476, 339);
+            this.gbBinaryDescription.TabIndex = 21;
+            this.gbBinaryDescription.TabStop = false;
+            this.gbBinaryDescription.Text = "Описание";
+            // 
+            // cbBinaryDescriptionImmoOff
+            // 
+            this.cbBinaryDescriptionImmoOff.AutoSize = true;
+            this.cbBinaryDescriptionImmoOff.Location = new System.Drawing.Point(22, 307);
+            this.cbBinaryDescriptionImmoOff.Name = "cbBinaryDescriptionImmoOff";
+            this.cbBinaryDescriptionImmoOff.Size = new System.Drawing.Size(125, 17);
+            this.cbBinaryDescriptionImmoOff.TabIndex = 4;
+            this.cbBinaryDescriptionImmoOff.Text = "Отключение ИММО";
+            this.cbBinaryDescriptionImmoOff.UseVisualStyleBackColor = true;
+            // 
+            // cbBinaryDescriptionEGROff
+            // 
+            this.cbBinaryDescriptionEGROff.AutoSize = true;
+            this.cbBinaryDescriptionEGROff.Location = new System.Drawing.Point(153, 307);
+            this.cbBinaryDescriptionEGROff.Name = "cbBinaryDescriptionEGROff";
+            this.cbBinaryDescriptionEGROff.Size = new System.Drawing.Size(111, 17);
+            this.cbBinaryDescriptionEGROff.TabIndex = 3;
+            this.cbBinaryDescriptionEGROff.Text = "Отключение ЕГР";
+            this.cbBinaryDescriptionEGROff.UseVisualStyleBackColor = true;
+            // 
+            // cbBinaryDescriptionEuro2
+            // 
+            this.cbBinaryDescriptionEuro2.AutoSize = true;
+            this.cbBinaryDescriptionEuro2.Location = new System.Drawing.Point(268, 307);
+            this.cbBinaryDescriptionEuro2.Name = "cbBinaryDescriptionEuro2";
+            this.cbBinaryDescriptionEuro2.Size = new System.Drawing.Size(57, 17);
+            this.cbBinaryDescriptionEuro2.TabIndex = 2;
+            this.cbBinaryDescriptionEuro2.Text = "Евро2";
+            this.cbBinaryDescriptionEuro2.UseVisualStyleBackColor = true;
+            // 
+            // txtBinaryDescription
+            // 
+            this.txtBinaryDescription.Location = new System.Drawing.Point(19, 22);
+            this.txtBinaryDescription.Multiline = true;
+            this.txtBinaryDescription.Name = "txtBinaryDescription";
+            this.txtBinaryDescription.Size = new System.Drawing.Size(439, 267);
+            this.txtBinaryDescription.TabIndex = 1;
+            // 
+            // cbBinaryDescriptionCS
+            // 
+            this.cbBinaryDescriptionCS.AutoSize = true;
+            this.cbBinaryDescriptionCS.Location = new System.Drawing.Point(331, 307);
+            this.cbBinaryDescriptionCS.Name = "cbBinaryDescriptionCS";
+            this.cbBinaryDescriptionCS.Size = new System.Drawing.Size(128, 17);
+            this.cbBinaryDescriptionCS.TabIndex = 0;
+            this.cbBinaryDescriptionCS.Text = "Контрольная сумма";
+            this.cbBinaryDescriptionCS.UseVisualStyleBackColor = true;
+            // 
+            // lblChooseBinary
+            // 
+            this.lblChooseBinary.AutoSize = true;
+            this.lblChooseBinary.Location = new System.Drawing.Point(78, 59);
+            this.lblChooseBinary.Name = "lblChooseBinary";
+            this.lblChooseBinary.Size = new System.Drawing.Size(62, 13);
+            this.lblChooseBinary.TabIndex = 20;
+            this.lblChooseBinary.Text = "Прошивки:";
+            // 
+            // cbBinaryToLoad
+            // 
+            this.cbBinaryToLoad.FormattingEnabled = true;
+            this.cbBinaryToLoad.Location = new System.Drawing.Point(142, 54);
+            this.cbBinaryToLoad.Name = "cbBinaryToLoad";
+            this.cbBinaryToLoad.Size = new System.Drawing.Size(321, 21);
+            this.cbBinaryToLoad.TabIndex = 19;
             // 
             // tabRequest
             // 
-            this.tabRequest.Controls.Add(this.pnlRequestsHistory);
             this.tabRequest.Controls.Add(this.pnlSendRequest);
             this.tabRequest.Location = new System.Drawing.Point(4, 29);
             this.tabRequest.Name = "tabRequest";
@@ -451,108 +657,154 @@ namespace VtecTeamFlasher
             this.tabRequest.Text = "Запросы";
             this.tabRequest.UseVisualStyleBackColor = true;
             // 
-            // pnlRequestsHistory
-            // 
-            this.pnlRequestsHistory.Controls.Add(this.dgRequests);
-            this.pnlRequestsHistory.Controls.Add(this.btnRefreshRequests);
-            this.pnlRequestsHistory.Controls.Add(this.pbRequestHistory);
-            this.pnlRequestsHistory.Location = new System.Drawing.Point(3, 287);
-            this.pnlRequestsHistory.Name = "pnlRequestsHistory";
-            this.pnlRequestsHistory.Size = new System.Drawing.Size(605, 221);
-            this.pnlRequestsHistory.TabIndex = 8;
-            // 
-            // dgRequests
-            // 
-            this.dgRequests.AutoGenerateColumns = false;
-            this.dgRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRequests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.EcuCode,
-            this.requestStatusDataGridViewTextBoxColumn,
-            this.requestDateTimeDataGridViewTextBoxColumn,
-            this.additionalMessageDataGridViewTextBoxColumn,
-            this.stockFileNameDataGridViewTextBoxColumn});
-            this.dgRequests.DataSource = this.reflashRequestBindingSource;
-            this.dgRequests.Location = new System.Drawing.Point(0, 3);
-            this.dgRequests.Name = "dgRequests";
-            this.dgRequests.Size = new System.Drawing.Size(601, 170);
-            this.dgRequests.TabIndex = 4;
-            // 
-            // EcuCode
-            // 
-            this.EcuCode.DataPropertyName = "EcuCode";
-            this.EcuCode.HeaderText = "Номер компьютера";
-            this.EcuCode.Name = "EcuCode";
-            // 
-            // btnRefreshRequests
-            // 
-            this.btnRefreshRequests.Location = new System.Drawing.Point(363, 185);
-            this.btnRefreshRequests.Name = "btnRefreshRequests";
-            this.btnRefreshRequests.Size = new System.Drawing.Size(235, 23);
-            this.btnRefreshRequests.TabIndex = 5;
-            this.btnRefreshRequests.Text = "Получить\\Обновить данные";
-            this.btnRefreshRequests.UseVisualStyleBackColor = true;
-            this.btnRefreshRequests.Click += new System.EventHandler(this.btnRefreshRequests_Click);
-            // 
             // pnlSendRequest
             // 
-            this.pnlSendRequest.Controls.Add(this.txtEcuNumber);
+            this.pnlSendRequest.Controls.Add(this.lblCreateRequest);
+            this.pnlSendRequest.Controls.Add(this.btnRequestUploadEcuPhoto);
+            this.pnlSendRequest.Controls.Add(this.txtCarDescription);
+            this.pnlSendRequest.Controls.Add(this.txtRequestCarDescription);
+            this.pnlSendRequest.Controls.Add(this.txtEcuPhotoStatus);
+            this.pnlSendRequest.Controls.Add(this.txtEcuBinatyNumber);
+            this.pnlSendRequest.Controls.Add(this.lblEcuPhoto);
+            this.pnlSendRequest.Controls.Add(this.lblBinaryNumber);
             this.pnlSendRequest.Controls.Add(this.lblEcuNumber);
+            this.pnlSendRequest.Controls.Add(this.txtEcuNumber);
             this.pnlSendRequest.Controls.Add(this.pbRequest);
             this.pnlSendRequest.Controls.Add(this.lblAdditionalInfo);
             this.pnlSendRequest.Controls.Add(this.txtAdditionalInfo);
-            this.pnlSendRequest.Controls.Add(this.txtStockFilePath);
+            this.pnlSendRequest.Controls.Add(this.txtStockFileStatus);
             this.pnlSendRequest.Controls.Add(this.btnSendRequest);
             this.pnlSendRequest.Controls.Add(this.lblStockFile);
             this.pnlSendRequest.Controls.Add(this.btnOpenFile);
-            this.pnlSendRequest.Location = new System.Drawing.Point(0, 3);
+            this.pnlSendRequest.Location = new System.Drawing.Point(0, 0);
             this.pnlSendRequest.Name = "pnlSendRequest";
-            this.pnlSendRequest.Size = new System.Drawing.Size(608, 281);
+            this.pnlSendRequest.Size = new System.Drawing.Size(608, 501);
             this.pnlSendRequest.TabIndex = 7;
             // 
-            // txtEcuNumber
+            // btnRequestUploadEcuPhoto
             // 
-            this.txtEcuNumber.Location = new System.Drawing.Point(148, 24);
-            this.txtEcuNumber.Name = "txtEcuNumber";
-            this.txtEcuNumber.Size = new System.Drawing.Size(177, 22);
-            this.txtEcuNumber.TabIndex = 1;
+            this.btnRequestUploadEcuPhoto.Location = new System.Drawing.Point(488, 126);
+            this.btnRequestUploadEcuPhoto.Name = "btnRequestUploadEcuPhoto";
+            this.btnRequestUploadEcuPhoto.Size = new System.Drawing.Size(98, 25);
+            this.btnRequestUploadEcuPhoto.TabIndex = 14;
+            this.btnRequestUploadEcuPhoto.Text = "Загрузить";
+            this.btnRequestUploadEcuPhoto.UseVisualStyleBackColor = true;
+            // 
+            // txtCarDescription
+            // 
+            this.txtCarDescription.AutoSize = true;
+            this.txtCarDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtCarDescription.Location = new System.Drawing.Point(15, 180);
+            this.txtCarDescription.Name = "txtCarDescription";
+            this.txtCarDescription.Size = new System.Drawing.Size(48, 13);
+            this.txtCarDescription.TabIndex = 13;
+            this.txtCarDescription.Text = "Машина";
+            // 
+            // txtRequestCarDescription
+            // 
+            this.txtRequestCarDescription.Location = new System.Drawing.Point(123, 168);
+            this.txtRequestCarDescription.Multiline = true;
+            this.txtRequestCarDescription.Name = "txtRequestCarDescription";
+            this.txtRequestCarDescription.Size = new System.Drawing.Size(463, 105);
+            this.txtRequestCarDescription.TabIndex = 12;
+            // 
+            // txtEcuPhotoStatus
+            // 
+            this.txtEcuPhotoStatus.Enabled = false;
+            this.txtEcuPhotoStatus.Location = new System.Drawing.Point(123, 127);
+            this.txtEcuPhotoStatus.Name = "txtEcuPhotoStatus";
+            this.txtEcuPhotoStatus.Size = new System.Drawing.Size(352, 22);
+            this.txtEcuPhotoStatus.TabIndex = 11;
+            this.txtEcuPhotoStatus.Text = "не загружен";
+            this.txtEcuPhotoStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtEcuBinatyNumber
+            // 
+            this.txtEcuBinatyNumber.Location = new System.Drawing.Point(123, 89);
+            this.txtEcuBinatyNumber.Name = "txtEcuBinatyNumber";
+            this.txtEcuBinatyNumber.Size = new System.Drawing.Size(463, 22);
+            this.txtEcuBinatyNumber.TabIndex = 10;
+            // 
+            // lblEcuPhoto
+            // 
+            this.lblEcuPhoto.AutoSize = true;
+            this.lblEcuPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblEcuPhoto.Location = new System.Drawing.Point(15, 130);
+            this.lblEcuPhoto.Name = "lblEcuPhoto";
+            this.lblEcuPhoto.Size = new System.Drawing.Size(69, 13);
+            this.lblEcuPhoto.TabIndex = 9;
+            this.lblEcuPhoto.Text = "Фото мозга";
+            // 
+            // lblBinaryNumber
+            // 
+            this.lblBinaryNumber.AutoSize = true;
+            this.lblBinaryNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblBinaryNumber.Location = new System.Drawing.Point(15, 92);
+            this.lblBinaryNumber.Name = "lblBinaryNumber";
+            this.lblBinaryNumber.Size = new System.Drawing.Size(94, 13);
+            this.lblBinaryNumber.TabIndex = 8;
+            this.lblBinaryNumber.Text = "Номер прошивки";
             // 
             // lblEcuNumber
             // 
             this.lblEcuNumber.AutoSize = true;
-            this.lblEcuNumber.Location = new System.Drawing.Point(60, 24);
+            this.lblEcuNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblEcuNumber.Location = new System.Drawing.Point(15, 55);
             this.lblEcuNumber.Name = "lblEcuNumber";
-            this.lblEcuNumber.Size = new System.Drawing.Size(82, 16);
-            this.lblEcuNumber.TabIndex = 0;
-            this.lblEcuNumber.Text = "Номер ECU";
+            this.lblEcuNumber.Size = new System.Drawing.Size(75, 13);
+            this.lblEcuNumber.TabIndex = 7;
+            this.lblEcuNumber.Text = "Номер мозга";
+            // 
+            // txtEcuNumber
+            // 
+            this.txtEcuNumber.Location = new System.Drawing.Point(123, 52);
+            this.txtEcuNumber.Name = "txtEcuNumber";
+            this.txtEcuNumber.Size = new System.Drawing.Size(463, 22);
+            this.txtEcuNumber.TabIndex = 1;
+            // 
+            // pbRequest
+            // 
+            this.pbRequest.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbRequest.Location = new System.Drawing.Point(348, 459);
+            this.pbRequest.Name = "pbRequest";
+            this.pbRequest.Size = new System.Drawing.Size(28, 29);
+            this.pbRequest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRequest.TabIndex = 6;
+            this.pbRequest.TabStop = false;
+            this.pbRequest.Visible = false;
             // 
             // lblAdditionalInfo
             // 
             this.lblAdditionalInfo.AutoSize = true;
-            this.lblAdditionalInfo.Location = new System.Drawing.Point(31, 51);
+            this.lblAdditionalInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblAdditionalInfo.Location = new System.Drawing.Point(15, 291);
             this.lblAdditionalInfo.Name = "lblAdditionalInfo";
-            this.lblAdditionalInfo.Size = new System.Drawing.Size(111, 16);
+            this.lblAdditionalInfo.Size = new System.Drawing.Size(65, 13);
             this.lblAdditionalInfo.TabIndex = 0;
-            this.lblAdditionalInfo.Text = "Дополнительно";
+            this.lblAdditionalInfo.Text = "Пожелания";
             // 
             // txtAdditionalInfo
             // 
-            this.txtAdditionalInfo.Location = new System.Drawing.Point(148, 53);
+            this.txtAdditionalInfo.Location = new System.Drawing.Point(123, 288);
             this.txtAdditionalInfo.Multiline = true;
             this.txtAdditionalInfo.Name = "txtAdditionalInfo";
             this.txtAdditionalInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAdditionalInfo.Size = new System.Drawing.Size(444, 131);
+            this.txtAdditionalInfo.Size = new System.Drawing.Size(463, 131);
             this.txtAdditionalInfo.TabIndex = 1;
             // 
-            // txtStockFilePath
+            // txtStockFileStatus
             // 
-            this.txtStockFilePath.Location = new System.Drawing.Point(148, 194);
-            this.txtStockFilePath.Name = "txtStockFilePath";
-            this.txtStockFilePath.Size = new System.Drawing.Size(357, 22);
-            this.txtStockFilePath.TabIndex = 1;
+            this.txtStockFileStatus.Enabled = false;
+            this.txtStockFileStatus.Location = new System.Drawing.Point(123, 429);
+            this.txtStockFileStatus.Name = "txtStockFileStatus";
+            this.txtStockFileStatus.Size = new System.Drawing.Size(352, 22);
+            this.txtStockFileStatus.TabIndex = 1;
+            this.txtStockFileStatus.Text = "не загружен";
+            this.txtStockFileStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnSendRequest
             // 
-            this.btnSendRequest.Location = new System.Drawing.Point(388, 238);
+            this.btnSendRequest.Location = new System.Drawing.Point(382, 459);
             this.btnSendRequest.Name = "btnSendRequest";
             this.btnSendRequest.Size = new System.Drawing.Size(204, 29);
             this.btnSendRequest.TabIndex = 3;
@@ -563,27 +815,26 @@ namespace VtecTeamFlasher
             // lblStockFile
             // 
             this.lblStockFile.AutoSize = true;
-            this.lblStockFile.Location = new System.Drawing.Point(31, 194);
+            this.lblStockFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblStockFile.Location = new System.Drawing.Point(15, 432);
             this.lblStockFile.Name = "lblStockFile";
-            this.lblStockFile.Size = new System.Drawing.Size(110, 16);
+            this.lblStockFile.Size = new System.Drawing.Size(86, 13);
             this.lblStockFile.TabIndex = 0;
             this.lblStockFile.Text = "Стоковый файл";
             // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(511, 194);
+            this.btnOpenFile.Location = new System.Drawing.Point(488, 428);
             this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(81, 25);
+            this.btnOpenFile.Size = new System.Drawing.Size(98, 25);
             this.btnOpenFile.TabIndex = 2;
-            this.btnOpenFile.Text = "Открыть";
+            this.btnOpenFile.Text = "Загрузить";
             this.btnOpenFile.UseVisualStyleBackColor = true;
             this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // tabHistory
             // 
-            this.tabHistory.Controls.Add(this.pbReflashHistory);
-            this.tabHistory.Controls.Add(this.btnRefreshHistory);
-            this.tabHistory.Controls.Add(this.dgReflashHistory);
+            this.tabHistory.Controls.Add(this.tabControlHistory);
             this.tabHistory.Location = new System.Drawing.Point(4, 29);
             this.tabHistory.Name = "tabHistory";
             this.tabHistory.Size = new System.Drawing.Size(607, 504);
@@ -592,9 +843,51 @@ namespace VtecTeamFlasher
             this.tabHistory.UseVisualStyleBackColor = true;
             this.tabHistory.Click += new System.EventHandler(this.tabHistory_Click);
             // 
+            // tabControlHistory
+            // 
+            this.tabControlHistory.Controls.Add(this.tabReflashHistory);
+            this.tabControlHistory.Controls.Add(this.tabRequestHistory);
+            this.tabControlHistory.Location = new System.Drawing.Point(0, 0);
+            this.tabControlHistory.Name = "tabControlHistory";
+            this.tabControlHistory.SelectedIndex = 0;
+            this.tabControlHistory.Size = new System.Drawing.Size(611, 508);
+            this.tabControlHistory.TabIndex = 0;
+            // 
+            // tabReflashHistory
+            // 
+            this.tabReflashHistory.Controls.Add(this.panelRequestHistory);
+            this.tabReflashHistory.Location = new System.Drawing.Point(4, 25);
+            this.tabReflashHistory.Name = "tabReflashHistory";
+            this.tabReflashHistory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReflashHistory.Size = new System.Drawing.Size(603, 479);
+            this.tabReflashHistory.TabIndex = 0;
+            this.tabReflashHistory.Text = "Прошивки";
+            this.tabReflashHistory.UseVisualStyleBackColor = true;
+            // 
+            // panelRequestHistory
+            // 
+            this.panelRequestHistory.Controls.Add(this.pbReflashHistory);
+            this.panelRequestHistory.Controls.Add(this.btnRefreshHistory);
+            this.panelRequestHistory.Controls.Add(this.dgReflashHistory);
+            this.panelRequestHistory.Location = new System.Drawing.Point(0, 0);
+            this.panelRequestHistory.Name = "panelRequestHistory";
+            this.panelRequestHistory.Size = new System.Drawing.Size(604, 483);
+            this.panelRequestHistory.TabIndex = 0;
+            // 
+            // pbReflashHistory
+            // 
+            this.pbReflashHistory.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbReflashHistory.Location = new System.Drawing.Point(367, 448);
+            this.pbReflashHistory.Name = "pbReflashHistory";
+            this.pbReflashHistory.Size = new System.Drawing.Size(29, 28);
+            this.pbReflashHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbReflashHistory.TabIndex = 2;
+            this.pbReflashHistory.TabStop = false;
+            this.pbReflashHistory.Visible = false;
+            // 
             // btnRefreshHistory
             // 
-            this.btnRefreshHistory.Location = new System.Drawing.Point(406, 473);
+            this.btnRefreshHistory.Location = new System.Drawing.Point(402, 448);
             this.btnRefreshHistory.Name = "btnRefreshHistory";
             this.btnRefreshHistory.Size = new System.Drawing.Size(198, 28);
             this.btnRefreshHistory.TabIndex = 1;
@@ -616,11 +909,157 @@ namespace VtecTeamFlasher
             this.paymentStatusDataGridViewTextBoxColumn,
             this.btnSendReview});
             this.dgReflashHistory.DataSource = this.reflashHistoryBindingSource;
-            this.dgReflashHistory.Location = new System.Drawing.Point(3, 20);
+            this.dgReflashHistory.Location = new System.Drawing.Point(0, 0);
             this.dgReflashHistory.Name = "dgReflashHistory";
-            this.dgReflashHistory.Size = new System.Drawing.Size(601, 447);
+            this.dgReflashHistory.Size = new System.Drawing.Size(600, 442);
             this.dgReflashHistory.TabIndex = 0;
             this.dgReflashHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgReflashHistory_CellContentClick);
+            // 
+            // cvnDataGridViewTextBoxColumn
+            // 
+            this.cvnDataGridViewTextBoxColumn.DataPropertyName = "Cvn";
+            this.cvnDataGridViewTextBoxColumn.HeaderText = "Cvn";
+            this.cvnDataGridViewTextBoxColumn.Name = "cvnDataGridViewTextBoxColumn";
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // reslashFileNameDataGridViewTextBoxColumn
+            // 
+            this.reslashFileNameDataGridViewTextBoxColumn.DataPropertyName = "ReslashFileName";
+            this.reslashFileNameDataGridViewTextBoxColumn.HeaderText = "Имя рефлеш файла";
+            this.reslashFileNameDataGridViewTextBoxColumn.Name = "reslashFileNameDataGridViewTextBoxColumn";
+            // 
+            // vinDataGridViewTextBoxColumn
+            // 
+            this.vinDataGridViewTextBoxColumn.DataPropertyName = "Vin";
+            this.vinDataGridViewTextBoxColumn.HeaderText = "Vin";
+            this.vinDataGridViewTextBoxColumn.Name = "vinDataGridViewTextBoxColumn";
+            // 
+            // reflashDateTimeDataGridViewTextBoxColumn
+            // 
+            this.reflashDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ReflashDateTime";
+            this.reflashDateTimeDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.reflashDateTimeDataGridViewTextBoxColumn.Name = "reflashDateTimeDataGridViewTextBoxColumn";
+            // 
+            // reflashStatusDataGridViewTextBoxColumn
+            // 
+            this.reflashStatusDataGridViewTextBoxColumn.DataPropertyName = "ReflashStatus";
+            this.reflashStatusDataGridViewTextBoxColumn.HeaderText = "Статус прошивки";
+            this.reflashStatusDataGridViewTextBoxColumn.Name = "reflashStatusDataGridViewTextBoxColumn";
+            // 
+            // paymentStatusDataGridViewTextBoxColumn
+            // 
+            this.paymentStatusDataGridViewTextBoxColumn.DataPropertyName = "PaymentStatus";
+            this.paymentStatusDataGridViewTextBoxColumn.HeaderText = "Статус платежа";
+            this.paymentStatusDataGridViewTextBoxColumn.Name = "paymentStatusDataGridViewTextBoxColumn";
+            // 
+            // btnSendReview
+            // 
+            this.btnSendReview.HeaderText = "Добавить отзыв";
+            this.btnSendReview.Name = "btnSendReview";
+            this.btnSendReview.Text = "Добавить отзыв";
+            this.btnSendReview.UseColumnTextForButtonValue = true;
+            // 
+            // reflashHistoryBindingSource
+            // 
+            this.reflashHistoryBindingSource.DataSource = typeof(ClientAndServerCommons.DataClasses.ReflashHistory);
+            // 
+            // tabRequestHistory
+            // 
+            this.tabRequestHistory.Controls.Add(this.pnlRequestsHistory);
+            this.tabRequestHistory.Location = new System.Drawing.Point(4, 25);
+            this.tabRequestHistory.Name = "tabRequestHistory";
+            this.tabRequestHistory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabRequestHistory.Size = new System.Drawing.Size(603, 479);
+            this.tabRequestHistory.TabIndex = 1;
+            this.tabRequestHistory.Text = "Запросы";
+            this.tabRequestHistory.UseVisualStyleBackColor = true;
+            // 
+            // pnlRequestsHistory
+            // 
+            this.pnlRequestsHistory.Controls.Add(this.dgRequests);
+            this.pnlRequestsHistory.Controls.Add(this.btnRefreshRequests);
+            this.pnlRequestsHistory.Controls.Add(this.pbRequestHistory);
+            this.pnlRequestsHistory.Location = new System.Drawing.Point(0, 0);
+            this.pnlRequestsHistory.Name = "pnlRequestsHistory";
+            this.pnlRequestsHistory.Size = new System.Drawing.Size(605, 627);
+            this.pnlRequestsHistory.TabIndex = 8;
+            // 
+            // dgRequests
+            // 
+            this.dgRequests.AutoGenerateColumns = false;
+            this.dgRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRequests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.EcuCode,
+            this.requestStatusDataGridViewTextBoxColumn,
+            this.requestDateTimeDataGridViewTextBoxColumn,
+            this.additionalMessageDataGridViewTextBoxColumn,
+            this.stockFileNameDataGridViewTextBoxColumn});
+            this.dgRequests.DataSource = this.reflashRequestBindingSource;
+            this.dgRequests.Location = new System.Drawing.Point(0, 0);
+            this.dgRequests.Name = "dgRequests";
+            this.dgRequests.Size = new System.Drawing.Size(601, 441);
+            this.dgRequests.TabIndex = 4;
+            // 
+            // EcuCode
+            // 
+            this.EcuCode.DataPropertyName = "EcuCode";
+            this.EcuCode.HeaderText = "Номер компьютера";
+            this.EcuCode.Name = "EcuCode";
+            // 
+            // requestStatusDataGridViewTextBoxColumn
+            // 
+            this.requestStatusDataGridViewTextBoxColumn.DataPropertyName = "RequestStatus";
+            this.requestStatusDataGridViewTextBoxColumn.HeaderText = "Статус запроса";
+            this.requestStatusDataGridViewTextBoxColumn.Name = "requestStatusDataGridViewTextBoxColumn";
+            // 
+            // requestDateTimeDataGridViewTextBoxColumn
+            // 
+            this.requestDateTimeDataGridViewTextBoxColumn.DataPropertyName = "RequestDateTime";
+            this.requestDateTimeDataGridViewTextBoxColumn.HeaderText = "Дата запроса";
+            this.requestDateTimeDataGridViewTextBoxColumn.Name = "requestDateTimeDataGridViewTextBoxColumn";
+            // 
+            // additionalMessageDataGridViewTextBoxColumn
+            // 
+            this.additionalMessageDataGridViewTextBoxColumn.DataPropertyName = "AdditionalMessage";
+            this.additionalMessageDataGridViewTextBoxColumn.HeaderText = "Дополнительно";
+            this.additionalMessageDataGridViewTextBoxColumn.Name = "additionalMessageDataGridViewTextBoxColumn";
+            // 
+            // stockFileNameDataGridViewTextBoxColumn
+            // 
+            this.stockFileNameDataGridViewTextBoxColumn.DataPropertyName = "StockFileName";
+            this.stockFileNameDataGridViewTextBoxColumn.HeaderText = "Имя сток файла";
+            this.stockFileNameDataGridViewTextBoxColumn.Name = "stockFileNameDataGridViewTextBoxColumn";
+            // 
+            // reflashRequestBindingSource
+            // 
+            this.reflashRequestBindingSource.DataSource = typeof(ClientAndServerCommons.DataClasses.ReflashRequest);
+            // 
+            // btnRefreshRequests
+            // 
+            this.btnRefreshRequests.Location = new System.Drawing.Point(362, 450);
+            this.btnRefreshRequests.Name = "btnRefreshRequests";
+            this.btnRefreshRequests.Size = new System.Drawing.Size(235, 23);
+            this.btnRefreshRequests.TabIndex = 5;
+            this.btnRefreshRequests.Text = "Получить\\Обновить данные";
+            this.btnRefreshRequests.UseVisualStyleBackColor = true;
+            this.btnRefreshRequests.Click += new System.EventHandler(this.btnRefreshRequests_Click);
+            // 
+            // pbRequestHistory
+            // 
+            this.pbRequestHistory.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbRequestHistory.Location = new System.Drawing.Point(327, 447);
+            this.pbRequestHistory.Name = "pbRequestHistory";
+            this.pbRequestHistory.Size = new System.Drawing.Size(28, 29);
+            this.pbRequestHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRequestHistory.TabIndex = 6;
+            this.pbRequestHistory.TabStop = false;
+            this.pbRequestHistory.Visible = false;
             // 
             // tabPerson
             // 
@@ -648,6 +1087,17 @@ namespace VtecTeamFlasher
             this.tabPerson.TabIndex = 3;
             this.tabPerson.Text = "Персонализация";
             this.tabPerson.UseVisualStyleBackColor = true;
+            // 
+            // pbPersonalInfo
+            // 
+            this.pbPersonalInfo.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbPersonalInfo.Location = new System.Drawing.Point(340, 235);
+            this.pbPersonalInfo.Name = "pbPersonalInfo";
+            this.pbPersonalInfo.Size = new System.Drawing.Size(39, 35);
+            this.pbPersonalInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPersonalInfo.TabIndex = 17;
+            this.pbPersonalInfo.TabStop = false;
+            this.pbPersonalInfo.Visible = false;
             // 
             // tbUserKey
             // 
@@ -792,6 +1242,38 @@ namespace VtecTeamFlasher
             this.tbUserName.Size = new System.Drawing.Size(464, 22);
             this.tbUserName.TabIndex = 0;
             // 
+            // panelKeyUnavailible
+            // 
+            this.panelKeyUnavailible.Controls.Add(this.labelKeyUnavailible);
+            this.panelKeyUnavailible.Controls.Add(this.btnReloadFlasher);
+            this.panelKeyUnavailible.Location = new System.Drawing.Point(0, 0);
+            this.panelKeyUnavailible.Name = "panelKeyUnavailible";
+            this.panelKeyUnavailible.Size = new System.Drawing.Size(595, 492);
+            this.panelKeyUnavailible.TabIndex = 8;
+            this.panelKeyUnavailible.Visible = false;
+            // 
+            // labelKeyUnavailible
+            // 
+            this.labelKeyUnavailible.AutoSize = true;
+            this.labelKeyUnavailible.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKeyUnavailible.Location = new System.Drawing.Point(35, 217);
+            this.labelKeyUnavailible.Name = "labelKeyUnavailible";
+            this.labelKeyUnavailible.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelKeyUnavailible.Size = new System.Drawing.Size(519, 48);
+            this.labelKeyUnavailible.TabIndex = 1;
+            this.labelKeyUnavailible.Text = "Система не может найти ключ безопасности.\r\nВставьте ключ безопасности в USB порт " +
+    "и нажмите ОК.";
+            // 
+            // btnReloadFlasher
+            // 
+            this.btnReloadFlasher.Location = new System.Drawing.Point(158, 291);
+            this.btnReloadFlasher.Name = "btnReloadFlasher";
+            this.btnReloadFlasher.Size = new System.Drawing.Size(229, 23);
+            this.btnReloadFlasher.TabIndex = 0;
+            this.btnReloadFlasher.Text = "OK";
+            this.btnReloadFlasher.UseVisualStyleBackColor = true;
+            this.btnReloadFlasher.Click += new System.EventHandler(this.btnReloadFlasher_Click);
+            // 
             // panelLogin
             // 
             this.panelLogin.Controls.Add(this.pbLogin);
@@ -804,8 +1286,20 @@ namespace VtecTeamFlasher
             this.panelLogin.Controls.Add(this.txtUsername);
             this.panelLogin.Location = new System.Drawing.Point(12, 12);
             this.panelLogin.Name = "panelLogin";
-            this.panelLogin.Size = new System.Drawing.Size(637, 802);
+            this.panelLogin.Size = new System.Drawing.Size(615, 802);
             this.panelLogin.TabIndex = 8;
+            // 
+            // pbLogin
+            // 
+            this.pbLogin.ErrorImage = global::VtecTeamFlasher.Properties.Resources.Error;
+            this.pbLogin.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbLogin.Location = new System.Drawing.Point(135, 112);
+            this.pbLogin.Name = "pbLogin";
+            this.pbLogin.Size = new System.Drawing.Size(30, 29);
+            this.pbLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbLogin.TabIndex = 7;
+            this.pbLogin.TabStop = false;
+            this.pbLogin.Visible = false;
             // 
             // lblErrLogin
             // 
@@ -871,185 +1365,76 @@ namespace VtecTeamFlasher
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
             this.txtUsername.TabIndex = 0;
             // 
-            // requestStatusDataGridViewTextBoxColumn
+            // lblChooseBinarytoUpload
             // 
-            this.requestStatusDataGridViewTextBoxColumn.DataPropertyName = "RequestStatus";
-            this.requestStatusDataGridViewTextBoxColumn.HeaderText = "Статус запроса";
-            this.requestStatusDataGridViewTextBoxColumn.Name = "requestStatusDataGridViewTextBoxColumn";
+            this.lblChooseBinarytoUpload.AutoSize = true;
+            this.lblChooseBinarytoUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblChooseBinarytoUpload.Location = new System.Drawing.Point(217, 21);
+            this.lblChooseBinarytoUpload.Name = "lblChooseBinarytoUpload";
+            this.lblChooseBinarytoUpload.Size = new System.Drawing.Size(151, 20);
+            this.lblChooseBinarytoUpload.TabIndex = 23;
+            this.lblChooseBinarytoUpload.Text = "Выбор прошивки";
+            this.lblChooseBinarytoUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // requestDateTimeDataGridViewTextBoxColumn
+            // lblCreateRequest
             // 
-            this.requestDateTimeDataGridViewTextBoxColumn.DataPropertyName = "RequestDateTime";
-            this.requestDateTimeDataGridViewTextBoxColumn.HeaderText = "Дата запроса";
-            this.requestDateTimeDataGridViewTextBoxColumn.Name = "requestDateTimeDataGridViewTextBoxColumn";
-            // 
-            // additionalMessageDataGridViewTextBoxColumn
-            // 
-            this.additionalMessageDataGridViewTextBoxColumn.DataPropertyName = "AdditionalMessage";
-            this.additionalMessageDataGridViewTextBoxColumn.HeaderText = "Дополнительно";
-            this.additionalMessageDataGridViewTextBoxColumn.Name = "additionalMessageDataGridViewTextBoxColumn";
-            // 
-            // stockFileNameDataGridViewTextBoxColumn
-            // 
-            this.stockFileNameDataGridViewTextBoxColumn.DataPropertyName = "StockFileName";
-            this.stockFileNameDataGridViewTextBoxColumn.HeaderText = "Имя сток файла";
-            this.stockFileNameDataGridViewTextBoxColumn.Name = "stockFileNameDataGridViewTextBoxColumn";
-            // 
-            // reflashRequestBindingSource
-            // 
-            this.reflashRequestBindingSource.DataSource = typeof(ClientAndServerCommons.DataClasses.ReflashRequest);
-            // 
-            // pbRequestHistory
-            // 
-            this.pbRequestHistory.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
-            this.pbRequestHistory.Location = new System.Drawing.Point(329, 179);
-            this.pbRequestHistory.Name = "pbRequestHistory";
-            this.pbRequestHistory.Size = new System.Drawing.Size(28, 29);
-            this.pbRequestHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbRequestHistory.TabIndex = 6;
-            this.pbRequestHistory.TabStop = false;
-            this.pbRequestHistory.Visible = false;
-            // 
-            // pbRequest
-            // 
-            this.pbRequest.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
-            this.pbRequest.Location = new System.Drawing.Point(354, 238);
-            this.pbRequest.Name = "pbRequest";
-            this.pbRequest.Size = new System.Drawing.Size(28, 29);
-            this.pbRequest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbRequest.TabIndex = 6;
-            this.pbRequest.TabStop = false;
-            this.pbRequest.Visible = false;
-            // 
-            // pbReflashHistory
-            // 
-            this.pbReflashHistory.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
-            this.pbReflashHistory.Location = new System.Drawing.Point(371, 473);
-            this.pbReflashHistory.Name = "pbReflashHistory";
-            this.pbReflashHistory.Size = new System.Drawing.Size(29, 28);
-            this.pbReflashHistory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbReflashHistory.TabIndex = 2;
-            this.pbReflashHistory.TabStop = false;
-            this.pbReflashHistory.Visible = false;
-            // 
-            // reflashHistoryBindingSource
-            // 
-            this.reflashHistoryBindingSource.DataSource = typeof(ClientAndServerCommons.DataClasses.ReflashHistory);
-            // 
-            // pbPersonalInfo
-            // 
-            this.pbPersonalInfo.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
-            this.pbPersonalInfo.Location = new System.Drawing.Point(340, 235);
-            this.pbPersonalInfo.Name = "pbPersonalInfo";
-            this.pbPersonalInfo.Size = new System.Drawing.Size(39, 35);
-            this.pbPersonalInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbPersonalInfo.TabIndex = 17;
-            this.pbPersonalInfo.TabStop = false;
-            this.pbPersonalInfo.Visible = false;
-            // 
-            // pbLogin
-            // 
-            this.pbLogin.ErrorImage = global::VtecTeamFlasher.Properties.Resources.Error;
-            this.pbLogin.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
-            this.pbLogin.Location = new System.Drawing.Point(135, 112);
-            this.pbLogin.Name = "pbLogin";
-            this.pbLogin.Size = new System.Drawing.Size(30, 29);
-            this.pbLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbLogin.TabIndex = 7;
-            this.pbLogin.TabStop = false;
-            this.pbLogin.Visible = false;
-            // 
-            // cvnDataGridViewTextBoxColumn
-            // 
-            this.cvnDataGridViewTextBoxColumn.DataPropertyName = "Cvn";
-            this.cvnDataGridViewTextBoxColumn.HeaderText = "Cvn";
-            this.cvnDataGridViewTextBoxColumn.Name = "cvnDataGridViewTextBoxColumn";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // reslashFileNameDataGridViewTextBoxColumn
-            // 
-            this.reslashFileNameDataGridViewTextBoxColumn.DataPropertyName = "ReslashFileName";
-            this.reslashFileNameDataGridViewTextBoxColumn.HeaderText = "Имя рефлеш файла";
-            this.reslashFileNameDataGridViewTextBoxColumn.Name = "reslashFileNameDataGridViewTextBoxColumn";
-            // 
-            // vinDataGridViewTextBoxColumn
-            // 
-            this.vinDataGridViewTextBoxColumn.DataPropertyName = "Vin";
-            this.vinDataGridViewTextBoxColumn.HeaderText = "Vin";
-            this.vinDataGridViewTextBoxColumn.Name = "vinDataGridViewTextBoxColumn";
-            // 
-            // reflashDateTimeDataGridViewTextBoxColumn
-            // 
-            this.reflashDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ReflashDateTime";
-            this.reflashDateTimeDataGridViewTextBoxColumn.HeaderText = "Дата";
-            this.reflashDateTimeDataGridViewTextBoxColumn.Name = "reflashDateTimeDataGridViewTextBoxColumn";
-            // 
-            // reflashStatusDataGridViewTextBoxColumn
-            // 
-            this.reflashStatusDataGridViewTextBoxColumn.DataPropertyName = "ReflashStatus";
-            this.reflashStatusDataGridViewTextBoxColumn.HeaderText = "Статус прошивки";
-            this.reflashStatusDataGridViewTextBoxColumn.Name = "reflashStatusDataGridViewTextBoxColumn";
-            // 
-            // paymentStatusDataGridViewTextBoxColumn
-            // 
-            this.paymentStatusDataGridViewTextBoxColumn.DataPropertyName = "PaymentStatus";
-            this.paymentStatusDataGridViewTextBoxColumn.HeaderText = "Статус платежа";
-            this.paymentStatusDataGridViewTextBoxColumn.Name = "paymentStatusDataGridViewTextBoxColumn";
-            // 
-            // btnSendReview
-            // 
-            this.btnSendReview.HeaderText = "Добавить отзыв";
-            this.btnSendReview.Name = "btnSendReview";
-            this.btnSendReview.Text = "Добавить отзыв";
-            this.btnSendReview.UseColumnTextForButtonValue = true;
+            this.lblCreateRequest.AutoSize = true;
+            this.lblCreateRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCreateRequest.Location = new System.Drawing.Point(217, 20);
+            this.lblCreateRequest.Name = "lblCreateRequest";
+            this.lblCreateRequest.Size = new System.Drawing.Size(168, 20);
+            this.lblCreateRequest.TabIndex = 15;
+            this.lblCreateRequest.Text = "Создание Запроса";
             // 
             // VTFlasher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 803);
+            this.ClientSize = new System.Drawing.Size(637, 555);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.txtStatus);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.gbModule);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSettings);
             this.Name = "VTFlasher";
             this.Text = "VTFlasher";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VTFlasher_FormClosing);
             this.Load += new System.EventHandler(this.VTFlasher_Load);
-            this.gbModule.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
             this.tabReflash.ResumeLayout(false);
-            this.tabReflash.PerformLayout();
-            this.panelKeyUnavailible.ResumeLayout(false);
-            this.panelKeyUnavailible.PerformLayout();
+            this.panelReflash.ResumeLayout(false);
+            this.panelReflash.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReflash)).EndInit();
+            this.panelLoadBinary.ResumeLayout(false);
+            this.panelLoadBinary.PerformLayout();
+            this.gbBinaryDescription.ResumeLayout(false);
+            this.gbBinaryDescription.PerformLayout();
             this.tabRequest.ResumeLayout(false);
-            this.pnlRequestsHistory.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgRequests)).EndInit();
             this.pnlSendRequest.ResumeLayout(false);
             this.pnlSendRequest.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRequest)).EndInit();
             this.tabHistory.ResumeLayout(false);
+            this.tabControlHistory.ResumeLayout(false);
+            this.tabReflashHistory.ResumeLayout(false);
+            this.panelRequestHistory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbReflashHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgReflashHistory)).EndInit();
-            this.tabPerson.ResumeLayout(false);
-            this.tabPerson.PerformLayout();
-            this.panelLogin.ResumeLayout(false);
-            this.panelLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.reflashHistoryBindingSource)).EndInit();
+            this.tabRequestHistory.ResumeLayout(false);
+            this.pnlRequestsHistory.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgRequests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reflashRequestBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRequestHistory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbRequest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbReflashHistory)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reflashHistoryBindingSource)).EndInit();
+            this.tabPerson.ResumeLayout(false);
+            this.tabPerson.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalInfo)).EndInit();
+            this.panelKeyUnavailible.ResumeLayout(false);
+            this.panelKeyUnavailible.PerformLayout();
+            this.panelLogin.ResumeLayout(false);
+            this.panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1063,7 +1448,6 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ComboBox cbModules;
         private System.Windows.Forms.Label lbAdapter;
-        private System.Windows.Forms.GroupBox gbModule;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtFilePath;
         private System.Windows.Forms.Button btnOpenFileDialog;
@@ -1074,7 +1458,7 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Button btnInitialize;
         private System.Windows.Forms.Button btnReadErrors;
         private System.Windows.Forms.Button btnIdentify;
-        private System.Windows.Forms.Button btnRead;
+        private System.Windows.Forms.Button btnReadFromECU;
         private System.Windows.Forms.Button btnWrite;
         private System.Windows.Forms.CheckBox cbControlSum;
         private System.Windows.Forms.TabControl tabControlMain;
@@ -1089,18 +1473,13 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.CheckBox checkBoxSavePassword;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelLogin;
-        private System.Windows.Forms.TextBox tbErrors;
-        private System.Windows.Forms.ComboBox cbCarModel;
-        private System.Windows.Forms.ComboBox cbCarManufacture;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel panelKeyUnavailible;
         private System.Windows.Forms.Label labelKeyUnavailible;
         private System.Windows.Forms.Button btnReloadFlasher;
         private System.Windows.Forms.Label lblErrLogin;
-        private System.Windows.Forms.Label lblEcuNumber;
         private System.Windows.Forms.Label lblStockFile;
         private System.Windows.Forms.Label lblAdditionalInfo;
-        private System.Windows.Forms.TextBox txtStockFilePath;
+        private System.Windows.Forms.TextBox txtStockFileStatus;
         private System.Windows.Forms.TextBox txtAdditionalInfo;
         private System.Windows.Forms.TextBox txtEcuNumber;
         private System.Windows.Forms.Button btnOpenFile;
@@ -1148,6 +1527,44 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.DataGridViewTextBoxColumn reflashStatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentStatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn btnSendReview;
+        private System.Windows.Forms.Label lbModule;
+        private System.Windows.Forms.Button btnUploadToECU;
+        private System.Windows.Forms.Button btnUploadBinary;
+        private System.Windows.Forms.TextBox tbReflashText;
+        private System.Windows.Forms.TextBox tbECUVin;
+        private System.Windows.Forms.Label lbVIN;
+        private System.Windows.Forms.TextBox tbBinaryNumber;
+        private System.Windows.Forms.Label lbECUBinaryNumber;
+        private System.Windows.Forms.TabControl tabControlHistory;
+        private System.Windows.Forms.TabPage tabReflashHistory;
+        private System.Windows.Forms.TabPage tabRequestHistory;
+        private System.Windows.Forms.Panel panelRequestHistory;
+        private System.Windows.Forms.TextBox txtEcuPhotoStatus;
+        private System.Windows.Forms.TextBox txtEcuBinatyNumber;
+        private System.Windows.Forms.Label lblEcuPhoto;
+        private System.Windows.Forms.Label lblBinaryNumber;
+        private System.Windows.Forms.Label lblEcuNumber;
+        private System.Windows.Forms.Button btnRequestUploadEcuPhoto;
+        private System.Windows.Forms.Label txtCarDescription;
+        private System.Windows.Forms.TextBox txtRequestCarDescription;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblBinaryLoadingStatus;
+        private System.Windows.Forms.Panel panelLoadBinary;
+        private System.Windows.Forms.Button btnBinaryDescriptionOK;
+        private System.Windows.Forms.Button btnBinaryDescriptionCancel;
+        private System.Windows.Forms.GroupBox gbBinaryDescription;
+        private System.Windows.Forms.CheckBox cbBinaryDescriptionImmoOff;
+        private System.Windows.Forms.CheckBox cbBinaryDescriptionEGROff;
+        private System.Windows.Forms.CheckBox cbBinaryDescriptionEuro2;
+        private System.Windows.Forms.TextBox txtBinaryDescription;
+        private System.Windows.Forms.CheckBox cbBinaryDescriptionCS;
+        private System.Windows.Forms.Label lblChooseBinary;
+        private System.Windows.Forms.ComboBox cbBinaryToLoad;
+        private System.Windows.Forms.Button btnCreateNewRequest;
+        private System.Windows.Forms.PictureBox pbReflash;
+        private System.Windows.Forms.Panel panelReflash;
+        private System.Windows.Forms.Label lblChooseBinarytoUpload;
+        private System.Windows.Forms.Label lblCreateRequest;
     }
 }
 
