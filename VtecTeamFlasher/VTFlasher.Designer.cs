@@ -51,7 +51,6 @@ namespace VtecTeamFlasher
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabReflash = new System.Windows.Forms.TabPage();
             this.panelReflash = new System.Windows.Forms.Panel();
-            this.pbReflash = new System.Windows.Forms.PictureBox();
             this.btnCreateNewRequest = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblBinaryLoadingStatus = new System.Windows.Forms.Label();
@@ -64,9 +63,11 @@ namespace VtecTeamFlasher
             this.tbBinaryNumber = new System.Windows.Forms.TextBox();
             this.lbECUBinaryNumber = new System.Windows.Forms.Label();
             this.panelLoadBinary = new System.Windows.Forms.Panel();
+            this.lblChooseBinarytoUpload = new System.Windows.Forms.Label();
             this.btnBinaryDescriptionOK = new System.Windows.Forms.Button();
             this.btnBinaryDescriptionCancel = new System.Windows.Forms.Button();
             this.gbBinaryDescription = new System.Windows.Forms.GroupBox();
+            this.pbReflash = new System.Windows.Forms.PictureBox();
             this.cbBinaryDescriptionImmoOff = new System.Windows.Forms.CheckBox();
             this.cbBinaryDescriptionEGROff = new System.Windows.Forms.CheckBox();
             this.cbBinaryDescriptionEuro2 = new System.Windows.Forms.CheckBox();
@@ -74,8 +75,12 @@ namespace VtecTeamFlasher
             this.cbBinaryDescriptionCS = new System.Windows.Forms.CheckBox();
             this.lblChooseBinary = new System.Windows.Forms.Label();
             this.cbBinaryToLoad = new System.Windows.Forms.ComboBox();
+            this.panelKeyUnavailible = new System.Windows.Forms.Panel();
+            this.labelKeyUnavailible = new System.Windows.Forms.Label();
+            this.btnReloadFlasher = new System.Windows.Forms.Button();
             this.tabRequest = new System.Windows.Forms.TabPage();
             this.pnlSendRequest = new System.Windows.Forms.Panel();
+            this.lblCreateRequest = new System.Windows.Forms.Label();
             this.btnRequestUploadEcuPhoto = new System.Windows.Forms.Button();
             this.txtCarDescription = new System.Windows.Forms.Label();
             this.txtRequestCarDescription = new System.Windows.Forms.TextBox();
@@ -88,7 +93,7 @@ namespace VtecTeamFlasher
             this.pbRequest = new System.Windows.Forms.PictureBox();
             this.lblAdditionalInfo = new System.Windows.Forms.Label();
             this.txtAdditionalInfo = new System.Windows.Forms.TextBox();
-            this.txtStockFileStatus = new System.Windows.Forms.TextBox();
+            this.txtStockFilePath = new System.Windows.Forms.TextBox();
             this.btnSendRequest = new System.Windows.Forms.Button();
             this.lblStockFile = new System.Windows.Forms.Label();
             this.btnOpenFile = new System.Windows.Forms.Button();
@@ -99,14 +104,6 @@ namespace VtecTeamFlasher
             this.pbReflashHistory = new System.Windows.Forms.PictureBox();
             this.btnRefreshHistory = new System.Windows.Forms.Button();
             this.dgReflashHistory = new System.Windows.Forms.DataGridView();
-            this.cvnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reslashFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reflashDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reflashStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSendReview = new System.Windows.Forms.DataGridViewButtonColumn();
             this.reflashHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabRequestHistory = new System.Windows.Forms.TabPage();
             this.pnlRequestsHistory = new System.Windows.Forms.Panel();
@@ -138,9 +135,6 @@ namespace VtecTeamFlasher
             this.tbUserPhone = new System.Windows.Forms.TextBox();
             this.tbUserSecondName = new System.Windows.Forms.TextBox();
             this.tbUserName = new System.Windows.Forms.TextBox();
-            this.panelKeyUnavailible = new System.Windows.Forms.Panel();
-            this.labelKeyUnavailible = new System.Windows.Forms.Label();
-            this.btnReloadFlasher = new System.Windows.Forms.Button();
             this.panelLogin = new System.Windows.Forms.Panel();
             this.pbLogin = new System.Windows.Forms.PictureBox();
             this.lblErrLogin = new System.Windows.Forms.Label();
@@ -150,15 +144,22 @@ namespace VtecTeamFlasher
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblChooseBinarytoUpload = new System.Windows.Forms.Label();
-            this.lblCreateRequest = new System.Windows.Forms.Label();
+            this.cvnDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reslashFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vinDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashDateTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentStatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSendReview = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabReflash.SuspendLayout();
             this.panelReflash.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbReflash)).BeginInit();
             this.panelLoadBinary.SuspendLayout();
             this.gbBinaryDescription.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReflash)).BeginInit();
+            this.panelKeyUnavailible.SuspendLayout();
             this.tabRequest.SuspendLayout();
             this.pnlSendRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRequest)).BeginInit();
@@ -176,7 +177,6 @@ namespace VtecTeamFlasher
             ((System.ComponentModel.ISupportInitialize)(this.pbRequestHistory)).BeginInit();
             this.tabPerson.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalInfo)).BeginInit();
-            this.panelKeyUnavailible.SuspendLayout();
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).BeginInit();
             this.SuspendLayout();
@@ -420,17 +420,6 @@ namespace VtecTeamFlasher
             this.panelReflash.Size = new System.Drawing.Size(611, 508);
             this.panelReflash.TabIndex = 9;
             // 
-            // pbReflash
-            // 
-            this.pbReflash.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
-            this.pbReflash.Location = new System.Drawing.Point(200, 99);
-            this.pbReflash.Name = "pbReflash";
-            this.pbReflash.Size = new System.Drawing.Size(96, 90);
-            this.pbReflash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbReflash.TabIndex = 18;
-            this.pbReflash.TabStop = false;
-            this.pbReflash.Visible = false;
-            // 
             // btnCreateNewRequest
             // 
             this.btnCreateNewRequest.Enabled = false;
@@ -545,6 +534,17 @@ namespace VtecTeamFlasher
             this.panelLoadBinary.TabIndex = 9;
             this.panelLoadBinary.Visible = false;
             // 
+            // lblChooseBinarytoUpload
+            // 
+            this.lblChooseBinarytoUpload.AutoSize = true;
+            this.lblChooseBinarytoUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblChooseBinarytoUpload.Location = new System.Drawing.Point(217, 21);
+            this.lblChooseBinarytoUpload.Name = "lblChooseBinarytoUpload";
+            this.lblChooseBinarytoUpload.Size = new System.Drawing.Size(151, 20);
+            this.lblChooseBinarytoUpload.TabIndex = 23;
+            this.lblChooseBinarytoUpload.Text = "Выбор прошивки";
+            this.lblChooseBinarytoUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnBinaryDescriptionOK
             // 
             this.btnBinaryDescriptionOK.Enabled = false;
@@ -580,6 +580,17 @@ namespace VtecTeamFlasher
             this.gbBinaryDescription.TabIndex = 21;
             this.gbBinaryDescription.TabStop = false;
             this.gbBinaryDescription.Text = "Описание";
+            // 
+            // pbReflash
+            // 
+            this.pbReflash.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbReflash.Location = new System.Drawing.Point(200, 99);
+            this.pbReflash.Name = "pbReflash";
+            this.pbReflash.Size = new System.Drawing.Size(96, 90);
+            this.pbReflash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbReflash.TabIndex = 18;
+            this.pbReflash.TabStop = false;
+            this.pbReflash.Visible = false;
             // 
             // cbBinaryDescriptionImmoOff
             // 
@@ -646,6 +657,38 @@ namespace VtecTeamFlasher
             this.cbBinaryToLoad.Size = new System.Drawing.Size(321, 21);
             this.cbBinaryToLoad.TabIndex = 19;
             // 
+            // panelKeyUnavailible
+            // 
+            this.panelKeyUnavailible.Controls.Add(this.labelKeyUnavailible);
+            this.panelKeyUnavailible.Controls.Add(this.btnReloadFlasher);
+            this.panelKeyUnavailible.Location = new System.Drawing.Point(0, 0);
+            this.panelKeyUnavailible.Name = "panelKeyUnavailible";
+            this.panelKeyUnavailible.Size = new System.Drawing.Size(595, 492);
+            this.panelKeyUnavailible.TabIndex = 8;
+            this.panelKeyUnavailible.Visible = false;
+            // 
+            // labelKeyUnavailible
+            // 
+            this.labelKeyUnavailible.AutoSize = true;
+            this.labelKeyUnavailible.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKeyUnavailible.Location = new System.Drawing.Point(35, 217);
+            this.labelKeyUnavailible.Name = "labelKeyUnavailible";
+            this.labelKeyUnavailible.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelKeyUnavailible.Size = new System.Drawing.Size(519, 48);
+            this.labelKeyUnavailible.TabIndex = 1;
+            this.labelKeyUnavailible.Text = "Система не может найти ключ безопасности.\r\nВставьте ключ безопасности в USB порт " +
+    "и нажмите ОК.";
+            // 
+            // btnReloadFlasher
+            // 
+            this.btnReloadFlasher.Location = new System.Drawing.Point(158, 291);
+            this.btnReloadFlasher.Name = "btnReloadFlasher";
+            this.btnReloadFlasher.Size = new System.Drawing.Size(229, 23);
+            this.btnReloadFlasher.TabIndex = 0;
+            this.btnReloadFlasher.Text = "OK";
+            this.btnReloadFlasher.UseVisualStyleBackColor = true;
+            this.btnReloadFlasher.Click += new System.EventHandler(this.btnReloadFlasher_Click);
+            // 
             // tabRequest
             // 
             this.tabRequest.Controls.Add(this.pnlSendRequest);
@@ -672,7 +715,7 @@ namespace VtecTeamFlasher
             this.pnlSendRequest.Controls.Add(this.pbRequest);
             this.pnlSendRequest.Controls.Add(this.lblAdditionalInfo);
             this.pnlSendRequest.Controls.Add(this.txtAdditionalInfo);
-            this.pnlSendRequest.Controls.Add(this.txtStockFileStatus);
+            this.pnlSendRequest.Controls.Add(this.txtStockFilePath);
             this.pnlSendRequest.Controls.Add(this.btnSendRequest);
             this.pnlSendRequest.Controls.Add(this.lblStockFile);
             this.pnlSendRequest.Controls.Add(this.btnOpenFile);
@@ -680,6 +723,16 @@ namespace VtecTeamFlasher
             this.pnlSendRequest.Name = "pnlSendRequest";
             this.pnlSendRequest.Size = new System.Drawing.Size(608, 501);
             this.pnlSendRequest.TabIndex = 7;
+            // 
+            // lblCreateRequest
+            // 
+            this.lblCreateRequest.AutoSize = true;
+            this.lblCreateRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCreateRequest.Location = new System.Drawing.Point(217, 20);
+            this.lblCreateRequest.Name = "lblCreateRequest";
+            this.lblCreateRequest.Size = new System.Drawing.Size(168, 20);
+            this.lblCreateRequest.TabIndex = 15;
+            this.lblCreateRequest.Text = "Создание Запроса";
             // 
             // btnRequestUploadEcuPhoto
             // 
@@ -792,15 +845,15 @@ namespace VtecTeamFlasher
             this.txtAdditionalInfo.Size = new System.Drawing.Size(463, 131);
             this.txtAdditionalInfo.TabIndex = 1;
             // 
-            // txtStockFileStatus
+            // txtStockFilePath
             // 
-            this.txtStockFileStatus.Enabled = false;
-            this.txtStockFileStatus.Location = new System.Drawing.Point(123, 429);
-            this.txtStockFileStatus.Name = "txtStockFileStatus";
-            this.txtStockFileStatus.Size = new System.Drawing.Size(352, 22);
-            this.txtStockFileStatus.TabIndex = 1;
-            this.txtStockFileStatus.Text = "не загружен";
-            this.txtStockFileStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtStockFilePath.Enabled = false;
+            this.txtStockFilePath.Location = new System.Drawing.Point(123, 429);
+            this.txtStockFilePath.Name = "txtStockFilePath";
+            this.txtStockFilePath.Size = new System.Drawing.Size(352, 22);
+            this.txtStockFilePath.TabIndex = 1;
+            this.txtStockFilePath.Text = "не загружен";
+            this.txtStockFilePath.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnSendRequest
             // 
@@ -897,6 +950,7 @@ namespace VtecTeamFlasher
             // 
             // dgReflashHistory
             // 
+            this.dgReflashHistory.AllowUserToAddRows = false;
             this.dgReflashHistory.AutoGenerateColumns = false;
             this.dgReflashHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgReflashHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -914,56 +968,7 @@ namespace VtecTeamFlasher
             this.dgReflashHistory.Size = new System.Drawing.Size(600, 442);
             this.dgReflashHistory.TabIndex = 0;
             this.dgReflashHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgReflashHistory_CellContentClick);
-            // 
-            // cvnDataGridViewTextBoxColumn
-            // 
-            this.cvnDataGridViewTextBoxColumn.DataPropertyName = "Cvn";
-            this.cvnDataGridViewTextBoxColumn.HeaderText = "Cvn";
-            this.cvnDataGridViewTextBoxColumn.Name = "cvnDataGridViewTextBoxColumn";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            // 
-            // reslashFileNameDataGridViewTextBoxColumn
-            // 
-            this.reslashFileNameDataGridViewTextBoxColumn.DataPropertyName = "ReslashFileName";
-            this.reslashFileNameDataGridViewTextBoxColumn.HeaderText = "Имя рефлеш файла";
-            this.reslashFileNameDataGridViewTextBoxColumn.Name = "reslashFileNameDataGridViewTextBoxColumn";
-            // 
-            // vinDataGridViewTextBoxColumn
-            // 
-            this.vinDataGridViewTextBoxColumn.DataPropertyName = "Vin";
-            this.vinDataGridViewTextBoxColumn.HeaderText = "Vin";
-            this.vinDataGridViewTextBoxColumn.Name = "vinDataGridViewTextBoxColumn";
-            // 
-            // reflashDateTimeDataGridViewTextBoxColumn
-            // 
-            this.reflashDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ReflashDateTime";
-            this.reflashDateTimeDataGridViewTextBoxColumn.HeaderText = "Дата";
-            this.reflashDateTimeDataGridViewTextBoxColumn.Name = "reflashDateTimeDataGridViewTextBoxColumn";
-            // 
-            // reflashStatusDataGridViewTextBoxColumn
-            // 
-            this.reflashStatusDataGridViewTextBoxColumn.DataPropertyName = "ReflashStatus";
-            this.reflashStatusDataGridViewTextBoxColumn.HeaderText = "Статус прошивки";
-            this.reflashStatusDataGridViewTextBoxColumn.Name = "reflashStatusDataGridViewTextBoxColumn";
-            // 
-            // paymentStatusDataGridViewTextBoxColumn
-            // 
-            this.paymentStatusDataGridViewTextBoxColumn.DataPropertyName = "PaymentStatus";
-            this.paymentStatusDataGridViewTextBoxColumn.HeaderText = "Статус платежа";
-            this.paymentStatusDataGridViewTextBoxColumn.Name = "paymentStatusDataGridViewTextBoxColumn";
-            // 
-            // btnSendReview
-            // 
-            this.btnSendReview.HeaderText = "Добавить отзыв";
-            this.btnSendReview.Name = "btnSendReview";
-            this.btnSendReview.Text = "Добавить отзыв";
-            this.btnSendReview.UseColumnTextForButtonValue = true;
+            this.dgReflashHistory.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgReflashHistory_CellPainting);
             // 
             // reflashHistoryBindingSource
             // 
@@ -1242,38 +1247,6 @@ namespace VtecTeamFlasher
             this.tbUserName.Size = new System.Drawing.Size(464, 22);
             this.tbUserName.TabIndex = 0;
             // 
-            // panelKeyUnavailible
-            // 
-            this.panelKeyUnavailible.Controls.Add(this.labelKeyUnavailible);
-            this.panelKeyUnavailible.Controls.Add(this.btnReloadFlasher);
-            this.panelKeyUnavailible.Location = new System.Drawing.Point(0, 0);
-            this.panelKeyUnavailible.Name = "panelKeyUnavailible";
-            this.panelKeyUnavailible.Size = new System.Drawing.Size(595, 492);
-            this.panelKeyUnavailible.TabIndex = 8;
-            this.panelKeyUnavailible.Visible = false;
-            // 
-            // labelKeyUnavailible
-            // 
-            this.labelKeyUnavailible.AutoSize = true;
-            this.labelKeyUnavailible.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKeyUnavailible.Location = new System.Drawing.Point(35, 217);
-            this.labelKeyUnavailible.Name = "labelKeyUnavailible";
-            this.labelKeyUnavailible.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelKeyUnavailible.Size = new System.Drawing.Size(519, 48);
-            this.labelKeyUnavailible.TabIndex = 1;
-            this.labelKeyUnavailible.Text = "Система не может найти ключ безопасности.\r\nВставьте ключ безопасности в USB порт " +
-    "и нажмите ОК.";
-            // 
-            // btnReloadFlasher
-            // 
-            this.btnReloadFlasher.Location = new System.Drawing.Point(158, 291);
-            this.btnReloadFlasher.Name = "btnReloadFlasher";
-            this.btnReloadFlasher.Size = new System.Drawing.Size(229, 23);
-            this.btnReloadFlasher.TabIndex = 0;
-            this.btnReloadFlasher.Text = "OK";
-            this.btnReloadFlasher.UseVisualStyleBackColor = true;
-            this.btnReloadFlasher.Click += new System.EventHandler(this.btnReloadFlasher_Click);
-            // 
             // panelLogin
             // 
             this.panelLogin.Controls.Add(this.pbLogin);
@@ -1365,26 +1338,56 @@ namespace VtecTeamFlasher
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
             this.txtUsername.TabIndex = 0;
             // 
-            // lblChooseBinarytoUpload
+            // cvnDataGridViewTextBoxColumn
             // 
-            this.lblChooseBinarytoUpload.AutoSize = true;
-            this.lblChooseBinarytoUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblChooseBinarytoUpload.Location = new System.Drawing.Point(217, 21);
-            this.lblChooseBinarytoUpload.Name = "lblChooseBinarytoUpload";
-            this.lblChooseBinarytoUpload.Size = new System.Drawing.Size(151, 20);
-            this.lblChooseBinarytoUpload.TabIndex = 23;
-            this.lblChooseBinarytoUpload.Text = "Выбор прошивки";
-            this.lblChooseBinarytoUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cvnDataGridViewTextBoxColumn.DataPropertyName = "Cvn";
+            this.cvnDataGridViewTextBoxColumn.HeaderText = "Cvn";
+            this.cvnDataGridViewTextBoxColumn.Name = "cvnDataGridViewTextBoxColumn";
             // 
-            // lblCreateRequest
+            // Id
             // 
-            this.lblCreateRequest.AutoSize = true;
-            this.lblCreateRequest.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblCreateRequest.Location = new System.Drawing.Point(217, 20);
-            this.lblCreateRequest.Name = "lblCreateRequest";
-            this.lblCreateRequest.Size = new System.Drawing.Size(168, 20);
-            this.lblCreateRequest.TabIndex = 15;
-            this.lblCreateRequest.Text = "Создание Запроса";
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // reslashFileNameDataGridViewTextBoxColumn
+            // 
+            this.reslashFileNameDataGridViewTextBoxColumn.DataPropertyName = "ReslashFileName";
+            this.reslashFileNameDataGridViewTextBoxColumn.HeaderText = "Имя рефлеш файла";
+            this.reslashFileNameDataGridViewTextBoxColumn.Name = "reslashFileNameDataGridViewTextBoxColumn";
+            // 
+            // vinDataGridViewTextBoxColumn
+            // 
+            this.vinDataGridViewTextBoxColumn.DataPropertyName = "Vin";
+            this.vinDataGridViewTextBoxColumn.HeaderText = "Vin";
+            this.vinDataGridViewTextBoxColumn.Name = "vinDataGridViewTextBoxColumn";
+            // 
+            // reflashDateTimeDataGridViewTextBoxColumn
+            // 
+            this.reflashDateTimeDataGridViewTextBoxColumn.DataPropertyName = "ReflashDateTime";
+            this.reflashDateTimeDataGridViewTextBoxColumn.HeaderText = "Дата";
+            this.reflashDateTimeDataGridViewTextBoxColumn.Name = "reflashDateTimeDataGridViewTextBoxColumn";
+            // 
+            // reflashStatusDataGridViewTextBoxColumn
+            // 
+            this.reflashStatusDataGridViewTextBoxColumn.DataPropertyName = "ReflashStatus";
+            this.reflashStatusDataGridViewTextBoxColumn.HeaderText = "Статус прошивки";
+            this.reflashStatusDataGridViewTextBoxColumn.Name = "reflashStatusDataGridViewTextBoxColumn";
+            // 
+            // paymentStatusDataGridViewTextBoxColumn
+            // 
+            this.paymentStatusDataGridViewTextBoxColumn.DataPropertyName = "PaymentStatus";
+            this.paymentStatusDataGridViewTextBoxColumn.HeaderText = "Статус платежа";
+            this.paymentStatusDataGridViewTextBoxColumn.Name = "paymentStatusDataGridViewTextBoxColumn";
+            this.paymentStatusDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // btnSendReview
+            // 
+            this.btnSendReview.HeaderText = "Добавить отзыв";
+            this.btnSendReview.Name = "btnSendReview";
+            this.btnSendReview.Text = "Добавить отзыв";
+            this.btnSendReview.UseColumnTextForButtonValue = true;
             // 
             // VTFlasher
             // 
@@ -1407,11 +1410,13 @@ namespace VtecTeamFlasher
             this.tabReflash.ResumeLayout(false);
             this.panelReflash.ResumeLayout(false);
             this.panelReflash.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbReflash)).EndInit();
             this.panelLoadBinary.ResumeLayout(false);
             this.panelLoadBinary.PerformLayout();
             this.gbBinaryDescription.ResumeLayout(false);
             this.gbBinaryDescription.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbReflash)).EndInit();
+            this.panelKeyUnavailible.ResumeLayout(false);
+            this.panelKeyUnavailible.PerformLayout();
             this.tabRequest.ResumeLayout(false);
             this.pnlSendRequest.ResumeLayout(false);
             this.pnlSendRequest.PerformLayout();
@@ -1431,8 +1436,6 @@ namespace VtecTeamFlasher
             this.tabPerson.ResumeLayout(false);
             this.tabPerson.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalInfo)).EndInit();
-            this.panelKeyUnavailible.ResumeLayout(false);
-            this.panelKeyUnavailible.PerformLayout();
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).EndInit();
@@ -1479,7 +1482,7 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Label lblErrLogin;
         private System.Windows.Forms.Label lblStockFile;
         private System.Windows.Forms.Label lblAdditionalInfo;
-        private System.Windows.Forms.TextBox txtStockFileStatus;
+        private System.Windows.Forms.TextBox txtStockFilePath;
         private System.Windows.Forms.TextBox txtAdditionalInfo;
         private System.Windows.Forms.TextBox txtEcuNumber;
         private System.Windows.Forms.Button btnOpenFile;
@@ -1519,14 +1522,6 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.DataGridViewTextBoxColumn additionalMessageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockFileNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel pnlRequestsHistory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cvnDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reslashFileNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vinDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reflashDateTimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reflashStatusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentStatusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewButtonColumn btnSendReview;
         private System.Windows.Forms.Label lbModule;
         private System.Windows.Forms.Button btnUploadToECU;
         private System.Windows.Forms.Button btnUploadBinary;
@@ -1565,6 +1560,14 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Panel panelReflash;
         private System.Windows.Forms.Label lblChooseBinarytoUpload;
         private System.Windows.Forms.Label lblCreateRequest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cvnDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reslashFileNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vinDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reflashDateTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn reflashStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentStatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn btnSendReview;
     }
 }
 

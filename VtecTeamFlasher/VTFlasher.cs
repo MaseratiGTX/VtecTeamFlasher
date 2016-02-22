@@ -56,7 +56,7 @@ namespace VtecTeamFlasher
         public VTFlasher()
         {
             InitializeComponent();
-            this.cbCarManufacture.DataSource = CarManufacture;
+           // this.cbCarManufacture.DataSource = CarManufacture;
             panelLogin.BringToFront();
         }
 
@@ -194,7 +194,7 @@ namespace VtecTeamFlasher
             btnRestart.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRestart);
             btnEraseErrors.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonEraseErrors);
             btnResetAdaptation.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRestartAdaptation);
-            btnRead.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRead);
+            btnReadFromECU.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonRead);
             btnWrite.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonWrite);
             btnSettings.Enabled = WinAPIHelper.IsWindowEnabled(pcmButtonSettings);
         }
@@ -367,28 +367,28 @@ namespace VtecTeamFlasher
 
         }
 
-        private void cbCarManufacture_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbCarManufacture.Text != string.Empty)
-            {
-                CarModel = XMLHelper.GetCARModel(cbCarManufacture.Text);
-                cbCarModel.DataSource = CarModel;
-                cbCarModel.Enabled = true;
-                cbCarModel.Text = "";
-            }
-            else
-            {
-                cbCarModel.Enabled = false;
-                cbCarModel.DataSource = new List<string>();
-                cbCarModel.Text = "";
-            }
+        //private void cbCarManufacture_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (cbCarManufacture.Text != string.Empty)
+        //    {
+        //        CarModel = XMLHelper.GetCARModel(cbCarManufacture.Text);
+        //        cbCarModel.DataSource = CarModel;
+        //        cbCarModel.Enabled = true;
+        //        cbCarModel.Text = "";
+        //    }
+        //    else
+        //    {
+        //        cbCarModel.Enabled = false;
+        //        cbCarModel.DataSource = new List<string>();
+        //        cbCarModel.Text = "";
+        //    }
 
-        }
+        //}
 
-        private void cbCarModel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Choose module in PCM Flash
-        }
+        //private void cbCarModel_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    // Choose module in PCM Flash
+        //}
 
         private async void btnSendRequest_Click(object sender, EventArgs e)
         {
@@ -451,6 +451,12 @@ namespace VtecTeamFlasher
         private async void btnRefreshHistory_Click(object sender, EventArgs e)
         {
             var currentStatus = PanelRefresh.StartRefresh(tabHistory, pbReflashHistory);
+            dgReflashHistory.Columns.Add(new DataGridViewColumn { CellTemplate = new DataGridViewButtonCell(),
+                DataPropertyName = "PaymentStatus", 
+                HeaderText = "qweqe",
+                DisplayIndex = 4
+            });
+
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
@@ -510,6 +516,63 @@ namespace VtecTeamFlasher
                 var sendReviewForm = new ReviewForm((int)senderGrid.Rows[e.RowIndex].Cells["Id"].Value);
                 sendReviewForm.ShowDialog();
             }
+
+           
+        }
+
+        private void lbModule_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void btnUploadBinary_Click(object sender, EventArgs e)
+        {
+            panelLoadBinary.BringToFront();
+            pbReflash.BringToFront();
+            panelLoadBinary.Visible = true;
+
+            var currentStatus = PanelRefresh.StartRefresh(panelLoadBinary, pbReflash);
+
+            //// TODO Load binary descriptions
+            Thread.Sleep(5000);
+
+            pbReflash.Visible = false;
+            PanelRefresh.StopRefresh(currentStatus);
+        }
+
+        private void CleanBinaryDescriptionData()
+        {
+            cbBinaryToLoad.Items.Clear();
+            txtBinaryDescription.Text = "";
+            cbBinaryDescriptionCS.Checked = false;
+            cbBinaryDescriptionEGROff.Checked = false;
+            cbBinaryDescriptionEuro2.Checked = false;
+            cbBinaryDescriptionImmoOff.Checked = false;
+            btnBinaryDescriptionOK.Enabled = false;
+        }
+
+        private void btnBinaryDescriptionCancel_Click(object sender, EventArgs e)
+        {
+            CleanBinaryDescriptionData();
+            panelLoadBinary.Visible = false;
+
+        }
+
+        private void dgReflashHistory_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (e.RowIndex != -1 && e.ColumnIndex != -1 && e.ColumnIndex == 8)
+            {
+                if ((int)senderGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == 1)
+                {
+
+                    senderGrid.Columns[e.ColumnIndex].CellTemplate = new DataGridViewTextBoxCell();
+                    var cell = new DataGridViewTextBoxCell { Value = "qweqw" };
+                    senderGrid.Rows[e.RowIndex].Cells[e.ColumnIndex] = cell;
+                    e.Handled = true;
+                }
+            }
+             
         }
     }
 }
