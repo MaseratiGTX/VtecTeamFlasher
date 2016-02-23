@@ -451,12 +451,6 @@ namespace VtecTeamFlasher
         private async void btnRefreshHistory_Click(object sender, EventArgs e)
         {
             var currentStatus = PanelRefresh.StartRefresh(tabHistory, pbReflashHistory);
-            dgReflashHistory.Columns.Add(new DataGridViewColumn { CellTemplate = new DataGridViewButtonCell(),
-                DataPropertyName = "PaymentStatus", 
-                HeaderText = "qweqe",
-                DisplayIndex = 4
-            });
-
             await Task.Run(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
@@ -515,8 +509,20 @@ namespace VtecTeamFlasher
             {
                 var sendReviewForm = new ReviewForm((int)senderGrid.Rows[e.RowIndex].Cells["Id"].Value);
                 sendReviewForm.ShowDialog();
+                return;
             }
 
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewTextBoxColumn && e.RowIndex >= 0 && senderGrid.Columns[e.ColumnIndex].DataPropertyName == "PaymentStatus")
+            {
+                var dialogResult = MessageBox.Show("Вы действиельно хотите подтвердить факт отправки денег?", "Подтверждение отправки денег за прошивку",MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var obj = (ReflashHistory)senderGrid.Rows[e.RowIndex].DataBoundItem;
+                    obj.PaymentStatus = (int)PaymentStatuses.Paid;
+                    var result = WCFServiceFactory.CreateVtecTeamService().UpdateReflashHistory(obj);
+                    MessageBox.Show(result ? "Данне успешно отправлены" : "Не удалось отправить данные");
+                }
+            }
            
         }
 
@@ -534,7 +540,7 @@ namespace VtecTeamFlasher
             var currentStatus = PanelRefresh.StartRefresh(panelLoadBinary, pbReflash);
 
             //// TODO Load binary descriptions
-            Thread.Sleep(5000);
+            var reflashFile = WCFServiceFactory.CreateVtecTeamService().GetReflashFile(new ReflashRequest());
 
             pbReflash.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
@@ -558,21 +564,72 @@ namespace VtecTeamFlasher
 
         }
 
-        private void dgReflashHistory_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dgReflashHistory_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
-            if (e.RowIndex != -1 && e.ColumnIndex != -1 && e.ColumnIndex == 8)
-            {
-                if ((int)senderGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == 1)
-                {
 
-                    senderGrid.Columns[e.ColumnIndex].CellTemplate = new DataGridViewTextBoxCell();
-                    var cell = new DataGridViewTextBoxCell { Value = "qweqw" };
-                    senderGrid.Rows[e.RowIndex].Cells[e.ColumnIndex] = cell;
-                    e.Handled = true;
+            if (e.RowIndex != -1 && e.ColumnIndex != -1 && senderGrid.Columns[e.ColumnIndex].DataPropertyName == "PaymentStatus")
+            {
+                var paymentStatus = (int) senderGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                switch (paymentStatus)
+                {
+                    case 1:
+                        e.Value = "Обрабатывается(клик для отправки денег)";
+                        e.CellStyle.BackColor = Color.Red;
+                        break;
+                    case 2:
+                        e.Value = "Оплачено";
+                        break;
+                    case 3:
+                        e.Value = "Возвращено";
+                        break;
                 }
+                e.FormattingApplied = true;
+
             }
-             
+
+            if (e.RowIndex != -1 && e.ColumnIndex != -1 && senderGrid.Columns[e.ColumnIndex].DataPropertyName == "ReflashStatus")
+            {
+                var reflashStatus = (int)senderGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                switch (reflashStatus)
+                {
+                    case 1:
+                        e.Value = "Успешно прошит";
+                        break;
+                    case 2:
+                        e.Value = "Ошибка при прошивке";
+                        break;
+                }
+                e.FormattingApplied = true;
+            }
+
+        }
+
+        private void dgRequests_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (e.RowIndex != -1 && e.ColumnIndex != -1 && senderGrid.Columns[e.ColumnIndex].DataPropertyName == "RequestStatus")
+            {
+                var requestStatus = (int)senderGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                switch (requestStatus)
+                {
+                    case 1:
+                        e.Value = "Новый";
+                        break;
+                    case 2:
+                        e.Value = "Обрабатывается";
+                        break;
+                    case 3:
+                        e.Value = "Обработан";
+                        break;
+                    case 4:
+                        e.Value = "Ошибка";
+                        break;
+                }
+                e.FormattingApplied = true;
+
+            }
         }
     }
 }

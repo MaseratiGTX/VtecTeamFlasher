@@ -35,7 +35,8 @@ namespace VtecTeamFlasherWeb
 
         public byte[] GetReflashFile(ReflashRequest reflashRequest)
         {
-            throw new NotImplementedException();
+            //TODO: here we'll implement logic to get reflash file from BLOB
+            return new byte[0];
         }
 
         public bool SendRequest(ReflashRequest reflashRequest)
@@ -53,9 +54,9 @@ namespace VtecTeamFlasherWeb
             throw new NotImplementedException();
         }
 
-        public void UpdateReflashHistory(int historyId)
+        public bool UpdateReflashHistory(ReflashHistory history)
         {
-            throw new NotImplementedException();
+            return vtServiceFacade.UpdateReflashHistory(history);
         }
 
         public List<ReflashRequest> GetReflashRequests(int userId)

@@ -98,13 +98,15 @@
   <xs:element name="UpdateReflashHistory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="historyId" type="xs:int" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="history" nillable="true" type="q6:ReflashHistory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateReflashHistoryResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateReflashHistoryResult" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetReflashRequests">
@@ -117,14 +119,14 @@
   <xs:element name="GetReflashRequestsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetReflashRequestsResult" nillable="true" type="q6:ArrayOfReflashRequest" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetReflashRequestsResult" nillable="true" type="q7:ArrayOfReflashRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateUserPersonalData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="user" nillable="true" type="q7:User" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="user" nillable="true" type="q8:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -138,7 +140,7 @@
   <xs:element name="SendReview">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="review" nillable="true" type="q8:Review" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="review" nillable="true" type="q9:Review" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

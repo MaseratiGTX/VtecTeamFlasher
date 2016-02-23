@@ -68,6 +68,22 @@ namespace ClientAndServerCommons.Helpers
             }
         }
 
+
+        public bool UpdateReflashHistory(ReflashHistory history)
+        {
+            try
+            {
+                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(history)));
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("При сохранении сущности ReflashHistory произошла ошибка {0}", ex);
+                return false;
+            }
+        }
+
         public bool SendReview(Review review)
         {
             try

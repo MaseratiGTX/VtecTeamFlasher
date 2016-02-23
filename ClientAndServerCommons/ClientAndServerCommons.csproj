@@ -132,6 +132,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Statuses\PaymentStatuses.cs" />
+    <Compile Include="Statuses\ReflashStatuses.cs" />
     <Compile Include="Statuses\RequestStatuses.cs" />
     <Compile Include="ThreadFactory.cs" />
     <Compile Include="Validators\AuthorizationUserValidator.cs" />

@@ -80,9 +80,9 @@ namespace VtecTeamFlasherWeb.Facade
             throw new NotImplementedException();
         }
 
-        public void UpdateReflashHistory(int historyId)
+        public bool UpdateReflashHistory(ReflashHistory history)
         {
-            throw new NotImplementedException();
+            return new VtecTeamDBManager().UpdateReflashHistory(history);
         }
 
         public List<ReflashRequest> GetReflashRequests(int userId)

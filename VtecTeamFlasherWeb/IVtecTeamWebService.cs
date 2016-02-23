@@ -29,7 +29,7 @@ namespace VtecTeamFlasherWeb
         [OperationContract]
         List<ReflashHistory> GetAdminReflashHistory(int userId);
         [OperationContract]
-        void UpdateReflashHistory(int historyId);
+        bool UpdateReflashHistory(ReflashHistory history);
         [OperationContract]
         List<ReflashRequest> GetReflashRequests(int userId);
         [OperationContract]
