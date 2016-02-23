@@ -1,28 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <cartypes>
-  <cartype name="Honda/Acura">
-    <carmodel name="Accord 7"/>
-    <carmodel name="Accord 8"/>
-    <carmodel name="Accord 9"/>
-    <carmodel name="Civic 8"/>
-    <carmodel name="Civic 9"/>
-    <carmodel name="CR-V 2"/>
-    <carmodel name="CR-V 3"/>
-    <carmodel name="CR-V 4"/>
-    <carmodel name="Crosstour"/>
-    <carmodel name="CR-Z"/>
-    <carmodel name="Element"/>
-    <carmodel name="Fit Gen1"/>
-    <carmodel name="Fit Gen2"/>
-    <carmodel name="FR-V"/>
-    <carmodel name="Inspire"/>
-    <carmodel name="Legend"/>
-    <carmodel name="MDX"/>
-    <carmodel name="Odyssey"/>
-    <carmodel name="Pilot"/>
-    <carmodel name="RDX"/>
-    <carmodel name="Ridgeline"/>
-    <carmodel name="TL"/>
-    <carmodel name="TLX"/>
+  <cartype name="Honda/Acura CAN" module="12">
+    <carmodel name="Honda: Honda PGM-FI Generic Read-Only" id="1" module="12"/>
+    <carmodel name="Honda: Honda AT/CVT/DCT Generic Read-Only" id="1" module="12"/>
+	<carinfo name="Keihin" module="12"/>
+    <carmodel name="Honda: PGM-FI (Keihin SH7058/1MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Keihin SH72543/2MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Keihin MPC5566/3MB)" id="1" module="12"/>
+    <carmodel name="Honda: AT/CVT/DCT (Keihin 512KB)" id="1" module="12"/>
+    <carmodel name="Honda: AT/CVT/DCT (Keihin 512KB) (2)" id="1" module="12"/>
+    <carmodel name="Honda: AT/CVT/DCT (Keihin 1MB)" id="1" module="12"/>
+	<carinfo name="Matsushita"/>
+    <carmodel name="Honda: PGM-FI (Matsushita SH7058/1MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Matsushita SH72543/2MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI 2013+ (Matsushita SH72543/2MB)" id="1" module="12"/>
+    <carmodel name="Honda: AT/CVT/DCT (Matsushita 512KB)" id="1" module="12"/>
+	<carinfo name="Continental" module="12"/>
+    <carmodel name="Honda: PGM-FI (Continental MPC5554/2MB)" id="1" module="12"/>
+	<carinfo name="Hitachi" module="12"/>
+    <carmodel name="Honda: PGM-FI (Hitachi SH7058/1MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Hitachi SH7059/1.5MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Hitachi SH72543/2MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Hitachi MPC5554/2MB)" id="1" module="12"/>
+  </cartype>
+  <cartype name="Honda/Acura K-Line" module="13">
+    <carmodel name="Honda: Accord 7 2003-2005 (SH7055/512KB)" id="1" module="13"/>
+    <carmodel name="Honda: Accord 7 2006-2007/TSX 2004-2005 (SH7055/512KB)" id="1" module="13"/>
+    <carmodel name="Acura: TSX 2006 (SH7058/1MB)" id="1" module="13"/>
+    <carmodel name="Honda: Accord/CR-V/Element/Legend/Odyssey/Ridgeline (Keihin SH7058/1MB)" id="1" module="13"/>
+    <carmodel name="Honda: Element/Inspire (Keihin SH7055/512KB)" id="11" module="13"/>
+    <carmodel name="Honda: Legend/Acura TL 2005-2007 (Keihin RJA SH7058/1MB)" id="1" module="13"/>
+    <carmodel name="Honda: CR-V 2002/2005-2007 (Keihin PPA/PNL SH7058/1MB)" id="1" module="13"/>
+    <carmodel name="Honda: Fit/Jazz/Airwave 2001-2007 (Keihin OKI ML66Q592/192KB)" id="1" module="13"/>
+    <carmodel name="Acura: MDX 2003-2007 (Motorola RDJ SH7055/512KB)" id="1" module="13"/>
+    <carmodel name="Honda: Accord 7 USA (Motorola RCA SH7055/512KB SH7058/1024K)" id="1" module="13"/>
   </cartype>
 </cartypes>

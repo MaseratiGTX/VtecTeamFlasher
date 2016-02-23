@@ -147,6 +147,7 @@
     <Content Include="Resources\Animation.gif" />
     <Content Include="Resources\CarOptions.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Resources\Error.png" />
     <Content Include="Resources\Information.png" />

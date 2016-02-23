@@ -53,6 +53,8 @@ namespace VtecTeamFlasher
         private BinarySerializationHelper serializationHelper = new BinarySerializationHelper();
         private string savedPassword = "";
 
+        public List<KeyValuePair<string, int>> pcmflashModules = new List<KeyValuePair<string, int>>();
+
         public VTFlasher()
         {
             InitializeComponent();
@@ -111,7 +113,7 @@ namespace VtecTeamFlasher
             pcmButtonCheckCorrectCS = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[16], null, null);
 
             InitializeComboBoxControl(pcmComboBoxAdapters, cbAdapter);
-            InitializeComboBoxControl(pcmComboBoxModules, cbModules);
+            //InitializeComboBoxControl(pcmComboBoxModules, cbModules);
             SetButtonStatus();
 
 
@@ -127,6 +129,7 @@ namespace VtecTeamFlasher
             else
             {
                 panelKeyUnavailible.Visible = false;
+                FillModuleCombobox();
             }
 
             txtStatusThread = new Thread(() =>
@@ -261,6 +264,17 @@ namespace VtecTeamFlasher
         }
         #endregion
 
+        private void FillModuleCombobox()
+        {
+            var dataList = XMLHelper.LoadPCMFlashModules();
+            cbModules.Items.Clear();
+            cbModules.Items.Add("");
+            foreach (var dataItem in dataList)
+            {
+                cbModules.Items.Add(dataItem.Key);
+            }
+        }
+
         private void VTFlasher_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (pcmMainWindow != IntPtr.Zero)
@@ -320,6 +334,7 @@ namespace VtecTeamFlasher
                 WinAPIHelper.SendMessage(pcmTextBoxFilePath, WinAPIHelper.WM_SETTEXT, IntPtr.Zero, fileDialog.FileName);
         }
 
+
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             lblErrLogin.Text = "";
@@ -367,61 +382,54 @@ namespace VtecTeamFlasher
 
         }
 
-        //private void cbCarManufacture_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (cbCarManufacture.Text != string.Empty)
-        //    {
-        //        CarModel = XMLHelper.GetCARModel(cbCarManufacture.Text);
-        //        cbCarModel.DataSource = CarModel;
-        //        cbCarModel.Enabled = true;
-        //        cbCarModel.Text = "";
-        //    }
-        //    else
-        //    {
-        //        cbCarModel.Enabled = false;
-        //        cbCarModel.DataSource = new List<string>();
-        //        cbCarModel.Text = "";
-        //    }
-
-        //}
-
-        //private void cbCarModel_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    // Choose module in PCM Flash
-        //}
+        private void CleanRequestData()
+        {
+            txtRequestEcuNumber.Text = "";
+            txtRequestEcuBinatyNumber.Text = "";
+            txtRequestEcuPhotoStatus.Text = "не загружен";
+            txtRequestCarDescription.Text = "";
+            txtRequestAdditionalInfo.Text = "";
+            txtRequestStockFilePath.Text = "не загружен";
+        }
 
         private async void btnSendRequest_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtEcuNumber.Text))
+            if (string.IsNullOrEmpty(txtRequestCarDescription.Text))
             {
-                MessageBox.Show("Поле Номер ECU обязательно для заполнения");
+                MessageBox.Show("Поле Машина обязательно для заполнения");
                 return;
             }
             
             var currentStatus = PanelRefresh.StartRefresh(pnlSendRequest, pbRequest);
+            var requestResult = false;
             await Task.Run(() =>
             {
                 var request = new ReflashRequest
                 {
-                    AdditionalMessage = txtAdditionalInfo.Text,
-                    EcuCode = txtEcuNumber.Text,
+                    AdditionalMessage = txtRequestAdditionalInfo.Text,
+                    EcuCode = txtRequestEcuNumber.Text,
                     UserId = Session.CurrentUser.Id,
                     RequestDateTime = DateTime.Now,
                     RequestStatus = (int) RequestStatuses.New,
                     //User = Session.CurrentUser,
                 };
 
-                if (!string.IsNullOrEmpty(txtStockFilePath.Text))
+                if (!string.IsNullOrEmpty(txtRequestStockFilePath.Text))
                 {
-                    request.StockFile = File.ReadAllBytes(txtStockFilePath.Text);
-                    request.StockFileName = Path.GetFileName(txtStockFilePath.Text);
+                    if (File.Exists(txtRequestStockFilePath.Text))
+                    {
+                        request.StockFile = File.ReadAllBytes(txtRequestStockFilePath.Text);
+                        request.StockFileName = Path.GetFileName(txtRequestStockFilePath.Text);
+                    }
                 }
 
-                var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
+                requestResult = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
 
-                this.Invoke(()=>pbRequest.Image = !result ? Properties.Resources.Error : null);
-                MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
+                this.Invoke(() => pbRequest.Image = !requestResult ? Properties.Resources.Error : null);
+                MessageBox.Show(requestResult ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
             });
+            if (requestResult)
+                { CleanRequestData(); }
 
             PanelRefresh.StopRefresh(currentStatus);
         }
@@ -432,7 +440,7 @@ namespace VtecTeamFlasher
 
             if (fileDialog.ShowDialog() != DialogResult.OK)
                 return;
-            txtStockFilePath.Text = fileDialog.FileName;
+            txtRequestStockFilePath.Text = fileDialog.FileName;
         }
 
         private async void btnRefreshRequests_Click(object sender, EventArgs e)
@@ -630,6 +638,15 @@ namespace VtecTeamFlasher
                 e.FormattingApplied = true;
 
             }
+        }
+
+        private void btnRequestUploadEcuPhoto_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog { Filter = "Все файлы|*.*" };
+
+            if (fileDialog.ShowDialog() != DialogResult.OK)
+                return;
+            txtRequestEcuPhotoStatus.Text = fileDialog.FileName;
         }
     }
 }
