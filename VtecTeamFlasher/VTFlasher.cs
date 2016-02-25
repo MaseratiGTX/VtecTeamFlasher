@@ -392,9 +392,9 @@ namespace VtecTeamFlasher
 
         private async void btnSendRequest_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtEcuNumber.Text))
+            if (string.IsNullOrEmpty(txtRequestCarDescription.Text))
             {
-                MessageBox.Show("Поле Номер ECU обязательно для заполнения");
+                MessageBox.Show("Поле Номер Машина обязательно для заполнения");
                 return;
             }
             
@@ -403,18 +403,26 @@ namespace VtecTeamFlasher
             {
                 var request = new ReflashRequest
                 {
-                    AdditionalMessage = txtAdditionalInfo.Text,
-                    EcuCode = txtEcuNumber.Text,
+                    RequestDetails = txtAdditionalInfo.Text,
+                    EcuNumber = txtEcuNumber.Text,
+                    BinaryNumber = txtEcuBinatyNumber.Text,
                     UserId = Session.CurrentUser.Id,
-                    RequestDateTime = DateTime.Now,
-                    RequestStatus = (int) RequestStatuses.New,
+                    RequestDate = DateTime.Now,
+                    Status = (int) RequestStatuses.New,
+                    CarDescription = txtRequestCarDescription.Text,
                     //User = Session.CurrentUser,
                 };
 
-                if (!string.IsNullOrEmpty(txtStockFilePath.Text))
+                if (File.Exists(txtStockFilePath.Text))
                 {
-                    request.StockFile = File.ReadAllBytes(txtStockFilePath.Text);
-                    request.StockFileName = Path.GetFileName(txtStockFilePath.Text);
+                    request.StockBinary = File.ReadAllBytes(txtStockFilePath.Text);
+                    request.StockBinaryName = Path.GetFileName(txtStockFilePath.Text);
+                }
+
+                if (File.Exists(txtEcuPhotoStatus.Text))
+                {
+                    request.EcuPhoto = File.ReadAllBytes(txtStockFilePath.Text);
+                    request.EcuPhotoFilename = Path.GetFileName(txtStockFilePath.Text);
                 }
 
                 var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
@@ -518,7 +526,7 @@ namespace VtecTeamFlasher
                 if (dialogResult == DialogResult.Yes)
                 {
                     var obj = (ReflashHistory)senderGrid.Rows[e.RowIndex].DataBoundItem;
-                    obj.PaymentStatus = (int)PaymentStatuses.Paid;
+                    obj.Status = (int)PaymentStatuses.Paid;
                     var result = WCFServiceFactory.CreateVtecTeamService().UpdateReflashHistory(obj);
                     MessageBox.Show(result ? "Данне успешно отправлены" : "Не удалось отправить данные");
                 }
@@ -629,6 +637,16 @@ namespace VtecTeamFlasher
                 }
                 e.FormattingApplied = true;
 
+            }
+        }
+
+        private void dgRequests_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
+            {
+                MessageBox.Show("Здесь будет форма с деталями запроса и комментариями");
             }
         }
     }

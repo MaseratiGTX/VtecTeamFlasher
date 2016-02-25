@@ -107,6 +107,7 @@
     <Compile Include="BaseFetchingHelper.cs" />
     <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="DataClasses\AbstractUser.cs" />
+    <Compile Include="DataClasses\Comment.cs" />
     <Compile Include="DataClasses\ReflashHistory.cs" />
     <Compile Include="DataClasses\ReflashRequest.cs" />
     <Compile Include="DataClasses\Review.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Helpers\OthersFetchingHelper.cs" />
     <Compile Include="Helpers\UserEntitiesFetchingHelper.cs" />
     <Compile Include="Interfaces\IHasEntityContext.cs" />
+    <Compile Include="MapClasses\CommentMap.cs" />
     <Compile Include="MapClasses\EntityContextMap.cs" />
     <Compile Include="DataClasses\User.cs" />
     <Compile Include="MapClasses\ReflashHistoryMap.cs" />

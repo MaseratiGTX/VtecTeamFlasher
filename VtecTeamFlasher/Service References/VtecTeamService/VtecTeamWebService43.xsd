@@ -37,15 +37,18 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q2:AbstractDataObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="AdditionalMessage" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="Car" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="EcuCode" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="RequestDateTime" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="RequestStatus" type="xs:int" />
-          <xs:element minOccurs="0" name="StockFile" nillable="true" type="xs:base64Binary" />
-          <xs:element minOccurs="0" name="StockFileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BinaryNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CarDescription" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EcuNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EcuPhoto" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="EcuPhotoFilename" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpectedResolveDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RequestDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="RequestDetails" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" name="StockBinary" nillable="true" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="StockBinaryName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserId" type="xs:int" />
-          <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -61,16 +64,14 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q3:AbstractDataObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="Cvn" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="PaymentStatus" type="xs:int" />
+          <xs:element minOccurs="0" name="BinaryFileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CarVin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PreviousBinaryName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ReflashDateTime" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="ReflashStatus" type="xs:int" />
-          <xs:element minOccurs="0" name="ReslashFileName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReflashDate" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Review" nillable="true" type="tns:ArrayOfReview" />
-          <xs:element minOccurs="0" name="Severity" type="xs:int" />
+          <xs:element minOccurs="0" name="Status" type="xs:int" />
           <xs:element minOccurs="0" name="UserId" type="xs:int" />
-          <xs:element minOccurs="0" name="Vin" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

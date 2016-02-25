@@ -4,7 +4,10 @@
     {
         New =1,
         InProgress=2,
-        Done=3,
-        Error=4
+        NeedData=3,
+        DataSended=4,
+        NeedCheck=5,
+        Closed=6,
+        Postponed=7
     }
 }

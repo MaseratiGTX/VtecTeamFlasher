@@ -70,14 +70,11 @@ GO
 CREATE TABLE [dbo].[ReflashHistory](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[UserId] [int] NOT NULL,
-	[ReslashFileName] [nvarchar](255) NOT NULL,
-	[Vin] [nvarchar](255) NOT NULL,
-	[Cvn] [nvarchar](255) NOT NULL,
-	[StockCalibration] [nvarchar](255) NOT NULL,
-	[ReflashStatus] [int] NOT NULL,
-	[PaymentStatus] [int] NOT NULL,
-	[ReflashDateTime] [datetime] NOT NULL,
-	[Severity] [int] NULL,
+	[BinaryFileName] [nvarchar](255) NOT NULL,
+	[CarVin] [nvarchar](255) NOT NULL,
+	[PreviousBinaryName] [nvarchar](255) NULL,
+	[Status] [int] NOT NULL,
+	[ReflashDate] [datetime] NOT NULL,
 	[Price] [nvarchar](100) NULL,
  CONSTRAINT [PK_ReflashHistory] PRIMARY KEY CLUSTERED 
 (
@@ -115,15 +112,18 @@ GO
 
 CREATE TABLE [dbo].[Requests](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[StockFile] [varbinary](max) NULL,
-	[EcuCode] [nvarchar](50) NOT NULL,
-	[RequestStatus] [int] NOT NULL,
+	[StockBinary] [varbinary](max) NULL,
+	[EcuNumber] [nvarchar](150) NULL,
+	[BinaryNumber] [nvarchar](150) NULL,
+	[EcuPhoto] [varbinary](max) NULL,
+	[EcuPhotoFilename] [nvarchar](200) NULL,
+	[CarDescription] [nvarchar](400) NOT NULL,
+	[Status] [int] NULL,
 	[UserId] [int] NOT NULL,
-	[RequestDateTime] [datetime] NOT NULL,
-	[AdditionalMessage] [nvarchar](255) NULL,
-	[StockFileName] [nvarchar](255) NULL,
-	[Car] [nvarchar](50) NULL,
-	[Vin] [nvarchar](100) NULL,
+	[RequestDate] [datetime] NULL,
+	[ExpectedResolveDate] [datetime] NULL,
+	[RequestDetails] [nvarchar](255) NULL,
+	[StockBinaryName] [nvarchar](255) NULL,
  CONSTRAINT [PK_Requests] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -178,6 +178,53 @@ REFERENCES [dbo].[ReflashHistory] ([Id])
 GO
 
 ALTER TABLE [dbo].[Review] CHECK CONSTRAINT [FK_Review_ReflashHistory]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Comments_Requests]') AND parent_object_id = OBJECT_ID(N'[dbo].[Comments]'))
+ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_Comments_Requests]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Comments_Users]') AND parent_object_id = OBJECT_ID(N'[dbo].[Comments]'))
+ALTER TABLE [dbo].[Comments] DROP CONSTRAINT [FK_Comments_Users]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Comments]') AND type in (N'U'))
+DROP TABLE [dbo].[Comments]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Comments](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[RequestId] [int] NOT NULL,
+	[CommentDate] [datetime] NOT NULL,
+	[UserId] [int] NOT NULL,
+	[CommentText] [nvarchar](1000) NOT NULL,
+ CONSTRAINT [PK_Comments] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Comments]  WITH CHECK ADD  CONSTRAINT [FK_Comments_Requests] FOREIGN KEY([RequestId])
+REFERENCES [dbo].[Requests] ([Id])
+GO
+
+ALTER TABLE [dbo].[Comments] CHECK CONSTRAINT [FK_Comments_Requests]
+GO
+
+ALTER TABLE [dbo].[Comments]  WITH CHECK ADD  CONSTRAINT [FK_Comments_Users] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Users] ([Id])
+GO
+
+ALTER TABLE [dbo].[Comments] CHECK CONSTRAINT [FK_Comments_Users]
 GO
 
 
