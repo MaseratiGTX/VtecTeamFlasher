@@ -24,42 +24,59 @@ namespace ClientAndServerCommons.MapClasses
                 .Column("UserId")
                 .Not.Nullable();
 
-            Map(x => x.StockFile)
-                .Column("StockFile")
+            Map(x => x.StockBinary)
+                .Column("StockBinary")
                 .MapVarbinaryMax()
                 .Nullable();
 
-            Map(x => x.AdditionalMessage)
-                .Column("AdditionalMessage")
-                .Nullable();
-            
-            Map(x => x.StockFileName)
-                .Column("StockFileName")
+            Map(x => x.EcuNumber)
+                .Column("EcuNumber")
+                .Length(150)
                 .Nullable();
 
-            Map(x => x.EcuCode)
-                .Column("EcuCode")
-                .Length(255)
-                .Not.Nullable(); 
-            
-            Map(x => x.Car)
-                .Column("Car")
-                .Length(50)
-                .Nullable();
-            
-            Map(x => x.Vin)
-                .Column("Vin")
-                .Length(100)
+            Map(x => x.BinaryNumber)
+                .Column("BinaryNumber")
+                .Length(150)
                 .Nullable();
 
-            Map(x => x.RequestStatus)
-                .Column("RequestStatus")
+            Map(x => x.EcuPhoto)
+                .Column("EcuPhoto")
+                .MapVarbinaryMax()
+                .Nullable();
+
+            Map(x => x.EcuPhotoFilename)
+                .Column("EcuPhotoFilename")
+                .Length(200)
+                .Nullable();
+
+            Map(x => x.CarDescription)
+                .Column("CarDescription")
+                .Length(400)
                 .Not.Nullable();
 
-            Map(x => x.RequestDateTime)
-                .Column("RequestDateTime")
+            Map(x => x.RequestDate)
+                .Column("RequestDate")
                 .MapDateTime()
-                .Not.Nullable();
+                .Nullable();
+
+            Map(x => x.Status)
+                .Column("Status")
+                .Nullable();
+
+            Map(x => x.ExpectedResolveDate)
+                .Column("ExpectedResolveDate")
+                .MapDateTime()
+                .Nullable();
+
+            Map(x => x.RequestDetails)
+                .Column("RequestDetails")
+                .Length(255)
+                .Nullable();
+
+            Map(x => x.StockBinaryName)
+                .Column("StockBinaryName")
+                .Length(255)
+                .Nullable();
 
             //References(x => x.User)
             //    .Column("UserId")

@@ -24,13 +24,13 @@ namespace ClientAndServerCommons.MapClasses
                 .Column("UserId")
                 .Not.Nullable();
 
-            Map(x => x.ReslashFileName)
-                .Column("ReslashFileName")
+            Map(x => x.BinaryFileName)
+                .Column("BinaryFileName")
                 .Length(255)
                 .Not.Nullable();
 
-            Map(x => x.Vin)
-                .Column("Vin")
+            Map(x => x.CarVin)
+                .Column("CarVin")
                 .Length(255)
                 .Not.Nullable();
             
@@ -39,25 +39,12 @@ namespace ClientAndServerCommons.MapClasses
                 .Length(100)
                 .Not.Nullable();
             
-            Map(x => x.Severity)
-                .Column("Severity")
-                .Nullable();
-
-            Map(x => x.Cvn)
-                .Column("Cvn")
-                .Length(255)
+            Map(x => x.Status)
+                .Column("Status")
                 .Not.Nullable();
 
-            Map(x => x.ReflashStatus)
-                .Column("ReflashStatus")
-                .Not.Nullable();
-
-            Map(x => x.PaymentStatus)
-                .Column("PaymentStatus")
-                .Not.Nullable();
-
-            Map(x => x.ReflashDateTime)
-                .Column("ReflashDateTime")
+            Map(x => x.ReflashDate)
+                .Column("ReflashDate")
                 .MapDateTime()
                 .Not.Nullable();
 

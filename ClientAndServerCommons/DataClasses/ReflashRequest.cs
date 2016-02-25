@@ -9,23 +9,30 @@ namespace ClientAndServerCommons.DataClasses
     public class ReflashRequest:AbstractDataObject
     {
         [DataMember]
-        public virtual byte[] StockFile { get; set; }
+        public virtual byte[] StockBinary { get; set; }
         [DataMember]
-        public virtual string EcuCode { get; set; }
+        public virtual string EcuNumber { get; set; }
         [DataMember]
-        public virtual int RequestStatus { get; set; }
+        public virtual string BinaryNumber { get; set; }
+        [DataMember]
+        public virtual byte[] EcuPhoto { get; set; }
+        [DataMember]
+        public virtual string EcuPhotoFilename { get; set; }
+        [DataMember]
+        public virtual string CarDescription { get; set; }
+        [DataMember]
+        public virtual int Status { get; set; }
         [DataMember]
         public virtual int UserId { get; set; }
         [DataMember]
-        public virtual DateTime RequestDateTime { get; set; }
+        public virtual DateTime RequestDate { get; set; }
         [DataMember]
-        public virtual string AdditionalMessage { get; set; }
+        public virtual DateTime? ExpectedResolveDate { get; set; }
         [DataMember]
-        public virtual string StockFileName { get; set; }
+        public virtual string RequestDetails { get; set; }
         [DataMember]
-        public virtual string Car { get; set; }
-        [DataMember]
-        public virtual string Vin { get; set; }
+        public virtual string StockBinaryName { get; set; }
+        
         //[DataMember]
         //public virtual User User { get; set; }
     }
