@@ -149,6 +149,15 @@ namespace VtecTeamFlasher
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.tabControlReflash = new System.Windows.Forms.TabControl();
+            this.tabReflashCar = new System.Windows.Forms.TabPage();
+            this.tabReflashUpload = new System.Windows.Forms.TabPage();
+            this.lblEcuNumbertoSearch = new System.Windows.Forms.Label();
+            this.txtEcuNumbertoSearch = new System.Windows.Forms.TextBox();
+            this.btnSearchReflashFile = new System.Windows.Forms.Button();
+            this.tabNews = new System.Windows.Forms.TabPage();
+            this.lblNews = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabReflash.SuspendLayout();
@@ -176,11 +185,15 @@ namespace VtecTeamFlasher
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalInfo)).BeginInit();
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).BeginInit();
+            this.tabControlReflash.SuspendLayout();
+            this.tabReflashCar.SuspendLayout();
+            this.tabReflashUpload.SuspendLayout();
+            this.tabNews.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(883, 29);
+            this.btnSettings.Location = new System.Drawing.Point(835, 15);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(75, 23);
             this.btnSettings.TabIndex = 0;
@@ -292,7 +305,7 @@ namespace VtecTeamFlasher
             this.groupBox1.Controls.Add(this.btnWrite);
             this.groupBox1.Controls.Add(this.btnOpenFileDialog);
             this.groupBox1.Controls.Add(this.txtFilePath);
-            this.groupBox1.Location = new System.Drawing.Point(719, 231);
+            this.groupBox1.Location = new System.Drawing.Point(916, 15);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(418, 81);
             this.groupBox1.TabIndex = 5;
@@ -342,7 +355,7 @@ namespace VtecTeamFlasher
             // btnReadFromECU
             // 
             this.btnReadFromECU.Enabled = false;
-            this.btnReadFromECU.Location = new System.Drawing.Point(391, 467);
+            this.btnReadFromECU.Location = new System.Drawing.Point(371, 449);
             this.btnReadFromECU.Name = "btnReadFromECU";
             this.btnReadFromECU.Size = new System.Drawing.Size(135, 27);
             this.btnReadFromECU.TabIndex = 2;
@@ -352,7 +365,7 @@ namespace VtecTeamFlasher
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(719, 329);
+            this.txtStatus.Location = new System.Drawing.Point(916, 101);
             this.txtStatus.Multiline = true;
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.ReadOnly = true;
@@ -362,6 +375,7 @@ namespace VtecTeamFlasher
             // 
             // tabControlMain
             // 
+            this.tabControlMain.Controls.Add(this.tabNews);
             this.tabControlMain.Controls.Add(this.tabReflash);
             this.tabControlMain.Controls.Add(this.tabRequest);
             this.tabControlMain.Controls.Add(this.tabHistory);
@@ -377,7 +391,7 @@ namespace VtecTeamFlasher
             // 
             // tabReflash
             // 
-            this.tabReflash.Controls.Add(this.panelReflash);
+            this.tabReflash.Controls.Add(this.tabControlReflash);
             this.tabReflash.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabReflash.Location = new System.Drawing.Point(4, 29);
             this.tabReflash.Name = "tabReflash";
@@ -393,15 +407,15 @@ namespace VtecTeamFlasher
             this.panelReflash.Controls.Add(this.btnCreateNewRequest);
             this.panelReflash.Controls.Add(this.textBox1);
             this.panelReflash.Controls.Add(this.cbModules);
+            this.panelReflash.Controls.Add(this.btnUploadToECU);
+            this.panelReflash.Controls.Add(this.btnReadFromECU);
             this.panelReflash.Controls.Add(this.lblBinaryLoadingStatus);
             this.panelReflash.Controls.Add(this.btnInitialize);
-            this.panelReflash.Controls.Add(this.btnUploadToECU);
             this.panelReflash.Controls.Add(this.btnIdentify);
             this.panelReflash.Controls.Add(this.btnUploadBinary);
             this.panelReflash.Controls.Add(this.lbModule);
             this.panelReflash.Controls.Add(this.tbReflashText);
             this.panelReflash.Controls.Add(this.btnReadErrors);
-            this.panelReflash.Controls.Add(this.btnReadFromECU);
             this.panelReflash.Controls.Add(this.btnRestart);
             this.panelReflash.Controls.Add(this.tbECUVin);
             this.panelReflash.Controls.Add(this.cbAdapter);
@@ -410,7 +424,6 @@ namespace VtecTeamFlasher
             this.panelReflash.Controls.Add(this.tbBinaryNumber);
             this.panelReflash.Controls.Add(this.btnResetAdaptation);
             this.panelReflash.Controls.Add(this.lbECUBinaryNumber);
-            this.panelReflash.Controls.Add(this.panelLoadBinary);
             this.panelReflash.Controls.Add(this.panelKeyUnavailible);
             this.panelReflash.Location = new System.Drawing.Point(0, 0);
             this.panelReflash.Name = "panelReflash";
@@ -420,7 +433,7 @@ namespace VtecTeamFlasher
             // btnCreateNewRequest
             // 
             this.btnCreateNewRequest.Enabled = false;
-            this.btnCreateNewRequest.Location = new System.Drawing.Point(60, 467);
+            this.btnCreateNewRequest.Location = new System.Drawing.Point(57, 449);
             this.btnCreateNewRequest.Name = "btnCreateNewRequest";
             this.btnCreateNewRequest.Size = new System.Drawing.Size(135, 27);
             this.btnCreateNewRequest.TabIndex = 19;
@@ -429,9 +442,9 @@ namespace VtecTeamFlasher
             // 
             // textBox1
             // 
-            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(144, 420);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(278, 20);
             this.textBox1.TabIndex = 18;
             this.textBox1.Text = "Не загружено";
@@ -449,7 +462,7 @@ namespace VtecTeamFlasher
             // btnUploadToECU
             // 
             this.btnUploadToECU.Enabled = false;
-            this.btnUploadToECU.Location = new System.Drawing.Point(226, 467);
+            this.btnUploadToECU.Location = new System.Drawing.Point(214, 449);
             this.btnUploadToECU.Name = "btnUploadToECU";
             this.btnUploadToECU.Size = new System.Drawing.Size(135, 27);
             this.btnUploadToECU.TabIndex = 16;
@@ -481,6 +494,7 @@ namespace VtecTeamFlasher
             this.tbReflashText.Location = new System.Drawing.Point(17, 228);
             this.tbReflashText.Multiline = true;
             this.tbReflashText.Name = "tbReflashText";
+            this.tbReflashText.ReadOnly = true;
             this.tbReflashText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbReflashText.Size = new System.Drawing.Size(553, 172);
             this.tbReflashText.TabIndex = 14;
@@ -519,27 +533,29 @@ namespace VtecTeamFlasher
             // 
             // panelLoadBinary
             // 
+            this.panelLoadBinary.Controls.Add(this.btnSearchReflashFile);
+            this.panelLoadBinary.Controls.Add(this.txtEcuNumbertoSearch);
+            this.panelLoadBinary.Controls.Add(this.lblEcuNumbertoSearch);
             this.panelLoadBinary.Controls.Add(this.lblChooseBinarytoUpload);
             this.panelLoadBinary.Controls.Add(this.btnBinaryDescriptionOK);
             this.panelLoadBinary.Controls.Add(this.btnBinaryDescriptionCancel);
             this.panelLoadBinary.Controls.Add(this.gbBinaryDescription);
             this.panelLoadBinary.Controls.Add(this.lblChooseBinary);
             this.panelLoadBinary.Controls.Add(this.cbBinaryToLoad);
-            this.panelLoadBinary.Location = new System.Drawing.Point(16, 6);
+            this.panelLoadBinary.Location = new System.Drawing.Point(0, 0);
             this.panelLoadBinary.Name = "panelLoadBinary";
-            this.panelLoadBinary.Size = new System.Drawing.Size(574, 492);
+            this.panelLoadBinary.Size = new System.Drawing.Size(603, 486);
             this.panelLoadBinary.TabIndex = 9;
-            this.panelLoadBinary.Visible = false;
             // 
             // lblChooseBinarytoUpload
             // 
             this.lblChooseBinarytoUpload.AutoSize = true;
             this.lblChooseBinarytoUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblChooseBinarytoUpload.Location = new System.Drawing.Point(217, 21);
+            this.lblChooseBinarytoUpload.Location = new System.Drawing.Point(189, 18);
             this.lblChooseBinarytoUpload.Name = "lblChooseBinarytoUpload";
-            this.lblChooseBinarytoUpload.Size = new System.Drawing.Size(151, 20);
+            this.lblChooseBinarytoUpload.Size = new System.Drawing.Size(207, 20);
             this.lblChooseBinarytoUpload.TabIndex = 23;
-            this.lblChooseBinarytoUpload.Text = "Выбор прошивки";
+            this.lblChooseBinarytoUpload.Text = "Выбор/Поиск прошивки";
             this.lblChooseBinarytoUpload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnBinaryDescriptionOK
@@ -549,16 +565,17 @@ namespace VtecTeamFlasher
             this.btnBinaryDescriptionOK.Name = "btnBinaryDescriptionOK";
             this.btnBinaryDescriptionOK.Size = new System.Drawing.Size(135, 27);
             this.btnBinaryDescriptionOK.TabIndex = 22;
-            this.btnBinaryDescriptionOK.Text = "Выбрать";
+            this.btnBinaryDescriptionOK.Text = "Загрузить";
             this.btnBinaryDescriptionOK.UseVisualStyleBackColor = true;
             // 
             // btnBinaryDescriptionCancel
             // 
+            this.btnBinaryDescriptionCancel.Enabled = false;
             this.btnBinaryDescriptionCancel.Location = new System.Drawing.Point(328, 446);
             this.btnBinaryDescriptionCancel.Name = "btnBinaryDescriptionCancel";
             this.btnBinaryDescriptionCancel.Size = new System.Drawing.Size(135, 27);
             this.btnBinaryDescriptionCancel.TabIndex = 19;
-            this.btnBinaryDescriptionCancel.Text = "Отказаться";
+            this.btnBinaryDescriptionCancel.Text = "Отмена";
             this.btnBinaryDescriptionCancel.UseVisualStyleBackColor = true;
             this.btnBinaryDescriptionCancel.Click += new System.EventHandler(this.btnBinaryDescriptionCancel_Click);
             // 
@@ -571,9 +588,9 @@ namespace VtecTeamFlasher
             this.gbBinaryDescription.Controls.Add(this.txtBinaryDescription);
             this.gbBinaryDescription.Controls.Add(this.cbBinaryDescriptionCS);
             this.gbBinaryDescription.Enabled = false;
-            this.gbBinaryDescription.Location = new System.Drawing.Point(43, 83);
+            this.gbBinaryDescription.Location = new System.Drawing.Point(50, 110);
             this.gbBinaryDescription.Name = "gbBinaryDescription";
-            this.gbBinaryDescription.Size = new System.Drawing.Size(476, 339);
+            this.gbBinaryDescription.Size = new System.Drawing.Size(476, 330);
             this.gbBinaryDescription.TabIndex = 21;
             this.gbBinaryDescription.TabStop = false;
             this.gbBinaryDescription.Text = "Описание";
@@ -624,6 +641,7 @@ namespace VtecTeamFlasher
             this.txtBinaryDescription.Location = new System.Drawing.Point(19, 22);
             this.txtBinaryDescription.Multiline = true;
             this.txtBinaryDescription.Name = "txtBinaryDescription";
+            this.txtBinaryDescription.ReadOnly = true;
             this.txtBinaryDescription.Size = new System.Drawing.Size(439, 267);
             this.txtBinaryDescription.TabIndex = 1;
             // 
@@ -640,16 +658,18 @@ namespace VtecTeamFlasher
             // lblChooseBinary
             // 
             this.lblChooseBinary.AutoSize = true;
-            this.lblChooseBinary.Location = new System.Drawing.Point(78, 59);
+            this.lblChooseBinary.Enabled = false;
+            this.lblChooseBinary.Location = new System.Drawing.Point(47, 86);
             this.lblChooseBinary.Name = "lblChooseBinary";
-            this.lblChooseBinary.Size = new System.Drawing.Size(62, 13);
+            this.lblChooseBinary.Size = new System.Drawing.Size(120, 13);
             this.lblChooseBinary.TabIndex = 20;
-            this.lblChooseBinary.Text = "Прошивки:";
+            this.lblChooseBinary.Text = "Доступные прошивки:";
             // 
             // cbBinaryToLoad
             // 
+            this.cbBinaryToLoad.Enabled = false;
             this.cbBinaryToLoad.FormattingEnabled = true;
-            this.cbBinaryToLoad.Location = new System.Drawing.Point(142, 54);
+            this.cbBinaryToLoad.Location = new System.Drawing.Point(205, 83);
             this.cbBinaryToLoad.Name = "cbBinaryToLoad";
             this.cbBinaryToLoad.Size = new System.Drawing.Size(321, 21);
             this.cbBinaryToLoad.TabIndex = 19;
@@ -760,9 +780,9 @@ namespace VtecTeamFlasher
             // 
             // txtEcuPhotoStatus
             // 
-            this.txtEcuPhotoStatus.Enabled = false;
             this.txtEcuPhotoStatus.Location = new System.Drawing.Point(123, 127);
             this.txtEcuPhotoStatus.Name = "txtEcuPhotoStatus";
+            this.txtEcuPhotoStatus.ReadOnly = true;
             this.txtEcuPhotoStatus.Size = new System.Drawing.Size(352, 22);
             this.txtEcuPhotoStatus.TabIndex = 11;
             this.txtEcuPhotoStatus.Text = "не загружен";
@@ -844,9 +864,9 @@ namespace VtecTeamFlasher
             // 
             // txtStockFilePath
             // 
-            this.txtStockFilePath.Enabled = false;
             this.txtStockFilePath.Location = new System.Drawing.Point(123, 429);
             this.txtStockFilePath.Name = "txtStockFilePath";
+            this.txtStockFilePath.ReadOnly = true;
             this.txtStockFilePath.Size = new System.Drawing.Size(352, 22);
             this.txtStockFilePath.TabIndex = 1;
             this.txtStockFilePath.Text = "не загружен";
@@ -1371,11 +1391,100 @@ namespace VtecTeamFlasher
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
             this.txtUsername.TabIndex = 0;
             // 
+            // tabControlReflash
+            // 
+            this.tabControlReflash.Controls.Add(this.tabReflashCar);
+            this.tabControlReflash.Controls.Add(this.tabReflashUpload);
+            this.tabControlReflash.Location = new System.Drawing.Point(0, 0);
+            this.tabControlReflash.Name = "tabControlReflash";
+            this.tabControlReflash.SelectedIndex = 0;
+            this.tabControlReflash.Size = new System.Drawing.Size(611, 508);
+            this.tabControlReflash.TabIndex = 0;
+            // 
+            // tabReflashCar
+            // 
+            this.tabReflashCar.Controls.Add(this.panelReflash);
+            this.tabReflashCar.Location = new System.Drawing.Point(4, 22);
+            this.tabReflashCar.Name = "tabReflashCar";
+            this.tabReflashCar.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReflashCar.Size = new System.Drawing.Size(603, 482);
+            this.tabReflashCar.TabIndex = 0;
+            this.tabReflashCar.Text = "Загрузка прошивки в машину";
+            this.tabReflashCar.UseVisualStyleBackColor = true;
+            // 
+            // tabReflashUpload
+            // 
+            this.tabReflashUpload.Controls.Add(this.panelLoadBinary);
+            this.tabReflashUpload.Location = new System.Drawing.Point(4, 22);
+            this.tabReflashUpload.Name = "tabReflashUpload";
+            this.tabReflashUpload.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReflashUpload.Size = new System.Drawing.Size(603, 482);
+            this.tabReflashUpload.TabIndex = 1;
+            this.tabReflashUpload.Text = "Проверка наличия и загрузка прошивки";
+            this.tabReflashUpload.UseVisualStyleBackColor = true;
+            // 
+            // lblEcuNumbertoSearch
+            // 
+            this.lblEcuNumbertoSearch.AutoSize = true;
+            this.lblEcuNumbertoSearch.Location = new System.Drawing.Point(6, 57);
+            this.lblEcuNumbertoSearch.Name = "lblEcuNumbertoSearch";
+            this.lblEcuNumbertoSearch.Size = new System.Drawing.Size(97, 13);
+            this.lblEcuNumbertoSearch.TabIndex = 24;
+            this.lblEcuNumbertoSearch.Text = "Номер прошивки:";
+            // 
+            // txtEcuNumbertoSearch
+            // 
+            this.txtEcuNumbertoSearch.Location = new System.Drawing.Point(124, 54);
+            this.txtEcuNumbertoSearch.Name = "txtEcuNumbertoSearch";
+            this.txtEcuNumbertoSearch.Size = new System.Drawing.Size(321, 20);
+            this.txtEcuNumbertoSearch.TabIndex = 25;
+            this.txtEcuNumbertoSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnSearchReflashFile
+            // 
+            this.btnSearchReflashFile.Location = new System.Drawing.Point(468, 52);
+            this.btnSearchReflashFile.Name = "btnSearchReflashFile";
+            this.btnSearchReflashFile.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchReflashFile.TabIndex = 26;
+            this.btnSearchReflashFile.Text = "Поиск прошивок";
+            this.btnSearchReflashFile.UseVisualStyleBackColor = true;
+            // 
+            // tabNews
+            // 
+            this.tabNews.Controls.Add(this.lblNews);
+            this.tabNews.Location = new System.Drawing.Point(4, 29);
+            this.tabNews.Name = "tabNews";
+            this.tabNews.Size = new System.Drawing.Size(607, 504);
+            this.tabNews.TabIndex = 4;
+            this.tabNews.Text = "Новости";
+            this.tabNews.UseVisualStyleBackColor = true;
+            // 
+            // lblNews
+            // 
+            this.lblNews.AutoSize = true;
+            this.lblNews.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblNews.Location = new System.Drawing.Point(235, 19);
+            this.lblNews.Name = "lblNews";
+            this.lblNews.Size = new System.Drawing.Size(81, 20);
+            this.lblNews.TabIndex = 16;
+            this.lblNews.Text = "Новости";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(822, 173);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // VTFlasher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 555);
+            this.ClientSize = new System.Drawing.Size(1361, 555);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.txtStatus);
@@ -1421,6 +1530,11 @@ namespace VtecTeamFlasher
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).EndInit();
+            this.tabControlReflash.ResumeLayout(false);
+            this.tabReflashCar.ResumeLayout(false);
+            this.tabReflashUpload.ResumeLayout(false);
+            this.tabNews.ResumeLayout(false);
+            this.tabNews.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1547,6 +1661,15 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.DataGridViewTextBoxColumn carDescriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn FullInfo;
+        private System.Windows.Forms.TabControl tabControlReflash;
+        private System.Windows.Forms.TabPage tabReflashCar;
+        private System.Windows.Forms.TabPage tabReflashUpload;
+        private System.Windows.Forms.Button btnSearchReflashFile;
+        private System.Windows.Forms.TextBox txtEcuNumbertoSearch;
+        private System.Windows.Forms.Label lblEcuNumbertoSearch;
+        private System.Windows.Forms.TabPage tabNews;
+        private System.Windows.Forms.Label lblNews;
+        private System.Windows.Forms.Button button1;
     }
 }
 

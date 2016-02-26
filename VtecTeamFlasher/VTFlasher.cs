@@ -56,7 +56,6 @@ namespace VtecTeamFlasher
         public VTFlasher()
         {
             InitializeComponent();
-           // this.cbCarManufacture.DataSource = CarManufacture;
             panelLogin.BringToFront();
         }
 
@@ -131,10 +130,25 @@ namespace VtecTeamFlasher
 
             txtStatusThread = new Thread(() =>
                     {
+                        string pcmTextData = "";
                         while (true)
                         {
+
                             WinAPIHelper.SendMessage(pcmTextBoxStatus, WinAPIHelper.WM_GETTEXT, 10000, sb);
-                            this.Invoke(()=>txtStatus.Text = sb.ToString());
+                            pcmTextData = sb.ToString();
+                            var stringPcmText = pcmTextData.Replace("\n","").Split('\r');
+                            var denyStringsList = new List<string>();
+
+                            denyStringsList.Add("Версия программы");
+
+                            foreach (string denyStrings in denyStringsList)
+                            {
+                                stringPcmText = stringPcmText.Where(t => !t.StartsWith(denyStrings)).ToArray<string>();
+                            }
+
+                            
+                            //this.Invoke(()=>txtStatus.Text = sb.ToString());
+                            this.Invoke(() => tbReflashText.Text = String.Join("\r\n", stringPcmText));
                             Thread.Sleep(100);
                         }
                     });
@@ -648,6 +662,15 @@ namespace VtecTeamFlasher
             {
                 MessageBox.Show("Здесь будет форма с деталями запроса и комментариями");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var a = txtStatus.Text;
+            var stringPcmText = a.Replace("\n", "").Split('\r');
+            stringPcmText = stringPcmText.Where(t => !t.StartsWith("Версия программы")).ToArray<string>();
+            //stringPcmText = (string[])stringPcmText.Where(t => t.StartsWith("asd"));
+            a = a + "1";
         }
     }
 }
