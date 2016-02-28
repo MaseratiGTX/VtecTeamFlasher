@@ -110,7 +110,7 @@ namespace VtecTeamFlasher
             pcmButtonCheckCorrectCS = WinAPIHelper.FindWindowEx(pcmMainWindow, pcmChildren[16], null, null);
 
             InitializeComboBoxControl(pcmComboBoxAdapters, cbAdapter);
-            InitializeComboBoxControl(pcmComboBoxModules, cbModules);
+            //InitializeComboBoxControl(pcmComboBoxModules, cbModules);
             SetButtonStatus();
 
 
@@ -153,9 +153,6 @@ namespace VtecTeamFlasher
                         }
                     });
             txtStatusThread.Start();
-
-
-
         }
 
         # region ComboBoxes
@@ -175,7 +172,7 @@ namespace VtecTeamFlasher
                 var pcmSelectedIndex = (int)WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETCURSEL, IntPtr.Zero, IntPtr.Zero);
                 if (pcmSelectedIndex != -1)
                     WinAPIHelper.SendMessage(controlHandle, WinAPIHelper.CB_GETLBTEXT, pcmSelectedIndex, ssb);
-                comboBox.SelectedText = !String.IsNullOrEmpty(ssb.ToString()) ? ssb.ToString() : "";
+                comboBox.SelectedIndex = pcmSelectedIndex;
             }
         }
 
@@ -191,7 +188,15 @@ namespace VtecTeamFlasher
         {
             if (pcmComboBoxModules != IntPtr.Zero)
             {
-                WinAPIHelper.SendMessage(pcmComboBoxModules, WinAPIHelper.CB_SETCURSEL, cbModules.SelectedIndex, "");
+                changePCMModules(cbModules.SelectedItem.ToString());
+               // WinAPIHelper.SendMessage(pcmComboBoxModules, WinAPIHelper.CB_SETCURSEL, cbModules.SelectedIndex, "");
+
+                //WinAPIHelper.SendMessage(pcmComboBoxModules, 0x014F/*CB_SHOWDROPDOWN*/, 1, "");
+                //WinAPIHelper.SendMessage(pcmComboBoxModules, 0x014E/*CB_SETCURSEL*/, cbModules.SelectedIndex, "");
+                //WinAPIHelper.SendMessage(pcmComboBoxModules, 0x0201/*WM_LBUTTONDOWN*/, 0, "-1");
+                //WinAPIHelper.SendMessage(pcmComboBoxModules, 0x0202/*WM_LBUTTONUP*/, 0, "-1");
+                //WinAPIHelper.SendMessage(pcmComboBoxModules, 0x014F/*CB_SHOWDROPDOWN*/, 0, "0");
+                //WinAPIHelper.SendMessage(pcmComboBoxModules, WinAPIHelper.CB_SETCURSEL, cbModules.SelectedIndex, "");
                 SetButtonStatus();
             }
         }
@@ -359,6 +364,7 @@ namespace VtecTeamFlasher
                         FileHelper.SaveText(serializationHelper.SerializeObject(txtPassword.Text), Path.Combine(Application.StartupPath, FilePathProvider.PasswordFilePath));
 
                     Session.CurrentUser = result.User;
+                    loadCbModules();
                     this.Invoke(()=>panelLogin.Dispose());
                 }
                 else
@@ -378,31 +384,7 @@ namespace VtecTeamFlasher
         private void btnReloadFlasher_Click(object sender, EventArgs e)
         {
             VTFlasher_Load(sender,e);
-
         }
-
-        //private void cbCarManufacture_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (cbCarManufacture.Text != string.Empty)
-        //    {
-        //        CarModel = XMLHelper.GetCARModel(cbCarManufacture.Text);
-        //        cbCarModel.DataSource = CarModel;
-        //        cbCarModel.Enabled = true;
-        //        cbCarModel.Text = "";
-        //    }
-        //    else
-        //    {
-        //        cbCarModel.Enabled = false;
-        //        cbCarModel.DataSource = new List<string>();
-        //        cbCarModel.Text = "";
-        //    }
-
-        //}
-
-        //private void cbCarModel_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    // Choose module in PCM Flash
-        //}
 
         private async void btnSendRequest_Click(object sender, EventArgs e)
         {
@@ -671,6 +653,12 @@ namespace VtecTeamFlasher
             stringPcmText = stringPcmText.Where(t => !t.StartsWith("Версия программы")).ToArray<string>();
             //stringPcmText = (string[])stringPcmText.Where(t => t.StartsWith("asd"));
             a = a + "1";
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            var pcmSelectedIndex = (int)WinAPIHelper.SendMessage(pcmComboBoxModules, WinAPIHelper.CB_GETCURSEL, IntPtr.Zero, IntPtr.Zero);
+            txtStatus.Text = pcmSelectedIndex.ToString();
         }
     }
 }

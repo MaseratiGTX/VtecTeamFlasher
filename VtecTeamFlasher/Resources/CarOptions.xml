@@ -1,38 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <cartypes>
+  <cartype name="Mazda" module="8,9,10,11">
+	<carinfo name="Mazda Gen 1" module="8"/>
+    <carmodel name="Mazda: 1.6L Z6 AT (Mazda3 2003+)" id="64" module="8"/>
+    <carmodel name="Mazda: 1.6L, 1.4L Z6/ZJ TM (Mazda3 2003+)" id="65" module="8"/>
+    <carmodel name="Mazda: 1.3L ZJ (Mazda Demio 2003-)" id="66" module="8"/>
+    <carmodel name="Mazda: 1.8L, 2.0L, 2.3L L8/LF/L3 (Mazda3/6/CX7 2004+)" id="67" module="8"/>
+    <carmodel name="Mazda: 1.8L, 2.0L, 2.3L L8/LF/L3 (Mazda6 2003-2004)" id="68" module="8"/>
+    <carmodel name="Mazda: 2.3L L3 USA (Mazda6 2004)" id="69" module="8"/>
+	<carmodel name="Mazda: 1.3L N3 (Mazda RX8 2003+)" id="70" module="8"/>
+	<carmodel name="Mazda: 1.3L N3 (Mazda RX8 2008)" id="71" module="8"/>
+	<carmodel name="Mazda: 1.3L N3 (Mazda RX8 2009-2012)" id="72" module="8"/>
+	<carinfo name="Mazda Gen 2" module="9"/>
+	<carmodel name="Mazda: 1.3L, 1.5L ZJ/ZY (Mazda2 2011+)" id="74" module="9"/>
+	<carmodel name="Mazda: 1.6L Z6 (Mazda3 2010+)" id="75" module="9"/>
+	<carmodel name="Mazda: 1.8L, 2.0L, 2.5L L8/LF/L5 (Mazda6 2008+)" id="76" module="9"/>
+	<carmodel name="Mazda: 2.0L, 2.3L, 2.5L LF/L3/L5 (Mazda3/5/CX7 2010+)" id="77" module="9"/>
+	<carinfo name="Mazda Gen 3" module="10"/>
+	<carmodel name="Mazda: 1.5L, 2.0L, 2.5L SKYACTIV-G P5/PE/PY (Mazda3/CX5/6 SkyActiv Mitsubishi)" id="79" module="10"/>
+	<carmodel name="Mazda: 1.5L, 2.0L, 2.5L SKYACTIV-G P5/PE/PY (Mazda3/CX5/6 SkyActiv Denso)" id="80" module="10"/>
+	<carmodel name="Mazda: 2.2L SKYACTIV-D SH (Mazda3/CX5/6 SkyActiv Denso)" id="81" module="10"/>
+	<carmodel name="Mazda: 1.6L Z6 (Denso)" id="82" module="10"/>
+	<carinfo name="Mazda Gen 3 Crypted" module="11"/>
+	<carmodel name="Mazda: 1.5L, 2.0L, 2.5L SKYACTIV-G P5/PE/PY (Mazda3/CX5/6 SkyActiv Denso Crypted)" id="84" module="11"/>
+	<carmodel name="Mazda: 2.2L SKYACTIV-D SH (Mazda3/CX5/6 Denso Crypted 2MB)" id="85" module="11"/>
+	<carmodel name="Mazda: 1.5L, 2.2L SKYACTIV-D S5/SH (Mazda2/3/CX5/6 Denso Crypted 3.75MB)" id="86" module="11"/>
+	<carmodel name="Mazda: 1.6L Z6 (Denso Crypted)" id="87" module="11"/>
+  </cartype>
   <cartype name="Honda/Acura CAN" module="12">
-    <carmodel name="Honda: Honda PGM-FI Generic Read-Only" id="1" module="12"/>
-    <carmodel name="Honda: Honda AT/CVT/DCT Generic Read-Only" id="1" module="12"/>
+    <carmodel name="Honda: Honda PGM-FI Generic Read-Only" id="90" module="12"/>
+    <carmodel name="Honda: Honda AT/CVT/DCT Generic Read-Only" id="91" module="12"/>
 	<carinfo name="Keihin" module="12"/>
-    <carmodel name="Honda: PGM-FI (Keihin SH7058/1MB)" id="1" module="12"/>
-    <carmodel name="Honda: PGM-FI (Keihin SH72543/2MB)" id="1" module="12"/>
-    <carmodel name="Honda: PGM-FI (Keihin MPC5566/3MB)" id="1" module="12"/>
-    <carmodel name="Honda: AT/CVT/DCT (Keihin 512KB)" id="1" module="12"/>
-    <carmodel name="Honda: AT/CVT/DCT (Keihin 512KB) (2)" id="1" module="12"/>
-    <carmodel name="Honda: AT/CVT/DCT (Keihin 1MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Keihin SH7058/1MB)" id="93" module="12"/>
+    <carmodel name="Honda: Accord 2.4L, Civic 2013+ (Keihin SH72543/2MB)" id="94" module="12"/>
+    <carmodel name="Honda: CR-V 2013+ (Keihin MPC5566/3MB)" id="95" module="12"/>
+    <carmodel name="Honda: AT/CVT/DCT (Keihin 512KB)" id="96" module="12"/>
+    <carmodel name="Honda: AT/CVT/DCT (Keihin 1MB)" id="97" module="12"/>
 	<carinfo name="Matsushita"/>
-    <carmodel name="Honda: PGM-FI (Matsushita SH7058/1MB)" id="1" module="12"/>
-    <carmodel name="Honda: PGM-FI (Matsushita SH72543/2MB)" id="1" module="12"/>
-    <carmodel name="Honda: PGM-FI 2013+ (Matsushita SH72543/2MB)" id="1" module="12"/>
-    <carmodel name="Honda: AT/CVT/DCT (Matsushita 512KB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Matsushita SH7058/1MB)" id="99" module="12"/>
+    <carmodel name="Honda: PGM-FI (Matsushita SH72543/2MB)" id="100" module="12"/>
+    <carmodel name="Honda: PGM-FI 2013+ (Matsushita SH72543/2MB)" id="101" module="12"/>
+    <carmodel name="Honda: AT/CVT/DCT (Matsushita 512KB)" id="102" module="12"/>
 	<carinfo name="Continental" module="12"/>
-    <carmodel name="Honda: PGM-FI (Continental MPC5554/2MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Continental MPC5554/2MB)" id="104" module="12"/>
 	<carinfo name="Hitachi" module="12"/>
-    <carmodel name="Honda: PGM-FI (Hitachi SH7058/1MB)" id="1" module="12"/>
-    <carmodel name="Honda: PGM-FI (Hitachi SH7059/1.5MB)" id="1" module="12"/>
-    <carmodel name="Honda: PGM-FI (Hitachi SH72543/2MB)" id="1" module="12"/>
-    <carmodel name="Honda: PGM-FI (Hitachi MPC5554/2MB)" id="1" module="12"/>
+    <carmodel name="Honda: PGM-FI (Hitachi SH7058/1MB)" id="106" module="12"/>
+    <carmodel name="Honda: PGM-FI (Hitachi SH7059/1.5MB)" id="107" module="12"/>
+    <carmodel name="Honda: Accord 3.5L 2013+ (Hitachi SH72543/2MB)" id="108" module="12"/>
+    <carmodel name="Honda: PGM-FI (Hitachi MPC5554/2MB)" id="109" module="12"/>
   </cartype>
   <cartype name="Honda/Acura K-Line" module="13">
-    <carmodel name="Honda: Accord 7 2003-2005 (SH7055/512KB)" id="1" module="13"/>
-    <carmodel name="Honda: Accord 7 2006-2007/TSX 2004-2005 (SH7055/512KB)" id="1" module="13"/>
-    <carmodel name="Acura: TSX 2006 (SH7058/1MB)" id="1" module="13"/>
-    <carmodel name="Honda: Accord/CR-V/Element/Legend/Odyssey/Ridgeline (Keihin SH7058/1MB)" id="1" module="13"/>
-    <carmodel name="Honda: Element/Inspire (Keihin SH7055/512KB)" id="11" module="13"/>
-    <carmodel name="Honda: Legend/Acura TL 2005-2007 (Keihin RJA SH7058/1MB)" id="1" module="13"/>
-    <carmodel name="Honda: CR-V 2002/2005-2007 (Keihin PPA/PNL SH7058/1MB)" id="1" module="13"/>
-    <carmodel name="Honda: Fit/Jazz/Airwave 2001-2007 (Keihin OKI ML66Q592/192KB)" id="1" module="13"/>
-    <carmodel name="Acura: MDX 2003-2007 (Motorola RDJ SH7055/512KB)" id="1" module="13"/>
-    <carmodel name="Honda: Accord 7 USA (Motorola RCA SH7055/512KB SH7058/1024K)" id="1" module="13"/>
+    <carmodel name="Honda: Accord 7 2003-2005 (Matsushita SH7055/512KB)" id="111" module="13"/>
+    <carmodel name="Honda: Accord 7 2006-2007/TSX 2004-2005 (Matsushita SH7055/512KB)" id="112" module="13"/>
+    <carmodel name="Acura: TSX 2006 (Matsushita SH7058/1MB)" id="113" module="13"/>
+    <carmodel name="Honda: Accord/CR-V/Element/Legend/Odyssey/Ridgeline (Keihin SH7058/1MB)" id="114" module="13"/>
+    <carmodel name="Honda: Element/Inspire (Keihin SH7055/512KB)" id="115" module="13"/>
+    <carmodel name="Honda: Legend/Acura TL 2005-2007 (Keihin RJA SH7058/1MB)" id="116" module="13"/>
+    <carmodel name="Honda: CR-V 2002/2005-2007 (Keihin PPA/PNL SH7058/1MB)" id="117" module="13"/>
+    <carmodel name="Honda: Fit/Jazz/Airwave 2001-2007 (Keihin OKI ML66Q592/192KB)" id="118" module="13"/>
+    <carmodel name="Acura: MDX 2003-2007 (Motorola RDJ SH7055/512KB)" id="119" module="13"/>
+    <carmodel name="Honda: Accord 7 USA (Motorola RCA SH7055/512KB SH7058/1024K)" id="120" module="13"/>
+  </cartype>
+  <cartype name="Kia/Hyundai" module="19,30,34">
+	<carinfo name="Kia/Hyundai M7/Me17" module="19"/>
+    <carmodel name="Kia/Hyundai: 1.4L, 1.6L (ME17.9.11/12/13)" id="174" module="19"/>
+    <carmodel name="Kia/Hyundai: 1.4L, 1.6L (M(G)7.9.8)" id="175" module="19"/>
+	<carinfo name="Kia/Hyundai SIM2K" module="30"/>
+	<carmodel name="Kia/Hyundai: 2.0L, 2.4L (SIM2K-140)" id="177" module="30"/>
+	<carmodel name="Kia/Hyundai: 2.0L, 2.4L (SIM2K-141/341)" id="178" module="30"/>
+	<carmodel name="Kia/Hyundai: 1.8L, 2.0L, 2.0T (SIM2K-240/241/242/245)" id="179" module="30"/>
+	<carinfo name="Kia/Hyundai EDC16" module="34"/>
+	<carmodel name="1.6L, 2.0L, 2.2L, 2.5L CRDI (EDC16C39)" id="181" module="34"/>
+	<carmodel name="1.6L, 2.0L, 2.2L, 2.5L CRDI K-Line Calibration (EDC16C39)" id="182" module="34"/>
+	<carmodel name="3.0L CRDI (EDC16CP34)" id="183" module="34"/>
+	<carmodel name="3.0L CRDI K-Line Calibration (EDC16CP34)" id="184" module="34"/>
+  </cartype>
+  <cartype name="Chevrolet" module="30">
+	<carmodel name="Chevrolet: Epica 2.0L, 2.5L (SIM2K-D160)" id="186" module="30"/>
+  </cartype>
+  <cartype name="SsangYong" module="30">
+	<carmodel name="SsangYong: Actyon 2.0L (SIM2K-C201)" id="188" module="30"/>
   </cartype>
 </cartypes>

@@ -49,12 +49,16 @@ namespace VtecTeamFlasher
             this.btnReadFromECU = new System.Windows.Forms.Button();
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.tabControlMain = new System.Windows.Forms.TabControl();
+            this.tabNews = new System.Windows.Forms.TabPage();
+            this.lblNews = new System.Windows.Forms.Label();
             this.tabReflash = new System.Windows.Forms.TabPage();
+            this.tabControlReflash = new System.Windows.Forms.TabControl();
+            this.tabReflashCar = new System.Windows.Forms.TabPage();
             this.panelReflash = new System.Windows.Forms.Panel();
             this.btnCreateNewRequest = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblBinaryLoadingStatus = new System.Windows.Forms.Label();
             this.btnUploadToECU = new System.Windows.Forms.Button();
+            this.lblBinaryLoadingStatus = new System.Windows.Forms.Label();
             this.btnUploadBinary = new System.Windows.Forms.Button();
             this.lbModule = new System.Windows.Forms.Label();
             this.tbReflashText = new System.Windows.Forms.TextBox();
@@ -62,7 +66,14 @@ namespace VtecTeamFlasher
             this.lbVIN = new System.Windows.Forms.Label();
             this.tbBinaryNumber = new System.Windows.Forms.TextBox();
             this.lbECUBinaryNumber = new System.Windows.Forms.Label();
+            this.panelKeyUnavailible = new System.Windows.Forms.Panel();
+            this.labelKeyUnavailible = new System.Windows.Forms.Label();
+            this.btnReloadFlasher = new System.Windows.Forms.Button();
+            this.tabReflashUpload = new System.Windows.Forms.TabPage();
             this.panelLoadBinary = new System.Windows.Forms.Panel();
+            this.btnSearchReflashFile = new System.Windows.Forms.Button();
+            this.txtEcuNumbertoSearch = new System.Windows.Forms.TextBox();
+            this.lblEcuNumbertoSearch = new System.Windows.Forms.Label();
             this.lblChooseBinarytoUpload = new System.Windows.Forms.Label();
             this.btnBinaryDescriptionOK = new System.Windows.Forms.Button();
             this.btnBinaryDescriptionCancel = new System.Windows.Forms.Button();
@@ -75,9 +86,6 @@ namespace VtecTeamFlasher
             this.cbBinaryDescriptionCS = new System.Windows.Forms.CheckBox();
             this.lblChooseBinary = new System.Windows.Forms.Label();
             this.cbBinaryToLoad = new System.Windows.Forms.ComboBox();
-            this.panelKeyUnavailible = new System.Windows.Forms.Panel();
-            this.labelKeyUnavailible = new System.Windows.Forms.Label();
-            this.btnReloadFlasher = new System.Windows.Forms.Button();
             this.tabRequest = new System.Windows.Forms.TabPage();
             this.pnlSendRequest = new System.Windows.Forms.Panel();
             this.lblCreateRequest = new System.Windows.Forms.Label();
@@ -149,23 +157,19 @@ namespace VtecTeamFlasher
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.tabControlReflash = new System.Windows.Forms.TabControl();
-            this.tabReflashCar = new System.Windows.Forms.TabPage();
-            this.tabReflashUpload = new System.Windows.Forms.TabPage();
-            this.lblEcuNumbertoSearch = new System.Windows.Forms.Label();
-            this.txtEcuNumbertoSearch = new System.Windows.Forms.TextBox();
-            this.btnSearchReflashFile = new System.Windows.Forms.Button();
-            this.tabNews = new System.Windows.Forms.TabPage();
-            this.lblNews = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
+            this.tabNews.SuspendLayout();
             this.tabReflash.SuspendLayout();
+            this.tabControlReflash.SuspendLayout();
+            this.tabReflashCar.SuspendLayout();
             this.panelReflash.SuspendLayout();
+            this.panelKeyUnavailible.SuspendLayout();
+            this.tabReflashUpload.SuspendLayout();
             this.panelLoadBinary.SuspendLayout();
             this.gbBinaryDescription.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbReflash)).BeginInit();
-            this.panelKeyUnavailible.SuspendLayout();
             this.tabRequest.SuspendLayout();
             this.pnlSendRequest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRequest)).BeginInit();
@@ -185,10 +189,6 @@ namespace VtecTeamFlasher
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonalInfo)).BeginInit();
             this.panelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).BeginInit();
-            this.tabControlReflash.SuspendLayout();
-            this.tabReflashCar.SuspendLayout();
-            this.tabReflashUpload.SuspendLayout();
-            this.tabNews.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSettings
@@ -389,6 +389,26 @@ namespace VtecTeamFlasher
             this.tabControlMain.TabIndex = 7;
             this.tabControlMain.Click += new System.EventHandler(this.tabControlMain_Click);
             // 
+            // tabNews
+            // 
+            this.tabNews.Controls.Add(this.lblNews);
+            this.tabNews.Location = new System.Drawing.Point(4, 29);
+            this.tabNews.Name = "tabNews";
+            this.tabNews.Size = new System.Drawing.Size(607, 504);
+            this.tabNews.TabIndex = 4;
+            this.tabNews.Text = "Новости";
+            this.tabNews.UseVisualStyleBackColor = true;
+            // 
+            // lblNews
+            // 
+            this.lblNews.AutoSize = true;
+            this.lblNews.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblNews.Location = new System.Drawing.Point(235, 19);
+            this.lblNews.Name = "lblNews";
+            this.lblNews.Size = new System.Drawing.Size(81, 20);
+            this.lblNews.TabIndex = 16;
+            this.lblNews.Text = "Новости";
+            // 
             // tabReflash
             // 
             this.tabReflash.Controls.Add(this.tabControlReflash);
@@ -400,6 +420,27 @@ namespace VtecTeamFlasher
             this.tabReflash.TabIndex = 0;
             this.tabReflash.Text = "Прошивка";
             this.tabReflash.UseVisualStyleBackColor = true;
+            // 
+            // tabControlReflash
+            // 
+            this.tabControlReflash.Controls.Add(this.tabReflashCar);
+            this.tabControlReflash.Controls.Add(this.tabReflashUpload);
+            this.tabControlReflash.Location = new System.Drawing.Point(0, 0);
+            this.tabControlReflash.Name = "tabControlReflash";
+            this.tabControlReflash.SelectedIndex = 0;
+            this.tabControlReflash.Size = new System.Drawing.Size(611, 508);
+            this.tabControlReflash.TabIndex = 0;
+            // 
+            // tabReflashCar
+            // 
+            this.tabReflashCar.Controls.Add(this.panelReflash);
+            this.tabReflashCar.Location = new System.Drawing.Point(4, 22);
+            this.tabReflashCar.Name = "tabReflashCar";
+            this.tabReflashCar.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReflashCar.Size = new System.Drawing.Size(603, 482);
+            this.tabReflashCar.TabIndex = 0;
+            this.tabReflashCar.Text = "Загрузка прошивки в машину";
+            this.tabReflashCar.UseVisualStyleBackColor = true;
             // 
             // panelReflash
             // 
@@ -450,15 +491,6 @@ namespace VtecTeamFlasher
             this.textBox1.Text = "Не загружено";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lblBinaryLoadingStatus
-            // 
-            this.lblBinaryLoadingStatus.AutoSize = true;
-            this.lblBinaryLoadingStatus.Location = new System.Drawing.Point(17, 423);
-            this.lblBinaryLoadingStatus.Name = "lblBinaryLoadingStatus";
-            this.lblBinaryLoadingStatus.Size = new System.Drawing.Size(127, 13);
-            this.lblBinaryLoadingStatus.TabIndex = 17;
-            this.lblBinaryLoadingStatus.Text = "Загруженная прошивка";
-            // 
             // btnUploadToECU
             // 
             this.btnUploadToECU.Enabled = false;
@@ -468,6 +500,15 @@ namespace VtecTeamFlasher
             this.btnUploadToECU.TabIndex = 16;
             this.btnUploadToECU.Text = "Запись в ЭБУ";
             this.btnUploadToECU.UseVisualStyleBackColor = true;
+            // 
+            // lblBinaryLoadingStatus
+            // 
+            this.lblBinaryLoadingStatus.AutoSize = true;
+            this.lblBinaryLoadingStatus.Location = new System.Drawing.Point(17, 423);
+            this.lblBinaryLoadingStatus.Name = "lblBinaryLoadingStatus";
+            this.lblBinaryLoadingStatus.Size = new System.Drawing.Size(127, 13);
+            this.lblBinaryLoadingStatus.TabIndex = 17;
+            this.lblBinaryLoadingStatus.Text = "Загруженная прошивка";
             // 
             // btnUploadBinary
             // 
@@ -531,6 +572,49 @@ namespace VtecTeamFlasher
             this.lbECUBinaryNumber.TabIndex = 10;
             this.lbECUBinaryNumber.Text = "Номер прошивки";
             // 
+            // panelKeyUnavailible
+            // 
+            this.panelKeyUnavailible.Controls.Add(this.labelKeyUnavailible);
+            this.panelKeyUnavailible.Controls.Add(this.btnReloadFlasher);
+            this.panelKeyUnavailible.Location = new System.Drawing.Point(0, 0);
+            this.panelKeyUnavailible.Name = "panelKeyUnavailible";
+            this.panelKeyUnavailible.Size = new System.Drawing.Size(595, 492);
+            this.panelKeyUnavailible.TabIndex = 8;
+            this.panelKeyUnavailible.Visible = false;
+            // 
+            // labelKeyUnavailible
+            // 
+            this.labelKeyUnavailible.AutoSize = true;
+            this.labelKeyUnavailible.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelKeyUnavailible.Location = new System.Drawing.Point(35, 217);
+            this.labelKeyUnavailible.Name = "labelKeyUnavailible";
+            this.labelKeyUnavailible.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelKeyUnavailible.Size = new System.Drawing.Size(519, 48);
+            this.labelKeyUnavailible.TabIndex = 1;
+            this.labelKeyUnavailible.Text = "Система не может найти ключ безопасности.\r\nВставьте ключ безопасности в USB порт " +
+    "и нажмите ОК.";
+            // 
+            // btnReloadFlasher
+            // 
+            this.btnReloadFlasher.Location = new System.Drawing.Point(158, 291);
+            this.btnReloadFlasher.Name = "btnReloadFlasher";
+            this.btnReloadFlasher.Size = new System.Drawing.Size(229, 23);
+            this.btnReloadFlasher.TabIndex = 0;
+            this.btnReloadFlasher.Text = "OK";
+            this.btnReloadFlasher.UseVisualStyleBackColor = true;
+            this.btnReloadFlasher.Click += new System.EventHandler(this.btnReloadFlasher_Click);
+            // 
+            // tabReflashUpload
+            // 
+            this.tabReflashUpload.Controls.Add(this.panelLoadBinary);
+            this.tabReflashUpload.Location = new System.Drawing.Point(4, 22);
+            this.tabReflashUpload.Name = "tabReflashUpload";
+            this.tabReflashUpload.Padding = new System.Windows.Forms.Padding(3);
+            this.tabReflashUpload.Size = new System.Drawing.Size(603, 482);
+            this.tabReflashUpload.TabIndex = 1;
+            this.tabReflashUpload.Text = "Проверка наличия и загрузка прошивки";
+            this.tabReflashUpload.UseVisualStyleBackColor = true;
+            // 
             // panelLoadBinary
             // 
             this.panelLoadBinary.Controls.Add(this.btnSearchReflashFile);
@@ -546,6 +630,32 @@ namespace VtecTeamFlasher
             this.panelLoadBinary.Name = "panelLoadBinary";
             this.panelLoadBinary.Size = new System.Drawing.Size(603, 486);
             this.panelLoadBinary.TabIndex = 9;
+            // 
+            // btnSearchReflashFile
+            // 
+            this.btnSearchReflashFile.Location = new System.Drawing.Point(468, 52);
+            this.btnSearchReflashFile.Name = "btnSearchReflashFile";
+            this.btnSearchReflashFile.Size = new System.Drawing.Size(112, 23);
+            this.btnSearchReflashFile.TabIndex = 26;
+            this.btnSearchReflashFile.Text = "Поиск прошивок";
+            this.btnSearchReflashFile.UseVisualStyleBackColor = true;
+            // 
+            // txtEcuNumbertoSearch
+            // 
+            this.txtEcuNumbertoSearch.Location = new System.Drawing.Point(124, 54);
+            this.txtEcuNumbertoSearch.Name = "txtEcuNumbertoSearch";
+            this.txtEcuNumbertoSearch.Size = new System.Drawing.Size(321, 20);
+            this.txtEcuNumbertoSearch.TabIndex = 25;
+            this.txtEcuNumbertoSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblEcuNumbertoSearch
+            // 
+            this.lblEcuNumbertoSearch.AutoSize = true;
+            this.lblEcuNumbertoSearch.Location = new System.Drawing.Point(6, 57);
+            this.lblEcuNumbertoSearch.Name = "lblEcuNumbertoSearch";
+            this.lblEcuNumbertoSearch.Size = new System.Drawing.Size(97, 13);
+            this.lblEcuNumbertoSearch.TabIndex = 24;
+            this.lblEcuNumbertoSearch.Text = "Номер прошивки:";
             // 
             // lblChooseBinarytoUpload
             // 
@@ -673,38 +783,6 @@ namespace VtecTeamFlasher
             this.cbBinaryToLoad.Name = "cbBinaryToLoad";
             this.cbBinaryToLoad.Size = new System.Drawing.Size(321, 21);
             this.cbBinaryToLoad.TabIndex = 19;
-            // 
-            // panelKeyUnavailible
-            // 
-            this.panelKeyUnavailible.Controls.Add(this.labelKeyUnavailible);
-            this.panelKeyUnavailible.Controls.Add(this.btnReloadFlasher);
-            this.panelKeyUnavailible.Location = new System.Drawing.Point(0, 0);
-            this.panelKeyUnavailible.Name = "panelKeyUnavailible";
-            this.panelKeyUnavailible.Size = new System.Drawing.Size(595, 492);
-            this.panelKeyUnavailible.TabIndex = 8;
-            this.panelKeyUnavailible.Visible = false;
-            // 
-            // labelKeyUnavailible
-            // 
-            this.labelKeyUnavailible.AutoSize = true;
-            this.labelKeyUnavailible.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelKeyUnavailible.Location = new System.Drawing.Point(35, 217);
-            this.labelKeyUnavailible.Name = "labelKeyUnavailible";
-            this.labelKeyUnavailible.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.labelKeyUnavailible.Size = new System.Drawing.Size(519, 48);
-            this.labelKeyUnavailible.TabIndex = 1;
-            this.labelKeyUnavailible.Text = "Система не может найти ключ безопасности.\r\nВставьте ключ безопасности в USB порт " +
-    "и нажмите ОК.";
-            // 
-            // btnReloadFlasher
-            // 
-            this.btnReloadFlasher.Location = new System.Drawing.Point(158, 291);
-            this.btnReloadFlasher.Name = "btnReloadFlasher";
-            this.btnReloadFlasher.Size = new System.Drawing.Size(229, 23);
-            this.btnReloadFlasher.TabIndex = 0;
-            this.btnReloadFlasher.Text = "OK";
-            this.btnReloadFlasher.UseVisualStyleBackColor = true;
-            this.btnReloadFlasher.Click += new System.EventHandler(this.btnReloadFlasher_Click);
             // 
             // tabRequest
             // 
@@ -1391,99 +1469,21 @@ namespace VtecTeamFlasher
             this.txtUsername.Size = new System.Drawing.Size(152, 20);
             this.txtUsername.TabIndex = 0;
             // 
-            // tabControlReflash
-            // 
-            this.tabControlReflash.Controls.Add(this.tabReflashCar);
-            this.tabControlReflash.Controls.Add(this.tabReflashUpload);
-            this.tabControlReflash.Location = new System.Drawing.Point(0, 0);
-            this.tabControlReflash.Name = "tabControlReflash";
-            this.tabControlReflash.SelectedIndex = 0;
-            this.tabControlReflash.Size = new System.Drawing.Size(611, 508);
-            this.tabControlReflash.TabIndex = 0;
-            // 
-            // tabReflashCar
-            // 
-            this.tabReflashCar.Controls.Add(this.panelReflash);
-            this.tabReflashCar.Location = new System.Drawing.Point(4, 22);
-            this.tabReflashCar.Name = "tabReflashCar";
-            this.tabReflashCar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReflashCar.Size = new System.Drawing.Size(603, 482);
-            this.tabReflashCar.TabIndex = 0;
-            this.tabReflashCar.Text = "Загрузка прошивки в машину";
-            this.tabReflashCar.UseVisualStyleBackColor = true;
-            // 
-            // tabReflashUpload
-            // 
-            this.tabReflashUpload.Controls.Add(this.panelLoadBinary);
-            this.tabReflashUpload.Location = new System.Drawing.Point(4, 22);
-            this.tabReflashUpload.Name = "tabReflashUpload";
-            this.tabReflashUpload.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReflashUpload.Size = new System.Drawing.Size(603, 482);
-            this.tabReflashUpload.TabIndex = 1;
-            this.tabReflashUpload.Text = "Проверка наличия и загрузка прошивки";
-            this.tabReflashUpload.UseVisualStyleBackColor = true;
-            // 
-            // lblEcuNumbertoSearch
-            // 
-            this.lblEcuNumbertoSearch.AutoSize = true;
-            this.lblEcuNumbertoSearch.Location = new System.Drawing.Point(6, 57);
-            this.lblEcuNumbertoSearch.Name = "lblEcuNumbertoSearch";
-            this.lblEcuNumbertoSearch.Size = new System.Drawing.Size(97, 13);
-            this.lblEcuNumbertoSearch.TabIndex = 24;
-            this.lblEcuNumbertoSearch.Text = "Номер прошивки:";
-            // 
-            // txtEcuNumbertoSearch
-            // 
-            this.txtEcuNumbertoSearch.Location = new System.Drawing.Point(124, 54);
-            this.txtEcuNumbertoSearch.Name = "txtEcuNumbertoSearch";
-            this.txtEcuNumbertoSearch.Size = new System.Drawing.Size(321, 20);
-            this.txtEcuNumbertoSearch.TabIndex = 25;
-            this.txtEcuNumbertoSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnSearchReflashFile
-            // 
-            this.btnSearchReflashFile.Location = new System.Drawing.Point(468, 52);
-            this.btnSearchReflashFile.Name = "btnSearchReflashFile";
-            this.btnSearchReflashFile.Size = new System.Drawing.Size(112, 23);
-            this.btnSearchReflashFile.TabIndex = 26;
-            this.btnSearchReflashFile.Text = "Поиск прошивок";
-            this.btnSearchReflashFile.UseVisualStyleBackColor = true;
-            // 
-            // tabNews
-            // 
-            this.tabNews.Controls.Add(this.lblNews);
-            this.tabNews.Location = new System.Drawing.Point(4, 29);
-            this.tabNews.Name = "tabNews";
-            this.tabNews.Size = new System.Drawing.Size(607, 504);
-            this.tabNews.TabIndex = 4;
-            this.tabNews.Text = "Новости";
-            this.tabNews.UseVisualStyleBackColor = true;
-            // 
-            // lblNews
-            // 
-            this.lblNews.AutoSize = true;
-            this.lblNews.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblNews.Location = new System.Drawing.Point(235, 19);
-            this.lblNews.Name = "lblNews";
-            this.lblNews.Size = new System.Drawing.Size(81, 20);
-            this.lblNews.TabIndex = 16;
-            this.lblNews.Text = "Новости";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(822, 173);
+            this.button1.Location = new System.Drawing.Point(978, 391);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // VTFlasher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 555);
+            this.ClientSize = new System.Drawing.Size(635, 555);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.panelLogin);
@@ -1498,16 +1498,21 @@ namespace VtecTeamFlasher
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabControlMain.ResumeLayout(false);
+            this.tabNews.ResumeLayout(false);
+            this.tabNews.PerformLayout();
             this.tabReflash.ResumeLayout(false);
+            this.tabControlReflash.ResumeLayout(false);
+            this.tabReflashCar.ResumeLayout(false);
             this.panelReflash.ResumeLayout(false);
             this.panelReflash.PerformLayout();
+            this.panelKeyUnavailible.ResumeLayout(false);
+            this.panelKeyUnavailible.PerformLayout();
+            this.tabReflashUpload.ResumeLayout(false);
             this.panelLoadBinary.ResumeLayout(false);
             this.panelLoadBinary.PerformLayout();
             this.gbBinaryDescription.ResumeLayout(false);
             this.gbBinaryDescription.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbReflash)).EndInit();
-            this.panelKeyUnavailible.ResumeLayout(false);
-            this.panelKeyUnavailible.PerformLayout();
             this.tabRequest.ResumeLayout(false);
             this.pnlSendRequest.ResumeLayout(false);
             this.pnlSendRequest.PerformLayout();
@@ -1530,11 +1535,6 @@ namespace VtecTeamFlasher
             this.panelLogin.ResumeLayout(false);
             this.panelLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogin)).EndInit();
-            this.tabControlReflash.ResumeLayout(false);
-            this.tabReflashCar.ResumeLayout(false);
-            this.tabReflashUpload.ResumeLayout(false);
-            this.tabNews.ResumeLayout(false);
-            this.tabNews.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
