@@ -93,7 +93,7 @@ namespace VtecTeamFlasher
             this.lblCarDescription = new System.Windows.Forms.Label();
             this.txtRequestCarDescription = new System.Windows.Forms.TextBox();
             this.txtEcuPhotoStatus = new System.Windows.Forms.TextBox();
-            this.txtEcuBinatyNumber = new System.Windows.Forms.TextBox();
+            this.txtEcuBinaryNumber = new System.Windows.Forms.TextBox();
             this.lblEcuPhoto = new System.Windows.Forms.Label();
             this.lblBinaryNumber = new System.Windows.Forms.Label();
             this.lblEcuNumber = new System.Windows.Forms.Label();
@@ -802,7 +802,7 @@ namespace VtecTeamFlasher
             this.pnlSendRequest.Controls.Add(this.lblCarDescription);
             this.pnlSendRequest.Controls.Add(this.txtRequestCarDescription);
             this.pnlSendRequest.Controls.Add(this.txtEcuPhotoStatus);
-            this.pnlSendRequest.Controls.Add(this.txtEcuBinatyNumber);
+            this.pnlSendRequest.Controls.Add(this.txtEcuBinaryNumber);
             this.pnlSendRequest.Controls.Add(this.lblEcuPhoto);
             this.pnlSendRequest.Controls.Add(this.lblBinaryNumber);
             this.pnlSendRequest.Controls.Add(this.lblEcuNumber);
@@ -858,7 +858,12 @@ namespace VtecTeamFlasher
             // 
             // txtEcuPhotoStatus
             // 
+<<<<<<< HEAD
             this.txtEcuPhotoStatus.Location = new System.Drawing.Point(123, 127);
+=======
+            this.txtEcuPhotoStatus.Enabled = false;
+            this.txtEcuPhotoStatus.Location = new System.Drawing.Point(123, 130);
+>>>>>>> 41221b8533bc36e898c675e5207d1657e206e6f1
             this.txtEcuPhotoStatus.Name = "txtEcuPhotoStatus";
             this.txtEcuPhotoStatus.ReadOnly = true;
             this.txtEcuPhotoStatus.Size = new System.Drawing.Size(352, 22);
@@ -866,12 +871,12 @@ namespace VtecTeamFlasher
             this.txtEcuPhotoStatus.Text = "не загружен";
             this.txtEcuPhotoStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // txtEcuBinatyNumber
+            // txtEcuBinaryNumber
             // 
-            this.txtEcuBinatyNumber.Location = new System.Drawing.Point(123, 89);
-            this.txtEcuBinatyNumber.Name = "txtEcuBinatyNumber";
-            this.txtEcuBinatyNumber.Size = new System.Drawing.Size(463, 22);
-            this.txtEcuBinatyNumber.TabIndex = 10;
+            this.txtEcuBinaryNumber.Location = new System.Drawing.Point(123, 89);
+            this.txtEcuBinaryNumber.Name = "txtEcuBinaryNumber";
+            this.txtEcuBinaryNumber.Size = new System.Drawing.Size(463, 22);
+            this.txtEcuBinaryNumber.TabIndex = 10;
             // 
             // lblEcuPhoto
             // 
@@ -1626,7 +1631,7 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.TabPage tabRequestHistory;
         private System.Windows.Forms.Panel panelRequestHistory;
         private System.Windows.Forms.TextBox txtEcuPhotoStatus;
-        private System.Windows.Forms.TextBox txtEcuBinatyNumber;
+        private System.Windows.Forms.TextBox txtEcuBinaryNumber;
         private System.Windows.Forms.Label lblEcuPhoto;
         private System.Windows.Forms.Label lblBinaryNumber;
         private System.Windows.Forms.Label lblEcuNumber;
