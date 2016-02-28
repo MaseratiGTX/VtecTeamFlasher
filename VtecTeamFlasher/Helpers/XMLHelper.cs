@@ -18,7 +18,7 @@ namespace VtecTeamFlasher.Helpers
             foreach (XmlElement cartype in cartypes)
             {
                 // TODO verify possible
-                resList.Add(new KeyValuePair<string, int>(cartype.GetAttribute("name"), -1));
+                resList.Add(new KeyValuePair<string, int>(cartype.GetAttribute("name"), -2));
                 foreach (XmlElement cars in cartype.ChildNodes)
                 {
                     // TODO verify possible
