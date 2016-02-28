@@ -858,12 +858,8 @@ namespace VtecTeamFlasher
             // 
             // txtEcuPhotoStatus
             // 
-<<<<<<< .merge_file_a05304
             this.txtEcuPhotoStatus.Enabled = false;
             this.txtEcuPhotoStatus.Location = new System.Drawing.Point(123, 130);
-=======
-            this.txtEcuPhotoStatus.Location = new System.Drawing.Point(123, 127);
->>>>>>> .merge_file_a05488
             this.txtEcuPhotoStatus.Name = "txtEcuPhotoStatus";
             this.txtEcuPhotoStatus.ReadOnly = true;
             this.txtEcuPhotoStatus.Size = new System.Drawing.Size(352, 22);

@@ -99,15 +99,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\WinAPIHelper.cs" />
     <Compile Include="Helpers\XMLHelper.cs" />
-<<<<<<< HEAD
     <EmbeddedResource Include="RequestWithCommentsForm.resx">
       <DependentUpon>RequestWithCommentsForm.cs</DependentUpon>
     </EmbeddedResource>
-=======
     <Compile Include="VTflasherReflash.cs">
       <SubType>Form</SubType>
     </Compile>
->>>>>>> a8beb248dc8a10acd3d848819edfc6b0bd8d633c
     <EmbeddedResource Include="ReviewForm.resx">
       <DependentUpon>ReviewForm.cs</DependentUpon>
     </EmbeddedResource>
