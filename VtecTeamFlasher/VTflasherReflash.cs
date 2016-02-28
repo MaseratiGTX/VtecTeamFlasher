@@ -21,7 +21,7 @@ using VtecTeamFlasher.Helpers;
 
 namespace VtecTeamFlasher
 {
-    public partial class VTFlasher : Form
+    public partial class VTFlasher
     {
         private void changePCMModules(string moduleName)
         {

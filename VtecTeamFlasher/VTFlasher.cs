@@ -537,6 +537,8 @@ namespace VtecTeamFlasher
 
         private async void btnUploadBinary_Click(object sender, EventArgs e)
         {
+            tabControlReflash.SelectTab(tabReflashUpload);
+
             panelLoadBinary.BringToFront();
             pbReflash.BringToFront();
             panelLoadBinary.Visible = true;
