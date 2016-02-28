@@ -405,7 +405,7 @@ namespace VtecTeamFlasher
                 {
                     RequestDetails = txtAdditionalInfo.Text,
                     EcuNumber = txtEcuNumber.Text,
-                    BinaryNumber = txtEcuBinatyNumber.Text,
+                    BinaryNumber = txtEcuBinaryNumber.Text,
                     UserId = Session.CurrentUser.Id,
                     RequestDate = DateTime.Now,
                     Status = (int) RequestStatuses.New,
@@ -646,7 +646,8 @@ namespace VtecTeamFlasher
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
             {
-                MessageBox.Show("Здесь будет форма с деталями запроса и комментариями");
+                var watchReviewWithComments = new RequestWithCommentsForm((ReflashRequest)senderGrid.Rows[e.RowIndex].DataBoundItem);
+                watchReviewWithComments.ShowDialog();
             }
         }
     }
