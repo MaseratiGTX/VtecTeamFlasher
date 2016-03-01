@@ -417,8 +417,8 @@ namespace VtecTeamFlasher
 
                 if (File.Exists(txtEcuPhotoStatus.Text))
                 {
-                    request.EcuPhoto = File.ReadAllBytes(txtStockFilePath.Text);
-                    request.EcuPhotoFilename = Path.GetFileName(txtStockFilePath.Text);
+                    request.EcuPhoto = File.ReadAllBytes(txtEcuPhotoStatus.Text);
+                    request.EcuPhotoFilename = Path.GetFileName(txtEcuPhotoStatus.Text);
                 }
 
                 var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
@@ -662,6 +662,17 @@ namespace VtecTeamFlasher
         {
             var pcmSelectedIndex = (int)WinAPIHelper.SendMessage(pcmComboBoxModules, WinAPIHelper.CB_GETCURSEL, IntPtr.Zero, IntPtr.Zero);
             txtStatus.Text = pcmSelectedIndex.ToString();
+        }
+
+        private void btnRequestUploadEcuPhoto_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog { Filter = "Все картинки|*.BMP;*.DIB;*.RLE;*.JPG;*.JPEG;*.JPE;*.JFIF;*.GIF;*.TIF;*.TIFF;*.PNG|Все файлы|*.*" };
+
+            if (fileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            txtEcuPhotoStatus.Text = fileDialog.FileName;
+           
         }
     }
 }

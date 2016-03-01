@@ -837,6 +837,7 @@ namespace VtecTeamFlasher
             this.btnRequestUploadEcuPhoto.TabIndex = 14;
             this.btnRequestUploadEcuPhoto.Text = "Загрузить";
             this.btnRequestUploadEcuPhoto.UseVisualStyleBackColor = true;
+            this.btnRequestUploadEcuPhoto.Click += new System.EventHandler(this.btnRequestUploadEcuPhoto_Click);
             // 
             // lblCarDescription
             // 

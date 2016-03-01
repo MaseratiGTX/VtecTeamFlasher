@@ -43,6 +43,9 @@
             this.txtStockFilePath = new System.Windows.Forms.TextBox();
             this.lblStockFile = new System.Windows.Forms.Label();
             this.btnOpenFile = new System.Windows.Forms.Button();
+            this.btnRefreshRequest = new System.Windows.Forms.Button();
+            this.pbRefreshRequest = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWachRequest
@@ -63,6 +66,7 @@
             this.btnRequestUploadEcuPhoto.TabIndex = 29;
             this.btnRequestUploadEcuPhoto.Text = "Загрузить";
             this.btnRequestUploadEcuPhoto.UseVisualStyleBackColor = true;
+            this.btnRequestUploadEcuPhoto.Click += new System.EventHandler(this.btnRequestUploadEcuPhoto_Click);
             // 
             // lblCarDescription
             // 
@@ -184,11 +188,34 @@
             this.btnOpenFile.Text = "Загрузить";
             this.btnOpenFile.UseVisualStyleBackColor = true;
             // 
+            // btnRefreshRequest
+            // 
+            this.btnRefreshRequest.Location = new System.Drawing.Point(322, 446);
+            this.btnRefreshRequest.Name = "btnRefreshRequest";
+            this.btnRefreshRequest.Size = new System.Drawing.Size(276, 29);
+            this.btnRefreshRequest.TabIndex = 31;
+            this.btnRefreshRequest.Text = "Обновить данные запроса";
+            this.btnRefreshRequest.UseVisualStyleBackColor = true;
+            this.btnRefreshRequest.Click += new System.EventHandler(this.btnRefreshRequest_Click);
+            // 
+            // pbRefreshRequest
+            // 
+            this.pbRefreshRequest.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbRefreshRequest.Location = new System.Drawing.Point(288, 446);
+            this.pbRefreshRequest.Name = "pbRefreshRequest";
+            this.pbRefreshRequest.Size = new System.Drawing.Size(28, 29);
+            this.pbRefreshRequest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRefreshRequest.TabIndex = 32;
+            this.pbRefreshRequest.TabStop = false;
+            this.pbRefreshRequest.Visible = false;
+            // 
             // RequestWithCommentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 497);
+            this.Controls.Add(this.pbRefreshRequest);
+            this.Controls.Add(this.btnRefreshRequest);
             this.Controls.Add(this.lblWachRequest);
             this.Controls.Add(this.btnRequestUploadEcuPhoto);
             this.Controls.Add(this.lblCarDescription);
@@ -206,6 +233,7 @@
             this.Controls.Add(this.btnOpenFile);
             this.Name = "RequestWithCommentsForm";
             this.Text = "История запроса с комментариями";
+            ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +256,8 @@
         private System.Windows.Forms.TextBox txtStockFilePath;
         private System.Windows.Forms.Label lblStockFile;
         private System.Windows.Forms.Button btnOpenFile;
+        private System.Windows.Forms.Button btnRefreshRequest;
+        private System.Windows.Forms.PictureBox pbRefreshRequest;
 
     }
 }
