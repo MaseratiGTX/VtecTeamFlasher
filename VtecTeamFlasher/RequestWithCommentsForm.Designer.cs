@@ -45,7 +45,9 @@
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.btnRefreshRequest = new System.Windows.Forms.Button();
             this.pbRefreshRequest = new System.Windows.Forms.PictureBox();
+            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWachRequest
@@ -209,11 +211,19 @@
             this.pbRefreshRequest.TabStop = false;
             this.pbRefreshRequest.Visible = false;
             // 
+            // treeList1
+            // 
+            this.treeList1.Location = new System.Drawing.Point(30, 490);
+            this.treeList1.Name = "treeList1";
+            this.treeList1.Size = new System.Drawing.Size(568, 200);
+            this.treeList1.TabIndex = 33;
+            // 
             // RequestWithCommentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 497);
+            this.ClientSize = new System.Drawing.Size(741, 713);
+            this.Controls.Add(this.treeList1);
             this.Controls.Add(this.pbRefreshRequest);
             this.Controls.Add(this.btnRefreshRequest);
             this.Controls.Add(this.lblWachRequest);
@@ -234,6 +244,7 @@
             this.Name = "RequestWithCommentsForm";
             this.Text = "История запроса с комментариями";
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +269,7 @@
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.Button btnRefreshRequest;
         private System.Windows.Forms.PictureBox pbRefreshRequest;
+        private DevExpress.XtraTreeList.TreeList treeList1;
 
     }
 }
