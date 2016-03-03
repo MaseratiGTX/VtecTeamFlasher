@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using ClientAndServerCommons.DataClasses;
 using Commons.Logging;
+using NHibernate.SqlCommand;
 using NHibernateContext.ADOPersister;
 using NHibernateContext.ADORepository;
 using NHibernateContext.Core;
@@ -30,17 +31,7 @@ namespace ClientAndServerCommons.Helpers
 
         public bool SaveRequest(ReflashRequest request)
         {
-            try
-            {
-                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(request)));
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                Log.Error("При сохранении сущности ReflashRequest произошла ошибка {0}",ex);
-                return false;
-            }
+            return SaveEntity(request);
         }
 
         public List<ReflashRequest> GetReflashRequests(int userId)
@@ -55,49 +46,39 @@ namespace ClientAndServerCommons.Helpers
 
         public bool UpdateUserPersonalData(User user)
         {
-            try
-            {
-                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(user)));
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                Log.Error("При сохранении сущности User произошла ошибка {0}", ex);
-                return false;
-            }
+            return SaveEntity(user);
         }
 
 
         public bool UpdateReflashHistory(ReflashHistory history)
         {
-            try
-            {
-                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(history)));
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                Log.Error("При сохранении сущности ReflashHistory произошла ошибка {0}", ex);
-                return false;
-            }
+            return SaveEntity(history);
         }
 
         public bool SendReview(Review review)
         {
+            return SaveEntity(review);
+        }
+
+        public bool SendComment(Comment comment)
+        {
+            return SaveEntity(comment);
+        }
+
+
+        private bool SaveEntity<T>(T entity) where T : class
+        {
             try
             {
-                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(review)));
+                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(entity)));
                 return true;
 
             }
             catch (Exception ex)
             {
-                Log.Error("При сохранении сущности Review произошла ошибка {0}", ex);
+                Log.Error("При сохранении сущности {0} произошла ошибка {1}", ex, entity.GetType());
                 return false;
             }
         }
-       
     }
 }

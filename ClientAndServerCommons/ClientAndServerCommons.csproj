@@ -138,6 +138,7 @@
     <Compile Include="Statuses\RequestStatuses.cs" />
     <Compile Include="ThreadFactory.cs" />
     <Compile Include="Validators\AuthorizationUserValidator.cs" />
+    <Compile Include="Validators\CommentValidator.cs" />
     <Compile Include="Validators\ReflashHistoryValidator.cs" />
     <Compile Include="Validators\ReflashRequestValidator.cs" />
     <Compile Include="Validators\ReviewValidator.cs" />

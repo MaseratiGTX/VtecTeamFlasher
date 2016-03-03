@@ -99,5 +99,10 @@ namespace VtecTeamFlasherWeb.Facade
         {
             return new VtecTeamDBManager().SendReview(review);
         }
+
+        public bool SendComment(Comment comment)
+        {
+            return new VtecTeamDBManager().SendComment(comment);
+        }
     }
 }

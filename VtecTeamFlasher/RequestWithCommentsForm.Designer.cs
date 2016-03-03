@@ -1,4 +1,6 @@
-﻿namespace VtecTeamFlasher
+﻿using System.Drawing;
+
+namespace VtecTeamFlasher
 {
     partial class RequestWithCommentsForm
     {
@@ -47,9 +49,15 @@
             this.pbRefreshRequest = new System.Windows.Forms.PictureBox();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
             this.colInfo = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.colCommentDate = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.btnSendComment = new System.Windows.Forms.Button();
+            this.pbSendComment = new System.Windows.Forms.PictureBox();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.lblComment = new System.Windows.Forms.Label();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtComment = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSendComment)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWachRequest
@@ -215,27 +223,27 @@
             // 
             // treeList1
             // 
-            this.treeList1.Appearance.Empty.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.Empty.BackColor = System.Drawing.Color.Transparent;
             this.treeList1.Appearance.Empty.Options.UseBackColor = true;
-            this.treeList1.Appearance.EvenRow.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.EvenRow.BackColor = System.Drawing.Color.Transparent;
             this.treeList1.Appearance.EvenRow.Options.UseBackColor = true;
-            this.treeList1.Appearance.FocusedCell.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.FocusedCell.BackColor = System.Drawing.Color.Transparent;
             this.treeList1.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.treeList1.Appearance.FocusedRow.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Transparent;
             this.treeList1.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.treeList1.Appearance.Preview.BackColor = System.Drawing.SystemColors.Menu;
             this.treeList1.Appearance.Preview.Options.UseBackColor = true;
-            this.treeList1.Appearance.SelectedRow.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.treeList1.Appearance.Row.Options.UseBackColor = true;
             this.treeList1.Appearance.SelectedRow.Options.UseBackColor = true;
             this.treeList1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.colInfo,
-            this.colCommentDate});
+            this.colInfo});
             this.treeList1.Location = new System.Drawing.Point(30, 490);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.Editable = false;
             this.treeList1.OptionsView.ShowButtons = false;
             this.treeList1.OptionsView.ShowColumns = false;
+            this.treeList1.OptionsView.ShowFocusedFrame = false;
             this.treeList1.OptionsView.ShowHorzLines = false;
             this.treeList1.OptionsView.ShowIndicator = false;
             this.treeList1.OptionsView.ShowVertLines = false;
@@ -250,20 +258,73 @@
             this.colInfo.VisibleIndex = 0;
             this.colInfo.Width = 275;
             // 
-            // colCommentDate
+            // btnSendComment
             // 
-            this.colCommentDate.FieldName = "CommentDate";
-            this.colCommentDate.Name = "colCommentDate";
-            this.colCommentDate.Visible = true;
-            this.colCommentDate.VisibleIndex = 1;
-            this.colCommentDate.Width = 275;
+            this.btnSendComment.Location = new System.Drawing.Point(446, 787);
+            this.btnSendComment.Name = "btnSendComment";
+            this.btnSendComment.Size = new System.Drawing.Size(150, 29);
+            this.btnSendComment.TabIndex = 34;
+            this.btnSendComment.Text = "Оставить комментарий";
+            this.btnSendComment.UseVisualStyleBackColor = true;
+            this.btnSendComment.Click += new System.EventHandler(this.btnSendComment_Click);
+            // 
+            // pbSendComment
+            // 
+            this.pbSendComment.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbSendComment.Location = new System.Drawing.Point(412, 787);
+            this.pbSendComment.Name = "pbSendComment";
+            this.pbSendComment.Size = new System.Drawing.Size(28, 29);
+            this.pbSendComment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSendComment.TabIndex = 32;
+            this.pbSendComment.TabStop = false;
+            this.pbSendComment.Visible = false;
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(30, 709);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(29, 13);
+            this.lblUserName.TabIndex = 35;
+            this.lblUserName.Text = "Имя";
+            // 
+            // lblComment
+            // 
+            this.lblComment.AutoSize = true;
+            this.lblComment.Location = new System.Drawing.Point(30, 735);
+            this.lblComment.Name = "lblComment";
+            this.lblComment.Size = new System.Drawing.Size(77, 13);
+            this.lblComment.TabIndex = 35;
+            this.lblComment.Text = "Комментарий";
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Enabled = false;
+            this.txtUserName.Location = new System.Drawing.Point(108, 706);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(100, 20);
+            this.txtUserName.TabIndex = 36;
+            // 
+            // txtComment
+            // 
+            this.txtComment.Location = new System.Drawing.Point(108, 732);
+            this.txtComment.Multiline = true;
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(488, 49);
+            this.txtComment.TabIndex = 36;
             // 
             // RequestWithCommentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 713);
+            this.ClientSize = new System.Drawing.Size(608, 819);
+            this.Controls.Add(this.txtComment);
+            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.lblComment);
+            this.Controls.Add(this.lblUserName);
+            this.Controls.Add(this.btnSendComment);
             this.Controls.Add(this.treeList1);
+            this.Controls.Add(this.pbSendComment);
             this.Controls.Add(this.pbRefreshRequest);
             this.Controls.Add(this.btnRefreshRequest);
             this.Controls.Add(this.lblWachRequest);
@@ -286,6 +347,7 @@
             this.Load += new System.EventHandler(this.RequestWithCommentsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSendComment)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,7 +374,12 @@
         private System.Windows.Forms.PictureBox pbRefreshRequest;
         private DevExpress.XtraTreeList.TreeList treeList1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colInfo;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn colCommentDate;
+        private System.Windows.Forms.Button btnSendComment;
+        private System.Windows.Forms.PictureBox pbSendComment;
+        private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.Label lblComment;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txtComment;
 
     }
 }

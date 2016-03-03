@@ -36,6 +36,8 @@ namespace VtecTeamFlasherWeb
         bool UpdateUserPersonalData(User user);
         [OperationContract]
         bool SendReview(Review review);
+        [OperationContract]
+        bool SendComment(Comment comment);
 
 
     }

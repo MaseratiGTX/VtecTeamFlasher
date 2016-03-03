@@ -43,6 +43,7 @@ namespace VtecTeamFlasher
 
             if (request.EcuPhoto != null)
                 txtEcuPhotoStatus.Text = request.EcuPhotoFilename;
+            txtUserName.Text = Session.CurrentUser.FirstName;
         }
 
         private async void btnRefreshRequest_Click(object sender, EventArgs e)
@@ -96,7 +97,7 @@ namespace VtecTeamFlasher
 
         private void RequestWithCommentsForm_Load(object sender, EventArgs e)
         {
-
+            treeList1.BackColor = Color.Transparent;
             foreach (var comment in request.Comments)
                 AddNode(comment.User.FirstName, comment.CommentText, comment.CommentDate);
             treeList1.ExpandAll();
@@ -105,10 +106,39 @@ namespace VtecTeamFlasher
         private void AddNode(string userName, string comment, DateTime date)
         {
             var nameNode = treeList1.AppendNode(null, null);
-            nameNode.SetValue("info", userName);
-            nameNode.SetValue("CommentDate", date);
+            nameNode.SetValue("info", string.Format("{0}     {1}", userName, date));
             var commentNode = treeList1.AppendNode(null, nameNode);
             commentNode.SetValue("info", comment);
+        }
+
+        private async void btnSendComment_Click(object sender, EventArgs e)
+        {
+            var currentStatus = PanelRefresh.StartRefresh(this, pbSendComment);
+            await Task.Run(() =>
+            {
+                var comment = new Comment
+                {
+                    CommentDate = DateTime.Now,
+                    CommentText = txtComment.Text,
+                    RequestId = request.Id,
+                    UserId = Session.CurrentUser.Id,
+                    User = Session.CurrentUser
+                };
+
+                var result = WCFServiceFactory.CreateVtecTeamService().SendComment(comment);
+
+                this.Invoke(() => pbRefreshRequest.Image = !result ? Properties.Resources.Error : null);
+                this.Invoke(() =>
+                {
+                    if (result)
+                        AddNode(txtUserName.Text, comment.CommentText, comment.CommentDate);
+                    else
+                        MessageBox.Show("Не удалось отправить комментарий.");
+                });
+                
+            });
+            pbSendComment.Visible = false;
+            PanelRefresh.StopRefresh(currentStatus);
         }
 
 
