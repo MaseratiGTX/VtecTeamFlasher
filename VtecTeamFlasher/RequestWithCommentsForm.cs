@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientAndServerCommons.DataClasses;
 using ClientAndServerCommons.Statuses;
+using DevExpress.XtraTreeList.Nodes;
 using VtecTeamFlasher.Helpers;
 
 namespace VtecTeamFlasher
@@ -91,6 +92,24 @@ namespace VtecTeamFlasher
 
             txtEcuPhotoStatus.Text = fileDialog.FileName;
 
+        }
+
+        private void RequestWithCommentsForm_Load(object sender, EventArgs e)
+        {
+            AddNode("Petya", "bla .dfsdd", DateTime.Now);
+            AddNode("Petya", "bla .dfsdd", DateTime.Now);
+            AddNode("Petya", "bla .dfsdd", DateTime.Now);
+
+            treeList1.ExpandAll();
+        }
+
+        private void AddNode(string userName, string comment, DateTime date)
+        {
+            var nameNode = treeList1.AppendNode(null, null);
+            nameNode.SetValue("info", userName);
+            nameNode.SetValue("CommentDate", date);
+            var commentNode = treeList1.AppendNode(null, nameNode);
+            commentNode.SetValue("info", comment);
         }
 
 

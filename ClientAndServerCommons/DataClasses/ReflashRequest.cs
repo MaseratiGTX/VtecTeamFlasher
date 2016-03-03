@@ -32,7 +32,8 @@ namespace ClientAndServerCommons.DataClasses
         public virtual string RequestDetails { get; set; }
         [DataMember]
         public virtual string StockBinaryName { get; set; }
-        
+        [DataMember]
+        public virtual IList<Comment> Comments { get; set; }
         //[DataMember]
         //public virtual User User { get; set; }
     }

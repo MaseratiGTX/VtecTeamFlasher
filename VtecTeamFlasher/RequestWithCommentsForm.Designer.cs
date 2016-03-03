@@ -46,6 +46,8 @@
             this.btnRefreshRequest = new System.Windows.Forms.Button();
             this.pbRefreshRequest = new System.Windows.Forms.PictureBox();
             this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.colInfo = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colCommentDate = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
             this.SuspendLayout();
@@ -213,10 +215,48 @@
             // 
             // treeList1
             // 
+            this.treeList1.Appearance.Empty.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.Empty.Options.UseBackColor = true;
+            this.treeList1.Appearance.EvenRow.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.EvenRow.Options.UseBackColor = true;
+            this.treeList1.Appearance.FocusedCell.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.treeList1.Appearance.FocusedRow.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.treeList1.Appearance.Preview.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.Preview.Options.UseBackColor = true;
+            this.treeList1.Appearance.SelectedRow.BackColor = System.Drawing.SystemColors.Menu;
+            this.treeList1.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.treeList1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.colInfo,
+            this.colCommentDate});
             this.treeList1.Location = new System.Drawing.Point(30, 490);
             this.treeList1.Name = "treeList1";
+            this.treeList1.OptionsBehavior.Editable = false;
+            this.treeList1.OptionsView.ShowButtons = false;
+            this.treeList1.OptionsView.ShowColumns = false;
+            this.treeList1.OptionsView.ShowHorzLines = false;
+            this.treeList1.OptionsView.ShowIndicator = false;
+            this.treeList1.OptionsView.ShowVertLines = false;
             this.treeList1.Size = new System.Drawing.Size(568, 200);
             this.treeList1.TabIndex = 33;
+            // 
+            // colInfo
+            // 
+            this.colInfo.FieldName = "info";
+            this.colInfo.Name = "colInfo";
+            this.colInfo.Visible = true;
+            this.colInfo.VisibleIndex = 0;
+            this.colInfo.Width = 275;
+            // 
+            // colCommentDate
+            // 
+            this.colCommentDate.FieldName = "CommentDate";
+            this.colCommentDate.Name = "colCommentDate";
+            this.colCommentDate.Visible = true;
+            this.colCommentDate.VisibleIndex = 1;
+            this.colCommentDate.Width = 275;
             // 
             // RequestWithCommentsForm
             // 
@@ -243,6 +283,7 @@
             this.Controls.Add(this.btnOpenFile);
             this.Name = "RequestWithCommentsForm";
             this.Text = "История запроса с комментариями";
+            this.Load += new System.EventHandler(this.RequestWithCommentsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
             this.ResumeLayout(false);
@@ -270,6 +311,8 @@
         private System.Windows.Forms.Button btnRefreshRequest;
         private System.Windows.Forms.PictureBox pbRefreshRequest;
         private DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colInfo;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colCommentDate;
 
     }
 }

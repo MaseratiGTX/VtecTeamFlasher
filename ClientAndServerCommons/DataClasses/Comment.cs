@@ -16,5 +16,8 @@ namespace ClientAndServerCommons.DataClasses
         public virtual int UserId { get; set; }
         [DataMember]
         public virtual string CommentText { get; set; }
+        [DataMember]
+        public virtual User User { get; set; }
+
     }
 }

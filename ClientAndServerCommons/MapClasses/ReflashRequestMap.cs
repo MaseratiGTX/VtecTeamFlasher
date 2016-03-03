@@ -78,6 +78,13 @@ namespace ClientAndServerCommons.MapClasses
                 .Length(255)
                 .Nullable();
 
+            HasMany(x => x.Comments)
+                .Table("Comments")
+                .KeyColumn("RequestId")
+                .LazyLoad()
+                .BatchSize(20)
+                .Cascade.None();
+
             //References(x => x.User)
             //    .Column("UserId")
             //    .Not.Nullable()
