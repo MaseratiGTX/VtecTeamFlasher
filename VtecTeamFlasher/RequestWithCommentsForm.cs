@@ -96,10 +96,9 @@ namespace VtecTeamFlasher
 
         private void RequestWithCommentsForm_Load(object sender, EventArgs e)
         {
-            AddNode("Petya", "bla .dfsdd", DateTime.Now);
-            AddNode("Petya", "bla .dfsdd", DateTime.Now);
-            AddNode("Petya", "bla .dfsdd", DateTime.Now);
 
+            foreach (var comment in request.Comments)
+                AddNode(comment.User.FirstName, comment.CommentText, comment.CommentDate);
             treeList1.ExpandAll();
         }
 

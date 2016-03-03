@@ -38,18 +38,11 @@ namespace ClientAndServerCommons.MapClasses
                 .Length(1000)
                 .Not.Nullable();
 
-            //HasMany(x => x.User)
-            //    .Table("Comments")
-            //    .KeyColumn("UserId")
-            //    .LazyLoad()
-            //    .BatchSize(20)
-            //    .Cascade.None();
-
-            //References(x => x.User)
-            //    .Column("UserId")
-            //    .Not.Nullable()
-            //    .LazyLoad()
-            //    .Cascade.None();
+            References(x => x.User)
+                .Column("UserId")
+                .Not.Nullable()
+                .Not.LazyLoad()
+                .Cascade.None();
             
          }
     }
