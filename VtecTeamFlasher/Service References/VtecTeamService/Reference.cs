@@ -80,6 +80,12 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendReview", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendReviewResponse")]
         System.Threading.Tasks.Task<bool> SendReviewAsync(ClientAndServerCommons.DataClasses.Review review);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendComment", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendCommentResponse")]
+        bool SendComment(ClientAndServerCommons.DataClasses.Comment comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendComment", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendCommentResponse")]
+        System.Threading.Tasks.Task<bool> SendCommentAsync(ClientAndServerCommons.DataClasses.Comment comment);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -195,6 +201,14 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         public System.Threading.Tasks.Task<bool> SendReviewAsync(ClientAndServerCommons.DataClasses.Review review) {
             return base.Channel.SendReviewAsync(review);
+        }
+        
+        public bool SendComment(ClientAndServerCommons.DataClasses.Comment comment) {
+            return base.Channel.SendComment(comment);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SendCommentAsync(ClientAndServerCommons.DataClasses.Comment comment) {
+            return base.Channel.SendCommentAsync(comment);
         }
     }
 }

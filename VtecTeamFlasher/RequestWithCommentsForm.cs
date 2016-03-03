@@ -97,18 +97,18 @@ namespace VtecTeamFlasher
 
         private void RequestWithCommentsForm_Load(object sender, EventArgs e)
         {
-            treeList1.BackColor = Color.Transparent;
+            tlComments.BackColor = Color.Transparent;
             foreach (var comment in request.Comments)
                 AddNode(comment.User.FirstName, comment.CommentText, comment.CommentDate);
-            treeList1.ExpandAll();
         }
 
         private void AddNode(string userName, string comment, DateTime date)
         {
-            var nameNode = treeList1.AppendNode(null, null);
+            var nameNode = tlComments.AppendNode(null, null);
             nameNode.SetValue("info", string.Format("{0}     {1}", userName, date));
-            var commentNode = treeList1.AppendNode(null, nameNode);
+            var commentNode = tlComments.AppendNode(null, nameNode);
             commentNode.SetValue("info", comment);
+            tlComments.ExpandAll();
         }
 
         private async void btnSendComment_Click(object sender, EventArgs e)
@@ -121,7 +121,7 @@ namespace VtecTeamFlasher
                     CommentDate = DateTime.Now,
                     CommentText = txtComment.Text,
                     RequestId = request.Id,
-                    UserId = Session.CurrentUser.Id,
+                    //UserId = Session.CurrentUser.Id,
                     User = Session.CurrentUser
                 };
 
@@ -131,7 +131,10 @@ namespace VtecTeamFlasher
                 this.Invoke(() =>
                 {
                     if (result)
+                    {
                         AddNode(txtUserName.Text, comment.CommentText, comment.CommentDate);
+                        txtComment.Text = "";
+                    }
                     else
                         MessageBox.Show("Не удалось отправить комментарий.");
                 });
@@ -139,6 +142,12 @@ namespace VtecTeamFlasher
             });
             pbSendComment.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
+        }
+
+        private void treeList1_NodeCellStyle(object sender, DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs e)
+        {
+            if (e.Node.ParentNode == null)
+                e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Bold);
         }
 
 

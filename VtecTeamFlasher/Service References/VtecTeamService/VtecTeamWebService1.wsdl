@@ -82,6 +82,12 @@
   <wsdl:message name="IVtecTeamWebService_SendReview_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendReviewResponse" />
   </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_SendComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendComment" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_SendComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendCommentResponse" />
+  </wsdl:message>
   <wsdl:portType name="IVtecTeamWebService">
     <wsdl:operation name="Authenticate">
       <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/Authenticate" message="tns:IVtecTeamWebService_Authenticate_InputMessage" />
@@ -126,6 +132,10 @@
     <wsdl:operation name="SendReview">
       <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/SendReview" message="tns:IVtecTeamWebService_SendReview_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/SendReviewResponse" message="tns:IVtecTeamWebService_SendReview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/SendComment" message="tns:IVtecTeamWebService_SendComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/SendCommentResponse" message="tns:IVtecTeamWebService_SendComment_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CustomBinding_IVtecTeamWebService" type="tns:IVtecTeamWebService">
@@ -223,6 +233,15 @@
     </wsdl:operation>
     <wsdl:operation name="SendReview">
       <soap12:operation soapAction="http://tempuri.org/IVtecTeamWebService/SendReview" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendComment">
+      <soap12:operation soapAction="http://tempuri.org/IVtecTeamWebService/SendComment" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

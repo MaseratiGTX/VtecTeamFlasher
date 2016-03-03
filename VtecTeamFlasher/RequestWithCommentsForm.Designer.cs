@@ -47,8 +47,9 @@ namespace VtecTeamFlasher
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.btnRefreshRequest = new System.Windows.Forms.Button();
             this.pbRefreshRequest = new System.Windows.Forms.PictureBox();
-            this.treeList1 = new DevExpress.XtraTreeList.TreeList();
+            this.tlComments = new DevExpress.XtraTreeList.TreeList();
             this.colInfo = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.btnSendComment = new System.Windows.Forms.Button();
             this.pbSendComment = new System.Windows.Forms.PictureBox();
             this.lblUserName = new System.Windows.Forms.Label();
@@ -56,7 +57,8 @@ namespace VtecTeamFlasher
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtComment = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlComments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendComment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -221,42 +223,52 @@ namespace VtecTeamFlasher
             this.pbRefreshRequest.TabStop = false;
             this.pbRefreshRequest.Visible = false;
             // 
-            // treeList1
+            // tlComments
             // 
-            this.treeList1.Appearance.Empty.BackColor = System.Drawing.Color.Transparent;
-            this.treeList1.Appearance.Empty.Options.UseBackColor = true;
-            this.treeList1.Appearance.EvenRow.BackColor = System.Drawing.Color.Transparent;
-            this.treeList1.Appearance.EvenRow.Options.UseBackColor = true;
-            this.treeList1.Appearance.FocusedCell.BackColor = System.Drawing.Color.Transparent;
-            this.treeList1.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.treeList1.Appearance.FocusedRow.BackColor = System.Drawing.Color.Transparent;
-            this.treeList1.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.treeList1.Appearance.Preview.Options.UseBackColor = true;
-            this.treeList1.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
-            this.treeList1.Appearance.Row.Options.UseBackColor = true;
-            this.treeList1.Appearance.SelectedRow.Options.UseBackColor = true;
-            this.treeList1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.treeList1.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.tlComments.Appearance.Empty.BackColor = System.Drawing.Color.Transparent;
+            this.tlComments.Appearance.Empty.Options.UseBackColor = true;
+            this.tlComments.Appearance.EvenRow.BackColor = System.Drawing.Color.Transparent;
+            this.tlComments.Appearance.EvenRow.Options.UseBackColor = true;
+            this.tlComments.Appearance.FocusedCell.BackColor = System.Drawing.Color.Transparent;
+            this.tlComments.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.tlComments.Appearance.FocusedRow.BackColor = System.Drawing.Color.Transparent;
+            this.tlComments.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.tlComments.Appearance.Preview.Options.UseBackColor = true;
+            this.tlComments.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.tlComments.Appearance.Row.Options.UseBackColor = true;
+            this.tlComments.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.tlComments.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.tlComments.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colInfo});
-            this.treeList1.Location = new System.Drawing.Point(30, 490);
-            this.treeList1.Name = "treeList1";
-            this.treeList1.OptionsBehavior.Editable = false;
-            this.treeList1.OptionsView.ShowButtons = false;
-            this.treeList1.OptionsView.ShowColumns = false;
-            this.treeList1.OptionsView.ShowFocusedFrame = false;
-            this.treeList1.OptionsView.ShowHorzLines = false;
-            this.treeList1.OptionsView.ShowIndicator = false;
-            this.treeList1.OptionsView.ShowVertLines = false;
-            this.treeList1.Size = new System.Drawing.Size(568, 200);
-            this.treeList1.TabIndex = 33;
+            this.tlComments.Location = new System.Drawing.Point(30, 490);
+            this.tlComments.Name = "tlComments";
+            this.tlComments.OptionsBehavior.Editable = false;
+            this.tlComments.OptionsView.ShowButtons = false;
+            this.tlComments.OptionsView.ShowColumns = false;
+            this.tlComments.OptionsView.ShowFocusedFrame = false;
+            this.tlComments.OptionsView.ShowHorzLines = false;
+            this.tlComments.OptionsView.ShowIndicator = false;
+            this.tlComments.OptionsView.ShowVertLines = false;
+            this.tlComments.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemMemoEdit1});
+            this.tlComments.Size = new System.Drawing.Size(568, 200);
+            this.tlComments.TabIndex = 33;
+            this.tlComments.NodeCellStyle += new DevExpress.XtraTreeList.GetCustomNodeCellStyleEventHandler(this.treeList1_NodeCellStyle);
             // 
             // colInfo
             // 
+            this.colInfo.AppearanceCell.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.colInfo.AppearanceCell.Options.UseFont = true;
+            this.colInfo.ColumnEdit = this.repositoryItemMemoEdit1;
             this.colInfo.FieldName = "info";
             this.colInfo.Name = "colInfo";
             this.colInfo.Visible = true;
             this.colInfo.VisibleIndex = 0;
             this.colInfo.Width = 275;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // btnSendComment
             // 
@@ -323,7 +335,7 @@ namespace VtecTeamFlasher
             this.Controls.Add(this.lblComment);
             this.Controls.Add(this.lblUserName);
             this.Controls.Add(this.btnSendComment);
-            this.Controls.Add(this.treeList1);
+            this.Controls.Add(this.tlComments);
             this.Controls.Add(this.pbSendComment);
             this.Controls.Add(this.pbRefreshRequest);
             this.Controls.Add(this.btnRefreshRequest);
@@ -346,7 +358,8 @@ namespace VtecTeamFlasher
             this.Text = "История запроса с комментариями";
             this.Load += new System.EventHandler(this.RequestWithCommentsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.treeList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlComments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSendComment)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -372,7 +385,7 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.Button btnRefreshRequest;
         private System.Windows.Forms.PictureBox pbRefreshRequest;
-        private DevExpress.XtraTreeList.TreeList treeList1;
+        private DevExpress.XtraTreeList.TreeList tlComments;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colInfo;
         private System.Windows.Forms.Button btnSendComment;
         private System.Windows.Forms.PictureBox pbSendComment;
@@ -380,6 +393,7 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.Label lblComment;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtComment;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
 
     }
 }

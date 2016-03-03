@@ -20,9 +20,9 @@ namespace ClientAndServerCommons.MapClasses
                 .GeneratedBy.Identity();
 
 
-            Map(x => x.UserId)
-                .Column("UserId")
-                .Not.Nullable();
+            //Map(x => x.UserId)
+            //    .Column("UserId")
+            //    .Not.Nullable();
 
             Map(x => x.RequestId)
                 .Column("RequestId")
@@ -40,7 +40,6 @@ namespace ClientAndServerCommons.MapClasses
 
             References(x => x.User)
                 .Column("UserId")
-                .Not.Nullable()
                 .Not.LazyLoad()
                 .Cascade.None();
             

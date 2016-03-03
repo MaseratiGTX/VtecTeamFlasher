@@ -151,4 +151,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SendComment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="comment" nillable="true" type="q10:Comment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendCommentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SendCommentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
