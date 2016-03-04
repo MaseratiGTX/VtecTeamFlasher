@@ -38,6 +38,8 @@ namespace VtecTeamFlasherWeb
         bool SendReview(Review review);
         [OperationContract]
         bool SendComment(Comment comment);
+        [OperationContract]
+        List<News> GetNews();
 
 
     }

@@ -674,5 +674,38 @@ namespace VtecTeamFlasher
             txtEcuPhotoStatus.Text = fileDialog.FileName;
            
         }
+
+        private void treeList1_NodeCellStyle(object sender, DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs e)
+        {
+            if (e.Node.ParentNode == null)
+                e.Appearance.Font = new Font(e.Appearance.Font, FontStyle.Bold);
+        }
+        
+        private void AddNode(string newsCaption, string newsText, DateTime date)
+        {
+            var nameNode = tlNews.AppendNode(null, null);
+            nameNode.SetValue("info", string.Format("{0}     {1}", newsCaption, date));
+            var commentNode = tlNews.AppendNode(null, nameNode);
+            commentNode.SetValue("info", newsText);
+            tlNews.ExpandAll();
+        }
+
+        private async void btnRefreshNews_Click(object sender, EventArgs e)
+        {
+            var currentStatus = PanelRefresh.StartRefresh(this, pbNews);
+            await Task.Run(() =>
+            {
+                var allNews = WCFServiceFactory.CreateVtecTeamService().GetNews();
+
+                this.Invoke(() =>
+                {
+                    foreach (var news in allNews)
+                        AddNode(news.Caption, news.Text, news.Date);
+                });
+
+            });
+            pbNews.Visible = false;
+            PanelRefresh.StopRefresh(currentStatus);
+        }
     }
 }

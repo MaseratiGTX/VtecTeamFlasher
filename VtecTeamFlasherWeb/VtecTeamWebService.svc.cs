@@ -78,5 +78,10 @@ namespace VtecTeamFlasherWeb
         {
             return vtServiceFacade.SendComment(comment);
         }
+
+        public List<News> GetNews()
+        {
+            return vtServiceFacade.GetNews();
+        }
     }
 }

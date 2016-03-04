@@ -21,6 +21,7 @@ namespace VtecTeamFlasherWeb.Facade
         bool UpdateUserPersonalData(User user);
         bool SendReview(Review review);
         bool SendComment(Comment comment);
+        List<News> GetNews();
     }
 
 }

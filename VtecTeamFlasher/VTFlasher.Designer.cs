@@ -50,6 +50,11 @@ namespace VtecTeamFlasher
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabNews = new System.Windows.Forms.TabPage();
+            this.pbNews = new System.Windows.Forms.PictureBox();
+            this.btnRefreshNews = new System.Windows.Forms.Button();
+            this.tlNews = new DevExpress.XtraTreeList.TreeList();
+            this.colInfo = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.lblNews = new System.Windows.Forms.Label();
             this.tabReflash = new System.Windows.Forms.TabPage();
             this.tabControlReflash = new System.Windows.Forms.TabControl();
@@ -161,6 +166,9 @@ namespace VtecTeamFlasher
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabNews.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNews)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlNews)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.tabReflash.SuspendLayout();
             this.tabControlReflash.SuspendLayout();
             this.tabReflashCar.SuspendLayout();
@@ -391,6 +399,9 @@ namespace VtecTeamFlasher
             // 
             // tabNews
             // 
+            this.tabNews.Controls.Add(this.pbNews);
+            this.tabNews.Controls.Add(this.btnRefreshNews);
+            this.tabNews.Controls.Add(this.tlNews);
             this.tabNews.Controls.Add(this.lblNews);
             this.tabNews.Location = new System.Drawing.Point(4, 29);
             this.tabNews.Name = "tabNews";
@@ -398,6 +409,74 @@ namespace VtecTeamFlasher
             this.tabNews.TabIndex = 4;
             this.tabNews.Text = "Новости";
             this.tabNews.UseVisualStyleBackColor = true;
+            // 
+            // pbNews
+            // 
+            this.pbNews.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
+            this.pbNews.Location = new System.Drawing.Point(373, 471);
+            this.pbNews.Name = "pbNews";
+            this.pbNews.Size = new System.Drawing.Size(28, 29);
+            this.pbNews.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbNews.TabIndex = 36;
+            this.pbNews.TabStop = false;
+            this.pbNews.Visible = false;
+            // 
+            // btnRefreshNews
+            // 
+            this.btnRefreshNews.Location = new System.Drawing.Point(407, 470);
+            this.btnRefreshNews.Name = "btnRefreshNews";
+            this.btnRefreshNews.Size = new System.Drawing.Size(184, 31);
+            this.btnRefreshNews.TabIndex = 35;
+            this.btnRefreshNews.Text = "Обновить новости";
+            this.btnRefreshNews.UseVisualStyleBackColor = true;
+            this.btnRefreshNews.Click += new System.EventHandler(this.btnRefreshNews_Click);
+            // 
+            // tlNews
+            // 
+            this.tlNews.Appearance.Empty.BackColor = System.Drawing.Color.Transparent;
+            this.tlNews.Appearance.Empty.Options.UseBackColor = true;
+            this.tlNews.Appearance.EvenRow.BackColor = System.Drawing.Color.Transparent;
+            this.tlNews.Appearance.EvenRow.Options.UseBackColor = true;
+            this.tlNews.Appearance.FocusedCell.BackColor = System.Drawing.Color.Transparent;
+            this.tlNews.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.tlNews.Appearance.FocusedRow.BackColor = System.Drawing.Color.Transparent;
+            this.tlNews.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.tlNews.Appearance.Preview.Options.UseBackColor = true;
+            this.tlNews.Appearance.Row.BackColor = System.Drawing.Color.Transparent;
+            this.tlNews.Appearance.Row.Options.UseBackColor = true;
+            this.tlNews.Appearance.SelectedRow.Options.UseBackColor = true;
+            this.tlNews.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.tlNews.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.colInfo});
+            this.tlNews.Location = new System.Drawing.Point(14, 42);
+            this.tlNews.Name = "tlNews";
+            this.tlNews.OptionsBehavior.Editable = false;
+            this.tlNews.OptionsView.ShowButtons = false;
+            this.tlNews.OptionsView.ShowColumns = false;
+            this.tlNews.OptionsView.ShowFocusedFrame = false;
+            this.tlNews.OptionsView.ShowHorzLines = false;
+            this.tlNews.OptionsView.ShowIndicator = false;
+            this.tlNews.OptionsView.ShowVertLines = false;
+            this.tlNews.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemMemoEdit1});
+            this.tlNews.Size = new System.Drawing.Size(577, 425);
+            this.tlNews.TabIndex = 34;
+            this.tlNews.NodeCellStyle += new DevExpress.XtraTreeList.GetCustomNodeCellStyleEventHandler(this.treeList1_NodeCellStyle);
+            // 
+            // colInfo
+            // 
+            this.colInfo.AppearanceCell.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.colInfo.AppearanceCell.Options.UseFont = true;
+            this.colInfo.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.colInfo.FieldName = "info";
+            this.colInfo.Name = "colInfo";
+            this.colInfo.Visible = true;
+            this.colInfo.VisibleIndex = 0;
+            this.colInfo.Width = 275;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // lblNews
             // 
@@ -1502,6 +1581,9 @@ namespace VtecTeamFlasher
             this.tabControlMain.ResumeLayout(false);
             this.tabNews.ResumeLayout(false);
             this.tabNews.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbNews)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tlNews)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.tabReflash.ResumeLayout(false);
             this.tabControlReflash.ResumeLayout(false);
             this.tabReflashCar.ResumeLayout(false);
@@ -1672,6 +1754,11 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.TabPage tabNews;
         private System.Windows.Forms.Label lblNews;
         private System.Windows.Forms.Button button1;
+        private DevExpress.XtraTreeList.TreeList tlNews;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colInfo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private System.Windows.Forms.PictureBox pbNews;
+        private System.Windows.Forms.Button btnRefreshNews;
     }
 }
 

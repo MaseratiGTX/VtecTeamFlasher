@@ -80,5 +80,10 @@ namespace ClientAndServerCommons.Helpers
                 return false;
             }
         }
+
+        public List<News> GetNews()
+        {
+            return adoRepository.Entities<News>().ToList();
+        }
     }
 }

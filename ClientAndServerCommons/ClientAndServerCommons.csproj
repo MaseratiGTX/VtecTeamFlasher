@@ -108,6 +108,7 @@
     <Compile Include="ConfigurationHelper.cs" />
     <Compile Include="DataClasses\AbstractUser.cs" />
     <Compile Include="DataClasses\Comment.cs" />
+    <Compile Include="DataClasses\News.cs" />
     <Compile Include="DataClasses\ReflashHistory.cs" />
     <Compile Include="DataClasses\ReflashRequest.cs" />
     <Compile Include="DataClasses\Review.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="MapClasses\CommentMap.cs" />
     <Compile Include="MapClasses\EntityContextMap.cs" />
     <Compile Include="DataClasses\User.cs" />
+    <Compile Include="MapClasses\NewsMap.cs" />
     <Compile Include="MapClasses\ReflashHistoryMap.cs" />
     <Compile Include="MapClasses\ReflashRequestMap.cs" />
     <Compile Include="MapClasses\ReviewMap.cs" />
@@ -139,6 +141,7 @@
     <Compile Include="ThreadFactory.cs" />
     <Compile Include="Validators\AuthorizationUserValidator.cs" />
     <Compile Include="Validators\CommentValidator.cs" />
+    <Compile Include="Validators\NewsValidator.cs" />
     <Compile Include="Validators\ReflashHistoryValidator.cs" />
     <Compile Include="Validators\ReflashRequestValidator.cs" />
     <Compile Include="Validators\ReviewValidator.cs" />

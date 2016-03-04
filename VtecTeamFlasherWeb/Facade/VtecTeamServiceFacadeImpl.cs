@@ -104,5 +104,10 @@ namespace VtecTeamFlasherWeb.Facade
         {
             return new VtecTeamDBManager().SendComment(comment);
         }
+
+        public List<News> GetNews()
+        {
+            return new VtecTeamDBManager().GetNews();
+        }
     }
 }
