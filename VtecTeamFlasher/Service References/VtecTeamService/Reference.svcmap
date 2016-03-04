@@ -19,7 +19,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://vtecteam.azurewebsites.net/VtecTeamWebService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="VtecTeamWebService1.wsdl" MetadataType="Wsdl" ID="8d0bb018-92f6-4116-89d6-93fc970cd6ad" SourceId="1" SourceUrl="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc?wsdl" />
