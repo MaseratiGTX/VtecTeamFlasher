@@ -381,10 +381,72 @@ namespace VtecTeamFlasher
             
         }
 
+        private void CleanBinaryDescriptionData()
+        {
+            cbBinaryToLoad.Items.Clear();
+            txtBinaryDescription.Text = "";
+            cbBinaryDescriptionCS.Checked = false;
+            cbBinaryDescriptionEGROff.Checked = false;
+            cbBinaryDescriptionEuro2.Checked = false;
+            cbBinaryDescriptionImmoOff.Checked = false;
+            btnBinaryDescriptionOK.Enabled = false;
+        }
+        private void lbModule_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBinaryDescriptionCancel_Click(object sender, EventArgs e)
+        {
+            CleanBinaryDescriptionData();
+            panelLoadBinary.Visible = false;
+
+        }
+
+        #region UsserDetails
+        private void tabControlMain_Click(object sender, EventArgs e)
+        {
+            tbUserName.Text = Session.CurrentUser.FirstName;
+            tbUserSecondName.Text = Session.CurrentUser.LastName;
+            tbUserCity.Text = Session.CurrentUser.City;
+            tbUserPhone.Text = Session.CurrentUser.Phone;
+            tbUserSkype.Text = Session.CurrentUser.Skype;
+            tbUserVK.Text = Session.CurrentUser.VK;
+            cbUserViber.Checked = Session.CurrentUser.Viber;
+            cbUserWhatsapp.Checked = Session.CurrentUser.WhatsApp;
+        }
+
+        private async void btnUpdateUserDetails_Click(object sender, EventArgs e)
+        {
+            var currentStatus = PanelRefresh.StartRefresh(tabPerson, pbPersonalInfo);
+
+            await Task.Run(() =>
+            {
+                Session.CurrentUser.FirstName = tbUserName.Text;
+                Session.CurrentUser.LastName = tbUserSecondName.Text;
+                Session.CurrentUser.City = tbUserCity.Text;
+                Session.CurrentUser.Phone = tbUserPhone.Text;
+                Session.CurrentUser.Skype = tbUserSkype.Text;
+                Session.CurrentUser.VK = tbUserVK.Text;
+                Session.CurrentUser.Viber = cbUserViber.Checked;
+                Session.CurrentUser.WhatsApp = cbUserWhatsapp.Checked;
+
+                var result = WCFServiceFactory.CreateVtecTeamService().UpdateUserPersonalData(Session.CurrentUser);
+
+                this.Invoke(() => pbPersonalInfo.Image = !result ? Properties.Resources.Error : null);
+            });
+
+            PanelRefresh.StopRefresh(currentStatus);
+
+        }
+        #endregion
+
         private void btnReloadFlasher_Click(object sender, EventArgs e)
         {
             VTFlasher_Load(sender,e);
         }
+
+        #region HistoryAndRequests
 
         private async void btnSendRequest_Click(object sender, EventArgs e)
         {
@@ -469,42 +531,6 @@ namespace VtecTeamFlasher
             dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
         }
 
-        private void tabControlMain_Click(object sender, EventArgs e)
-        {
-            tbUserName.Text = Session.CurrentUser.FirstName;
-            tbUserSecondName.Text = Session.CurrentUser.LastName;
-            tbUserCity.Text = Session.CurrentUser.City;
-            tbUserPhone.Text = Session.CurrentUser.Phone;
-            tbUserSkype.Text = Session.CurrentUser.Skype;
-            tbUserVK.Text = Session.CurrentUser.VK;
-            cbUserViber.Checked = Session.CurrentUser.Viber;
-            cbUserWhatsapp.Checked = Session.CurrentUser.WhatsApp;
-        }
-
-        private async void btnUpdateUserDetails_Click(object sender, EventArgs e)
-        {
-            var currentStatus = PanelRefresh.StartRefresh(tabPerson, pbPersonalInfo);
-
-            await Task.Run(() =>
-             {
-                Session.CurrentUser.FirstName = tbUserName.Text;
-                Session.CurrentUser.LastName = tbUserSecondName.Text;
-                Session.CurrentUser.City = tbUserCity.Text;
-                Session.CurrentUser.Phone = tbUserPhone.Text;
-                Session.CurrentUser.Skype = tbUserSkype.Text;
-                Session.CurrentUser.VK = tbUserVK.Text;
-                Session.CurrentUser.Viber = cbUserViber.Checked;
-                Session.CurrentUser.WhatsApp = cbUserWhatsapp.Checked;
-
-                var result = WCFServiceFactory.CreateVtecTeamService().UpdateUserPersonalData(Session.CurrentUser);
-
-                 this.Invoke(() => pbPersonalInfo.Image = !result ? Properties.Resources.Error : null);
-             });
-
-            PanelRefresh.StopRefresh(currentStatus);
-
-        }
-
         private void dgReflashHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
@@ -530,11 +556,6 @@ namespace VtecTeamFlasher
            
         }
 
-        private void lbModule_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private async void btnUploadBinary_Click(object sender, EventArgs e)
         {
             tabControlReflash.SelectTab(tabReflashUpload);
@@ -550,24 +571,6 @@ namespace VtecTeamFlasher
 
             pbReflash.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
-        }
-
-        private void CleanBinaryDescriptionData()
-        {
-            cbBinaryToLoad.Items.Clear();
-            txtBinaryDescription.Text = "";
-            cbBinaryDescriptionCS.Checked = false;
-            cbBinaryDescriptionEGROff.Checked = false;
-            cbBinaryDescriptionEuro2.Checked = false;
-            cbBinaryDescriptionImmoOff.Checked = false;
-            btnBinaryDescriptionOK.Enabled = false;
-        }
-
-        private void btnBinaryDescriptionCancel_Click(object sender, EventArgs e)
-        {
-            CleanBinaryDescriptionData();
-            panelLoadBinary.Visible = false;
-
         }
 
         private void dgReflashHistory_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -649,6 +652,17 @@ namespace VtecTeamFlasher
             }
         }
 
+        private void btnRequestUploadEcuPhoto_Click(object sender, EventArgs e)
+        {
+            var fileDialog = new OpenFileDialog { Filter = "Все картинки|*.BMP;*.DIB;*.RLE;*.JPG;*.JPEG;*.JPE;*.JFIF;*.GIF;*.TIF;*.TIFF;*.PNG|Все файлы|*.*" };
+
+            if (fileDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            txtEcuPhotoStatus.Text = fileDialog.FileName;
+
+        }
+        #endregion
         private void button1_Click(object sender, EventArgs e)
         {
             var a = txtStatus.Text;
@@ -664,17 +678,8 @@ namespace VtecTeamFlasher
             txtStatus.Text = pcmSelectedIndex.ToString();
         }
 
-        private void btnRequestUploadEcuPhoto_Click(object sender, EventArgs e)
-        {
-            var fileDialog = new OpenFileDialog { Filter = "Все картинки|*.BMP;*.DIB;*.RLE;*.JPG;*.JPEG;*.JPE;*.JFIF;*.GIF;*.TIF;*.TIFF;*.PNG|Все файлы|*.*" };
 
-            if (fileDialog.ShowDialog() != DialogResult.OK)
-                return;
-
-            txtEcuPhotoStatus.Text = fileDialog.FileName;
-           
-        }
-
+        #region News
         private void treeList1_NodeCellStyle(object sender, DevExpress.XtraTreeList.GetCustomNodeCellStyleEventArgs e)
         {
             if (e.Node.ParentNode == null)
@@ -707,5 +712,6 @@ namespace VtecTeamFlasher
             pbNews.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
         }
+        #endregion
     }
 }

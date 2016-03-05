@@ -165,4 +165,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetNews">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNewsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetNewsResult" nillable="true" type="q11:ArrayOfNews" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

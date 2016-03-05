@@ -44,6 +44,7 @@ namespace VtecTeamFlasher
             if (request.EcuPhoto != null)
                 txtEcuPhotoStatus.Text = request.EcuPhotoFilename;
             txtUserName.Text = Session.CurrentUser.FirstName;
+            txtExpectedDate.Text = request.ExpectedResolveDate == null ? txtExpectedDate.Text : request.ExpectedResolveDate.ToString();
         }
 
         private async void btnRefreshRequest_Click(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace VtecTeamFlasher
                 request.UserId = Session.CurrentUser.Id;
                 request.RequestDate = DateTime.Now;
                 request.Status = (int) RequestStatuses.New;
-
+                
                 if (File.Exists(txtEcuPhotoStatus.Text))
                 {
                     request.EcuPhoto = File.ReadAllBytes(txtEcuPhotoStatus.Text);

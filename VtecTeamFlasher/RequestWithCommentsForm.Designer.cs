@@ -56,6 +56,8 @@ namespace VtecTeamFlasher
             this.lblComment = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtComment = new System.Windows.Forms.TextBox();
+            this.lblExpectedDate = new System.Windows.Forms.Label();
+            this.txtExpectedDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbRefreshRequest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tlComments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
@@ -74,7 +76,7 @@ namespace VtecTeamFlasher
             // 
             // btnRequestUploadEcuPhoto
             // 
-            this.btnRequestUploadEcuPhoto.Location = new System.Drawing.Point(500, 113);
+            this.btnRequestUploadEcuPhoto.Location = new System.Drawing.Point(500, 87);
             this.btnRequestUploadEcuPhoto.Name = "btnRequestUploadEcuPhoto";
             this.btnRequestUploadEcuPhoto.Size = new System.Drawing.Size(98, 25);
             this.btnRequestUploadEcuPhoto.TabIndex = 29;
@@ -86,7 +88,7 @@ namespace VtecTeamFlasher
             // 
             this.lblCarDescription.AutoSize = true;
             this.lblCarDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblCarDescription.Location = new System.Drawing.Point(27, 167);
+            this.lblCarDescription.Location = new System.Drawing.Point(27, 126);
             this.lblCarDescription.Name = "lblCarDescription";
             this.lblCarDescription.Size = new System.Drawing.Size(48, 13);
             this.lblCarDescription.TabIndex = 28;
@@ -94,7 +96,7 @@ namespace VtecTeamFlasher
             // 
             // txtRequestCarDescription
             // 
-            this.txtRequestCarDescription.Location = new System.Drawing.Point(135, 155);
+            this.txtRequestCarDescription.Location = new System.Drawing.Point(135, 114);
             this.txtRequestCarDescription.Multiline = true;
             this.txtRequestCarDescription.Name = "txtRequestCarDescription";
             this.txtRequestCarDescription.Size = new System.Drawing.Size(463, 105);
@@ -103,7 +105,7 @@ namespace VtecTeamFlasher
             // txtEcuPhotoStatus
             // 
             this.txtEcuPhotoStatus.Enabled = false;
-            this.txtEcuPhotoStatus.Location = new System.Drawing.Point(135, 114);
+            this.txtEcuPhotoStatus.Location = new System.Drawing.Point(135, 88);
             this.txtEcuPhotoStatus.Name = "txtEcuPhotoStatus";
             this.txtEcuPhotoStatus.Size = new System.Drawing.Size(352, 20);
             this.txtEcuPhotoStatus.TabIndex = 26;
@@ -112,7 +114,7 @@ namespace VtecTeamFlasher
             // 
             // txtEcuBinaryNumber
             // 
-            this.txtEcuBinaryNumber.Location = new System.Drawing.Point(135, 76);
+            this.txtEcuBinaryNumber.Location = new System.Drawing.Point(135, 63);
             this.txtEcuBinaryNumber.Name = "txtEcuBinaryNumber";
             this.txtEcuBinaryNumber.Size = new System.Drawing.Size(463, 20);
             this.txtEcuBinaryNumber.TabIndex = 25;
@@ -121,7 +123,7 @@ namespace VtecTeamFlasher
             // 
             this.lblEcuPhoto.AutoSize = true;
             this.lblEcuPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblEcuPhoto.Location = new System.Drawing.Point(27, 117);
+            this.lblEcuPhoto.Location = new System.Drawing.Point(27, 91);
             this.lblEcuPhoto.Name = "lblEcuPhoto";
             this.lblEcuPhoto.Size = new System.Drawing.Size(69, 13);
             this.lblEcuPhoto.TabIndex = 24;
@@ -131,7 +133,7 @@ namespace VtecTeamFlasher
             // 
             this.lblBinaryNumber.AutoSize = true;
             this.lblBinaryNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblBinaryNumber.Location = new System.Drawing.Point(27, 79);
+            this.lblBinaryNumber.Location = new System.Drawing.Point(27, 66);
             this.lblBinaryNumber.Name = "lblBinaryNumber";
             this.lblBinaryNumber.Size = new System.Drawing.Size(94, 13);
             this.lblBinaryNumber.TabIndex = 23;
@@ -158,7 +160,7 @@ namespace VtecTeamFlasher
             // 
             this.lblAdditionalInfo.AutoSize = true;
             this.lblAdditionalInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblAdditionalInfo.Location = new System.Drawing.Point(27, 278);
+            this.lblAdditionalInfo.Location = new System.Drawing.Point(27, 229);
             this.lblAdditionalInfo.Name = "lblAdditionalInfo";
             this.lblAdditionalInfo.Size = new System.Drawing.Size(65, 13);
             this.lblAdditionalInfo.TabIndex = 16;
@@ -166,7 +168,7 @@ namespace VtecTeamFlasher
             // 
             // txtAdditionalInfo
             // 
-            this.txtAdditionalInfo.Location = new System.Drawing.Point(135, 275);
+            this.txtAdditionalInfo.Location = new System.Drawing.Point(135, 226);
             this.txtAdditionalInfo.Multiline = true;
             this.txtAdditionalInfo.Name = "txtAdditionalInfo";
             this.txtAdditionalInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -176,7 +178,7 @@ namespace VtecTeamFlasher
             // txtStockFilePath
             // 
             this.txtStockFilePath.Enabled = false;
-            this.txtStockFilePath.Location = new System.Drawing.Point(135, 416);
+            this.txtStockFilePath.Location = new System.Drawing.Point(135, 363);
             this.txtStockFilePath.Name = "txtStockFilePath";
             this.txtStockFilePath.Size = new System.Drawing.Size(352, 20);
             this.txtStockFilePath.TabIndex = 20;
@@ -187,7 +189,7 @@ namespace VtecTeamFlasher
             // 
             this.lblStockFile.AutoSize = true;
             this.lblStockFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.lblStockFile.Location = new System.Drawing.Point(27, 419);
+            this.lblStockFile.Location = new System.Drawing.Point(27, 366);
             this.lblStockFile.Name = "lblStockFile";
             this.lblStockFile.Size = new System.Drawing.Size(86, 13);
             this.lblStockFile.TabIndex = 17;
@@ -195,7 +197,7 @@ namespace VtecTeamFlasher
             // 
             // btnOpenFile
             // 
-            this.btnOpenFile.Location = new System.Drawing.Point(500, 415);
+            this.btnOpenFile.Location = new System.Drawing.Point(500, 362);
             this.btnOpenFile.Name = "btnOpenFile";
             this.btnOpenFile.Size = new System.Drawing.Size(98, 25);
             this.btnOpenFile.TabIndex = 21;
@@ -204,7 +206,7 @@ namespace VtecTeamFlasher
             // 
             // btnRefreshRequest
             // 
-            this.btnRefreshRequest.Location = new System.Drawing.Point(322, 446);
+            this.btnRefreshRequest.Location = new System.Drawing.Point(322, 412);
             this.btnRefreshRequest.Name = "btnRefreshRequest";
             this.btnRefreshRequest.Size = new System.Drawing.Size(276, 29);
             this.btnRefreshRequest.TabIndex = 31;
@@ -215,7 +217,7 @@ namespace VtecTeamFlasher
             // pbRefreshRequest
             // 
             this.pbRefreshRequest.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
-            this.pbRefreshRequest.Location = new System.Drawing.Point(288, 446);
+            this.pbRefreshRequest.Location = new System.Drawing.Point(288, 412);
             this.pbRefreshRequest.Name = "pbRefreshRequest";
             this.pbRefreshRequest.Size = new System.Drawing.Size(28, 29);
             this.pbRefreshRequest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -240,7 +242,7 @@ namespace VtecTeamFlasher
             this.tlComments.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.tlComments.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colInfo});
-            this.tlComments.Location = new System.Drawing.Point(30, 490);
+            this.tlComments.Location = new System.Drawing.Point(30, 449);
             this.tlComments.Name = "tlComments";
             this.tlComments.OptionsBehavior.Editable = false;
             this.tlComments.OptionsView.ShowButtons = false;
@@ -272,7 +274,7 @@ namespace VtecTeamFlasher
             // 
             // btnSendComment
             // 
-            this.btnSendComment.Location = new System.Drawing.Point(446, 787);
+            this.btnSendComment.Location = new System.Drawing.Point(446, 744);
             this.btnSendComment.Name = "btnSendComment";
             this.btnSendComment.Size = new System.Drawing.Size(150, 29);
             this.btnSendComment.TabIndex = 34;
@@ -283,7 +285,7 @@ namespace VtecTeamFlasher
             // pbSendComment
             // 
             this.pbSendComment.Image = global::VtecTeamFlasher.Properties.Resources.Animation;
-            this.pbSendComment.Location = new System.Drawing.Point(412, 787);
+            this.pbSendComment.Location = new System.Drawing.Point(412, 744);
             this.pbSendComment.Name = "pbSendComment";
             this.pbSendComment.Size = new System.Drawing.Size(28, 29);
             this.pbSendComment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -294,7 +296,7 @@ namespace VtecTeamFlasher
             // lblUserName
             // 
             this.lblUserName.AutoSize = true;
-            this.lblUserName.Location = new System.Drawing.Point(30, 709);
+            this.lblUserName.Location = new System.Drawing.Point(30, 666);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(29, 13);
             this.lblUserName.TabIndex = 35;
@@ -303,7 +305,7 @@ namespace VtecTeamFlasher
             // lblComment
             // 
             this.lblComment.AutoSize = true;
-            this.lblComment.Location = new System.Drawing.Point(30, 735);
+            this.lblComment.Location = new System.Drawing.Point(30, 692);
             this.lblComment.Name = "lblComment";
             this.lblComment.Size = new System.Drawing.Size(77, 13);
             this.lblComment.TabIndex = 35;
@@ -312,24 +314,44 @@ namespace VtecTeamFlasher
             // txtUserName
             // 
             this.txtUserName.Enabled = false;
-            this.txtUserName.Location = new System.Drawing.Point(108, 706);
+            this.txtUserName.Location = new System.Drawing.Point(108, 663);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(100, 20);
+            this.txtUserName.Size = new System.Drawing.Size(236, 20);
             this.txtUserName.TabIndex = 36;
             // 
             // txtComment
             // 
-            this.txtComment.Location = new System.Drawing.Point(108, 732);
+            this.txtComment.Location = new System.Drawing.Point(108, 689);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(488, 49);
             this.txtComment.TabIndex = 36;
             // 
+            // lblExpectedDate
+            // 
+            this.lblExpectedDate.AutoSize = true;
+            this.lblExpectedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblExpectedDate.Location = new System.Drawing.Point(27, 388);
+            this.lblExpectedDate.Name = "lblExpectedDate";
+            this.lblExpectedDate.Size = new System.Drawing.Size(156, 13);
+            this.lblExpectedDate.TabIndex = 17;
+            this.lblExpectedDate.Text = "Ожидаемая дата исполнения";
+            // 
+            // txtExpectedDate
+            // 
+            this.txtExpectedDate.Enabled = false;
+            this.txtExpectedDate.Location = new System.Drawing.Point(189, 385);
+            this.txtExpectedDate.Name = "txtExpectedDate";
+            this.txtExpectedDate.Size = new System.Drawing.Size(298, 20);
+            this.txtExpectedDate.TabIndex = 20;
+            this.txtExpectedDate.Text = "Дата исполнения не указана";
+            this.txtExpectedDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // RequestWithCommentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 819);
+            this.ClientSize = new System.Drawing.Size(608, 781);
             this.Controls.Add(this.txtComment);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.lblComment);
@@ -351,9 +373,14 @@ namespace VtecTeamFlasher
             this.Controls.Add(this.txtEcuNumber);
             this.Controls.Add(this.lblAdditionalInfo);
             this.Controls.Add(this.txtAdditionalInfo);
+            this.Controls.Add(this.txtExpectedDate);
             this.Controls.Add(this.txtStockFilePath);
+            this.Controls.Add(this.lblExpectedDate);
             this.Controls.Add(this.lblStockFile);
             this.Controls.Add(this.btnOpenFile);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RequestWithCommentsForm";
             this.Text = "История запроса с комментариями";
             this.Load += new System.EventHandler(this.RequestWithCommentsForm_Load);
@@ -394,6 +421,8 @@ namespace VtecTeamFlasher
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtComment;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private System.Windows.Forms.Label lblExpectedDate;
+        private System.Windows.Forms.TextBox txtExpectedDate;
 
     }
 }

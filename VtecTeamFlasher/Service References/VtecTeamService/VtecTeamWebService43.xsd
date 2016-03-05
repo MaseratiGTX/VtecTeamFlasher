@@ -123,4 +123,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfReflashRequest" nillable="true" type="tns:ArrayOfReflashRequest" />
+  <xs:complexType name="ArrayOfNews">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="News" nillable="true" type="tns:News" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNews" nillable="true" type="tns:ArrayOfNews" />
+  <xs:complexType name="News">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q6="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q6:AbstractDataObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="News" nillable="true" type="tns:News" />
 </xs:schema>

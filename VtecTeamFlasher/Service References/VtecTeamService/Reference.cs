@@ -86,6 +86,12 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendComment", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendCommentResponse")]
         System.Threading.Tasks.Task<bool> SendCommentAsync(ClientAndServerCommons.DataClasses.Comment comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetNews", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetNewsResponse")]
+        ClientAndServerCommons.DataClasses.News[] GetNews();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetNews", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetNewsResponse")]
+        System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.News[]> GetNewsAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -209,6 +215,14 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         public System.Threading.Tasks.Task<bool> SendCommentAsync(ClientAndServerCommons.DataClasses.Comment comment) {
             return base.Channel.SendCommentAsync(comment);
+        }
+        
+        public ClientAndServerCommons.DataClasses.News[] GetNews() {
+            return base.Channel.GetNews();
+        }
+        
+        public System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.News[]> GetNewsAsync() {
+            return base.Channel.GetNewsAsync();
         }
     }
 }
