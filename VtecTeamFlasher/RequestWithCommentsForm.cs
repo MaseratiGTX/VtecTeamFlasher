@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClientAndServerCommons.DataClasses;
 using ClientAndServerCommons.Statuses;
+using DevExpress.Data.Filtering.Helpers;
 using DevExpress.XtraTreeList.Nodes;
 using VtecTeamFlasher.Helpers;
 
@@ -126,15 +127,20 @@ namespace VtecTeamFlasher
                     User = Session.CurrentUser
                 };
 
-                var result = WCFServiceFactory.CreateVtecTeamService().SendComment(comment);
+                var sendComment = WCFServiceFactory.CreateVtecTeamService().SendComment(comment);
 
-                this.Invoke(() => pbRefreshRequest.Image = !result ? Properties.Resources.Error : null);
+                this.Invoke(() => pbRefreshRequest.Image = !sendComment.Result ? Properties.Resources.Error : null);
                 this.Invoke(() =>
                 {
-                    if (result)
+                    if (sendComment.Result)
                     {
                         AddNode(txtUserName.Text, comment.CommentText, comment.CommentDate);
                         txtComment.Text = "";
+                        comment.Id = sendComment.EntityId;
+                        var arr = request.Comments.ToArray();
+                        Array.Resize(ref arr, arr.Length + 1);
+                        arr[arr.Length - 1] = comment;
+                        request.Comments=arr;
                     }
                     else
                         MessageBox.Show("Не удалось отправить комментарий.");

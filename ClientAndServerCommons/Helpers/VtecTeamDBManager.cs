@@ -60,9 +60,19 @@ namespace ClientAndServerCommons.Helpers
             return SaveEntity(review);
         }
 
-        public bool SendComment(Comment comment)
+        public SaveEntityResult SendComment(Comment comment)
         {
-            return SaveEntity(comment);
+            try
+            {
+                var result = adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(comment)));
+                return new SaveEntityResult{Result = true, EntityId = result.Id};
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("При сохранении сущности {0} произошла ошибка {1}", ex, comment.GetType());
+                return new SaveEntityResult { Result = false, EntityId = -1 };
+            }
         }
 
 
@@ -83,7 +93,7 @@ namespace ClientAndServerCommons.Helpers
 
         public List<News> GetNews()
         {
-            return adoRepository.Entities<News>().ToList();
+            return adoRepository.Entities<News>().OrderByDescending(news => news.Date).ToList();
         }
     }
 }

@@ -74,7 +74,7 @@ namespace VtecTeamFlasherWeb
             return vtServiceFacade.SendReview(review);
         }
 
-        public bool SendComment(Comment comment)
+        public SaveEntityResult SendComment(Comment comment)
         {
             return vtServiceFacade.SendComment(comment);
         }

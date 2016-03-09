@@ -20,7 +20,7 @@ namespace VtecTeamFlasherWeb.Facade
         List<ReflashRequest> GetReflashRequests(int userId);
         bool UpdateUserPersonalData(User user);
         bool SendReview(Review review);
-        bool SendComment(Comment comment);
+        SaveEntityResult SendComment(Comment comment);
         List<News> GetNews();
     }
 

@@ -37,7 +37,7 @@ namespace VtecTeamFlasherWeb
         [OperationContract]
         bool SendReview(Review review);
         [OperationContract]
-        bool SendComment(Comment comment);
+        SaveEntityResult SendComment(Comment comment);
         [OperationContract]
         List<News> GetNews();
 
