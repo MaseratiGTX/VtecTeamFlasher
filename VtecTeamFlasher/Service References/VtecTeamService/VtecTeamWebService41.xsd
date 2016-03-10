@@ -161,7 +161,7 @@
   <xs:element name="SendCommentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SendCommentResult" type="xs:boolean" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" minOccurs="0" name="SendCommentResult" nillable="true" type="q11:SaveEntityResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -173,7 +173,7 @@
   <xs:element name="GetNewsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetNewsResult" nillable="true" type="q11:ArrayOfNews" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetNewsResult" nillable="true" type="q12:ArrayOfNews" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

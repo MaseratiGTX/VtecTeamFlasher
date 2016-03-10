@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="YohAEuwRhhbH/ZjUUgAwEytF0Zc=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="O9L5gFIz7JpIhsnFNoOpQAFU0xk=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="customBinding" name="CustomBinding_IVtecTeamWebService">
+    <bindingConfiguration bindingType="customBinding" name="CustomBinding_IVtecTeamWebService1">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_IVtecTeamWebService</serializedValue>
+          <serializedValue>CustomBinding_IVtecTeamWebService1</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -152,10 +152,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="customBinding" name="CustomBinding_IVtecTeamWebService1">
+    <bindingConfiguration bindingType="customBinding" name="CustomBinding_IVtecTeamWebService11">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_IVtecTeamWebService1</serializedValue>
+          <serializedValue>CustomBinding_IVtecTeamWebService11</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -308,7 +308,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="CustomBinding_IVtecTeamWebService" contract="VtecTeamService.IVtecTeamWebService" bindingType="customBinding" address="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc" bindingConfiguration="CustomBinding_IVtecTeamWebService">
+    <endpoint name="CustomBinding_IVtecTeamWebService" contract="VtecTeamService.IVtecTeamWebService" bindingType="customBinding" address="http://vtecteam.azurewebsites.net/VtecTeamWebService.svc" bindingConfiguration="CustomBinding_IVtecTeamWebService1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://vtecteam.azurewebsites.net/VtecTeamWebService.svc</serializedValue>
@@ -320,7 +320,7 @@
           <serializedValue>customBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_IVtecTeamWebService</serializedValue>
+          <serializedValue>CustomBinding_IVtecTeamWebService1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>VtecTeamService.IVtecTeamWebService</serializedValue>
@@ -393,7 +393,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="CustomBinding_IVtecTeamWebService1" contract="VtecTeamService.IVtecTeamWebService" bindingType="customBinding" address="https://vtecteam.azurewebsites.net/VtecTeamWebService.svc" bindingConfiguration="CustomBinding_IVtecTeamWebService1">
+    <endpoint name="CustomBinding_IVtecTeamWebService1" contract="VtecTeamService.IVtecTeamWebService" bindingType="customBinding" address="https://vtecteam.azurewebsites.net/VtecTeamWebService.svc" bindingConfiguration="CustomBinding_IVtecTeamWebService11">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>https://vtecteam.azurewebsites.net/VtecTeamWebService.svc</serializedValue>
@@ -405,7 +405,7 @@
           <serializedValue>customBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_IVtecTeamWebService1</serializedValue>
+          <serializedValue>CustomBinding_IVtecTeamWebService11</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>VtecTeamService.IVtecTeamWebService</serializedValue>

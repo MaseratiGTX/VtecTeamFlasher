@@ -127,20 +127,22 @@ namespace VtecTeamFlasher
                     User = Session.CurrentUser
                 };
 
-                var sendComment = WCFServiceFactory.CreateVtecTeamService().SendComment(comment);
+                var savedComment = WCFServiceFactory.CreateVtecTeamService().SendComment(comment);
 
-                this.Invoke(() => pbRefreshRequest.Image = !sendComment.Result ? Properties.Resources.Error : null);
+                this.Invoke(() => pbRefreshRequest.Image = !savedComment.Result ? Properties.Resources.Error : null);
                 this.Invoke(() =>
                 {
-                    if (sendComment.Result)
+                    if (savedComment.Result)
                     {
                         AddNode(txtUserName.Text, comment.CommentText, comment.CommentDate);
                         txtComment.Text = "";
-                        comment.Id = sendComment.EntityId;
-                        var arr = request.Comments.ToArray();
-                        Array.Resize(ref arr, arr.Length + 1);
-                        arr[arr.Length - 1] = comment;
-                        request.Comments=arr;
+                        
+                        comment.Id = savedComment.EntityId;
+                        // fucking magic to add new item in fixed size array
+                        var commentsArray = request.Comments.ToArray();
+                        Array.Resize(ref commentsArray, commentsArray.Length + 1);
+                        commentsArray[commentsArray.Length - 1] = comment;
+                        request.Comments = commentsArray;
                     }
                     else
                         MessageBox.Show("Не удалось отправить комментарий.");

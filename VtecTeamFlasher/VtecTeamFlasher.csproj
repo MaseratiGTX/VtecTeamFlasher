@@ -147,6 +147,7 @@
     <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.News.datasource" />
     <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.ReflashHistory.datasource" />
     <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.ReflashRequest.datasource" />
+    <None Include="Properties\DataSources\ClientAndServerCommons.SaveEntityResult.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -163,6 +164,7 @@
     <None Include="Service References\VtecTeamService\VtecTeamWebService.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\VtecTeamService\VtecTeamWebService1.wsdl" />
     <None Include="Service References\VtecTeamService\VtecTeamWebService1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -170,6 +172,18 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\VtecTeamService\VtecTeamWebService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\VtecTeamService\VtecTeamWebService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\VtecTeamService\VtecTeamWebService41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\VtecTeamService\VtecTeamWebService42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\VtecTeamService\VtecTeamWebService43.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -190,6 +204,7 @@
     <Content Include="Resources\Error.png" />
     <Content Include="Resources\Information.png" />
     <Content Include="Resources\Warning.png" />
+    <None Include="Service References\VtecTeamService\VtecTeamWebService1.disco" />
     <None Include="Service References\VtecTeamService\VtecTeamWebService.disco" />
     <None Include="Service References\VtecTeamService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>

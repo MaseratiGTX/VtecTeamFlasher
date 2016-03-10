@@ -82,10 +82,10 @@ namespace VtecTeamFlasher.VtecTeamService {
         System.Threading.Tasks.Task<bool> SendReviewAsync(ClientAndServerCommons.DataClasses.Review review);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendComment", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendCommentResponse")]
-        bool SendComment(ClientAndServerCommons.DataClasses.Comment comment);
+        ClientAndServerCommons.SaveEntityResult SendComment(ClientAndServerCommons.DataClasses.Comment comment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendComment", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendCommentResponse")]
-        System.Threading.Tasks.Task<bool> SendCommentAsync(ClientAndServerCommons.DataClasses.Comment comment);
+        System.Threading.Tasks.Task<ClientAndServerCommons.SaveEntityResult> SendCommentAsync(ClientAndServerCommons.DataClasses.Comment comment);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetNews", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetNewsResponse")]
         ClientAndServerCommons.DataClasses.News[] GetNews();
@@ -209,11 +209,11 @@ namespace VtecTeamFlasher.VtecTeamService {
             return base.Channel.SendReviewAsync(review);
         }
         
-        public bool SendComment(ClientAndServerCommons.DataClasses.Comment comment) {
+        public ClientAndServerCommons.SaveEntityResult SendComment(ClientAndServerCommons.DataClasses.Comment comment) {
             return base.Channel.SendComment(comment);
         }
         
-        public System.Threading.Tasks.Task<bool> SendCommentAsync(ClientAndServerCommons.DataClasses.Comment comment) {
+        public System.Threading.Tasks.Task<ClientAndServerCommons.SaveEntityResult> SendCommentAsync(ClientAndServerCommons.DataClasses.Comment comment) {
             return base.Channel.SendCommentAsync(comment);
         }
         

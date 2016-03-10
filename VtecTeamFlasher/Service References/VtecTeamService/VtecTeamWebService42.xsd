@@ -15,4 +15,11 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="AbstractDataObject" nillable="true" type="tns:AbstractDataObject" />
+  <xs:complexType name="SaveEntityResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityId" type="xs:int" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SaveEntityResult" nillable="true" type="tns:SaveEntityResult" />
 </xs:schema>
