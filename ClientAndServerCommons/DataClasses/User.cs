@@ -21,6 +21,8 @@ namespace ClientAndServerCommons.DataClasses
         public virtual bool WhatsApp { get; set; }
         [DataMember]
         public virtual string OpenModules { get; set; }
+        [DataMember]
+        public virtual string Token { get; set; }
          
     }
 }

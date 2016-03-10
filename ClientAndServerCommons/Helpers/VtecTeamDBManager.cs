@@ -95,5 +95,17 @@ namespace ClientAndServerCommons.Helpers
         {
             return adoRepository.Entities<News>().OrderByDescending(news => news.Date).ToList();
         }
+
+        public bool SaveToken(Token token)
+        {
+            return SaveEntity(token);
+        }
+
+        public Token GetToken(string tokenText)
+        {
+            return   adoRepository.Entities<Token>()
+                    .ThatHas(x => x.TokenString == tokenText)
+                    .FirstOrDefault();
+        }
     }
 }

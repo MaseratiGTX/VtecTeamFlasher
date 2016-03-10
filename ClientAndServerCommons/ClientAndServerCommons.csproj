@@ -112,6 +112,7 @@
     <Compile Include="DataClasses\ReflashHistory.cs" />
     <Compile Include="DataClasses\ReflashRequest.cs" />
     <Compile Include="DataClasses\Review.cs" />
+    <Compile Include="DataClasses\Token.cs" />
     <Compile Include="EntityContext.cs" />
     <Compile Include="Helpers\ADOPropertyApplyExtensions.cs" />
     <Compile Include="Helpers\EntityContextHelper.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="MapClasses\ReflashHistoryMap.cs" />
     <Compile Include="MapClasses\ReflashRequestMap.cs" />
     <Compile Include="MapClasses\ReviewMap.cs" />
+    <Compile Include="MapClasses\TokenMap.cs" />
     <Compile Include="MapClasses\UsersMap.cs" />
     <Compile Include="Helpers\VtecTeamDBManager.cs" />
     <Compile Include="ICommand.cs" />
@@ -146,6 +148,7 @@
     <Compile Include="Validators\ReflashHistoryValidator.cs" />
     <Compile Include="Validators\ReflashRequestValidator.cs" />
     <Compile Include="Validators\ReviewValidator.cs" />
+    <Compile Include="Validators\TokenValidator.cs" />
     <Compile Include="Validators\Users\UserValidator.cs" />
     <Compile Include="Validators\UserValidator.cs" />
   </ItemGroup>

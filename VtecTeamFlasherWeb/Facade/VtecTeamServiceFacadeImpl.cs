@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
 using ClientAndServerCommons.Helpers;
 using Commons.Logging;
+using VtecTeamFlasherWeb.Interfaces;
+using VtecTeamFlasherWeb.TokenLogic;
 using WebAreaCommons.Classes.Security.Authentication;
 
 namespace VtecTeamFlasherWeb.Facade
@@ -15,38 +18,22 @@ namespace VtecTeamFlasherWeb.Facade
     {
         public AuthInfoResult Authenticate(string login, string passwordHash)
         {
-            var user = new VtecTeamDBManager().GetUser(login);
+            var userCredintialsValidator = new UserCredentialValidator();
 
-            if (user == null)
+            if (userCredintialsValidator.IsValid(login, passwordHash))
             {
-                Log.Info("Пользователь {0} не найден в базе данных");
-                return new AuthInfoResult((int)AuthenticationCode.Failed, "Неверно указан логин или пароль");
-            }
-
-            if (user.PasswordHash == passwordHash)
-            {
-                Log.Info("Пользователь {0} успешно найден в БД и авторизован");
-
-                //var userSessionGuid = Guid.NewGuid().ToString();
-                //CustomFormsAuthentication.SetAuthCookie(user.Id.ToString(CultureInfo.InvariantCulture), true, userSessionGuid);
-                
+                Log.Info("Пользователь {0} успешно найден в БД и авторизован", userCredintialsValidator.User.FirstName);
+                userCredintialsValidator.User.Token = new DatabaseTokenBuilder().Build(login, passwordHash);
                 return new AuthInfoResult
                 {
-                    Code = (int) AuthenticationCode.Success,
-                    User = user,
+                    Code = (int)AuthenticationCode.Success,
+                    User = userCredintialsValidator.User,
                     Message = "Пользователь успешно авторизован"
                 };
             }
-            else
-            {
-                Log.Info("Пользователь {0} успешно найден в БД но пароли не совпадают");
-                return new AuthInfoResult
-                {
-                    Code = (int)AuthenticationCode.Failed,
-                    Message = "Неверно указан логин или пароль"
-                };
-            }
 
+            Log.Info("Неверно указан логин или пароль");
+            return new AuthInfoResult((int)AuthenticationCode.Failed, "Неверно указан логин или пароль");
         }
 
         public void SignOut()
@@ -105,9 +92,12 @@ namespace VtecTeamFlasherWeb.Facade
             return new VtecTeamDBManager().SendComment(comment);
         }
 
-        public List<News> GetNews()
+        public List<News> GetNews(string token)
         {
-            return new VtecTeamDBManager().GetNews();
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if(validator.IsValid(token))
+                return new VtecTeamDBManager().GetNews();
+            throw new InvalidDataException("Need reautorise");
         }
     }
 }

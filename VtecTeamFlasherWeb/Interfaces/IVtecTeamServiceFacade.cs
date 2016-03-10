@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
 
-namespace VtecTeamFlasherWeb.Facade
+namespace VtecTeamFlasherWeb.Interfaces
 {
     public interface IVtecTeamServiceFacade
     {
@@ -21,7 +18,7 @@ namespace VtecTeamFlasherWeb.Facade
         bool UpdateUserPersonalData(User user);
         bool SendReview(Review review);
         SaveEntityResult SendComment(Comment comment);
-        List<News> GetNews();
+        List<News> GetNews(string token);
     }
 
 }

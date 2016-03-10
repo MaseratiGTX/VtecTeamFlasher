@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
+using System.Web;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
 using ClientAndServerCommons.Helpers;
 using Commons.Logging;
 using NHibernateContext.ADORepository;
 using VtecTeamFlasherWeb.Facade;
+using VtecTeamFlasherWeb.Interfaces;
+using VtecTeamFlasherWeb.TokenLogic;
 
 namespace VtecTeamFlasherWeb
 {
@@ -81,7 +84,7 @@ namespace VtecTeamFlasherWeb
 
         public List<News> GetNews()
         {
-            return vtServiceFacade.GetNews();
+            return vtServiceFacade.GetNews(HttpContext.Current.Request.Headers["Token"]);
         }
     }
 }

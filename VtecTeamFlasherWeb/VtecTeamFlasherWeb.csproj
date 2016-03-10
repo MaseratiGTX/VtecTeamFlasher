@@ -119,6 +119,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -168,8 +169,11 @@
     <Compile Include="ApplicationRoutesConfiguration.cs" />
     <Compile Include="ASPxAdminAreaPagesCustomRouteHandler.cs" />
     <Compile Include="ASPxAdminAreaPagesRouteHelper.cs" />
-    <Compile Include="Facade\IVtecTeamServiceFacade.cs" />
+    <Compile Include="Interfaces\IVtecTeamServiceFacade.cs" />
     <Compile Include="Facade\VtecTeamServiceFacadeImpl.cs" />
+    <Compile Include="Interfaces\IUserCredentialsValidator.cs" />
+    <Compile Include="Interfaces\ITokenBuilder.cs" />
+    <Compile Include="Interfaces\ITokenValidator.cs" />
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -180,13 +184,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IVtecTeamWebService.cs" />
+    <Compile Include="Interfaces\IVtecTeamWebService.cs" />
     <Compile Include="Pages\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="TokenLogic\UserCredentialValidator.cs" />
+    <Compile Include="TokenLogic\TokenBuilder.cs" />
+    <Compile Include="TokenLogic\TokenValidator.cs" />
     <Compile Include="VtecTeamWebService.svc.cs">
       <DependentUpon>VtecTeamWebService.svc</DependentUpon>
     </Compile>

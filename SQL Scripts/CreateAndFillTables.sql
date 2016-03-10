@@ -247,6 +247,37 @@ CREATE TABLE [dbo].[News](
 GO
 
 
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Token_Users]') AND parent_object_id = OBJECT_ID(N'[dbo].[Token]'))
+ALTER TABLE [dbo].[Token] DROP CONSTRAINT [FK_Token_Users]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Token]') AND type in (N'U'))
+DROP TABLE [dbo].[Token]
+GO
+
+CREATE TABLE [dbo].[Token](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Token] [nvarchar](250) NOT NULL,
+	[UserId] [int] NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
+ CONSTRAINT [Unique_Token] UNIQUE NONCLUSTERED 
+(
+	[Token] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Token]  WITH CHECK ADD  CONSTRAINT [FK_Token_Users] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Users] ([Id])
+GO
+
+ALTER TABLE [dbo].[Token] CHECK CONSTRAINT [FK_Token_Users]
+GO
 
 
 

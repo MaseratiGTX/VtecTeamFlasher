@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
-using NHibernate.Mapping;
 
-namespace VtecTeamFlasherWeb
+namespace VtecTeamFlasherWeb.Interfaces
 {
     /// <summary>
     /// Summary description for IPrinterMonitoringService
