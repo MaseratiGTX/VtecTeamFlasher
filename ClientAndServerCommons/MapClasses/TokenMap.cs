@@ -21,7 +21,6 @@ namespace ClientAndServerCommons.MapClasses
             //    .Not.Nullable();
 
             Map(x => x.TokenString)
-                .Length(250)
                 .Column("Token")
                 .Not.Nullable();
 

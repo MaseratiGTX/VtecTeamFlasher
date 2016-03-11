@@ -10,14 +10,14 @@ namespace VtecTeamFlasherWeb.Interfaces
         void SignOut();
         string GetSoftvareVersion();
         byte[] GetReflashFile(ReflashRequest reflashRequest);
-        bool SendRequest(ReflashRequest reflashRequest);
-        List<ReflashHistory> GetReflashHistory(int userId);
+        bool SendRequest(ReflashRequest reflashRequest, string token);
+        List<ReflashHistory> GetReflashHistory(int userId, string token);
         List<ReflashHistory> GetAdminReflashHistory(int userId);
-        bool UpdateReflashHistory(ReflashHistory history);
-        List<ReflashRequest> GetReflashRequests(int userId);
-        bool UpdateUserPersonalData(User user);
-        bool SendReview(Review review);
-        SaveEntityResult SendComment(Comment comment);
+        bool UpdateReflashHistory(ReflashHistory history, string token);
+        List<ReflashRequest> GetReflashRequests(int userId, string token);
+        bool UpdateUserPersonalData(User user, string token);
+        bool SendReview(Review review, string token);
+        SaveEntityResult SendComment(Comment comment, string token);
         List<News> GetNews(string token);
     }
 

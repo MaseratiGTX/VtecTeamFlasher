@@ -7,6 +7,8 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Authentication;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -431,9 +433,11 @@ namespace VtecTeamFlasher
                 Session.CurrentUser.Viber = cbUserViber.Checked;
                 Session.CurrentUser.WhatsApp = cbUserWhatsapp.Checked;
 
-                var result = WCFServiceFactory.CreateVtecTeamService().UpdateUserPersonalData(Session.CurrentUser);
-
-                this.Invoke(() => pbPersonalInfo.Image = !result ? Properties.Resources.Error : null);
+                RequestExecutor.Execute(() =>
+                {
+                    var result = WCFServiceFactory.CreateVtecTeamService().UpdateUserPersonalData(Session.CurrentUser);
+                    this.Invoke(() => pbPersonalInfo.Image = !result ? Properties.Resources.Error : null);
+                }); 
             });
 
             PanelRefresh.StopRefresh(currentStatus);
@@ -483,10 +487,13 @@ namespace VtecTeamFlasher
                     request.EcuPhotoFilename = Path.GetFileName(txtEcuPhotoStatus.Text);
                 }
 
-                var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
+                RequestExecutor.Execute(() =>
+                {
+                    var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
 
-                this.Invoke(()=>pbRequest.Image = !result ? Properties.Resources.Error : null);
-                MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
+                    this.Invoke(() => pbRequest.Image = !result ? Properties.Resources.Error : null);
+                    MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
+                });
             });
 
             PanelRefresh.StopRefresh(currentStatus);
@@ -504,11 +511,11 @@ namespace VtecTeamFlasher
         private async void btnRefreshRequests_Click(object sender, EventArgs e)
         {
             var currentStatus = PanelRefresh.StartRefresh(pnlRequestsHistory, pbRequestHistory);
-            await Task.Run(() =>
+            await Task.Run(() => RequestExecutor.Execute(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashRequests(Session.CurrentUser.Id);
                 this.Invoke(() => dgRequests.DataSource = result);
-            });
+            }));
             pbRequestHistory.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
 
@@ -517,18 +524,18 @@ namespace VtecTeamFlasher
         private async void btnRefreshHistory_Click(object sender, EventArgs e)
         {
             var currentStatus = PanelRefresh.StartRefresh(tabHistory, pbReflashHistory);
-            await Task.Run(() =>
+            await Task.Run(() => RequestExecutor.Execute(() =>
             {
                 var result = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
                 this.Invoke(() => dgReflashHistory.DataSource = result);
-            });
+            }));
             pbReflashHistory.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
         }
 
         private void tabHistory_Click(object sender, EventArgs e)
         {
-            dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id);
+            RequestExecutor.Execute(()=>dgReflashHistory.DataSource = WCFServiceFactory.CreateVtecTeamService().GetReflashHistory(Session.CurrentUser.Id));
         }
 
         private void dgReflashHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -549,8 +556,11 @@ namespace VtecTeamFlasher
                 {
                     var obj = (ReflashHistory)senderGrid.Rows[e.RowIndex].DataBoundItem;
                     obj.Status = (int)PaymentStatuses.Paid;
-                    var result = WCFServiceFactory.CreateVtecTeamService().UpdateReflashHistory(obj);
-                    MessageBox.Show(result ? "Данне успешно отправлены" : "Не удалось отправить данные");
+                   RequestExecutor.Execute(() =>
+                   {
+                       var result = WCFServiceFactory.CreateVtecTeamService().UpdateReflashHistory(obj);
+                       MessageBox.Show(result ? "Данне успешно отправлены" : "Не удалось отправить данные");
+                   });
                 }
             }
            
@@ -567,7 +577,10 @@ namespace VtecTeamFlasher
             var currentStatus = PanelRefresh.StartRefresh(panelLoadBinary, pbReflash);
 
             //// TODO Load binary descriptions
-            var reflashFile = WCFServiceFactory.CreateVtecTeamService().GetReflashFile(new ReflashRequest());
+            RequestExecutor.Execute(() =>
+            {
+                var reflashFile = WCFServiceFactory.CreateVtecTeamService().GetReflashFile(new ReflashRequest());
+            }); 
 
             pbReflash.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
@@ -698,17 +711,15 @@ namespace VtecTeamFlasher
         private async void btnRefreshNews_Click(object sender, EventArgs e)
         {
             var currentStatus = PanelRefresh.StartRefresh(this, pbNews);
-            await Task.Run(() =>
+            await Task.Run(() => RequestExecutor.Execute(() =>
             {
                 var allNews = WCFServiceFactory.CreateVtecTeamService().GetNews();
-
                 this.Invoke(() =>
                 {
                     foreach (var news in allNews)
                         AddNode(news.Caption, news.Text, news.Date);
                 });
-
-            });
+            }));
             pbNews.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
         }

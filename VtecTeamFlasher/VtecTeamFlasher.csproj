@@ -88,8 +88,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlExtension.cs" />
+    <Compile Include="Helpers\ClientMessageInspector .cs" />
+    <Compile Include="Helpers\CustomEndpointBehavior .cs" />
     <Compile Include="Helpers\PanelRefresh.cs" />
     <Compile Include="Helpers\FilePathProvider.cs" />
+    <Compile Include="Helpers\RequestExecutor.cs" />
     <Compile Include="Helpers\Session.cs" />
     <Compile Include="Helpers\WCFServiceFactory.cs" />
     <Compile Include="RequestWithCommentsForm.cs">
@@ -177,13 +180,13 @@
     <None Include="Service References\VtecTeamService\VtecTeamWebService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\VtecTeamService\VtecTeamWebService41.xsd">
+    <None Include="Service References\VtecTeamService\VtecTeamWebService5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\VtecTeamService\VtecTeamWebService42.xsd">
+    <None Include="Service References\VtecTeamService\VtecTeamWebService6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\VtecTeamService\VtecTeamWebService43.xsd">
+    <None Include="Service References\VtecTeamService\VtecTeamWebService7.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

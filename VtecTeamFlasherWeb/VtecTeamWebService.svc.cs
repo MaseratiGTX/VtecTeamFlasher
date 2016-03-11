@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
-using System.Web;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
-using ClientAndServerCommons.Helpers;
-using Commons.Logging;
-using NHibernateContext.ADORepository;
 using VtecTeamFlasherWeb.Facade;
 using VtecTeamFlasherWeb.Interfaces;
-using VtecTeamFlasherWeb.TokenLogic;
 
 namespace VtecTeamFlasherWeb
 {
@@ -21,6 +16,19 @@ namespace VtecTeamFlasherWeb
     public class VtecTeamWebService : IVtecTeamWebService
     {
         private IVtecTeamServiceFacade vtServiceFacade = new VtecTeamServiceFacadeImpl();
+
+        
+        
+         string incomingUserInfo = "";
+        public VtecTeamWebService()
+        {
+            var headerIndex = OperationContext.Current.IncomingMessageHeaders.FindHeader("UserToken", "http://vtecteam.com/");
+            if (headerIndex != -1)
+            {
+                incomingUserInfo = OperationContext.Current.IncomingMessageHeaders.GetHeader<string>(headerIndex);
+            }
+        }
+        
         public AuthInfoResult Authenticate(string login, string passwordHash)
         {
             return vtServiceFacade.Authenticate(login, passwordHash);
@@ -44,12 +52,12 @@ namespace VtecTeamFlasherWeb
 
         public bool SendRequest(ReflashRequest reflashRequest)
         {
-            return vtServiceFacade.SendRequest(reflashRequest);
+            return vtServiceFacade.SendRequest(reflashRequest, incomingUserInfo);
         }
 
         public List<ReflashHistory> GetReflashHistory(int userId)
         {
-            return vtServiceFacade.GetReflashHistory(userId);
+            return vtServiceFacade.GetReflashHistory(userId, incomingUserInfo);
         }
 
         public List<ReflashHistory> GetAdminReflashHistory(int userId)
@@ -59,32 +67,32 @@ namespace VtecTeamFlasherWeb
 
         public bool UpdateReflashHistory(ReflashHistory history)
         {
-            return vtServiceFacade.UpdateReflashHistory(history);
+            return vtServiceFacade.UpdateReflashHistory(history, incomingUserInfo);
         }
 
         public List<ReflashRequest> GetReflashRequests(int userId)
         {
-            return vtServiceFacade.GetReflashRequests(userId);
+            return vtServiceFacade.GetReflashRequests(userId, incomingUserInfo);
         }
 
         public bool UpdateUserPersonalData(User user)
         {
-            return vtServiceFacade.UpdateUserPersonalData(user);
+            return vtServiceFacade.UpdateUserPersonalData(user, incomingUserInfo);
         }
 
         public bool SendReview(Review review)
         {
-            return vtServiceFacade.SendReview(review);
+            return vtServiceFacade.SendReview(review, incomingUserInfo);
         }
 
         public SaveEntityResult SendComment(Comment comment)
         {
-            return vtServiceFacade.SendComment(comment);
+            return vtServiceFacade.SendComment(comment, incomingUserInfo);
         }
 
         public List<News> GetNews()
         {
-            return vtServiceFacade.GetNews(HttpContext.Current.Request.Headers["Token"]);
+            return vtServiceFacade.GetNews(incomingUserInfo);
         }
     }
 }

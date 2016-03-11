@@ -15,16 +15,7 @@ namespace VtecTeamFlasher.Helpers
         public static IVtecTeamWebService CreateVtecTeamService()
         {
             var serviceClient = new VtecTeamWebServiceClient();
-            
-            if (Session.CurrentUser != null)
-            {
-                using (new OperationContextScope(serviceClient.InnerChannel))
-                {
-                    var requestMessage = new HttpRequestMessageProperty();
-                    requestMessage.Headers["Token"] = Session.CurrentUser.Token;
-                    OperationContext.Current.OutgoingMessageProperties[HttpRequestMessageProperty.Name] = requestMessage;
-                } 
-            }
+            serviceClient.Endpoint.Behaviors.Add(new CustomEndpointBehavior());
             
             return serviceClient;
         }

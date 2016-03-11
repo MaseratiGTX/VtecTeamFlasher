@@ -257,7 +257,7 @@ GO
 
 CREATE TABLE [dbo].[Token](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Token] [nvarchar](250) NOT NULL,
+	[Token] [uniqueidentifier] NOT NULL,
 	[UserId] [int] NOT NULL,
 	[CreateDate] [datetime] NOT NULL,
 PRIMARY KEY CLUSTERED 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.Authentication;
+using System.ServiceModel;
 using System.Web;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
@@ -52,14 +54,20 @@ namespace VtecTeamFlasherWeb.Facade
             throw new NotImplementedException();
         }
 
-        public bool SendRequest(ReflashRequest reflashRequest)
+        public bool SendRequest(ReflashRequest reflashRequest, string token)
         {
-            return new VtecTeamDBManager().SaveRequest(reflashRequest);
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().SaveRequest(reflashRequest);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
 
-        public List<ReflashHistory> GetReflashHistory(int userId)
+        public List<ReflashHistory> GetReflashHistory(int userId, string token)
         {
-            return new VtecTeamDBManager().GetReflashHistory(userId);
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().GetReflashHistory(userId);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
 
         public List<ReflashHistory> GetAdminReflashHistory(int userId)
@@ -67,29 +75,44 @@ namespace VtecTeamFlasherWeb.Facade
             throw new NotImplementedException();
         }
 
-        public bool UpdateReflashHistory(ReflashHistory history)
+        public bool UpdateReflashHistory(ReflashHistory history, string token)
         {
-            return new VtecTeamDBManager().UpdateReflashHistory(history);
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().UpdateReflashHistory(history);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
 
-        public List<ReflashRequest> GetReflashRequests(int userId)
+        public List<ReflashRequest> GetReflashRequests(int userId, string token)
         {
-            return new VtecTeamDBManager().GetReflashRequests(userId);
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().GetReflashRequests(userId);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
 
-        public bool UpdateUserPersonalData(User user)
+        public bool UpdateUserPersonalData(User user, string token)
         {
-            return new VtecTeamDBManager().UpdateUserPersonalData(user);
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().UpdateUserPersonalData(user);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
 
-        public bool SendReview(Review review)
+        public bool SendReview(Review review, string token)
         {
-            return new VtecTeamDBManager().SendReview(review);
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().SendReview(review);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
 
-        public SaveEntityResult SendComment(Comment comment)
+        public SaveEntityResult SendComment(Comment comment, string token)
         {
-            return new VtecTeamDBManager().SendComment(comment);
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().SendComment(comment);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
 
         public List<News> GetNews(string token)
@@ -97,7 +120,7 @@ namespace VtecTeamFlasherWeb.Facade
             ITokenValidator validator = new DatabaseTokenValidator();
             if(validator.IsValid(token))
                 return new VtecTeamDBManager().GetNews();
-            throw new InvalidDataException("Need reautorise");
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
     }
 }
