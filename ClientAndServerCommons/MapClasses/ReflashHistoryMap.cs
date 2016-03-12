@@ -29,6 +29,11 @@ namespace ClientAndServerCommons.MapClasses
                 .Length(255)
                 .Not.Nullable();
 
+            Map(x => x.PreviousBinaryName)
+                .Column("PreviousBinaryName")
+                .Length(255)
+                .Nullable();
+
             Map(x => x.CarVin)
                 .Column("CarVin")
                 .Length(255)
@@ -48,12 +53,12 @@ namespace ClientAndServerCommons.MapClasses
                 .MapDateTime()
                 .Not.Nullable();
 
-            HasMany(x => x.Review)
-                .Table("Review")
-                .KeyColumn("ReflashHistoryId")
-                .LazyLoad()
-                .BatchSize(20)
-                .Cascade.None();
+            //HasMany(x => x.Review)
+            //    .Table("Review")
+            //    .KeyColumn("ReflashHistoryId")
+            //    .LazyLoad()
+            //    .BatchSize(20)
+            //    .Cascade.None();
 
             //References(x => x.User)
             //    .Column("UserId")
@@ -61,11 +66,11 @@ namespace ClientAndServerCommons.MapClasses
             //    .LazyLoad()
             //    .Cascade.None();
 
-            //References(x => x.Review)
-            //   .Column("Review")
-            //   .Nullable()
-            //   .LazyLoad()
-            //   .Cascade.None();
+            References(x => x.Review)
+               .Column("[ReflashReviewId]")
+               .Nullable()
+               .Not.LazyLoad()
+               .Cascade.None();
         }
     }
 }

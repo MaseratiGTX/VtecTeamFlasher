@@ -19,11 +19,6 @@ namespace ClientAndServerCommons.MapClasses
                 .Column("Id").Unique().Not.Nullable()
                 .GeneratedBy.Identity();
 
-
-            Map(x => x.ReflashHistoryId)
-                .Column("ReflashHistoryId")
-                .Not.Nullable();
-
             Map(x => x.UserName)
                 .Column("UserName")
                 .Length(255)

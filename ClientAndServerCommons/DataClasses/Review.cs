@@ -15,8 +15,6 @@ namespace ClientAndServerCommons.DataClasses
         [DataMember]
         public virtual string UserReview { get; set; }
         [DataMember]
-        public virtual int ReflashHistoryId { get; set; }
-        [DataMember]
         public virtual DateTime ReviewDateTime { get; set; }
     }
 }

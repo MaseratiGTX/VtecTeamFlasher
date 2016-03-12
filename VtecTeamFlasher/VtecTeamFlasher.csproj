@@ -94,6 +94,7 @@
     <Compile Include="Helpers\FilePathProvider.cs" />
     <Compile Include="Helpers\RequestExecutor.cs" />
     <Compile Include="Helpers\Session.cs" />
+    <Compile Include="Helpers\StatusResolver.cs" />
     <Compile Include="Helpers\WCFServiceFactory.cs" />
     <Compile Include="RequestWithCommentsForm.cs">
       <SubType>Form</SubType>
@@ -101,11 +102,11 @@
     <Compile Include="RequestWithCommentsForm.Designer.cs">
       <DependentUpon>RequestWithCommentsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReviewForm.cs">
+    <Compile Include="ReflashHistoryWithReviewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReviewForm.Designer.cs">
-      <DependentUpon>ReviewForm.cs</DependentUpon>
+    <Compile Include="ReflashHistoryWithReviewForm.Designer.cs">
+      <DependentUpon>ReflashHistoryWithReviewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Service References\VtecTeamService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -129,8 +130,8 @@
     <Compile Include="VTflasherReflash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <EmbeddedResource Include="ReviewForm.resx">
-      <DependentUpon>ReviewForm.cs</DependentUpon>
+    <EmbeddedResource Include="ReflashHistoryWithReviewForm.resx">
+      <DependentUpon>ReflashHistoryWithReviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VTFlasher.resx">
       <DependentUpon>VTFlasher.cs</DependentUpon>

@@ -52,7 +52,19 @@ namespace ClientAndServerCommons.Helpers
 
         public bool UpdateReflashHistory(ReflashHistory history)
         {
-            return SaveEntity(history);
+            try
+            {
+                var resultReview = adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(history.Review)));
+                history.Review = resultReview;
+                adoPersister.ExecuteAsSingle(persister => persister.Save(adoRepository.Evict(history)));
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error("При сохранении сущности {0} произошла ошибка {1}", ex, history.GetType());
+                return false;
+            }
         }
 
         public bool SendReview(Review review)

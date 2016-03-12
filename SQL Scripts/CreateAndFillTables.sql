@@ -51,7 +51,34 @@ INSERT INTO [dbo].[Users]
            ,'admin')
 GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Review]') AND type in (N'U'))
+DROP TABLE [dbo].[Review]
+GO
 
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Review](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](50) NULL,
+	[SourceUrl] [nvarchar](150) NULL,
+	[UserReview] [nvarchar](max) NOT NULL,
+	[ReviewDateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_Review] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ReflashHistory_Review]') AND parent_object_id = OBJECT_ID(N'[dbo].[ReflashHistory]'))
+ALTER TABLE [dbo].[ReflashHistory] DROP CONSTRAINT [FK_ReflashHistory_Review]
+GO
 
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ReflashHistory_Users]') AND parent_object_id = OBJECT_ID(N'[dbo].[ReflashHistory]'))
 ALTER TABLE [dbo].[ReflashHistory] DROP CONSTRAINT [FK_ReflashHistory_Users]
@@ -76,6 +103,7 @@ CREATE TABLE [dbo].[ReflashHistory](
 	[Status] [int] NOT NULL,
 	[ReflashDate] [datetime] NOT NULL,
 	[Price] [nvarchar](100) NULL,
+	[ReflashReviewId] [int] NULL,
  CONSTRAINT [PK_ReflashHistory] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -84,13 +112,19 @@ CREATE TABLE [dbo].[ReflashHistory](
 
 GO
 
+ALTER TABLE [dbo].[ReflashHistory]  WITH CHECK ADD  CONSTRAINT [FK_ReflashHistory_Review] FOREIGN KEY([ReflashReviewId])
+REFERENCES [dbo].[Review] ([Id])
+GO
+
+ALTER TABLE [dbo].[ReflashHistory] CHECK CONSTRAINT [FK_ReflashHistory_Review]
+GO
+
 ALTER TABLE [dbo].[ReflashHistory]  WITH CHECK ADD  CONSTRAINT [FK_ReflashHistory_Users] FOREIGN KEY([UserId])
 REFERENCES [dbo].[Users] ([Id])
 GO
 
 ALTER TABLE [dbo].[ReflashHistory] CHECK CONSTRAINT [FK_ReflashHistory_Users]
 GO
-
 
 
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Requests_Users]') AND parent_object_id = OBJECT_ID(N'[dbo].[Requests]'))
@@ -144,41 +178,6 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Review_ReflashHistory]') AND parent_object_id = OBJECT_ID(N'[dbo].[Review]'))
-ALTER TABLE [dbo].[Review] DROP CONSTRAINT [FK_Review_ReflashHistory]
-GO
-
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Review]') AND type in (N'U'))
-DROP TABLE [dbo].[Review]
-GO
-
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-CREATE TABLE [dbo].[Review](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[ReflashHistoryId] [int] NOT NULL,
-	[UserName] [nvarchar](50) NULL,
-	[SourceUrl] [nvarchar](150) NULL,
-	[UserReview] [nvarchar](max) NOT NULL,
-	[ReviewDateTime] [datetime] NOT NULL,
- CONSTRAINT [PK_Review] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-
-GO
-
-ALTER TABLE [dbo].[Review]  WITH CHECK ADD  CONSTRAINT [FK_Review_ReflashHistory] FOREIGN KEY([ReflashHistoryId])
-REFERENCES [dbo].[ReflashHistory] ([Id])
-GO
-
-ALTER TABLE [dbo].[Review] CHECK CONSTRAINT [FK_Review_ReflashHistory]
-GO
 
 
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_Comments_Requests]') AND parent_object_id = OBJECT_ID(N'[dbo].[Comments]'))
@@ -232,6 +231,11 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[News]
 DROP TABLE [dbo].[News]
 GO
 
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[News](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -253,6 +257,12 @@ GO
 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[Token]') AND type in (N'U'))
 DROP TABLE [dbo].[Token]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[Token](

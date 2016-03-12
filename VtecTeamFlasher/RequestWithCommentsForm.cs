@@ -75,11 +75,14 @@ namespace VtecTeamFlasher
                     request.EcuPhotoFilename = Path.GetFileName(txtEcuPhotoStatus.Text);
                 }
                 
-                
-                var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
+                RequestExecutor.Execute(()=>
+                {
+                    var result = WCFServiceFactory.CreateVtecTeamService().SendRequest(request);
 
-                this.Invoke(() => pbRefreshRequest.Image = !result ? Properties.Resources.Error : null);
-                MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
+                    this.Invoke(() => pbRefreshRequest.Image = !result ? Properties.Resources.Error : null);
+                    MessageBox.Show(result ? "Запрос успешно отправлен" : "Не удалось отправить запрос.");
+                });
+                
             });
             pbRefreshRequest.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);
@@ -127,27 +130,30 @@ namespace VtecTeamFlasher
                     User = Session.CurrentUser
                 };
 
-                var savedComment = WCFServiceFactory.CreateVtecTeamService().SendComment(comment);
-
-                this.Invoke(() => pbRefreshRequest.Image = !savedComment.Result ? Properties.Resources.Error : null);
-                this.Invoke(() =>
+                RequestExecutor.Execute(()=>
                 {
-                    if (savedComment.Result)
+                    var savedComment = WCFServiceFactory.CreateVtecTeamService().SendComment(comment);
+
+                    this.Invoke(() => pbRefreshRequest.Image = !savedComment.Result ? Properties.Resources.Error : null);
+                    this.Invoke(() =>
                     {
-                        AddNode(txtUserName.Text, comment.CommentText, comment.CommentDate);
-                        txtComment.Text = "";
-                        
-                        comment.Id = savedComment.EntityId;
-                        // fucking magic to add new item in fixed size array
-                        var commentsArray = request.Comments.ToArray();
-                        Array.Resize(ref commentsArray, commentsArray.Length + 1);
-                        commentsArray[commentsArray.Length - 1] = comment;
-                        request.Comments = commentsArray;
-                    }
-                    else
-                        MessageBox.Show("Не удалось отправить комментарий.");
+                        if (savedComment.Result)
+                        {
+                            AddNode(txtUserName.Text, comment.CommentText, comment.CommentDate);
+                            txtComment.Text = "";
+
+                            comment.Id = savedComment.EntityId;
+                            // fucking magic to add new item in fixed size array
+                            var commentsArray = request.Comments.ToArray();
+                            Array.Resize(ref commentsArray, commentsArray.Length + 1);
+                            commentsArray[commentsArray.Length - 1] = comment;
+                            request.Comments = commentsArray;
+                        }
+                        else
+                            MessageBox.Show("Не удалось отправить комментарий.");
+                    });
                 });
-                
+
             });
             pbSendComment.Visible = false;
             PanelRefresh.StopRefresh(currentStatus);

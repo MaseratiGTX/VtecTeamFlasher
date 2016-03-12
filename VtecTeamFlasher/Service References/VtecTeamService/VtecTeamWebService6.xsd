@@ -90,7 +90,7 @@
           <xs:element minOccurs="0" name="PreviousBinaryName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Price" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="ReflashDate" type="xs:dateTime" />
-          <xs:element minOccurs="0" name="Review" nillable="true" type="tns:ArrayOfReview" />
+          <xs:element minOccurs="0" name="Review" nillable="true" type="tns:Review" />
           <xs:element minOccurs="0" name="Status" type="xs:int" />
           <xs:element minOccurs="0" name="UserId" type="xs:int" />
         </xs:sequence>
@@ -98,17 +98,10 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="ReflashHistory" nillable="true" type="tns:ReflashHistory" />
-  <xs:complexType name="ArrayOfReview">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Review" nillable="true" type="tns:Review" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfReview" nillable="true" type="tns:ArrayOfReview" />
   <xs:complexType name="Review">
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q5="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" base="q5:AbstractDataObject">
         <xs:sequence>
-          <xs:element minOccurs="0" name="ReflashHistoryId" type="xs:int" />
           <xs:element minOccurs="0" name="ReviewDateTime" type="xs:dateTime" />
           <xs:element minOccurs="0" name="SourceUrl" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />

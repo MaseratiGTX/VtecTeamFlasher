@@ -23,7 +23,7 @@ namespace ClientAndServerCommons.DataClasses
         [DataMember]
         public virtual string Price { get; set; }
         [DataMember]
-        public virtual IList<Review> Review { get; set; }
+        public virtual Review Review { get; set; }
         //[DataMember]
         //public virtual User User { get; set; }
     }
