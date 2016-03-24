@@ -291,3 +291,94 @@ GO
 
 
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CarManufacturer]') AND type in (N'U'))
+DROP TABLE [dbo].[CarManufacturer]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CarManufacturer](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Manufacturer] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_CarManufacturer] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+INSERT INTO [dbo].[CarManufacturer]
+           ([Manufacturer])
+     VALUES
+           ('Honda'),
+           ('Ford'),
+           ('Mazda'),
+           ('KIA'),
+           ('Hyundai')
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ReflashStorage_CarManufacturer]') AND parent_object_id = OBJECT_ID(N'[dbo].[ReflashStorage]'))
+ALTER TABLE [dbo].[ReflashStorage] DROP CONSTRAINT [FK_ReflashStorage_CarManufacturer]
+GO
+
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_ReflashStorage_Users]') AND parent_object_id = OBJECT_ID(N'[dbo].[ReflashStorage]'))
+ALTER TABLE [dbo].[ReflashStorage] DROP CONSTRAINT [FK_ReflashStorage_Users]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[ReflashStorage]') AND type in (N'U'))
+DROP TABLE [dbo].[ReflashStorage]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[ReflashStorage](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CarManufacturerId] [int] NOT NULL,
+	[Model] [nvarchar](100) NOT NULL,
+	[YearOfRelease] [datetime] NOT NULL,
+	[TransmissionType] [nvarchar](50) NOT NULL,
+	[EcuBinaryNumber] [nvarchar](100) NOT NULL,
+	[AltEcuCode] [nvarchar](300) NULL,
+	[ReflashFileName] [nvarchar](250) NOT NULL,
+	[ReflashBinary] [varbinary](max) NOT NULL,
+	[Description] [xml] NULL,
+	[DateOfLoad] [datetime] NOT NULL,
+	[UserId] [int] NOT NULL,
+ CONSTRAINT [PK_ReflashStorage] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[ReflashStorage]  WITH CHECK ADD  CONSTRAINT [FK_ReflashStorage_CarManufacturer] FOREIGN KEY([CarManufacturerId])
+REFERENCES [dbo].[CarManufacturer] ([Id])
+GO
+
+ALTER TABLE [dbo].[ReflashStorage] CHECK CONSTRAINT [FK_ReflashStorage_CarManufacturer]
+GO
+
+ALTER TABLE [dbo].[ReflashStorage]  WITH CHECK ADD  CONSTRAINT [FK_ReflashStorage_Users] FOREIGN KEY([UserId])
+REFERENCES [dbo].[Users] ([Id])
+GO
+
+ALTER TABLE [dbo].[ReflashStorage] CHECK CONSTRAINT [FK_ReflashStorage_Users]
+GO
+
