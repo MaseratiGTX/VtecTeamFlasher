@@ -3,9 +3,9 @@ using NHibernateContext.ADORepository;
 
 namespace ClientAndServerCommons.Validators
 {
-    public class NewsValidator: ADOPersistenseValidator<News>
+    public class CarManufacturerValidator: ADOPersistenseValidator<CarManufacturer>
     {
-        public NewsValidator(IADORepository adoRepository)
+        public CarManufacturerValidator(IADORepository adoRepository)
             : base(adoRepository)
         {
 

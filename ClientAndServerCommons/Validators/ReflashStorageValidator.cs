@@ -3,9 +3,9 @@ using NHibernateContext.ADORepository;
 
 namespace ClientAndServerCommons.Validators
 {
-    public class NewsValidator: ADOPersistenseValidator<News>
+    public class ReflashStorageValidator : ADOPersistenseValidator<ReflashStorage>
     {
-        public NewsValidator(IADORepository adoRepository)
+        public ReflashStorageValidator(IADORepository adoRepository)
             : base(adoRepository)
         {
 
