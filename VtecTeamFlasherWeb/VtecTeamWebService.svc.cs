@@ -94,5 +94,10 @@ namespace VtecTeamFlasherWeb
         {
             return vtServiceFacade.GetNews(incomingUserInfo);
         }
+
+        public List<ReflashInformation> GetInformationListOfReflashBinaries(string ecuBinary)
+        {
+            return vtServiceFacade.GetInformationListOfReflashBinaries(ecuBinary, incomingUserInfo);
+        }
     }
 }

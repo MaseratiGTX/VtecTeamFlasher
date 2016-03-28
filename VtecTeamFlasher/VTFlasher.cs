@@ -699,5 +699,36 @@ namespace VtecTeamFlasher
             PanelRefresh.StopRefresh(currentStatus);
         }
         #endregion
+
+        private async void btnSearchReflashFile_Click(object sender, EventArgs e)
+        {
+            var currentStatus = PanelRefresh.StartRefresh(panelLoadBinary, pbReflash);
+
+            await Task.Run(() => RequestExecutor.Execute(() =>
+                {
+                    var result = WCFServiceFactory.CreateVtecTeamService().GetInformationListOfReflashBinaries(txtEcuNumbertoSearch.Text);
+                    if (result.Length != 0)
+                    {
+                        var items = new List<ComboBoxItem>();
+                        foreach (var reflashInformation in result)
+                        {
+                            var altCodes = reflashInformation.AltEcuCode.Split(',');
+                            items.AddRange(altCodes.Select(altCode => new ComboBoxItem{Value = reflashInformation.ReflashStorageId, Text = altCode}));
+                        }
+                        this.Invoke(() => cbBinaryToLoad.DataSource = items);
+                        this.Invoke(() => cbBinaryToLoad.DisplayMember = "Text");
+                        
+                    }
+                   
+                }));
+
+            PanelRefresh.StopRefresh(currentStatus);
+             cbBinaryToLoad.Enabled = true;
+        }
+
+        private void cbBinaryToLoad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(((ComboBoxItem)cbBinaryToLoad.SelectedItem).Value.ToString());
+        }
     }
 }

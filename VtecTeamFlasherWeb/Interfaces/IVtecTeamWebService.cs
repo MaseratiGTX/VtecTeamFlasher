@@ -39,6 +39,8 @@ namespace VtecTeamFlasherWeb.Interfaces
         SaveEntityResult SendComment(Comment comment);
         [OperationContract]
         List<News> GetNews();
+        [OperationContract]
+        List<ReflashInformation> GetInformationListOfReflashBinaries(string ecuBinary);
 
 
     }

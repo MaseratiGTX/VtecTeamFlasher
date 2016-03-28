@@ -73,6 +73,7 @@
       <HintPath>..\Libs\DXperience\v11.2\DevExpress.XtraTreeList.v11.2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -89,6 +90,7 @@
   <ItemGroup>
     <Compile Include="ControlExtension.cs" />
     <Compile Include="Helpers\ClientMessageInspector .cs" />
+    <Compile Include="Helpers\ComboBoxItem.cs" />
     <Compile Include="Helpers\CustomEndpointBehavior .cs" />
     <Compile Include="Helpers\PanelRefresh.cs" />
     <Compile Include="Helpers\FilePathProvider.cs" />
@@ -161,6 +163,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\VtecTeamService\VtecTeamFlasher.VtecTeamService.ReflashInformation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\VtecTeamService\VtecTeamFlasher.VtecTeamService.SaveEntityResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

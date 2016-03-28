@@ -19,6 +19,7 @@ namespace VtecTeamFlasherWeb.Interfaces
         bool SendReview(Review review, string token);
         SaveEntityResult SendComment(Comment comment, string token);
         List<News> GetNews(string token);
+        List<ReflashInformation> GetInformationListOfReflashBinaries(string ecuBinary, string token);
     }
 
 }

@@ -122,5 +122,13 @@ namespace VtecTeamFlasherWeb.Facade
                 return new VtecTeamDBManager().GetNews();
             throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
+
+        public List<ReflashInformation> GetInformationListOfReflashBinaries(string ecuBinary, string token)
+        {
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().GetInformationListOfReflashBinaries(ecuBinary);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
+        }
     }
 }

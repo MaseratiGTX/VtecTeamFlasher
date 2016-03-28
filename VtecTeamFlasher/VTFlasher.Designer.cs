@@ -117,10 +117,20 @@ namespace VtecTeamFlasher
             this.pbReflashHistory = new System.Windows.Forms.PictureBox();
             this.btnRefreshHistory = new System.Windows.Forms.Button();
             this.dgReflashHistory = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.reflashDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.binaryFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSendReview = new System.Windows.Forms.DataGridViewButtonColumn();
             this.reflashHistoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabRequestHistory = new System.Windows.Forms.TabPage();
             this.pnlRequestsHistory = new System.Windows.Forms.Panel();
             this.dgRequests = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.requestDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.carDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullInfo = new System.Windows.Forms.DataGridViewButtonColumn();
             this.reflashRequestBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnRefreshRequests = new System.Windows.Forms.Button();
             this.pbRequestHistory = new System.Windows.Forms.PictureBox();
@@ -153,16 +163,6 @@ namespace VtecTeamFlasher
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.requestDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.carDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullInfo = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reflashDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.binaryFileNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSendReview = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.tabControlMain.SuspendLayout();
             this.tabNews.SuspendLayout();
@@ -718,6 +718,7 @@ namespace VtecTeamFlasher
             this.btnSearchReflashFile.TabIndex = 26;
             this.btnSearchReflashFile.Text = "Поиск прошивок";
             this.btnSearchReflashFile.UseVisualStyleBackColor = true;
+            this.btnSearchReflashFile.Click += new System.EventHandler(this.btnSearchReflashFile_Click);
             // 
             // txtEcuNumbertoSearch
             // 
@@ -862,6 +863,7 @@ namespace VtecTeamFlasher
             this.cbBinaryToLoad.Name = "cbBinaryToLoad";
             this.cbBinaryToLoad.Size = new System.Drawing.Size(321, 21);
             this.cbBinaryToLoad.TabIndex = 19;
+            this.cbBinaryToLoad.SelectedIndexChanged += new System.EventHandler(this.cbBinaryToLoad_SelectedIndexChanged);
             // 
             // tabRequest
             // 
@@ -1145,6 +1147,39 @@ namespace VtecTeamFlasher
             this.dgReflashHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgReflashHistory_CellContentClick);
             this.dgReflashHistory.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgReflashHistory_CellFormatting);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Номер";
+            this.Id.Name = "Id";
+            // 
+            // reflashDateDataGridViewTextBoxColumn
+            // 
+            this.reflashDateDataGridViewTextBoxColumn.DataPropertyName = "ReflashDate";
+            this.reflashDateDataGridViewTextBoxColumn.HeaderText = "Дата прошивки";
+            this.reflashDateDataGridViewTextBoxColumn.Name = "reflashDateDataGridViewTextBoxColumn";
+            // 
+            // binaryFileNameDataGridViewTextBoxColumn
+            // 
+            this.binaryFileNameDataGridViewTextBoxColumn.DataPropertyName = "BinaryFileName";
+            this.binaryFileNameDataGridViewTextBoxColumn.HeaderText = "Имя рефлеш файла";
+            this.binaryFileNameDataGridViewTextBoxColumn.Name = "binaryFileNameDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Статус платежа";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // btnSendReview
+            // 
+            this.btnSendReview.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.btnSendReview.HeaderText = "Полная информация";
+            this.btnSendReview.Name = "btnSendReview";
+            this.btnSendReview.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.btnSendReview.Text = "Полная информация";
+            this.btnSendReview.UseColumnTextForButtonValue = true;
+            // 
             // reflashHistoryBindingSource
             // 
             this.reflashHistoryBindingSource.DataSource = typeof(ClientAndServerCommons.DataClasses.ReflashHistory);
@@ -1190,6 +1225,39 @@ namespace VtecTeamFlasher
             this.dgRequests.TabIndex = 4;
             this.dgRequests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRequests_CellContentClick);
             this.dgRequests.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgRequests_CellFormatting);
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Номер запроса";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            // 
+            // requestDateDataGridViewTextBoxColumn
+            // 
+            this.requestDateDataGridViewTextBoxColumn.DataPropertyName = "RequestDate";
+            this.requestDateDataGridViewTextBoxColumn.HeaderText = "Дата запроса";
+            this.requestDateDataGridViewTextBoxColumn.Name = "requestDateDataGridViewTextBoxColumn";
+            // 
+            // carDescriptionDataGridViewTextBoxColumn
+            // 
+            this.carDescriptionDataGridViewTextBoxColumn.DataPropertyName = "CarDescription";
+            this.carDescriptionDataGridViewTextBoxColumn.HeaderText = "Машина";
+            this.carDescriptionDataGridViewTextBoxColumn.Name = "carDescriptionDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn1
+            // 
+            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn1.HeaderText = "Статус";
+            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
+            // 
+            // FullInfo
+            // 
+            this.FullInfo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FullInfo.HeaderText = "Полная информация";
+            this.FullInfo.Name = "FullInfo";
+            this.FullInfo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.FullInfo.Text = "Полная информация";
+            this.FullInfo.UseColumnTextForButtonValue = true;
             // 
             // reflashRequestBindingSource
             // 
@@ -1497,72 +1565,6 @@ namespace VtecTeamFlasher
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Номер запроса";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            // 
-            // requestDateDataGridViewTextBoxColumn
-            // 
-            this.requestDateDataGridViewTextBoxColumn.DataPropertyName = "RequestDate";
-            this.requestDateDataGridViewTextBoxColumn.HeaderText = "Дата запроса";
-            this.requestDateDataGridViewTextBoxColumn.Name = "requestDateDataGridViewTextBoxColumn";
-            // 
-            // carDescriptionDataGridViewTextBoxColumn
-            // 
-            this.carDescriptionDataGridViewTextBoxColumn.DataPropertyName = "CarDescription";
-            this.carDescriptionDataGridViewTextBoxColumn.HeaderText = "Машина";
-            this.carDescriptionDataGridViewTextBoxColumn.Name = "carDescriptionDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn1
-            // 
-            this.statusDataGridViewTextBoxColumn1.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn1.HeaderText = "Статус";
-            this.statusDataGridViewTextBoxColumn1.Name = "statusDataGridViewTextBoxColumn1";
-            // 
-            // FullInfo
-            // 
-            this.FullInfo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FullInfo.HeaderText = "Полная информация";
-            this.FullInfo.Name = "FullInfo";
-            this.FullInfo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.FullInfo.Text = "Полная информация";
-            this.FullInfo.UseColumnTextForButtonValue = true;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Номер";
-            this.Id.Name = "Id";
-            // 
-            // reflashDateDataGridViewTextBoxColumn
-            // 
-            this.reflashDateDataGridViewTextBoxColumn.DataPropertyName = "ReflashDate";
-            this.reflashDateDataGridViewTextBoxColumn.HeaderText = "Дата прошивки";
-            this.reflashDateDataGridViewTextBoxColumn.Name = "reflashDateDataGridViewTextBoxColumn";
-            // 
-            // binaryFileNameDataGridViewTextBoxColumn
-            // 
-            this.binaryFileNameDataGridViewTextBoxColumn.DataPropertyName = "BinaryFileName";
-            this.binaryFileNameDataGridViewTextBoxColumn.HeaderText = "Имя рефлеш файла";
-            this.binaryFileNameDataGridViewTextBoxColumn.Name = "binaryFileNameDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Статус платежа";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            // 
-            // btnSendReview
-            // 
-            this.btnSendReview.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.btnSendReview.HeaderText = "Полная информация";
-            this.btnSendReview.Name = "btnSendReview";
-            this.btnSendReview.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.btnSendReview.Text = "Полная информация";
-            this.btnSendReview.UseColumnTextForButtonValue = true;
             // 
             // VTFlasher
             // 

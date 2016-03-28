@@ -119,5 +119,21 @@ namespace ClientAndServerCommons.Helpers
                     .ThatHas(x => x.TokenString == tokenText)
                     .FirstOrDefault();
         }
+
+        public List<ReflashInformation> GetInformationListOfReflashBinaries(string ecuBinary)
+        {
+            var reflashStorages = adoRepository.Entities<ReflashStorage>().ThatHas(x => x.EcuBinaryNumber == ecuBinary || x.AltEcuCode.Contains(ecuBinary)).ToList();
+            var result = reflashStorages.Select(reflashStorage => new ReflashInformation
+                                                                      {
+                                                                          AltEcuCode = reflashStorage.AltEcuCode, 
+                                                                          Description = reflashStorage.Description, 
+                                                                          EcuBinaryNumber = reflashStorage.EcuBinaryNumber, 
+                                                                          Model = reflashStorage.Model, 
+                                                                          ReflashFileName = reflashStorage.ReflashFileName, 
+                                                                          ReflashStorageId = reflashStorage.Id, 
+                                                                          TransmissionType = reflashStorage.TransmissionType
+                                                                      }).ToList();
+            return result;
+        }
     }
 }

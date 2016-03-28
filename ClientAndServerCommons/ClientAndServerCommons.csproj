@@ -111,6 +111,7 @@
     <Compile Include="DataClasses\Comment.cs" />
     <Compile Include="DataClasses\News.cs" />
     <Compile Include="DataClasses\ReflashHistory.cs" />
+    <Compile Include="DataClasses\ReflashInformation.cs" />
     <Compile Include="DataClasses\ReflashRequest.cs" />
     <Compile Include="DataClasses\ReflashStorage.cs" />
     <Compile Include="DataClasses\Review.cs" />
