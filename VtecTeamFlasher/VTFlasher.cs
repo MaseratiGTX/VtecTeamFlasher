@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using ClientAndServerCommons;
 using ClientAndServerCommons.DataClasses;
 using ClientAndServerCommons.Statuses;
@@ -380,6 +381,7 @@ namespace VtecTeamFlasher
 
         private void CleanBinaryDescriptionData()
         {
+            cbBinaryToLoad.DataSource = null;
             cbBinaryToLoad.Items.Clear();
             txtBinaryDescription.Text = "";
             cbBinaryDescriptionCS.Checked = false;
@@ -387,6 +389,7 @@ namespace VtecTeamFlasher
             cbBinaryDescriptionEuro2.Checked = false;
             cbBinaryDescriptionImmoOff.Checked = false;
             btnBinaryDescriptionOK.Enabled = false;
+            btnBinaryDescriptionCancel.Enabled = false;
         }
         private void lbModule_Click(object sender, EventArgs e)
         {
@@ -703,6 +706,10 @@ namespace VtecTeamFlasher
         private async void btnSearchReflashFile_Click(object sender, EventArgs e)
         {
             var currentStatus = PanelRefresh.StartRefresh(panelLoadBinary, pbReflash);
+            pbReflash.Visible = true;
+            cbBinaryToLoad.DataSource = null;
+            cbBinaryToLoad.Items.Clear();
+            bool controlVisibility = false;
 
             await Task.Run(() => RequestExecutor.Execute(() =>
                 {
@@ -713,22 +720,68 @@ namespace VtecTeamFlasher
                         foreach (var reflashInformation in result)
                         {
                             var altCodes = reflashInformation.AltEcuCode.Split(',');
-                            items.AddRange(altCodes.Select(altCode => new ComboBoxItem{Value = reflashInformation.ReflashStorageId, Text = altCode}));
+                            items.AddRange(altCodes.Select(altCode => new ComboBoxItem{Value = reflashInformation.ReflashStorageId,
+                                                                                       Text = altCode, XmlDescription = reflashInformation.Description}));
                         }
                         this.Invoke(() => cbBinaryToLoad.DataSource = items);
                         this.Invoke(() => cbBinaryToLoad.DisplayMember = "Text");
                         
                     }
-                   
+
+                    controlVisibility = result.Length != 0;
+
                 }));
 
             PanelRefresh.StopRefresh(currentStatus);
-             cbBinaryToLoad.Enabled = true;
+
+            gbBinaryDescription.Enabled = controlVisibility;
+            lblChooseBinary.Enabled = controlVisibility;
+            txtBinaryDescription.Enabled = controlVisibility;
+            btnBinaryDescriptionOK.Enabled = controlVisibility;
+            btnBinaryDescriptionCancel.Enabled = controlVisibility;
+            //cbBinaryDescriptionImmoOff.Enabled = controlVisibility;
+            //cbBinaryDescriptionEGROff.Enabled = controlVisibility;
+            //cbBinaryDescriptionCS.Enabled = controlVisibility;
+            //cbBinaryDescriptionEuro2.Enabled = controlVisibility;
+            cbBinaryToLoad.Enabled = true;
+            pbReflash.Visible = false;
         }
 
         private void cbBinaryToLoad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(((ComboBoxItem)cbBinaryToLoad.SelectedItem).Value.ToString());
+            if (cbBinaryToLoad.DataSource != null)
+            {
+                if (!string.IsNullOrEmpty(((ComboBoxItem) cbBinaryToLoad.SelectedItem).XmlDescription))
+                {
+                    var xmlDescription = ((ComboBoxItem) cbBinaryToLoad.SelectedItem).XmlDescription.ToXmlDocument();
+                    if (xmlDescription.GetElementsByTagName("DisabledImmo").Count != 0)
+                        cbBinaryDescriptionImmoOff.Checked = Convert.ToBoolean(xmlDescription.GetElementsByTagName("DisabledImmo")[0].InnerText);
+                    if (xmlDescription.GetElementsByTagName("Euro2").Count != 0)
+                        cbBinaryDescriptionEuro2.Checked = Convert.ToBoolean(xmlDescription.GetElementsByTagName("Euro2")[0].InnerText);
+                    if (xmlDescription.GetElementsByTagName("DisabledEGR").Count != 0)
+                        cbBinaryDescriptionEGROff.Checked = Convert.ToBoolean(xmlDescription.GetElementsByTagName("DisabledEGR")[0].InnerText);
+                    if (xmlDescription.GetElementsByTagName("CheckSum").Count != 0)
+                        cbBinaryDescriptionCS.Checked = Convert.ToBoolean(xmlDescription.GetElementsByTagName("CheckSum")[0].InnerText);
+
+                    var description = new StringBuilder();
+
+                    if (xmlDescription.GetElementsByTagName("Author").Count != 0)
+                    {
+                        var authors = xmlDescription.GetElementsByTagName("Author").Cast<object>().Aggregate("", (current, author) => current + ((XmlNode) author).InnerText +", ").TrimEnd(new char[] {',',' '});
+                        description.AppendLine("Автор\\ы: " + authors);
+
+                    }
+                        description.AppendLine("Цена: " + xmlDescription.GetElementsByTagName("Price")[0].InnerText);
+                        description.AppendLine("Описание: " + xmlDescription.GetElementsByTagName("Description")[0].InnerText);
+                    txtBinaryDescription.Text = description.ToString();
+
+                }
+            };
+        }
+
+        private void btnBinaryDescriptionOK_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

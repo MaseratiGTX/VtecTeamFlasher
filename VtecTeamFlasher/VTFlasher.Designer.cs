@@ -757,6 +757,7 @@ namespace VtecTeamFlasher
             this.btnBinaryDescriptionOK.TabIndex = 22;
             this.btnBinaryDescriptionOK.Text = "Загрузить";
             this.btnBinaryDescriptionOK.UseVisualStyleBackColor = true;
+            this.btnBinaryDescriptionOK.Click += new System.EventHandler(this.btnBinaryDescriptionOK_Click);
             // 
             // btnBinaryDescriptionCancel
             // 
@@ -799,6 +800,7 @@ namespace VtecTeamFlasher
             // cbBinaryDescriptionImmoOff
             // 
             this.cbBinaryDescriptionImmoOff.AutoSize = true;
+            this.cbBinaryDescriptionImmoOff.Enabled = false;
             this.cbBinaryDescriptionImmoOff.Location = new System.Drawing.Point(22, 307);
             this.cbBinaryDescriptionImmoOff.Name = "cbBinaryDescriptionImmoOff";
             this.cbBinaryDescriptionImmoOff.Size = new System.Drawing.Size(125, 17);
@@ -809,6 +811,7 @@ namespace VtecTeamFlasher
             // cbBinaryDescriptionEGROff
             // 
             this.cbBinaryDescriptionEGROff.AutoSize = true;
+            this.cbBinaryDescriptionEGROff.Enabled = false;
             this.cbBinaryDescriptionEGROff.Location = new System.Drawing.Point(153, 307);
             this.cbBinaryDescriptionEGROff.Name = "cbBinaryDescriptionEGROff";
             this.cbBinaryDescriptionEGROff.Size = new System.Drawing.Size(111, 17);
@@ -819,6 +822,7 @@ namespace VtecTeamFlasher
             // cbBinaryDescriptionEuro2
             // 
             this.cbBinaryDescriptionEuro2.AutoSize = true;
+            this.cbBinaryDescriptionEuro2.Enabled = false;
             this.cbBinaryDescriptionEuro2.Location = new System.Drawing.Point(268, 307);
             this.cbBinaryDescriptionEuro2.Name = "cbBinaryDescriptionEuro2";
             this.cbBinaryDescriptionEuro2.Size = new System.Drawing.Size(57, 17);
@@ -838,6 +842,7 @@ namespace VtecTeamFlasher
             // cbBinaryDescriptionCS
             // 
             this.cbBinaryDescriptionCS.AutoSize = true;
+            this.cbBinaryDescriptionCS.Enabled = false;
             this.cbBinaryDescriptionCS.Location = new System.Drawing.Point(331, 307);
             this.cbBinaryDescriptionCS.Name = "cbBinaryDescriptionCS";
             this.cbBinaryDescriptionCS.Size = new System.Drawing.Size(128, 17);
