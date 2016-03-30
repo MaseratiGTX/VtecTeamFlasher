@@ -68,5 +68,15 @@ namespace VtecTeamFlasher.Helpers
 
             return resList;
         }
+
+
+        public static bool GetCheckedStatus(this XmlDocument document, string tagName)
+        {
+            var result = false;
+            if (document.GetElementsByTagName(tagName).Count != 0)
+                bool.TryParse(document.GetElementsByTagName(tagName)[0].InnerText, out result);
+
+            return result;
+        }
     }
 }

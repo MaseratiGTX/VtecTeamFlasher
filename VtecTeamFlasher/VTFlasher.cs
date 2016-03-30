@@ -754,14 +754,10 @@ namespace VtecTeamFlasher
                 if (!string.IsNullOrEmpty(((ComboBoxItem) cbBinaryToLoad.SelectedItem).XmlDescription))
                 {
                     var xmlDescription = ((ComboBoxItem) cbBinaryToLoad.SelectedItem).XmlDescription.ToXmlDocument();
-                    if (xmlDescription.GetElementsByTagName("DisabledImmo").Count != 0)
-                        cbBinaryDescriptionImmoOff.Checked = Convert.ToBoolean(xmlDescription.GetElementsByTagName("DisabledImmo")[0].InnerText);
-                    if (xmlDescription.GetElementsByTagName("Euro2").Count != 0)
-                        cbBinaryDescriptionEuro2.Checked = Convert.ToBoolean(xmlDescription.GetElementsByTagName("Euro2")[0].InnerText);
-                    if (xmlDescription.GetElementsByTagName("DisabledEGR").Count != 0)
-                        cbBinaryDescriptionEGROff.Checked = Convert.ToBoolean(xmlDescription.GetElementsByTagName("DisabledEGR")[0].InnerText);
-                    if (xmlDescription.GetElementsByTagName("CheckSum").Count != 0)
-                        cbBinaryDescriptionCS.Checked = Convert.ToBoolean(xmlDescription.GetElementsByTagName("CheckSum")[0].InnerText);
+                    cbBinaryDescriptionImmoOff.Checked = xmlDescription.GetCheckedStatus("DisabledImmo");
+                    cbBinaryDescriptionEuro2.Checked = xmlDescription.GetCheckedStatus("Euro2");
+                    cbBinaryDescriptionEGROff.Checked = xmlDescription.GetCheckedStatus("DisabledEGR");
+                    cbBinaryDescriptionCS.Checked = xmlDescription.GetCheckedStatus("CheckSum");
 
                     var description = new StringBuilder();
 
