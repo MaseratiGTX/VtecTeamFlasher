@@ -48,11 +48,14 @@ namespace VtecTeamFlasherWeb.Facade
             return "1.0";
         }
 
-        public byte[] GetReflashFile(ReflashRequest reflashRequest)
+        public byte[] GetReflashFile(int reflashId, int userId, string token)
         {
-            //Here I'll implement downloaing file from azure blob
-            throw new NotImplementedException();
+            ITokenValidator validator = new DatabaseTokenValidator();
+            if (validator.IsValid(token))
+                return new VtecTeamDBManager().GetReflashFile(reflashId, userId);
+            throw new FaultException("Срок рабочей сессии истек, преезапустите программу");
         }
+
 
         public bool SendRequest(ReflashRequest reflashRequest, string token)
         {

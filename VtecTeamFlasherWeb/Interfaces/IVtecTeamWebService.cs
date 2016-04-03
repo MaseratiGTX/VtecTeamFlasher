@@ -20,7 +20,7 @@ namespace VtecTeamFlasherWeb.Interfaces
         [OperationContract]
         string GetSoftvareVersion();
         [OperationContract]
-        byte[] GetReflashFile(ReflashRequest reflashRequest);
+        byte[] GetReflashFile(int reflashId, int userId);
         [OperationContract]
         bool SendRequest(ReflashRequest relashRequest);
         [OperationContract]

@@ -34,10 +34,10 @@ namespace VtecTeamFlasher.VtecTeamService {
         System.Threading.Tasks.Task<string> GetSoftvareVersionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashFile", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashFileResponse")]
-        byte[] GetReflashFile(ClientAndServerCommons.DataClasses.ReflashRequest reflashRequest);
+        byte[] GetReflashFile(int reflashId, int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetReflashFile", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetReflashFileResponse")]
-        System.Threading.Tasks.Task<byte[]> GetReflashFileAsync(ClientAndServerCommons.DataClasses.ReflashRequest reflashRequest);
+        System.Threading.Tasks.Task<byte[]> GetReflashFileAsync(int reflashId, int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/SendRequest", ReplyAction="http://tempuri.org/IVtecTeamWebService/SendRequestResponse")]
         bool SendRequest(ClientAndServerCommons.DataClasses.ReflashRequest relashRequest);
@@ -92,6 +92,14 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetNews", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetNewsResponse")]
         System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.News[]> GetNewsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetInformationListOfReflashBinaries", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetInformationListOfReflashBinariesRespons" +
+            "e")]
+        ClientAndServerCommons.DataClasses.ReflashInformation[] GetInformationListOfReflashBinaries(string ecuBinary);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IVtecTeamWebService/GetInformationListOfReflashBinaries", ReplyAction="http://tempuri.org/IVtecTeamWebService/GetInformationListOfReflashBinariesRespons" +
+            "e")]
+        System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashInformation[]> GetInformationListOfReflashBinariesAsync(string ecuBinary);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -145,12 +153,12 @@ namespace VtecTeamFlasher.VtecTeamService {
             return base.Channel.GetSoftvareVersionAsync();
         }
         
-        public byte[] GetReflashFile(ClientAndServerCommons.DataClasses.ReflashRequest reflashRequest) {
-            return base.Channel.GetReflashFile(reflashRequest);
+        public byte[] GetReflashFile(int reflashId, int userId) {
+            return base.Channel.GetReflashFile(reflashId, userId);
         }
         
-        public System.Threading.Tasks.Task<byte[]> GetReflashFileAsync(ClientAndServerCommons.DataClasses.ReflashRequest reflashRequest) {
-            return base.Channel.GetReflashFileAsync(reflashRequest);
+        public System.Threading.Tasks.Task<byte[]> GetReflashFileAsync(int reflashId, int userId) {
+            return base.Channel.GetReflashFileAsync(reflashId, userId);
         }
         
         public bool SendRequest(ClientAndServerCommons.DataClasses.ReflashRequest relashRequest) {
@@ -223,6 +231,14 @@ namespace VtecTeamFlasher.VtecTeamService {
         
         public System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.News[]> GetNewsAsync() {
             return base.Channel.GetNewsAsync();
+        }
+        
+        public ClientAndServerCommons.DataClasses.ReflashInformation[] GetInformationListOfReflashBinaries(string ecuBinary) {
+            return base.Channel.GetInformationListOfReflashBinaries(ecuBinary);
+        }
+        
+        public System.Threading.Tasks.Task<ClientAndServerCommons.DataClasses.ReflashInformation[]> GetInformationListOfReflashBinariesAsync(string ecuBinary) {
+            return base.Channel.GetInformationListOfReflashBinariesAsync(ecuBinary);
         }
     }
 }

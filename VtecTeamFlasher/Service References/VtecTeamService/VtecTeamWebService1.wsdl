@@ -121,6 +121,12 @@
   <wsdl:message name="IVtecTeamWebService_GetNews_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetNewsResponse" />
   </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetInformationListOfReflashBinaries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInformationListOfReflashBinaries" />
+  </wsdl:message>
+  <wsdl:message name="IVtecTeamWebService_GetInformationListOfReflashBinaries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInformationListOfReflashBinariesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IVtecTeamWebService">
     <wsdl:operation name="Authenticate">
       <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/Authenticate" message="tns:IVtecTeamWebService_Authenticate_InputMessage" />
@@ -173,6 +179,10 @@
     <wsdl:operation name="GetNews">
       <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetNews" message="tns:IVtecTeamWebService_GetNews_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetNewsResponse" message="tns:IVtecTeamWebService_GetNews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInformationListOfReflashBinaries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetInformationListOfReflashBinaries" message="tns:IVtecTeamWebService_GetInformationListOfReflashBinaries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVtecTeamWebService/GetInformationListOfReflashBinariesResponse" message="tns:IVtecTeamWebService_GetInformationListOfReflashBinaries_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CustomBinding_IVtecTeamWebService" type="tns:IVtecTeamWebService">
@@ -295,6 +305,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetInformationListOfReflashBinaries">
+      <soap12:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetInformationListOfReflashBinaries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CustomBinding_IVtecTeamWebService1" type="tns:IVtecTeamWebService">
     <wsp:PolicyReference URI="#CustomBinding_IVtecTeamWebService1_policy" />
@@ -409,6 +428,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetNews">
       <soap12:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInformationListOfReflashBinaries">
+      <soap12:operation soapAction="http://tempuri.org/IVtecTeamWebService/GetInformationListOfReflashBinaries" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

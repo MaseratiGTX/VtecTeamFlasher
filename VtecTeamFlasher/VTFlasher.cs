@@ -577,7 +577,7 @@ namespace VtecTeamFlasher
             //// TODO Load binary descriptions
             RequestExecutor.Execute(() =>
             {
-                var reflashFile = WCFServiceFactory.CreateVtecTeamService().GetReflashFile(new ReflashRequest());
+                //var reflashFile = WCFServiceFactory.CreateVtecTeamService().GetReflashFile(new ReflashRequest());
             }); 
 
             pbReflash.Visible = false;
@@ -759,17 +759,8 @@ namespace VtecTeamFlasher
                     cbBinaryDescriptionEGROff.Checked = xmlDescription.GetCheckedStatus("DisabledEGR");
                     cbBinaryDescriptionCS.Checked = xmlDescription.GetCheckedStatus("CheckSum");
 
-                    var description = new StringBuilder();
 
-                    if (xmlDescription.GetElementsByTagName("Author").Count != 0)
-                    {
-                        var authors = xmlDescription.GetElementsByTagName("Author").Cast<object>().Aggregate("", (current, author) => current + ((XmlNode) author).InnerText +", ").TrimEnd(new char[] {',',' '});
-                        description.AppendLine("Автор\\ы: " + authors);
-
-                    }
-                        description.AppendLine("Цена: " + xmlDescription.GetElementsByTagName("Price")[0].InnerText);
-                        description.AppendLine("Описание: " + xmlDescription.GetElementsByTagName("Description")[0].InnerText);
-                    txtBinaryDescription.Text = description.ToString();
+                    txtBinaryDescription.Text = xmlDescription.GetDescription();
 
                 }
             };
@@ -777,7 +768,18 @@ namespace VtecTeamFlasher
 
         private void btnBinaryDescriptionOK_Click(object sender, EventArgs e)
         {
-
+            if (cbBinaryToLoad.SelectedItem != null)
+            {
+                RequestExecutor.Execute(() =>
+                                {
+                                    var reflashFile = WCFServiceFactory.CreateVtecTeamService().GetReflashFile(((ComboBoxItem)cbBinaryToLoad.SelectedItem).Value, Session.CurrentUser.Id);
+                                    MessageBox.Show("Прошивка успешно загружена в память программы.");
+                                });
+            }
+            else
+            {
+                MessageBox.Show("Не выбран номер прошивки для скачивания!");
+            }
         }
     }
 }

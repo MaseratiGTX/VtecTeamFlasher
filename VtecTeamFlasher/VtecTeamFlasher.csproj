@@ -152,6 +152,7 @@
     <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.Comment.datasource" />
     <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.News.datasource" />
     <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.ReflashHistory.datasource" />
+    <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.ReflashInformation.datasource" />
     <None Include="Properties\DataSources\ClientAndServerCommons.DataClasses.ReflashRequest.datasource" />
     <None Include="Properties\DataSources\ClientAndServerCommons.SaveEntityResult.datasource" />
     <None Include="Properties\Settings.settings">
@@ -163,9 +164,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\VtecTeamService\VtecTeamFlasher.VtecTeamService.ReflashInformation.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\VtecTeamService\VtecTeamFlasher.VtecTeamService.SaveEntityResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

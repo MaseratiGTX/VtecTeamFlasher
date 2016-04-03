@@ -135,4 +135,22 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="News" nillable="true" type="tns:News" />
+  <xs:complexType name="ArrayOfReflashInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReflashInformation" nillable="true" type="tns:ReflashInformation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReflashInformation" nillable="true" type="tns:ArrayOfReflashInformation" />
+  <xs:complexType name="ReflashInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AltEcuCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EcuBinaryNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReflashFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReflashStorageId" type="xs:int" />
+      <xs:element minOccurs="0" name="TransmissionType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReflashInformation" nillable="true" type="tns:ReflashInformation" />
 </xs:schema>

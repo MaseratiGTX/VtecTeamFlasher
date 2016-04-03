@@ -42,7 +42,8 @@
   <xs:element name="GetReflashFile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="reflashRequest" nillable="true" type="q2:ReflashRequest" />
+        <xs:element minOccurs="0" name="reflashId" type="xs:int" />
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -56,7 +57,7 @@
   <xs:element name="SendRequest">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="relashRequest" nillable="true" type="q3:ReflashRequest" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="relashRequest" nillable="true" type="q2:ReflashRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -77,7 +78,7 @@
   <xs:element name="GetReflashHistoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetReflashHistoryResult" nillable="true" type="q4:ArrayOfReflashHistory" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetReflashHistoryResult" nillable="true" type="q3:ArrayOfReflashHistory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -91,14 +92,14 @@
   <xs:element name="GetAdminReflashHistoryResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetAdminReflashHistoryResult" nillable="true" type="q5:ArrayOfReflashHistory" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetAdminReflashHistoryResult" nillable="true" type="q4:ArrayOfReflashHistory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateReflashHistory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="history" nillable="true" type="q6:ReflashHistory" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="history" nillable="true" type="q5:ReflashHistory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -119,14 +120,14 @@
   <xs:element name="GetReflashRequestsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetReflashRequestsResult" nillable="true" type="q7:ArrayOfReflashRequest" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetReflashRequestsResult" nillable="true" type="q6:ArrayOfReflashRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateUserPersonalData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="user" nillable="true" type="q8:User" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="user" nillable="true" type="q7:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -140,7 +141,7 @@
   <xs:element name="SendReview">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="review" nillable="true" type="q9:Review" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="review" nillable="true" type="q8:Review" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -154,14 +155,14 @@
   <xs:element name="SendComment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="comment" nillable="true" type="q10:Comment" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="comment" nillable="true" type="q9:Comment" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SendCommentResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" minOccurs="0" name="SendCommentResult" nillable="true" type="q11:SaveEntityResult" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ClientAndServerCommons" minOccurs="0" name="SendCommentResult" nillable="true" type="q10:SaveEntityResult" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -173,7 +174,21 @@
   <xs:element name="GetNewsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetNewsResult" nillable="true" type="q12:ArrayOfNews" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetNewsResult" nillable="true" type="q11:ArrayOfNews" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInformationListOfReflashBinaries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ecuBinary" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInformationListOfReflashBinariesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ClientAndServerCommons.DataClasses" minOccurs="0" name="GetInformationListOfReflashBinariesResult" nillable="true" type="q12:ArrayOfReflashInformation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

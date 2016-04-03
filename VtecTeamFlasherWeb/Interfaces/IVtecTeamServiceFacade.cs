@@ -9,7 +9,7 @@ namespace VtecTeamFlasherWeb.Interfaces
         AuthInfoResult Authenticate(string login, string passwordHash);
         void SignOut();
         string GetSoftvareVersion();
-        byte[] GetReflashFile(ReflashRequest reflashRequest);
+        byte[] GetReflashFile(int reflashId, int userId, string token);
         bool SendRequest(ReflashRequest reflashRequest, string token);
         List<ReflashHistory> GetReflashHistory(int userId, string token);
         List<ReflashHistory> GetAdminReflashHistory(int userId);

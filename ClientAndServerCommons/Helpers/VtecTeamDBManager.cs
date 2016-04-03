@@ -135,5 +135,12 @@ namespace ClientAndServerCommons.Helpers
                                                                       }).ToList();
             return result;
         }
+
+        public byte[] GetReflashFile(int reflashId, int userId)
+        {
+            return adoRepository.Entities<ReflashStorage>()
+                     .ThatHas(x => x.Id == reflashId)
+                     .FirstOrDefault().ReflashBinary;
+        }
     }
 }
